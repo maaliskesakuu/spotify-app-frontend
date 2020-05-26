@@ -1,4 +1,4 @@
-// get the hash of the url
+/* get the hash of the url (when the user grants access the final url contains a hash fragment) */
 const hash = window.location.hash
   .substring(1)
   .split('&')
