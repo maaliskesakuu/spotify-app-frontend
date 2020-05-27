@@ -4,6 +4,9 @@ import { authEndpoint, clientId, redirectUri, scopes } from '../config';
 import hash from '../hash';
 import Player from './Player';
 import './App.css';
+import CreatePlaylist from './CreatePlaylist/CreatePlaylist';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   // testing to show what is being played
@@ -76,7 +79,11 @@ class App extends Component {
           {this.state.token && (
             // When you have a token show this
             <Player item={this.state.item} is_playing={this.state.is_playing} />
-          )}
+            )}
+          {this.state.token && (
+            // When you have a token show this
+            <CreatePlaylist />
+            )}            
         </header>
       </div>
     );
