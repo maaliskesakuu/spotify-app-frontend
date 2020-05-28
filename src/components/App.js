@@ -60,11 +60,7 @@ class App extends Component {
 
   //create an empty, private playlist
   savePlaylist() {
-    console.log(this.state.playlistName);
-    console.log(this.state.playlistDescription);
-
     let accessToken = hash.access_token;
-    console.log(accessToken);
 
     const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;
@@ -81,7 +77,7 @@ class App extends Component {
         fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
-          body: JSON.stringify({ name: playlist, description: playlistDesc, public:'false'}),
+          body: JSON.stringify({ name: playlist, description: playlistDesc, collaborative: true, public:'false'}),
         })
           .then(response => response.json())
         .then(jsonResponse => {
