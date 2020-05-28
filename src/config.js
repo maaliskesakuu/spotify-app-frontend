@@ -8,8 +8,11 @@ export const clientId = 'cc0b23ed0ef842bdba9556fd9aad1863';
 export const redirectUri = 'http://localhost:3000/callback';
 
 // user must authorize access to the data defined in the scopes
+// do not remove playlist-modify-*
 export const scopes = [
   'user-top-read',
   'user-read-currently-playing',
   'user-read-playback-state',
+  'playlist-modify-public',
+  'playlist-modify-private',
 ];

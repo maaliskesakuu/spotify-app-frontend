@@ -1,5 +1,7 @@
 import React from 'react';
 
+//this whole component can be removed. Is just example code.
+
 const Player = props => {
   const backgroundStyles = {
     backgroundImage: `url(${props.item.album.images[0].url})`,

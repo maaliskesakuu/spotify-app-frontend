@@ -10,10 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   // testing to show what is being played
-  constructor() {
-    super();
+  // Do not, however, remove constructor and token, playlistName or playlistDescription
+  constructor(props) {
+    super(props);
     this.state = {
       token: null,
+      playlistName: 'New Playlist',
+      playlistDescription: '',
       item: {
         album: {
           images: [{ url: '' }],
@@ -23,9 +26,24 @@ class App extends Component {
       },
       is_playing: 'Paused',
     };
+
     this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
+    // testing to show what is being played ends here
+
+    this.addPlaylistName = this.addPlaylistName.bind(this);
+
+    this.addPlaylistDescription = this.addPlaylistDescription.bind(this);
+
+    this.savePlaylist = this.savePlaylist.bind(this);
   }
-  // testing to show what is being played ends here
+
+  addPlaylistName(name) {
+    this.setState({ playlistName: name });
+  }
+
+  addPlaylistDescription(desc) {
+    this.setState({ playlistDescription: desc });
+  }
 
   componentDidMount() {
     // Set token
@@ -38,6 +56,39 @@ class App extends Component {
       });
       this.getCurrentlyPlaying(_token);
     }
+  }
+
+  //create an empty, private playlist
+  savePlaylist() {
+    console.log(this.state.playlistName);
+    console.log(this.state.playlistDescription);
+
+    let accessToken = hash.access_token;
+    console.log(accessToken);
+
+    const headers = { Authorization: `Bearer ${accessToken}` };
+    let userId;
+    let playlist = this.state.playlistName;
+    let playlistDesc = this.state.playlistDescription;
+
+    //get userId
+    fetch('https://api.spotify.com/v1/me', { headers: headers })
+      .then(response => response.json())
+      .then(jsonResponse => {
+        userId = jsonResponse.id;
+
+        //post the data and create the playlist
+        fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
+          body: JSON.stringify({ name: playlist, description: playlistDesc, public:'false'}),
+        })
+          .then(response => response.json())
+        .then(jsonResponse => {
+          const playlistId = jsonResponse.id;
+          alert(`Created a new playlist, id: ${playlistId}`)
+        });
+      });
   }
 
   // testing to show what is being played
@@ -79,11 +130,15 @@ class App extends Component {
           {this.state.token && (
             // When you have a token show this
             <Player item={this.state.item} is_playing={this.state.is_playing} />
-            )}
+          )}
           {this.state.token && (
             // When you have a token show this
-            <CreatePlaylist />
-            )}            
+            <CreatePlaylist
+              onNameChange={this.addPlaylistName}
+              onDescriptionChange={this.addPlaylistDescription}
+              onSave={this.savePlaylist}
+            />
+          )}
         </header>
       </div>
     );

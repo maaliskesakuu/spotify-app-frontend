@@ -17,8 +17,7 @@
   position: relative;
   min-height: 25vh;
   display: grid;
-  /* justify-items: center; */
-  /* align-items: center;  */
+  box-shadow: 0 0.1rem .5rem black;
 }
 
 #closePopup {
