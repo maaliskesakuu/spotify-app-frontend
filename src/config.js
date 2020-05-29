@@ -1,8 +1,10 @@
+import env from './env';
+
 //endpoint of the Spotify Accounts service
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
-// our app's client id
-export const clientId = 'cc0b23ed0ef842bdba9556fd9aad1863';
+// // our app's client id
+export const clientId = env.SPOTIFY_CLIENT_ID;
 
 // the address to which the Spotify Accounts service redirects
 export const redirectUri = 'http://localhost:3000/callback';

@@ -76,14 +76,22 @@ class App extends Component {
         //post the data and create the playlist
         fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
-          body: JSON.stringify({ name: playlist, description: playlistDesc, collaborative: true, public:'false'}),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            name: playlist,
+            description: playlistDesc,
+            collaborative: true,
+            public: 'false',
+          }),
         })
           .then(response => response.json())
-        .then(jsonResponse => {
-          const playlistId = jsonResponse.id;
-          alert(`Created a new playlist, id: ${playlistId}`)
-        });
+          .then(jsonResponse => {
+            const playlistId = jsonResponse.id;
+            alert(`Created a new playlist, id: ${playlistId}`);
+          });
       });
   }
 
