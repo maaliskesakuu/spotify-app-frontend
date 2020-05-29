@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './CreatePlaylist.css';
+import './Playlist.css';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-class CreatePlaylist extends Component {
+class Playlist extends Component {
   constructor(props) {
     super(props);
 
@@ -62,4 +62,4 @@ class CreatePlaylist extends Component {
   }
 }
 
-export default CreatePlaylist;
+export default Playlist;

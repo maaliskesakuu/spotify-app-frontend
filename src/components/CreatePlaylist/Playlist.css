@@ -1,4 +1,4 @@
-.overlay {
+/* .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   display: grid;
   justify-items: center;
   align-items: center;
-}
+} */
 
 .popup {
   background-color: black;

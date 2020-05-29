@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import * as $ from 'jquery';
-import { authEndpoint, clientId, redirectUri, scopes } from '../config';
-import hash from '../hash';
-import Player from './Player';
+// import * as $ from 'jquery';
+import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
+import hash from '../../hash';
+// import Player from './Player';
 import './App.css';
-import CreatePlaylist from './CreatePlaylist/CreatePlaylist';
+import Playlist from '../CreatePlaylist/Playlist';
+import History from '../History/History';
+import Home from '../Home/Home';
+import Routers from '../../Routers';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,17 +20,17 @@ class App extends Component {
       token: null,
       playlistName: 'New Playlist',
       playlistDescription: '',
-      item: {
-        album: {
-          images: [{ url: '' }],
-        },
-        name: '',
-        artists: [{ name: '' }],
-      },
-      is_playing: 'Paused',
+      // item: {
+      //   album: {
+      //     images: [{ url: '' }],
+      //   },
+      //   name: '',
+      //   artists: [{ name: '' }],
+      // },
+      // is_playing: 'Paused',
     };
 
-    this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
+    // this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
     // testing to show what is being played ends here
 
     this.addPlaylistName = this.addPlaylistName.bind(this);
@@ -54,12 +57,13 @@ class App extends Component {
       this.setState({
         token: _token,
       });
-      this.getCurrentlyPlaying(_token);
+      // this.getCurrentlyPlaying(_token);
     }
   }
 
   //create an empty, private playlist
-  savePlaylist() {
+  savePlaylist(e) {
+    e.preventDefault();
     let accessToken = hash.access_token;
 
     const headers = { Authorization: `Bearer ${accessToken}` };
@@ -77,6 +81,7 @@ class App extends Component {
         fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           method: 'POST',
           headers: {
+            Accept: 'application/json',
             'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`,
           },
@@ -91,29 +96,31 @@ class App extends Component {
           .then(jsonResponse => {
             const playlistId = jsonResponse.id;
             alert(`Created a new playlist, id: ${playlistId}`);
+          }).catch(error => {
+            console.log(error.data);
           });
       });
   }
 
   // testing to show what is being played
-  getCurrentlyPlaying(token) {
-    // Make a call using the token
-    $.ajax({
-      url: 'https://api.spotify.com/v1/me/player',
-      type: 'GET',
-      beforeSend: xhr => {
-        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-      },
-      success: data => {
-        this.setState({
-          item: data.item,
-          is_playing: data.is_playing,
-        });
-      },
-    });
-    // refresh the song playing
-    setTimeout(() => this.getCurrentlyPlaying(token), 7500);
-  }
+  // getCurrentlyPlaying(token) {
+  //   // Make a call using the token
+  //   $.ajax({
+  //     url: 'https://api.spotify.com/v1/me/player',
+  //     type: 'GET',
+  //     beforeSend: xhr => {
+  //       xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+  //     },
+  //     success: data => {
+  //       this.setState({
+  //         item: data.item,
+  //         is_playing: data.is_playing,
+  //       });
+  //     },
+  //   });
+  //   // refresh the song playing
+  //   setTimeout(() => this.getCurrentlyPlaying(token), 7500);
+  // }
   // testing to show what is being played ends here
 
   render() {
@@ -131,19 +138,35 @@ class App extends Component {
             </a>
           )}
 
-          {this.state.token && (
+          {/* {this.state.token && (
             // When you have a token show this
             <Player item={this.state.item} is_playing={this.state.is_playing} />
-          )}
+          )} */}
           {this.state.token && (
-            // When you have a token show this
-            <CreatePlaylist
+            //When you have a token show this
+            <Routers />
+          )}
+        </header>
+        <main>
+        {this.state.token && (
+            //When you have a token show this
+            <Home
+            />
+          )}
+        {this.state.token && (
+            //When you have a token show this
+            <History
+            />
+          )}
+        {this.state.token && (
+            //When you have a token show this
+            <Playlist
               onNameChange={this.addPlaylistName}
               onDescriptionChange={this.addPlaylistDescription}
               onSave={this.savePlaylist}
             />
           )}
-        </header>
+        </main>
       </div>
     );
   }
