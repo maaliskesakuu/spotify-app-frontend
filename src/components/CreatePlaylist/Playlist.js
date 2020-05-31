@@ -32,7 +32,8 @@ class Playlist extends Component {
     return (
       <div className="overlay">
         <Container>
-          <Col md={{ span: 8, offset: 2 }} className="popup ">
+            {/* <h3 className="mt-3" style={{ textAlign:"center" }}>Create a playlist with friends</h3> */}
+          <Col md={{ span: 8, offset: 2 }} className="popup">
             <Form className="mx-5 px-5">
               <Form.Group className="mt-3">
                 <Form.Label>Create new playlist</Form.Label>
