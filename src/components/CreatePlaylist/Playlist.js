@@ -21,11 +21,11 @@ class Playlist extends Component {
 
   // to handle the title and description of a new playlist
   handleNameChange(event) {
-    this.props.onNameChange(event.target.value)
+    this.props.onNameChange(event.target.value);
   }
 
   handleDescriptionChange(event) {
-    this.props.onDescriptionChange(event.target.value)
+    this.props.onDescriptionChange(event.target.value);
   }
 
   render() {
@@ -36,7 +36,12 @@ class Playlist extends Component {
             <Form className="mx-5 px-5">
               <Form.Group className="mt-3">
                 <Form.Label>Create new playlist</Form.Label>
-                <Form.Control type="text" name="title" onChange={this.handleNameChange} defaultValue={'New Playlist'}/>
+                <Form.Control
+                  type="text"
+                  name="title"
+                  onChange={this.handleNameChange}
+                  defaultValue={'New Playlist'}
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Description</Form.Label>
@@ -45,16 +50,20 @@ class Playlist extends Component {
                   rows="3"
                   name="description"
                   placeholder="Enter a description"
-                  onChange={this.handleDescriptionChange} 
+                  onChange={this.handleDescriptionChange}
                 ></Form.Control>
               </Form.Group>
-              <Button variant="success" className="mb-3" onClick={this.props.onSave}>
+              <Button
+                variant="success"
+                className="mb-3"
+                onClick={this.props.onSave}
+              >
                 create and save to Spotify
               </Button>
             </Form>
-            <Button variant="light" id="closePopup" onClick={this.closePopup}>
+            {/* <Button variant="light" id="closePopup" onClick={this.closePopup}>
               X
-            </Button>
+            </Button> */}
           </Col>
         </Container>
       </div>

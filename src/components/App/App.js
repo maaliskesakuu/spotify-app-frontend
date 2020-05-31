@@ -38,6 +38,8 @@ class App extends Component {
     this.addPlaylistDescription = this.addPlaylistDescription.bind(this);
 
     this.savePlaylist = this.savePlaylist.bind(this);
+
+    // this.resetForm = this.resetForm.bind(this)
   }
 
   addPlaylistName(name) {
@@ -47,6 +49,10 @@ class App extends Component {
   addPlaylistDescription(desc) {
     this.setState({ playlistDescription: desc });
   }
+
+  // resetForm() {
+  //   this.setState({ playlistName: 'New Playlist', playlistDescription: '' });
+  // }
 
   componentDidMount() {
     // Set token
@@ -61,11 +67,10 @@ class App extends Component {
     }
   }
 
-  //create an empty, private playlist
+  //create an empty, collaborative playlist
   savePlaylist(e) {
     e.preventDefault();
     let accessToken = hash.access_token;
-
     const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;
     let playlist = this.state.playlistName;
@@ -96,7 +101,8 @@ class App extends Component {
           .then(jsonResponse => {
             const playlistId = jsonResponse.id;
             alert(`Created a new playlist, id: ${playlistId}`);
-          }).catch(error => {
+          })
+          .catch(error => {
             console.log(error.data);
           });
       });
@@ -148,17 +154,15 @@ class App extends Component {
           )}
         </header>
         <main>
-        {this.state.token && (
+          {this.state.token && (
             //When you have a token show this
-            <Home
-            />
+            <Home />
           )}
-        {this.state.token && (
+          {this.state.token && (
             //When you have a token show this
-            <History
-            />
+            <History />
           )}
-        {this.state.token && (
+          {this.state.token && (
             //When you have a token show this
             <Playlist
               onNameChange={this.addPlaylistName}
