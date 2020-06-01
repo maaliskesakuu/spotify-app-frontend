@@ -32,11 +32,10 @@ class Playlist extends Component {
     return (
       <div className="overlay">
         <Container>
-            {/* <h3 className="mt-3" style={{ textAlign:"center" }}>Create a playlist with friends</h3> */}
-          <Col md={{ span: 8, offset: 2 }} className="popup">
-            <Form className="mx-5 px-5">
+          <Col md={{ span: 8}} className="popup">
+            <Form className="mx-5 px-lg-5 px-xl-5">
               <Form.Group className="mt-3">
-                <Form.Label>Create new playlist</Form.Label>
+                <Form.Label>Create a new, collaborative playlist</Form.Label>
                 <Form.Control
                   type="text"
                   name="title"
@@ -58,6 +57,7 @@ class Playlist extends Component {
                 variant="success"
                 className="mb-3"
                 onClick={this.props.onSave}
+                block
               >
                 create and save to Spotify
               </Button>
