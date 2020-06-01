@@ -55,8 +55,11 @@ class App extends Component {
 
   search(term) {
     let accessToken = hash.access_token;
-
-    fetch(`https://api.spotify.com/v1/search?type=track&q=${term}&limit=10`, {
+    
+    fetch(`https://api.spotify.com/v1/search?type=track&q=${term}%20genre:chill&limit=10`, {
+    // fetch(`https://api.spotify.com/v1/search?type=track&q=%20genre:workout&limit=10`, {
+   // fetch(`https://api.spotify.com/v1/search?type=track&q=${term}%20genre:sleep&limit=10`, {
+    // fetch(`https://api.spotify.com/v1/search?&type=playlist&q=${term}&limit=10`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -68,14 +71,24 @@ class App extends Component {
       })
       .then(jsonResponse => {
         if (!jsonResponse.tracks) {
+          // if (!jsonResponse.playlists) {
           return [];
-        }
+          }
+        // return jsonResponse.playlists.items.map(playlist => ({
+        //   id: playlist.id,
+        //   name: playlist.name,
+        //   description: playlist.description,
+        //   owner: playlist.owner.display_name,
+        //   uri: playlist.uri,
+        //   tracks: playlist.tracks.total
+        // }))
         return jsonResponse.tracks.items.map(track => ({
           id: track.id,
           name: track.name,
           artist: track.artists[0].name,
           album: track.album.name,
           uri: track.uri,
+          preview: track.preview_url
         }));
       })
       .then(searchResults => {
@@ -167,21 +180,22 @@ class App extends Component {
                   uris: trackUris,
                 }),
               }
-            ).then(response => response.json())
+            )
+              .then(response => response.json())
               .then(jsonResponse => {
-                alert('playlist with selected tracks sent to Spotify')
-              }).catch(error => {
-              console.log(error.data);
-            });
+                alert('playlist with selected tracks sent to Spotify');
+              })
+              .then(() => {
+                this.setState({
+                  playlistName: 'New Playlist',
+                  playlistTracks: [],
+                });
+              })
+              .catch(error => {
+                console.log(error.data);
+              });
           });
       });
-
-    //   savePlaylist(this.state.playlistName, trackUris).then(() => {
-    //     this.setState({
-    //       playlistName: 'New Playlist',
-    //       playlistTracks: [],
-    //     });
-    //   });
   }
 
   addPlaylistName(name) {
