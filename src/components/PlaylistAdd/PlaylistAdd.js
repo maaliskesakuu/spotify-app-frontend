@@ -25,7 +25,7 @@ class PlaylistAdd extends Component {
           isRemoval={true}
           onRemove={this.props.onRemove}
         />
-        <button className="Playlist-save" onClick={this.props.onSave}>Save to Spotify</button>
+        <button className="Playlist-save" variant="success" onClick={this.props.onSave}>Save to Spotify</button>
       </div>
     );
   }

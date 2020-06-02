@@ -42,7 +42,7 @@ class Activities extends Component {
 
     return (
       <Container>
-        <h2>What you want to do?</h2>
+        {/* <h2>What you want to do?</h2> */}
         {activityList}
       </Container>
     );

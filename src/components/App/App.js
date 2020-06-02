@@ -5,13 +5,14 @@ import './App.css';
 import Playlist from '../CreatePlaylist/Playlist';
 // import History from '../History/History';
 // import Home from '../Home/Home';
-import Routers from '../../Routers';
+// import Routers from '../../Routers';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SearchBar from '../SearchBar/Searchbar';
-import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
-import SearchResults from '../SearchResults/SearchResults';
+// import SearchBar from '../SearchBar/Searchbar';
+// import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
+// import SearchResults from '../SearchResults/SearchResults';
 import Activities from '../Activities/Activities';
+//import Button from 'react-bootstrap/Button';
 
 class App extends Component {
   constructor(props) {
@@ -38,11 +39,81 @@ class App extends Component {
     this.doThese = this.doThese.bind(this);
   }
 
+  // getMusic() {
+  //   let token = hash.access_token;
+  //   fetch(
+  //     `https://api.spotify.com/v1/browse/categories/${this.props.category_id}/playlists?limit=2`, //API call to get playlists with category
+  //     {
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }
+  //   )
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(jsonResponse => {
+  //       if (!jsonResponse.playlists) {
+  //         return [];
+  //       }
+
+  //       //Making array with playlist IDs
+  //       var ID_array = [];
+  //       jsonResponse.playlists.items.forEach(item => {
+  //         ID_array.push(item.id);
+  //       });
+  //       console.log(ID_array);
+
+  //       return ID_array;
+  //     })
+  //     .then(ID_array => {
+  //       for (var i = 0; i < ID_array.length; i++) {
+  //         fetch(
+  //           `https://api.spotify.com/v1/playlists/${ID_array[i]}/tracks?limit=10`, //API call with playlists IDs to get tracks
+  //           {
+  //             headers: {
+  //               Accept: 'application/json',
+  //               'Content-Type': 'application/json',
+  //               Authorization: `Bearer ${token}`,
+  //             },
+  //           }
+  //         )
+  //           .then(response => {
+  //             return response.json();
+  //           })
+  //           .then(jsonResponse => {
+  //             console.log(jsonResponse);
+  //             let searchResults = jsonResponse.items
+  //               .map(item => {
+  //                 return {
+  //                   //Now showing only track name and artist. Modify this.
+  //                   //Added id, album and uri
+  //                   name: item.track.name,
+  //                   artist: item.track.artists[0].name,
+  //                   id: item.track.id,
+  //                   album: item.track.album.name,
+  //                   uri: item.track.uri,
+  //                 };
+  //               })
+  //               .then(() => {
+  //                 this.setState({ searchResults: searchResults });
+  //                 console.log(this.state.searchResults);
+  //               });
+  //           });
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log(error.data);
+  //     });
+  // }
+
   search(term) {
     let accessToken = hash.access_token;
 
     fetch(
-      `https://api.spotify.com/v1/search?type=track&q=${term}%20genre:sleep&limit=20`,
+      `https://api.spotify.com/v1/search?type=track&q=${term}%20genre:sleep&limit=10`,
       {
         // fetch(`https://api.spotify.com/v1/search?type=track&q=%20genre:workout&limit=10`, {
         // fetch(`https://api.spotify.com/v1/search?type=track&q=${term}%20genre:focus&limit=10`, {
@@ -271,31 +342,29 @@ class App extends Component {
             </a>
           )}
 
-          {this.state.token && (
+          {/* {this.state.token && (
             //When you have a token show this
             <Routers />
-          )}
+          )} */}
         </header>
         <main>
           {/* {this.state.token && (
             <Home />
           )} */}
-          {this.state.token && (
-            <Activities />
-          )}
-          {this.state.token && <SearchBar onSearch={this.search} />}
-          <div className="App-playlist">
+          {this.state.token && <Activities />}
+          {/* {this.state.token && <SearchBar onSearch={this.search} />} */}
+          {/* <div className="App-playlist">
             {this.state.token && (
               <SearchResults
                 searchResults={this.state.searchResults}
                 onAdd={this.doThese}
               />
             )}
-          </div>
+          </div> */}
           {/* {this.state.token && (
             <History />
           )} */}
-          {this.state.token && (
+          {/* {this.state.token && (
             <PlaylistAdd
               playlistTracks={this.state.playlistTracks}
               onNameChange={this.updatePlaylistName}
@@ -303,7 +372,7 @@ class App extends Component {
               onSave={this.savePlaylistAdd}
               title={this.state.playlistName}
             />
-          )}
+          )} */}
           {this.state.token && (
             <Playlist
               onNameChange={this.addPlaylistName}
