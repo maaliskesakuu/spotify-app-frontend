@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchBar from '../SearchBar/Searchbar';
 import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
 import SearchResults from '../SearchResults/SearchResults';
+import Activities from '../Activities/Activities';
 
 class App extends Component {
   constructor(props) {
@@ -41,8 +42,8 @@ class App extends Component {
     let accessToken = hash.access_token;
 
     fetch(
-       `https://api.spotify.com/v1/search?type=track&q=${term}%20genre:sleep&limit=20`,
-       {
+      `https://api.spotify.com/v1/search?type=track&q=${term}%20genre:sleep&limit=20`,
+      {
         // fetch(`https://api.spotify.com/v1/search?type=track&q=%20genre:workout&limit=10`, {
         // fetch(`https://api.spotify.com/v1/search?type=track&q=${term}%20genre:focus&limit=10`, {
         // fetch(`https://api.spotify.com/v1/search?&type=playlist&q=${term}&limit=10`, {
@@ -246,8 +247,8 @@ class App extends Component {
               playlistName: 'New Playlist',
               playlistDescription: '',
             });
-            console.log(this.state.playlistName)
-            console.log(this.state.playlistDescription)
+            console.log(this.state.playlistName);
+            console.log(this.state.playlistDescription);
           })
           .catch(error => {
             console.log(error.data);
@@ -257,7 +258,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <header>
           {!this.state.token && (
             // this is the call to the Spotify Account Service
@@ -280,14 +281,17 @@ class App extends Component {
             <Home />
           )} */}
           {this.state.token && (
-            <SearchBar onSearch={this.search} />
+            <Activities />
           )}
-          {this.state.token && (
-            <SearchResults
-              searchResults={this.state.searchResults}
-              onAdd={this.doThese}
-            />
-          )}
+          {this.state.token && <SearchBar onSearch={this.search} />}
+          <div className="App-playlist">
+            {this.state.token && (
+              <SearchResults
+                searchResults={this.state.searchResults}
+                onAdd={this.doThese}
+              />
+            )}
+          </div>
           {/* {this.state.token && (
             <History />
           )} */}

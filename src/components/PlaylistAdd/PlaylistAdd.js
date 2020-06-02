@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './PlaylistAdd.css';
 import TrackList from '../TrackList/TrackList';
 
 class PlaylistAdd extends Component {
@@ -14,7 +15,7 @@ class PlaylistAdd extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Playlist">
         <input
           onChange={this.handleNameChange}
           value={this.props.title}
@@ -24,7 +25,7 @@ class PlaylistAdd extends Component {
           isRemoval={true}
           onRemove={this.props.onRemove}
         />
-        <button onClick={this.props.onSave}>Save to Spotify</button>
+        <button className="Playlist-save" onClick={this.props.onSave}>Save to Spotify</button>
       </div>
     );
   }
