@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //for getting token:
-import hash from "./hash";
+import hash from "../hash";
 
 import Button from "react-bootstrap/Button";
 
