@@ -40,7 +40,7 @@ class Playlist extends Component {
                   type="text"
                   name="title"
                   onChange={this.handleNameChange}
-                  defaultValue={'New Playlist'}
+                  value={this.props.title}
                 />
               </Form.Group>
               <Form.Group>
@@ -50,6 +50,7 @@ class Playlist extends Component {
                   rows="3"
                   name="description"
                   placeholder="Enter a description"
+                  value={this.props.description}
                   onChange={this.handleDescriptionChange}
                 ></Form.Control>
               </Form.Group>

@@ -17,7 +17,7 @@ class PlaylistAdd extends Component {
       <div>
         <input
           onChange={this.handleNameChange}
-          defaultValue={'New Playlist'}
+          value={this.props.title}
         ></input>
         <TrackList
           tracks={this.props.playlistTracks}

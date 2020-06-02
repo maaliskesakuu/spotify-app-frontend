@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import * as $ from 'jquery';
 import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
 import hash from '../../hash';
-// import Player from './Player';
 import './App.css';
 import Playlist from '../CreatePlaylist/Playlist';
 // import History from '../History/History';
@@ -15,31 +13,17 @@ import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
 import SearchResults from '../SearchResults/SearchResults';
 
 class App extends Component {
-  // testing to show what is being played
-  // Do not, however, remove constructor and token, playlistName or playlistDescription
   constructor(props) {
     super(props);
     this.state = {
       token: null,
       playlistName: 'New Playlist',
       playlistDescription: '',
-      // item: {
-      //   album: {
-      //     images: [{ url: '' }],
-      //   },
-      //   name: '',
-      //   artists: [{ name: '' }],
-      // },
-      // is_playing: 'Paused',
       searchResults: [],
       playlistTracks: [],
     };
 
-    // this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
-    // testing to show what is being played ends here
-
     this.addPlaylistName = this.addPlaylistName.bind(this);
-
     this.addPlaylistDescription = this.addPlaylistDescription.bind(this);
 
     this.savePlaylist = this.savePlaylist.bind(this);
@@ -55,17 +39,20 @@ class App extends Component {
 
   search(term) {
     let accessToken = hash.access_token;
-    
-    fetch(`https://api.spotify.com/v1/search?type=track&q=${term}%20genre:chill&limit=10`, {
-    // fetch(`https://api.spotify.com/v1/search?type=track&q=%20genre:workout&limit=10`, {
-   // fetch(`https://api.spotify.com/v1/search?type=track&q=${term}%20genre:sleep&limit=10`, {
-    // fetch(`https://api.spotify.com/v1/search?&type=playlist&q=${term}&limit=10`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+
+    fetch(
+       `https://api.spotify.com/v1/search?type=track&q=${term}%20genre:sleep&limit=20`,
+       {
+        // fetch(`https://api.spotify.com/v1/search?type=track&q=%20genre:workout&limit=10`, {
+        // fetch(`https://api.spotify.com/v1/search?type=track&q=${term}%20genre:focus&limit=10`, {
+        // fetch(`https://api.spotify.com/v1/search?&type=playlist&q=${term}&limit=10`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    )
       .then(response => {
         return response.json();
       })
@@ -73,7 +60,7 @@ class App extends Component {
         if (!jsonResponse.tracks) {
           // if (!jsonResponse.playlists) {
           return [];
-          }
+        }
         // return jsonResponse.playlists.items.map(playlist => ({
         //   id: playlist.id,
         //   name: playlist.name,
@@ -88,7 +75,7 @@ class App extends Component {
           artist: track.artists[0].name,
           album: track.album.name,
           uri: track.uri,
-          preview: track.preview_url
+          preview: track.preview_url,
         }));
       })
       .then(searchResults => {
@@ -183,6 +170,7 @@ class App extends Component {
             )
               .then(response => response.json())
               .then(jsonResponse => {
+                console.log(jsonResponse);
                 alert('playlist with selected tracks sent to Spotify');
               })
               .then(() => {
@@ -215,7 +203,6 @@ class App extends Component {
       this.setState({
         token: _token,
       });
-      // this.getCurrentlyPlaying(_token);
     }
   }
 
@@ -254,32 +241,19 @@ class App extends Component {
             const playlistId = jsonResponse.id;
             alert(`Created a new playlist, id: ${playlistId}`);
           })
+          .then(() => {
+            this.setState({
+              playlistName: 'New Playlist',
+              playlistDescription: '',
+            });
+            console.log(this.state.playlistName)
+            console.log(this.state.playlistDescription)
+          })
           .catch(error => {
             console.log(error.data);
           });
       });
   }
-
-  // testing to show what is being played
-  // getCurrentlyPlaying(token) {
-  //   // Make a call using the token
-  //   $.ajax({
-  //     url: 'https://api.spotify.com/v1/me/player',
-  //     type: 'GET',
-  //     beforeSend: xhr => {
-  //       xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-  //     },
-  //     success: data => {
-  //       this.setState({
-  //         item: data.item,
-  //         is_playing: data.is_playing,
-  //       });
-  //     },
-  //   });
-  //   // refresh the song playing
-  //   setTimeout(() => this.getCurrentlyPlaying(token), 7500);
-  // }
-  // testing to show what is being played ends here
 
   render() {
     return (
@@ -296,10 +270,6 @@ class App extends Component {
             </a>
           )}
 
-          {/* {this.state.token && (
-            // When you have a token show this
-            <Player item={this.state.item} is_playing={this.state.is_playing} />
-          )} */}
           {this.state.token && (
             //When you have a token show this
             <Routers />
@@ -307,39 +277,36 @@ class App extends Component {
         </header>
         <main>
           {/* {this.state.token && (
-            //When you have a token show this
             <Home />
           )} */}
           {this.state.token && (
-            //When you have a token show this
             <SearchBar onSearch={this.search} />
           )}
           {this.state.token && (
-            //When you have a token show this
             <SearchResults
               searchResults={this.state.searchResults}
               onAdd={this.doThese}
             />
           )}
           {/* {this.state.token && (
-            //When you have a token show this
             <History />
           )} */}
           {this.state.token && (
-            //When you have a token show this
             <PlaylistAdd
               playlistTracks={this.state.playlistTracks}
               onNameChange={this.updatePlaylistName}
               onRemove={this.removeTrack}
               onSave={this.savePlaylistAdd}
+              title={this.state.playlistName}
             />
           )}
           {this.state.token && (
-            //When you have a token show this
             <Playlist
               onNameChange={this.addPlaylistName}
               onDescriptionChange={this.addPlaylistDescription}
               onSave={this.savePlaylist}
+              description={this.state.playlistDescription}
+              title={this.state.playlistName}
             />
           )}
         </main>
