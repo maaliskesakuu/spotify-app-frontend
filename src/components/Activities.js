@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ActivityButton from "./ActivityButton";
+import TrackResults from "./TrackResults";
 
 import Container from "react-bootstrap/Container";
 
@@ -7,22 +7,22 @@ const activities = [
   {
     id: 1,
     activity: "Study",
-    value: "study",
+    category_id: "focus", //Spotify doesn't have "study" category
   },
   {
     id: 2,
     activity: "Work Out",
-    value: "workout",
+    category_id: "workout",
   },
   {
     id: 3,
     activity: "Sleep",
-    value: "sleep",
+    category_id: "sleep",
   },
   {
     id: 4,
     activity: "Meditate",
-    value: "meditate",
+    category_id: "wellness", //Spotify doesn't have "meditate" category
   },
 ];
 
@@ -30,13 +30,14 @@ class Activities extends Component {
   state = {
     activities: activities,
   };
+
   render() {
     const activityList = this.state.activities.map((activity) => {
       return (
-        <ActivityButton
+        <TrackResults
           key={activity.id}
           activity={activity.activity}
-          value={activity.value}
+          category_id={activity.category_id}
         />
       );
     });
