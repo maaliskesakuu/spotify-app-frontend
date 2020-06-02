@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Track.css';
 
 class Track extends Component {
   constructor(props) {
@@ -18,15 +19,15 @@ class Track extends Component {
 
   renderAction() {
     if (this.props.isRemoval) {
-      return <button onClick={this.removeTrack}>-</button>;
+      return <button className="Track-action" onClick={this.removeTrack}>-</button>;
     }
-    return <button onClick={this.addTrack}>+</button>;
+    return <button className="Track-action" onClick={this.addTrack}>+</button>;
   }
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="Track">
+        <div className="Track-information">
           <h3>{this.props.track.name}</h3>
           <p>
             {this.props.track.artist} | {this.props.track.album}
