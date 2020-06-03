@@ -2,7 +2,8 @@ import React from "react";
 import "./App.css";
 //import History from './components/History';
 //import NavBar from './components/NavBar';
-import Playlist from "./components/Playlist/Playlist";
+import Routers from './Routers';
+//import Playlist from "./components/Playlist/Playlist";
 import SearchBar from "./components/SearchBar/SearchBar";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Spotify from "./Util/Spotify";
@@ -12,20 +13,20 @@ class App extends React.Component {
     super(props);
  
     this.state = {
-      token:null,
+     
       searchResults: [],
       playlistName: "New Playlist",
       playlistTracks: []
     };
  
-    /* this.search = this.search.bind(this);
+     this.search = this.search.bind(this);
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.removeTrackSearch = this.removeTrackSearch.bind(this);
     this.doThese = this.doThese.bind(this);
-  } */
+  } 
  
   search(term) {
     Spotify.search(term).then(searchResults => {
@@ -83,18 +84,14 @@ class App extends React.Component {
           <a href="http://localhost:3000">Sound Creed</a>
         </h1>
         <div className="App">
+          <Routers/>
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
             <SearchResults
               searchResults={this.state.searchResults}
               onAdd={this.doThese}
             />
-            <Playlist
-              playlistTracks={this.state.playlistTracks}
-              onNameChange={this.updatePlaylistName}
-              onRemove={this.removeTrack}
-              onSave={this.savePlaylist}
-            />
+      
           </div>
         </div>
       </div>
