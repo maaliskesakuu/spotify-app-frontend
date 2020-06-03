@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
-
-import Playlist from "./Components/Playlist/Playlist";
-import SearchBar from "./Components/SearchBar/SearchBar";
-import SearchResults from "./Components/SearchResults/SearchResults";
+import React from "react";
+import "./App.css";
+ 
+import Playlist from "./components/Playlist/Playlist";
+import SearchBar from "./components/SearchBar/SearchBar";
+import SearchResults from "./components/SearchResults/SearchResults";
 import Spotify from "./Util/Spotify";
-
  
 class App extends React.Component {
   constructor(props) {
@@ -79,7 +78,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>
-          <a href="http://localhost:3000"></a>
+          <a href="http://localhost:3000">Sound Creed</a>
         </h1>
         <div className="App">
           <SearchBar onSearch={this.search} />
@@ -88,8 +87,12 @@ class App extends React.Component {
               searchResults={this.state.searchResults}
               onAdd={this.doThese}
             />
-           
-            
+            <Playlist
+              playlistTracks={this.state.playlistTracks}
+              onNameChange={this.updatePlaylistName}
+              onRemove={this.removeTrack}
+              onSave={this.savePlaylist}
+            />
           </div>
         </div>
       </div>
@@ -97,7 +100,5 @@ class App extends React.Component {
   }
 }
  
-
- 
-
 export default App;
+ 
