@@ -94,6 +94,7 @@ class TrackResults extends Component {
       });
   }
 
+  // Functional code version
   // const TrackResults = props => {
   //   const [track, setTrack] = useState([]);
 
@@ -297,7 +298,7 @@ class TrackResults extends Component {
         <SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}
-        />
+          />          
         <PlaylistAdd
           playlistTracks={this.state.playlistTracks}
           onNameChange={this.updatePlaylistName}

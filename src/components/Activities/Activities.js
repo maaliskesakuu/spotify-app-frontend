@@ -41,10 +41,10 @@ class Activities extends Component {
     });
 
     return (
-      <Container>
-        {/* <h2>What you want to do?</h2> */}
-        {activityList}
-      </Container>
+      <div>
+        <h2>What you want to do?</h2>
+        <Container>{activityList}</Container>
+      </div>
     );
   }
 }
