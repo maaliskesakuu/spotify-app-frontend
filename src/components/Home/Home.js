@@ -48,21 +48,22 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        {/* <h4>Recently played</h4> */}
-        {this.state.musicHistory.map((music, index) => {
-          return (
-            <div key={index}>
-              <div className="inner_container">
-                <img
-                  src={music.track.album.images[0].url}
-                  alt="_image"
-                  className="shape"
-                />
-              </div>
-              <p>{music.track.name}</p>
-              <p>{music.track.artists[0].name}</p>
-              {/* <iframe
+      <div className="mt-5" style={{ textAlign: 'center', color: "black" }}>
+        <h4>Recently played</h4>
+        <div className="container">
+          {this.state.musicHistory.map((music, index) => {
+            return (
+              <div key={index}>
+                <div className="inner_container">
+                  <img
+                    src={music.track.album.images[0].url}
+                    alt="_image"
+                    className="shape"
+                  />
+                </div>
+                <p>{music.track.name}</p>
+                <p>{music.track.artists[0].name}</p>
+                {/* <iframe
                 src={'https://open.spotify.com/embed/track/' + music.track.id}
                 width="150"
                 height="80"
@@ -71,10 +72,11 @@ class Home extends Component {
                 allow="encrypted-media"
                 title="preview"
               /> */}
-            </div>
-          );
-        })}
-        <NewRelease />
+              </div>
+            );
+          })}
+          {/* <NewRelease /> */}
+        </div>
       </div>
     );
   }

@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .Playlist {
-  /* width: 50%; */
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.27rem 1.16rem;
+  padding: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: 0 4px 2px 2px #000000;
-  margin-right: 1rem;
+  box-shadow: 0 0.1rem .2rem black;
+  margin: 0 auto;
 }
 
 .Playlist p {
@@ -20,26 +20,14 @@
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px solid #6f6f6f;
+  border-bottom: 1px solid rgba(256, 256, 256, 0.7);
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.55rem;
+  font-size: 1.2rem;
   color: #fff;
 }
 
 .Playlist-save {
-  cursor: pointer;
-  width: 10rem;
-  padding: 0.77rem 0;
-  border-radius: 54px;
-  border-width: 0;
-  margin-top: 1.27rem;
-  background-color: #1db954;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.83rem;
-  transition: background-color 0.25s;
-  color: #fff;
-  font-weight: 500;
+  margin-top: 0.5rem;
 }
 
 .Playlist-save:hover {

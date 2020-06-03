@@ -6,9 +6,11 @@ import Playlist from '../CreatePlaylist/Playlist';
 // import History from '../History/History';
 import Home from '../Home/Home';
 import Routers from '../../Routers';
+import Activities from '../Activities/Activities';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Activities from '../Activities/Activities';
+
+import Button from 'react-bootstrap/Button';
 
 class App extends Component {
   constructor(props) {
@@ -17,8 +19,6 @@ class App extends Component {
       token: null,
       playlistName: 'New Playlist',
       playlistDescription: '',
-      // searchResults: [],
-      // playlistTracks: [],
     };
 
     this.addPlaylistName = this.addPlaylistName.bind(this);
@@ -250,13 +250,13 @@ class App extends Component {
         <header>
           {!this.state.token && (
             // this is the call to the Spotify Account Service
-            <a
+            <Button style={{ textAlign: 'center', color: "white" }}><a
               href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
                 '%20'
-              )}&response_type=token&show_dialog=true`}
+              )}&response_type=token&show_dialog=true`} style={{ color: "white" }}
             >
               Login to Spotify
-            </a>
+            </a></Button>
           )}
 
           {this.state.token && (
@@ -265,9 +265,7 @@ class App extends Component {
           )}
         </header>
         <main>
-          {this.state.token && (
-            <Home />
-          )}
+          {this.state.token && <Home />}
 
           {this.state.token && <Activities />}
 

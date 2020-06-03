@@ -31,6 +31,7 @@ class Playlist extends Component {
   render() {
     return (
       <div className="overlay">
+         <h2 style={{ color: 'black', textAlign: 'center' }} className="mt-5">Want to make a playlist with friends?</h2>
         <Container>
           <Col md={{ span: 8}} className="popup">
             <Form className="mx-5 px-lg-5 px-xl-5">

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './PlaylistAdd.css';
 import TrackList from '../TrackList/TrackList';
 
+import Button from 'react-bootstrap/Button';
+
 class PlaylistAdd extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class PlaylistAdd extends Component {
           isRemoval={true}
           onRemove={this.props.onRemove}
         />
-        <button className="Playlist-save" variant="success" onClick={this.props.onSave}>Save to Spotify</button>
+        <Button variant="success" className="Playlist-save" onClick={this.props.onSave}>save to Spotify</Button>
       </div>
     );
   }
