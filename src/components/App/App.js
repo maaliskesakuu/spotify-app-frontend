@@ -4,7 +4,7 @@ import hash from '../../hash';
 import './App.css';
 import Playlist from '../CreatePlaylist/Playlist';
 // import History from '../History/History';
-// import Home from '../Home/Home';
+import Home from '../Home/Home';
 import Routers from '../../Routers';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -265,9 +265,9 @@ class App extends Component {
           )}
         </header>
         <main>
-          {/* {this.state.token && (
+          {this.state.token && (
             <Home />
-          )} */}
+          )}
 
           {this.state.token && <Activities />}
 

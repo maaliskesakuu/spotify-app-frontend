@@ -1,6 +1,18 @@
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10rem;
+.shape {
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem;
+}
+
+.inner_container {
+  margin-left: 1rem;
+}
+
+h4 {
+  padding-right: 10remm;
+}
+
+p {
+  text-align: center;
+  color: black;
 }

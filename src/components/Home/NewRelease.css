@@ -1,0 +1,13 @@
+.shapes {
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem;
+}
+
+p {
+  text-align: center;
+}
+
+.contains {
+  display: flex;
+}
