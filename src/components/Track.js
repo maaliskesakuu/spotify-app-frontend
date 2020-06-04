@@ -24,14 +24,14 @@ class Track extends Component {
   removeTrack(event) {
     this.props.onRemove(this.props.track);
   }
-  playMusic(event) {
+  playMusic() {
     console.log("Play music");
     this.setState({ audio: new Audio(this.props.track.preview) }, () => {
       this.state.audio.play();
     });
   
   }
-  pauseMusic(event) {
+  pauseMusic() {
     this.state.audio.pause();
     this.setState({ audio: new Audio("") });
   }
