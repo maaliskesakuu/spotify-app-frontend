@@ -54,7 +54,7 @@ class History extends Component {
                   width="900"
                   height="1000"
                   frameBorder="0"
-                  allowTransparency="true"
+                  allowtransparency="true"
                   allow="encrypted-media"
                   title="preview"
                 />

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import "./SearchBar.css";
 
+import Button from 'react-bootstrap/Button';
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -32,11 +34,11 @@ class SearchBar extends Component {
     return (
       <div className="SearchBar">
         <input
-          placeholder="Enter something"
+          placeholder="Enter a keyword"
           onChange={this.handleTermChange}
           onKeyUp={this.handleEnter}
         ></input>
-        <button className="SearchButton" onClick={this.search}>Search</button>
+        <Button variant="success" onClick={this.search}>Search</Button>
       </div>
     );
   }

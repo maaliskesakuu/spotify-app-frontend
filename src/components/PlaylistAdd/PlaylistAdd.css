@@ -1,46 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .Playlist {
-  width: 50%;
+  /* width: 50%; */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: 0 0.1rem .2rem black;
-  margin: 0 auto;
-}
-
-.Playlist p {
-  color: white;
+  /* box-shadow: 0 0.1rem .5rem black; */
 }
 
 .Playlist input {
+  /* text-align: center; */
   width: 100%;
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px solid rgba(256, 256, 256, 0.7);
+  border-bottom: 1px dotted rgba(256, 256, 256, 0.5);
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
   color: #fff;
+  font-weight: bold;
 }
 
 .Playlist-save {
   margin-top: 0.5rem;
 }
 
-.Playlist-save:hover {
+/* .Playlist-save:hover {
   background-color: rgba(65, 233, 129, 0.7);
-}
+} */
 
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
 }
 
-@media only screen and (max-width: 1020px) {
+/* @media only screen and (max-width: 1020px) {
   .Playlist {
     width: 90%;
   }
-}
+} */

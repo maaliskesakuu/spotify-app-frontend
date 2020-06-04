@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
 import SearchResults from '../SearchResults/SearchResults';
+import SearchBar from '../SearchBar/Searchbar';
+import Playlist from '../CreatePlaylist/Playlist';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,7 +14,7 @@ import hash from '../../hash';
 const activities = [
   {
     id: 1,
-    activity: 'Focus',
+    activity: 'Study',
     category_id: 'focus',
   },
   {
@@ -33,7 +35,6 @@ const activities = [
 ];
 
 class Activities extends Component {
-  // state = { activities: activities };
   constructor(props) {
     super(props);
     this.state = {
@@ -47,12 +48,62 @@ class Activities extends Component {
 
     this.activityButtonClicked = this.activityButtonClicked.bind(this);
     this.getMusic = this.getMusic.bind(this);
+
+    //to add and remove tracks from the playlist
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.removeTrackSearch = this.removeTrackSearch.bind(this);
     this.doThese = this.doThese.bind(this);
     this.savePlaylistAdd = this.savePlaylistAdd.bind(this);
+
+    // searchbar's search
+    this.search = this.search.bind(this);
+
+    // en empty, collaborative playlist
+    this.addPlaylistName = this.addPlaylistName.bind(this);
+    this.addPlaylistDescription = this.addPlaylistDescription.bind(this);
+    this.savePlaylist = this.savePlaylist.bind(this);
+  }
+
+  search(term) {
+    let accessToken = hash.access_token;
+
+    fetch(
+      `https://api.spotify.com/v1/search?type=track,artist&q=${term}&limit=20`,
+      {
+        //       // fetch(`https://api.spotify.com/v1/search?type=track&q=%20genre:workout&limit=10`, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(jsonResponse => {
+        if (!jsonResponse.tracks) {
+          return [];
+        }
+        return jsonResponse.tracks.items.map(track => ({
+          id: track.id,
+          name: track.name,
+          artist: track.artists[0].name,
+          // album: track.album.name,
+          uri: track.uri,
+          preview: track.preview_url,
+          img: track.album.images[0].url,
+        }));
+      })
+      .then(searchResults => {
+        this.setState({ searchResults: searchResults });
+        console.log(searchResults);
+      })
+      .catch(error => {
+        console.log(error.data);
+      });
   }
 
   getMusic() {
@@ -107,9 +158,10 @@ class Activities extends Component {
                 id: item.track.id,
                 name: item.track.name,
                 artist: item.track.artists[0].name,
-                album: item.track.album.name,
+                // album: item.track.album.name,
                 uri: item.track.uri,
                 preview: item.track.preview_url,
+                img: item.track.album.images[0].url,
               }));
             })
             .then(searchResults => {
@@ -126,10 +178,10 @@ class Activities extends Component {
   }
 
   activityButtonClicked(button) {
+    this.setState({ searchResults: [] }); //making tracks empty before making new api call
     this.setState({ selectedCategory: button.target.value }, () => {
       this.getMusic();
     });
-    this.setState({ searchResults: [] }); //making tracks empty before making new api call
   }
 
   addTrack(track) {
@@ -231,6 +283,65 @@ class Activities extends Component {
       });
   }
 
+  addPlaylistName(name) {
+    this.setState({ playlistName: name });
+  }
+
+  addPlaylistDescription(desc) {
+    this.setState({ playlistDescription: desc });
+  }
+
+  //create an empty, collaborative playlist
+  savePlaylist(e) {
+    e.preventDefault();
+    let accessToken = hash.access_token;
+    const headers = { Authorization: `Bearer ${accessToken}` };
+    let userId;
+    let playlist = this.state.playlistName;
+    let playlistDesc = this.state.playlistDescription;
+
+    //get userId
+    fetch('https://api.spotify.com/v1/me', { headers: headers })
+      .then(response => response.json())
+      .then(jsonResponse => {
+        userId = jsonResponse.id;
+
+        //post the data and create the playlist
+        fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            name: playlist,
+            description: playlistDesc,
+            collaborative: true,
+            public: 'false',
+          }),
+        })
+          .then(response => response.json())
+          .then(jsonResponse => {
+            const playlistId = jsonResponse.id;
+            alert(`Created a new playlist, id: ${playlistId}`);
+            console.log(this.state.playlistName);
+            console.log(this.state.playlistDescription);
+          })
+          .then(() => {
+            this.setState({
+              playlistName: 'New Playlist',
+              playlistDescription: '',
+            });
+            console.log(this.state.playlistName);
+            console.log(this.state.playlistDescription);
+          })
+          .catch(error => {
+            console.log(error.data);
+          });
+      });
+  }
+
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
@@ -246,11 +357,13 @@ class Activities extends Component {
 
     return (
       <div>
-        <h2 style={{ color: 'black', textAlign: 'center' }} className="mt-5">What you want to do?</h2>
+        <h2 style={{ color: 'black', textAlign: 'center' }} className="mt-5">
+          <SearchBar onSearch={this.search} />
+          What you want to do?
+        </h2>
         <Container>
           <Row>{activityList}</Row>
         </Container>
-
         <SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}
@@ -260,6 +373,13 @@ class Activities extends Component {
           onNameChange={this.updatePlaylistName}
           onRemove={this.removeTrack}
           onSave={this.savePlaylistAdd}
+          title={this.state.playlistName}
+        />
+        <Playlist
+          onNameChange={this.addPlaylistName}
+          onDescriptionChange={this.addPlaylistDescription}
+          onSave={this.savePlaylist}
+          description={this.state.playlistDescription}
           title={this.state.playlistName}
         />
       </div>

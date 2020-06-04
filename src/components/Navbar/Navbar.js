@@ -9,6 +9,7 @@ const Navbar = () => {
 
   return (
     <div>
+      <a href="/"><img src="/logoMusic.png" alt="app's logo"></img></a>
       <ul>
         <Link to="/" style={styles}>
           Home
