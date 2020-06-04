@@ -1,0 +1,12 @@
+.shapes {
+  width: 250px;
+  height: 250px;
+  margin: 1rem;
+}
+
+.contains {
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 8rem;
+  margin-bottom: 9.3rem;
+}
