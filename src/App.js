@@ -1,12 +1,15 @@
 import React from "react";
 import "./App.css";
+import Activities from './components/Activity/Activities';
 //import History from './components/History';
 //import NavBar from './components/NavBar';
-import Routers from './Routers';
+//import Routers from './Routers';
 //import Playlist from "./components/Playlist/Playlist";
 import SearchBar from "./components/SearchBar/SearchBar";
-import SearchResults from "./components/SearchResults/SearchResults";
+//import SearchResults from "./components/SearchResults/SearchResults";
 import Spotify from "./Util/Spotify";
+//import { logDOM } from "@testing-library/react";
+import logo from './Media/logoMusic.png';
  
 class App extends React.Component {
   constructor(props) {
@@ -81,16 +84,21 @@ class App extends React.Component {
     return (
       <div>
         <h1>
-          <a href="http://localhost:3000">Sound Creed</a>
+          <a href="http://localhost:3000/"><img src={logo} alt='logo pic'/></a>
+        
         </h1>
         <div className="App">
-          <Routers/>
+          
           <SearchBar onSearch={this.search} />
+          <Activities/>
           <div className="App-playlist">
-            <SearchResults
-              searchResults={this.state.searchResults}
-              onAdd={this.doThese}
-            />
+            
+             {/*<Playlist
+              playlistTracks={this.state.playlistTracks}
+              onNameChange={this.updatePlaylistName}
+              onRemove={this.removeTrack}
+              onSave={this.savePlaylist}
+             />*/}
       
           </div>
         </div>

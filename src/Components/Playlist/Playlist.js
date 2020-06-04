@@ -9,10 +9,16 @@ class Playlist extends React.Component {
     super(props);
  
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleDiscriptionChange =this.handleDiscriptionChange.bind(this);
   }
+
+  //handles discription and title of new playlist
  
   handleNameChange(event) {
     this.props.onNameChange(event.target.value);
+  }
+  handleDiscriptionChange(event) {
+    this.props.onDiscriptionChange(event.target.value);
   }
  
   render() {

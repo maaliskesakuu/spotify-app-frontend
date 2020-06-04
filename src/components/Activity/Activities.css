@@ -1,0 +1,8 @@
+/*.activities{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin: 2rem;
+    box-sizing: border-box;
+    height: 400px;
+    width: 700px;
+}*/

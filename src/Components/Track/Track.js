@@ -45,7 +45,7 @@ class Track extends React.Component {
             src={"https://open.spotify.com/embed/track/" + this.props.track.id}
             width="300"
             height="80"
-            frameborder="0"
+            frameBorder="0"
             allowtransparency="true"
             allow="encrypted-media"
             title="preview"

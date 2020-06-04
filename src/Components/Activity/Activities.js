@@ -1,54 +1,52 @@
-import React, { Component } from "react";
-import ActivityButton from "./ActivityButton";
+import React, { Component } from 'react';
+import TrackResults from '../TrackResults/TrackResults';
+import './Activities.css';
 
-import Container from "react-bootstrap/Container";
+import Container from 'react-bootstrap/Container';
 
 const activities = [
   {
     id: 1,
-    activity: "Study",
-    value: "study",
+    activity: 'Study',
+    category_id: 'focus',
   },
   {
     id: 2,
-    activity: "Work Out",
-    value: "workout",
+    activity: 'Work Out',
+    category_id: 'workout',
   },
   {
     id: 3,
-    activity: "Sleep",
-    value: "sleep",
+    activity: 'Sleep',
+    category_id: 'sleep',
   },
   {
     id: 4,
-    activity: "Meditate",
-    value: "meditate",
+    activity: 'Wellness',
+    category_id: 'wellness',
   },
 ];
 
 class Activities extends Component {
-  state = {
-    activities: activities,
-  };
+  state = { activities: activities };
+
   render() {
-    const activityList = this.state.activities.map((activity) => {
+    const activityList = this.state.activities.map(activity => {
       return (
-        <ActivityButton
+        <TrackResults
           key={activity.id}
           activity={activity.activity}
-          value={activity.value}
+          category_id={activity.category_id}
         />
       );
     });
 
     return (
-      <Container>
-        <h2>What you want to do?</h2>
-        {activityList}
-      </Container>
+      <div className="activities">
+        <h2>What do u feel like playing?</h2>
+        <Container>{activityList}</Container>
+      </div>
     );
   }
 }
 export default Activities;
-
-
