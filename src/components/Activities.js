@@ -98,6 +98,7 @@ class Activities extends Component {
                   artist: item.track.artists[0].name,
                   album: item.track.album.name,
                   preview: item.track.preview_url,
+                  img: item.track.album.images[0].url,
                 };
               });
               console.log(mappedTracks);
