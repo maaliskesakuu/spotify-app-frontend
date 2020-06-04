@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import * as $ from "jquery";
 import { authEndpoint, clientId, redirectUri, scopes } from "../../config";
 import hash from "../../hash";
 //import Player from "./Player";
@@ -21,7 +20,6 @@ class App extends Component {
       },
       is_playing: "Paused",
     };
-    this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
   // testing to show what is being played ends here
 
@@ -34,41 +32,40 @@ class App extends Component {
       this.setState({
         token: _token,
       });
-      this.getRecentlyPlayed(_token);
     }
   }
 
   // testing to show what is being played
-  getRecentlyPlayed(token) {
-    //const url = `https://api.spotify.com/v1/me/player/recently-played?limit=10`;
-    //console.log(url);
-    // const tokens =
-    //   "BQDXhJPcgQrEZpCbwJSwihZWuKiRzReVnx6gn78kb0JalmBk_zPm4B44xQq6Vj6WlJnEs30_cKKlZ3WobWAQqCJY-iYK04ER4hQlNtYwvT5DeYQ76NrlKaiFRbUVf5L0q7FXGeylOlfLhEJOiecIVGcCZo4Nq1rJY8oXj-rwe6Q5";
-    // Make a call using the token
-    // fetch(url, {
-    //   method: "GET",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${tokens}`,
-    //   },
-    // beforeSend: (xhr) => {
-    //   xhr.setRequestHeader("Authorization", "Bearer " + tokens);
-    // },
-    // success: (data) => {
-    // this.setState({
-    //   item: data.item,
-    //   is_playing: data.is_playing,
-    // });
-    // },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
-    //   .then((data) => data.item)
-    //   .catch((error) => console.log(error));
-    // refresh the song playing
-    //setTimeout(() => this.getCurrentlyPlaying(tokens), 7500);
-  }
+  // getRecentlyPlayed(token) {
+  //const url = `https://api.spotify.com/v1/me/player/recently-played?limit=10`;
+  //console.log(url);
+  // const tokens =
+  //   "BQDXhJPcgQrEZpCbwJSwihZWuKiRzReVnx6gn78kb0JalmBk_zPm4B44xQq6Vj6WlJnEs30_cKKlZ3WobWAQqCJY-iYK04ER4hQlNtYwvT5DeYQ76NrlKaiFRbUVf5L0q7FXGeylOlfLhEJOiecIVGcCZo4Nq1rJY8oXj-rwe6Q5";
+  // Make a call using the token
+  // fetch(url, {
+  //   method: "GET",
+  //   headers: {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json",
+  //     Authorization: `Bearer ${tokens}`,
+  //   },
+  // beforeSend: (xhr) => {
+  //   xhr.setRequestHeader("Authorization", "Bearer " + tokens);
+  // },
+  // success: (data) => {
+  // this.setState({
+  //   item: data.item,
+  //   is_playing: data.is_playing,
+  // });
+  // },
+  // })
+  //   .then((res) => res.json())
+  //   .then((data) => console.log(data))
+  //   .then((data) => data.item)
+  //   .catch((error) => console.log(error));
+  // refresh the song playing
+  //setTimeout(() => this.getCurrentlyPlaying(tokens), 7500);
+  // }
   // testing to show what is being played ends here
 
   render() {
@@ -87,7 +84,6 @@ class App extends Component {
               </a>
             </div>
           )}
-
           {this.state.token && (
             // When you have a token show this
             <Navbar item={this.state.item} is_playing={this.state.is_playing} />

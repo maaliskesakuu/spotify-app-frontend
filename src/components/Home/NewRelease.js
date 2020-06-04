@@ -27,7 +27,7 @@ class NewRelease extends Component {
   getNewRelease = () => {
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQCuGH5tBEZi-uUirM0tLDN9SlTw62alPDy_U0IU59nH3VMpTEGLi9V7auH-oEI7S1aPPwOBUDqSAecTyOpzMOlEVWbJGVzL1IvGujq05CDJbXdLYEeoAMeMki_OribvMCF8EfYdQE39H2k_6PVeHUB2JDTu0BXdwEDEJw46hu5yHLYGIuBSbxo";
+      "BQD3OXNTCVmJg4W0BYsXUW9ufxP6zM-sQNbyRlS42T9G_yk5DYapog49UbRYchTYU1MuDzu5C8cX0wj-iENtHqwM_vdbh3USwdlkOtlcjuC70ObiQm-OS6HLy_OuYDKRmiqAZYh-KVmC9f48C5hHnBTJWc0NkbjeL32Eb4NRrMydmezfEj4AEqY";
     fetch(`https://api.spotify.com/v1/browse/new-releases?limit=5`, {
       method: "GET",
       headers: {

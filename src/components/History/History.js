@@ -6,6 +6,7 @@ class History extends Component {
   constructor() {
     super();
     this.state = {
+      searchResults: [],
       token: null,
       musicHistory: [],
     };
@@ -27,9 +28,10 @@ class History extends Component {
   getRecentlyPlayed = () => {
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQAeZxqxpKXgUh9iK5wxBJYzwUgKBcVDBdAvCAU8_u1nahR-vdW5T49lF9axAtpOPaPhxr6VP5zcYBE50sjWvjyrdiJN1aOC-ujIgHncxfv_4oN_bMm7MOy5Jh2XzHm_TdgtwSTA0fHsdeTVFIpwr9V6i5X1srzVv2IrzlPLgbSKtWxb6v6LtG8";
+      "BQAQRc__7DmGV_DPvtRVvtp1vPwUdW6R9_S6uUFDgZR4pRUAmGz-U4xJ0RXqvhdUWjdHod4C9wtkF-F7vkBvQa4q3fFFX6RuzghmYmU2OEXcJVuvMwU_4_GxmK795ehUn_gPQGbct7aiWM7XSRDuryAQB2rjmdNHLxuPGoy8EBPO4IwYphD7Xjc";
+
     // Fetching the track/image name
-    fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=1`, {
+    fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -54,36 +56,37 @@ class History extends Component {
       <div>
         <div className="_containerss">
           {console.log(this.state.musicHistory)}
+
           {this.state.musicHistory.map((music, index) => {
             return (
               <div key={index}>
-                <iframe
+                {/* <iframe
                   src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9sIqqvKsjG8"
                   width="900"
                   height="1000"
                   frameborder="0"
                   allowtransparency="true"
                   allow="encrypted-media"
-                />
-                {/* <iframe
+                /> */}
+                <iframe
                   src={
-                    "https://open.spotify.com/embed/music/" +
-                    music.track.album.images[0].url
+                    "https://open.spotify.com/embed/playlist/37i9dQZF1DX9sIqqvKsjG8"
+                    // + music.track.album.images[0].url
                   }
                   alt="_images"
                   className="_shape"
                   width="400"
                   height="80"
-                  frameborder="0"
+                  frameBorder="0"
                   allowtransparency="true"
                   allow="encrypted-media"
                   title="preview"
-                /> */}
-                {/* <div className="title">
+                />
+                <div className="title">
                   <p>
                     {music.track.name} | {music.track.artists[0].name}
                   </p>
-                </div> */}
+                </div>
               </div>
             );
           })}

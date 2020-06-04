@@ -28,7 +28,7 @@ class Home extends Component {
   getRecentlyPlayed = () => {
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQAeZxqxpKXgUh9iK5wxBJYzwUgKBcVDBdAvCAU8_u1nahR-vdW5T49lF9axAtpOPaPhxr6VP5zcYBE50sjWvjyrdiJN1aOC-ujIgHncxfv_4oN_bMm7MOy5Jh2XzHm_TdgtwSTA0fHsdeTVFIpwr9V6i5X1srzVv2IrzlPLgbSKtWxb6v6LtG8";
+      "BQAQRc__7DmGV_DPvtRVvtp1vPwUdW6R9_S6uUFDgZR4pRUAmGz-U4xJ0RXqvhdUWjdHod4C9wtkF-F7vkBvQa4q3fFFX6RuzghmYmU2OEXcJVuvMwU_4_GxmK795ehUn_gPQGbct7aiWM7XSRDuryAQB2rjmdNHLxuPGoy8EBPO4IwYphD7Xjc";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=5`, {
       method: "GET",
@@ -74,7 +74,6 @@ class Home extends Component {
               </div>
             );
           })}
-          {/* <NewRelease /> */}
         </div>
         <NewRelease />
       </div>
