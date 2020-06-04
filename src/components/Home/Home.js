@@ -48,9 +48,10 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="mt-5" style={{ textAlign: 'center', color: "black" }}>
+      // <div className="mt-5" style={{ textAlign: 'center', color: 'black' }}>
+      <div>
         <h4>Recently played</h4>
-        <div className="container">
+        <div className="_container">
           {this.state.musicHistory.map((music, index) => {
             return (
               <div key={index}>
@@ -61,22 +62,16 @@ class Home extends Component {
                     className="shape"
                   />
                 </div>
-                <p>{music.track.name}</p>
-                <p>{music.track.artists[0].name}</p>
-                {/* <iframe
-                src={'https://open.spotify.com/embed/track/' + music.track.id}
-                width="150"
-                height="80"
-                frameBorder="0"
-                allowtransparency="true"
-                allow="encrypted-media"
-                title="preview"
-              /> */}
+                <div className="titles">
+                  <p>
+                    {music.track.name} | {music.track.artists[0].name}
+                  </p>
+                </div>
               </div>
             );
           })}
-          {/* <NewRelease /> */}
         </div>
+          <NewRelease />
       </div>
     );
   }

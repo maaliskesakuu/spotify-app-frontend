@@ -1,49 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-body,
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem;
+}
+
+header, body, main {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* body,
 html,
 #root {
   height: 100%;
-}
+} */
 
-html {
+/* html {
   font-size: 18px;
-}
+} */
 
-h1 {
+/* h1 {
   padding: 0.77rem 0;
   background-color: #b16d22;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   color: #fff;
-}
+} */
 
-h1 .highlight {
+/* h1 .highlight {
   color: rgb(46, 113, 238);
-}
+} */
 
-a {
+/* a {
   text-decoration: none;
   color: #fff;
-}
+} */
 
-h2 {
-  font-family: "Montserrat", sans-serif;
+/* h2 {
   font-size: 1rem;
-}
+} */
 
-.App {
-  height: 100%;
-  padding: 0 10% 5% 10%;
+/* .App {
+  /* height: 100%; */
   /* background-image: url("https://source.unsplash.com/8e0EHPUx3Mo");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  color: #fff;
-}
+  /* font-weight: 500; 
+ }  */
 
 /* .App-playlist {
   display: flex;
@@ -51,9 +59,9 @@ h2 {
   width: 100%;
 } */
 
-@media only screen and (max-width: 1020px) {
+/* @media only screen and (max-width: 1020px) {
   .App-playlist {
     align-items: center;
     flex-direction: column;
   }
-}
+} */

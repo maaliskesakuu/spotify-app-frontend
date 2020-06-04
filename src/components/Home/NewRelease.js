@@ -45,23 +45,29 @@ class NewRelease extends Component {
   render() {
     return (
       <div>
-        {this.state.newRelease.map((songs, index) => {
-          return (
-            <div key={index}>
-              <div className="contains">
-                <div className="inner">
-                  <img
-                    src={songs.images[0].url}
-                    alt="_images"
-                    className="shapes"
-                  />
+        <h4>New</h4>
+        <div className="contains">
+          {this.state.newRelease.map((songs, index) => {
+            return (
+              <div key={index}>
+                <div className="contain">
+                  <div className="inner">
+                    <img
+                      src={songs.images[0].url}
+                      alt="_images"
+                      className="shapes"
+                    />
+                  </div>
+                </div>
+                <div className="titles">
+                  <p>
+                    {songs.name} | {songs.artists[0].name}
+                  </p>
                 </div>
               </div>
-              <p>{songs.name}</p>
-              <p>{songs.artists[0].name}</p>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     );
   }

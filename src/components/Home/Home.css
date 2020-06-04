@@ -1,18 +1,21 @@
 .shape {
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
+  /* width: 250px;
+  height: 250px; */
   margin: 1rem;
 }
 
-.inner_container {
-  margin-left: 2rem;
-}
-
 h4 {
-  padding-right: 10remm;
+  padding: 2.5rem;
+  color: rgb(3, 56, 38);
 }
 
-p {
-  text-align: center;
-  color: black;
+._container {
+  display: flex;
+  margin-left: 8rem;
+}
+
+.titles {
+  padding-left: 1rem;
 }

@@ -1,13 +1,14 @@
 .shapes {
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
+  /* width: 250px;
+  height: 250px; */
   margin: 1rem;
-}
-
-p {
-  text-align: center;
 }
 
 .contains {
   display: flex;
+  margin-top: 2rem;
+  margin-left: 8rem;
+  margin-bottom: 9.3rem;
 }

@@ -3,9 +3,10 @@ import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
 import hash from '../../hash';
 import './App.css';
 import Playlist from '../CreatePlaylist/Playlist';
-// import History from '../History/History';
+import History from '../History/History';
 import Home from '../Home/Home';
-import Routers from '../../Routers';
+// import Routers from '../../Routers';
+// import Navbar from '../Navbar/Navbar';
 import Activities from '../Activities/Activities';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -250,23 +251,32 @@ class App extends Component {
         <header>
           {!this.state.token && (
             // this is the call to the Spotify Account Service
-            <Button style={{ textAlign: 'center', color: "white" }}><a
-              href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                '%20'
-              )}&response_type=token&show_dialog=true`} style={{ color: "white" }}
-            >
-              Login to Spotify
-            </a></Button>
+            <div className="container">
+              <Button style={{ textAlign: 'center', color: 'white' }}>
+                <a
+                  href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+                    '%20'
+                  )}&response_type=token&show_dialog=true`}
+                  style={{ color: 'white' }}
+                >
+                  Login to Spotify
+                </a>
+              </Button>
+            </div>
           )}
 
-          {this.state.token && (
+          {/* {this.state.token && (
             //When you have a token show this
-            <Routers />
-          )}
+            <Navbar />
+          )} */}
         </header>
         <main>
           {this.state.token && <Home />}
 
+          {this.state.token && (
+            <History />
+          )}
+          
           {this.state.token && <Activities />}
 
           {/* {this.state.token && <SearchBar onSearch={this.search} />} */}
@@ -278,9 +288,6 @@ class App extends Component {
               />
             )}
           </div> */}
-          {/* {this.state.token && (
-            <History />
-          )} */}
           {/* {this.state.token && (
             <PlaylistAdd
               playlistTracks={this.state.playlistTracks}
