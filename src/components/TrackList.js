@@ -4,7 +4,7 @@ import Track from './Track';
 class TrackList extends Component {
   render() {
     return (
-      <div>
+      <>
         {this.props.tracks.map(track => {
           return (
             <Track
@@ -16,7 +16,7 @@ class TrackList extends Component {
             />
           );
         })}
-      </div>
+      </>
     );
   }
 }

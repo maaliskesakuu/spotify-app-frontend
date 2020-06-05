@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 class Track extends Component {
   constructor(props) {
@@ -26,10 +27,13 @@ class Track extends Component {
   }
   playMusic() {
     console.log("Play music");
-    this.setState({ audio: new Audio(this.props.track.preview) }, () => {
-      this.state.audio.play();
-    });
-  
+    if (this.props.track.preview) {
+      this.setState({ audio: new Audio(this.props.track.preview) }, () => {
+        this.state.audio.play();
+      });
+    } else {
+      console.log("no preview");
+    }
   }
   pauseMusic() {
     this.state.audio.pause();
@@ -39,54 +43,57 @@ class Track extends Component {
   renderAction() {
     if (this.props.isRemoval) {
       return (
-        <button className="Track-action" onClick={this.removeTrack}>
+        <Button className="Track-action" onClick={this.removeTrack}>
           -
-        </button>
+        </Button>
       );
     }
     return (
-      <button className="Track-action" onClick={this.addTrack}>
+      <Button
+        className="Track-action"
+        onClick={this.addTrack}
+        style={{ marginLeft: "10px" }}
+      >
         +
-      </button>
+      </Button>
     );
   }
 
   render() {
     return (
-      <div className="Track">
-        <div className="Track-information">
+      <Col md={3}>
+        <Card style={{ margin: "10px" }}>
           {/*  <h3>{this.props.track.name}</h3>
           <p>
             {this.props.track.artist} | {this.props.track.album}
           </p> */}
 
           {/* Cards */}
-          <Col md={3}>
-            <Card
-              style={{ margin: "10px" }}
-              onMouseOver={this.playMusic}
-              onMouseOut={this.pauseMusic}
-            >
-              <Card.Img variant="top" src={this.props.track.img} />
-              <Card.Body>
-                <Card.Text>
-                  {this.props.track.artist} - {this.props.track.track}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          {/*   <iframe
-            src={'https://open.spotify.com/embed/track/' + this.props.track.id}
-            width="300"
+
+          <Card.Img
+            variant="top"
+            src={this.props.track.img}
+            onMouseOver={this.playMusic}
+            onMouseOut={this.pauseMusic}
+          />
+          <Card.Body>
+            <Card.Text>
+              {this.props.track.artist} - {this.props.track.track}
+            </Card.Text>
+          </Card.Body> 
+
+           
+          {/* <iframe
+            src={"https://open.spotify.com/embed/track/" + this.props.track.id}
             height="80"
             frameBorder="0"
             allowtransparency="true"
             allow="encrypted-media"
             title="preview"
           /> */}
-        </div>
+        </Card>
         {this.renderAction()}
-      </div>
+      </Col>
     );
   }
 }
