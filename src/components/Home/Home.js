@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
-import hash from '../../hash';
 import NewRelease from './NewRelease';
+import hash from '../../hash';
 
 class Home extends Component {
   constructor() {
@@ -12,9 +12,9 @@ class Home extends Component {
       audio: new Audio(''),
     };
 
-    //this.playMusic = this.playMusic.bind(this);
+    this.playMusic = this.playMusic.bind(this);
+    this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
-
   }
 
   componentDidMount() {
@@ -45,28 +45,31 @@ class Home extends Component {
       .then(data =>
         this.setState({
           musicHistory: data,
-          audio: data,
         })
       );
   };
 
-  //play music on hover /Flo's
-  // playMusic() {
-  //   console.log('Play music');
-  //   this.setState({ audio: new Audio(this.state.audio) }, () => {
-  //     this.state.audio.play();
-  //   });
-  // }
-
-  handleMusic = () => {
+  //play music on hover
+  playMusic = preview => {
+    console.log(preview);
     console.log('Play music');
-   // this.playMusic();
+    if (preview) {
+      this.setState({ audio: new Audio(preview) }, () => {
+        this.state.audio.play();
+      });
+    } else {
+      console.log('no preview');
+    }
+  };
+
+  pauseMusic = () => {
+    this.state.audio.pause();
+    this.setState({ audio: new Audio('') });
   };
 
   render() {
     return (
       <div>
-        {/* {this.state.audio} */}
         <h4>Recently played</h4>
         <div className="_container">
           {this.state.musicHistory.map((music, index) => {
@@ -77,12 +80,13 @@ class Home extends Component {
                     src={music.track.album.images[0].url}
                     alt="_image"
                     className="shape"
-                    onMouseOver={this.handleMusic}
+                    onMouseOver={() => this.playMusic(music.track.preview_url)}
+                    onMouseOut={this.pauseMusic}
                   />
                 </div>
                 <div className="titles">
                   <p>
-                    {music.track.name} | {music.track.artists[0].name}
+                    {music.track.name} - {music.track.artists[0].name}
                   </p>
                 </div>
               </div>

@@ -91,7 +91,6 @@ class Activities extends Component {
           id: track.id,
           name: track.name,
           artist: track.artists[0].name,
-          // album: track.album.name,
           uri: track.uri,
           preview: track.preview_url,
           img: track.album.images[0].url,
@@ -158,7 +157,6 @@ class Activities extends Component {
                 id: item.track.id,
                 name: item.track.name,
                 artist: item.track.artists[0].name,
-                // album: item.track.album.name,
                 uri: item.track.uri,
                 preview: item.track.preview_url,
                 img: item.track.album.images[0].url,
@@ -358,8 +356,8 @@ class Activities extends Component {
 
     return (
       <div>
-        <h2 style={{ color: 'black', textAlign: 'center' }} className="mt-5">
-          <SearchBar onSearch={this.search} />
+        <SearchBar onSearch={this.search} />
+        <h2 style={{ textAlign: 'center' }} className="mt-5">
           What you want to do?
         </h2>
         <Container>

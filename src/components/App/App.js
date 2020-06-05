@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
 import hash from '../../hash';
 import './App.css';
-import History from '../History/History';
+// import History from '../History/History';
 // import Home from '../Home/Home';
 import Routers from '../../Routers';
 // import Navbar from '../Navbar/Navbar';
@@ -61,7 +61,7 @@ class App extends Component {
         <main>
           {/* {this.state.token && <Home />} */}
 
-          {this.state.token && <History />}
+          {/* {this.state.token && <History />} */}
 
           {this.state.token && <Activities />}
         </main>
