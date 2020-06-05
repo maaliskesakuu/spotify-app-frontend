@@ -14,7 +14,7 @@ import hash from '../../hash';
 const activities = [
   {
     id: 1,
-    activity: 'Study',
+    activity: 'Focus',
     category_id: 'focus',
   },
   {
@@ -346,6 +346,7 @@ class Activities extends Component {
     const activityList = this.state.activities.map(activity => {
       return (
         <Button
+          key={activity.category_id}
           style={{ margin: '10px' }}
           onClick={this.activityButtonClicked}
           value={activity.category_id}

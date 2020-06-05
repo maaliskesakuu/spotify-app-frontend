@@ -9,9 +9,12 @@ class Home extends Component {
     this.state = {
       token: null,
       musicHistory: [],
+      audio: new Audio(''),
     };
 
+    //this.playMusic = this.playMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
+
   }
 
   componentDidMount() {
@@ -42,14 +45,28 @@ class Home extends Component {
       .then(data =>
         this.setState({
           musicHistory: data,
+          audio: data,
         })
       );
   };
 
+  //play music on hover /Flo's
+  // playMusic() {
+  //   console.log('Play music');
+  //   this.setState({ audio: new Audio(this.state.audio) }, () => {
+  //     this.state.audio.play();
+  //   });
+  // }
+
+  handleMusic = () => {
+    console.log('Play music');
+   // this.playMusic();
+  };
+
   render() {
     return (
-      // <div className="mt-5" style={{ textAlign: 'center', color: 'black' }}>
       <div>
+        {/* {this.state.audio} */}
         <h4>Recently played</h4>
         <div className="_container">
           {this.state.musicHistory.map((music, index) => {
@@ -60,6 +77,7 @@ class Home extends Component {
                     src={music.track.album.images[0].url}
                     alt="_image"
                     className="shape"
+                    onMouseOver={this.handleMusic}
                   />
                 </div>
                 <div className="titles">
@@ -71,7 +89,7 @@ class Home extends Component {
             );
           })}
         </div>
-          <NewRelease />
+        <NewRelease />
       </div>
     );
   }

@@ -1,8 +1,23 @@
 .shape {
-  width: 12rem;
-  height: 12rem;
+  width: 15rem;
+  height: 15rem;
   /* width: 250px;
   height: 250px; */
+  margin: 1rem;
+  transition: transform 200ms ease;
+  border-radius: 5px;
+}
+
+.shape:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.inner_container {
+  background: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   margin: 1rem;
 }
 
@@ -13,7 +28,8 @@ h4 {
 
 ._container {
   display: flex;
-  margin-left: 8rem;
+  align-content: center;
+  margin-left: 5rem;
 }
 
 .titles {

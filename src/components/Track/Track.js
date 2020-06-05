@@ -75,7 +75,7 @@ class Track extends Component {
               </Card.Body>
             </Card>
           </Col>
-          {/* <iframe
+          <iframe
             src={'https://open.spotify.com/embed/track/' + this.props.track.id}
             width="300"
             height="80"
@@ -83,7 +83,7 @@ class Track extends Component {
             allowtransparency="true"
             allow="encrypted-media"
             title="preview"
-          /> */}
+          />
         </div>
         {this.renderAction()}
       </div>
