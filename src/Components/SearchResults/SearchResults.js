@@ -1,19 +1,20 @@
-import React from "react";
- 
-//mport "./SearchResults.css";
- 
-import Tracklist from "../Tracklist/Tracklist";
- 
-class SearchResults extends React.Component {
+import React, { Component } from 'react';
+import TrackList from '../Tracklist/Tracklist';
+
+import CardDeck from 'react-bootstrap/CardDeck';
+
+class SearchResults extends Component {
   render() {
     return (
-      <div className="SearchResults">
-        
-        <Tracklist tracks={this.props.searchResults} onAdd={this.props.onAdd} />
+      <div>
+        <h2>Results</h2>
+       <CardDeck>
+        <TrackList tracks={this.props.searchResults} onAdd={this.props.onAdd} />
+        </CardDeck>
       </div>
     );
   }
 }
- 
+
 export default SearchResults;
  
