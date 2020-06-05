@@ -20,7 +20,7 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
 // our app's client id
-export const clientId = "986549d096a742d0916ebc342f19d4b4";
+export const clientId = "";
 // the address to which the Spotify Accounts service redirects
 export const redirectUri = "http://localhost:3000/home";
 
