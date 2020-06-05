@@ -23,7 +23,8 @@ h4 {
 }
 ._container {
   display: flex;
-  margin-left: 8rem;
+  align-content: center;
+  margin-left: 5rem;
 }
 .titles {
   padding-left: 1rem;

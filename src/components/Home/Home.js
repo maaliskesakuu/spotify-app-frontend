@@ -9,7 +9,9 @@ class Home extends Component {
     this.state = {
       token: null,
       musicHistory: [],
+      audio: new Audio(""),
     };
+    //this.playMusic = this.playMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
   componentDidMount() {
@@ -28,7 +30,7 @@ class Home extends Component {
   getRecentlyPlayed = () => {
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQAQRc__7DmGV_DPvtRVvtp1vPwUdW6R9_S6uUFDgZR4pRUAmGz-U4xJ0RXqvhdUWjdHod4C9wtkF-F7vkBvQa4q3fFFX6RuzghmYmU2OEXcJVuvMwU_4_GxmK795ehUn_gPQGbct7aiWM7XSRDuryAQB2rjmdNHLxuPGoy8EBPO4IwYphD7Xjc";
+      "BQBiFBtqNZhlgQR79LNVsN5V3vTBH6NjPVM_JwMZrqYr9jw2Z9LtsvhyExapH3pzZq7K2CNNwcK-WJugBpfkuMg5jlJ2tUm2Nprb9lG5AeAmWLXu7RzvIoccFN_D7c4Hzbc2Wlhq9jtBf0KncjhR8NVvqy499lGHip91YqifkUjshOlcIihjPC8";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=5`, {
       method: "GET",
@@ -43,6 +45,7 @@ class Home extends Component {
       .then((data) =>
         this.setState({
           musicHistory: data,
+          audio: data,
         })
       );
 
@@ -50,12 +53,28 @@ class Home extends Component {
     //setTimeout(() => this.getCurrentlyPlaying(tokens), 7500);
   };
 
+  //play music on hover
+  // playMusic() {
+  //   // console.log("Play music");
+  //   this.setState({ audio: new Audio(this.props.audio) }, () => {
+  //     this.state.audio.play();
+  //   });
+  // }
+
+  handleMusic = () => {
+    console.log("Play music");
+    // this.playMusic();
+  };
+
   render() {
     return (
       <div>
+        {/* {this.state.audio} */}
         <h4>Recently played</h4>
         <div className="_container">
+          {console.log(this.state.audio)}
           {console.log(this.state.musicHistory)}
+
           {this.state.musicHistory.map((music, index) => {
             return (
               <div key={index}>
@@ -64,6 +83,7 @@ class Home extends Component {
                     src={music.track.album.images[0].url}
                     alt="_image"
                     className="shape"
+                    onMouseOver={this.handleMusic}
                   />
                 </div>
                 <div className="titles">
