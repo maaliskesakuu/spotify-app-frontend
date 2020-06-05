@@ -1,8 +1,6 @@
 .shapes {
-  width: 15rem;
-  height: 15rem;
-  /* width: 250px;
-  height: 250px; */
+  width: 250px;
+  height: 250px;
   margin: 1rem;
   transition: transform 200ms ease;
   border-radius: 5px;

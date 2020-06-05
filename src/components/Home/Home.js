@@ -30,8 +30,7 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    // let token = hash.access_token;
-
+  
     fetch('https://api.spotify.com/v1/me/player/recently-played?limit=5', {
       method: 'GET',
       headers: {

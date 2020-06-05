@@ -8,7 +8,11 @@ class NewRelease extends Component {
     this.state = {
       token: null,
       newRelease: [],
+      audio: new Audio(''),
     };
+
+    this.playMusic = this.playMusic.bind(this);
+    this.pauseMusic = this.pauseMusic.bind(this);
     this.getNewRelease = this.getNewRelease.bind(this);
   }
 
@@ -42,6 +46,27 @@ class NewRelease extends Component {
       .catch(err => console.log(err));
   };
 
+  //play music on hover
+  playMusic = preview => {
+    console.log(this.state.newRelease);
+
+    console.log('Play music');
+
+    if (preview) {
+      this.setState({ audio: new Audio() }, () => {
+        this.state.audio.play();
+        console.log(this.state.audio);
+      });
+    } else {
+      console.log('no preview');
+    }
+  };
+
+  pauseMusic = () => {
+    this.state.audio.pause();
+    this.setState({ audio: new Audio('') });
+  };
+
   render() {
     return (
       <div>
@@ -56,12 +81,14 @@ class NewRelease extends Component {
                       src={songs.images[0].url}
                       alt="_images"
                       className="shapes"
+                      onMouseOver={() => this.playMusic(songs.preview_url)}
+                      onMouseOut={this.pauseMusic}
                     />
                   </div>
                 </div>
                 <div className="titles">
                   <p>
-                    {songs.name} | {songs.artists[0].name}
+                    {songs.name} - {songs.artists[0].name}
                   </p>
                 </div>
               </div>
