@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import hash from '../../hash';
-import './NewRelease.css';
+// import './NewRelease.css';
+
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
 
 class NewRelease extends Component {
   constructor() {
@@ -28,7 +32,7 @@ class NewRelease extends Component {
   }
 
   getNewRelease = token => {
-    fetch('https://api.spotify.com/v1/browse/new-releases?limit=5', {
+    fetch('https://api.spotify.com/v1/browse/new-releases?limit=4', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -71,7 +75,29 @@ class NewRelease extends Component {
     return (
       <div>
         <h4>New</h4>
-        <div className="contains">
+        <CardDeck>
+          {this.state.newRelease.map((songs, index) => {
+            return (
+              <Col md={3}>
+                <Card style={{ margin: '10px' }} key={index}>
+                  <Card.Img
+                    src={songs.images[0].url}
+                    alt="_images"
+                    className="shapes"
+                    onMouseOver={() => this.playMusic(songs.preview_url)}
+                    onMouseOut={this.pauseMusic}
+                  />
+                  <Card.Body>
+                    <Card.Text>
+                      {songs.name} - {songs.artists[0].name}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </CardDeck>
+        {/* <div className="contains">
           {this.state.newRelease.map((songs, index) => {
             return (
               <div key={index}>
@@ -94,7 +120,7 @@ class NewRelease extends Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
     );
   }

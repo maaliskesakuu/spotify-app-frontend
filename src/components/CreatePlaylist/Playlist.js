@@ -59,7 +59,6 @@ class Playlist extends Component {
                 variant="success"
                 className="mb-3"
                 onClick={this.props.onSave}
-                block
               >
                 create and save to Spotify
               </Button>

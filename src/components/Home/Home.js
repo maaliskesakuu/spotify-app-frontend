@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import './Home.css';
+// import './Home.css';
 import NewRelease from './NewRelease';
 import hash from '../../hash';
+
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
 
 class Home extends Component {
   constructor() {
@@ -30,8 +34,7 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-  
-    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=5', {
+    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=4', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -70,7 +73,28 @@ class Home extends Component {
     return (
       <div>
         <h4>Recently played</h4>
-        <div className="_container">
+        <CardDeck>
+          {this.state.musicHistory.map((music, index) => {
+            return (
+              <Col md={3}>
+                <Card style={{ margin: '10px' }} key={index}>
+                  <Card.Img
+                    src={music.track.album.images[0].url}
+                    alt="_image"
+                    onMouseOver={() => this.playMusic(music.track.preview_url)}
+                    onMouseOut={this.pauseMusic}
+                  />
+                  <Card.Body>
+                    <Card.Text>
+                      {music.track.name} - {music.track.artists[0].name}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </CardDeck>
+        {/* <div className="_container">
           {this.state.musicHistory.map((music, index) => {
             return (
               <div key={index}>
@@ -91,7 +115,7 @@ class Home extends Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <NewRelease />
       </div>
     );
