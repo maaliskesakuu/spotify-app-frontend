@@ -3,7 +3,7 @@ import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
 import hash from '../../hash';
 import './App.css';
 import History from '../History/History';
-import Home from '../Home/Home';
+// import Home from '../Home/Home';
 import Routers from '../../Routers';
 // import Navbar from '../Navbar/Navbar';
 import Activities from '../Activities/Activities';
@@ -59,7 +59,7 @@ class App extends Component {
           )}
         </header>
         <main>
-          {this.state.token && <Home />}
+          {/* {this.state.token && <Home />} */}
 
           {this.state.token && <History />}
 
