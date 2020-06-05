@@ -135,7 +135,7 @@ class Activities extends Component {
 
     return (
       <Container>
-        <h2>What you want to do?</h2>
+        <h2>What are you in the mood for?</h2>
         <Row>{activityList}</Row>
         <SearchResults searchResults={this.state.track} />
       </Container>
