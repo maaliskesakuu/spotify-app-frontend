@@ -356,13 +356,13 @@ class Activities extends Component {
 
     return (
       <div>
-        <SearchBar onSearch={this.search} />
         <h2 style={{ textAlign: 'center' }} className="mt-5">
           What you want to do?
         </h2>
         <Container>
           <Row>{activityList}</Row>
         </Container>
+        <SearchBar onSearch={this.search} />
         <SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}

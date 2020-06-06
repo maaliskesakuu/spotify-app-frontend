@@ -26,7 +26,7 @@ class History extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=20', {
+    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=50', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

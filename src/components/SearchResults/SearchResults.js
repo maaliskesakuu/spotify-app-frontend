@@ -8,7 +8,7 @@ class SearchResults extends Component {
   render() {
     return (
       <div>
-        <h2>Results</h2>
+        {/* <h2>Results</h2> */}
         <CardDeck className="my-5">
           <TrackList
             tracks={this.props.searchResults}

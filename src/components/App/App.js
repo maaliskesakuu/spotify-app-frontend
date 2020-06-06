@@ -6,7 +6,7 @@ import './App.css';
 // import Home from '../Home/Home';
 import Routers from '../../Routers';
 // import Navbar from '../Navbar/Navbar';
-import Activities from '../Activities/Activities';
+// import Activities from '../Activities/Activities';
 // import logo from '../Media/logoMusic.png';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -58,13 +58,13 @@ class App extends Component {
             <Routers />
           )}
         </header>
-        <main>
+        {/* <main> */}
           {/* {this.state.token && <Home />} */}
 
           {/* {this.state.token && <History />} */}
 
-          {this.state.token && <Activities />}
-        </main>
+          {/* {this.state.token && <Activities />}
+        </main> */}
       </div>
     );
   }
