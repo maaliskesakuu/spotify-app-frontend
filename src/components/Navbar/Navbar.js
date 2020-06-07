@@ -36,6 +36,9 @@ const NavBar = () => {
              Make a collaborative Playlist
            </NavItem>
          </LinkContainer> */}
+           <LinkContainer to="/user">
+           <NavItem className="mr-5">Profile</NavItem>
+         </LinkContainer>
        </Nav>
      </Navbar.Collapse>
        {/* <div> 

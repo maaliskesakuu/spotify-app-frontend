@@ -6,6 +6,7 @@ import History from './components/History/History';
 import Home from './components/Home/Home';
 import NavBar from './components/Navbar/Navbar';
 import Activities from './components/Activities/Activities';
+import User from './components/User/User';
 
 const Routers = () => {
   return (
@@ -17,6 +18,7 @@ const Routers = () => {
         <Route path="/history" exact component={History}></Route>
         <Route path="/activities" component={Activities}></Route>
         {/* <Route path="/playlist" exact component={Playlist}></Route> */}
+        <Route path="/user" component={User}></Route>
       </Switch>
     </Router>
   );

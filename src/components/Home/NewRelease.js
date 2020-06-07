@@ -78,7 +78,7 @@ class NewRelease extends Component {
         <CardDeck>
           {this.state.newRelease.map((songs, index) => {
             return (
-              <Col md={3}>
+              <Col md={3} key={index}>
                 <Card style={{ margin: '10px' }} key={index}>
                   <Card.Img
                     src={songs.images[0].url}

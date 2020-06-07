@@ -13,6 +13,8 @@ export const redirectUri = 'http://localhost:3000/';
 // do not remove playlist-modify-*
 export const scopes = [
   'user-top-read',
+  'user-read-private',
+  'user-read-email',
   // 'user-read-playback-state',
   'user-read-recently-played',
   'playlist-modify-public',

@@ -76,7 +76,7 @@ class Home extends Component {
         <CardDeck>
           {this.state.musicHistory.map((music, index) => {
             return (
-              <Col md={3}>
+              <Col md={3} key={index}>
                 <Card style={{ margin: '10px' }} key={index}>
                   <Card.Img
                     src={music.track.album.images[0].url}
