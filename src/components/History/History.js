@@ -10,7 +10,10 @@ class History extends Component {
       searchResults: [],
       token: null,
       musicHistory: [],
+      audio: new Audio(""),
     };
+    this.playMusic = this.playMusic.bind(this);
+    this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
   componentDidMount() {
@@ -50,6 +53,25 @@ class History extends Component {
     //setTimeout(() => this.getCurrentlyPlaying(tokens), 7500);
   };
 
+  //play music onmouseEnter
+  playMusic = (preview) => {
+    console.log(preview);
+    console.log("Play music");
+    if (preview) {
+      this.setState({ audio: new Audio(preview) }, () => {
+        this.state.audio.play();
+      });
+    } else {
+      console.log("no preview");
+    }
+  };
+  //pause music when mouseOut
+  pauseMusic = () => {
+    console.log("Paused");
+    this.state.audio.pause();
+    this.setState({ audio: new Audio("") });
+  };
+
   render() {
     const { musicHistory } = this.state;
     //displaying the date and time
@@ -64,7 +86,13 @@ class History extends Component {
     const TableItem = (item, index) => (
       <tr key={item.played_at}>
         <td>{index + 1}</td>
-        <td>{item.track.name}</td>
+        <td
+          onMouseEnter={() => this.playMusic(item.track.preview_url)}
+          className="play"
+          onMouseOut={this.pauseMusic}
+        >
+          {item.track.name}
+        </td>
         <td>{item.track.artists[0].name}</td>
         <td>{format(new Date(item.played_at), "yyyy-MM-dd | mm:ss")}</td>
       </tr>
