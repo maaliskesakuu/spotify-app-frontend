@@ -48,7 +48,9 @@ class Home extends Component {
         this.setState({
           musicHistory: data,
         })
-      );
+      ).catch(error => {
+        console.log(error);
+      });
   };
 
   //play music on hover

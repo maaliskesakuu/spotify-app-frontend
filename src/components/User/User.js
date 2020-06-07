@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import hash from '../../hash';
 
+import Table from 'react-bootstrap/Table';
+
 class User extends Component {
   constructor() {
     super();
@@ -12,6 +14,8 @@ class User extends Component {
       country: '',
       spotifyUrl: '',
       email: '',
+      product: '',
+      explicitContent: ''
     };
     this.getUserData = this.getUserData.bind(this);
   }
@@ -29,7 +33,6 @@ class User extends Component {
 
   // fetching user data
   getUserData = token => {
-
     fetch('https://api.spotify.com/v1/me/', {
       method: 'GET',
       headers: {
@@ -45,34 +48,77 @@ class User extends Component {
         this.setState({
           userId: jsonResponse.id,
           displayName: jsonResponse.display_name,
-          followers: jsonResponse.country,
+          followers: jsonResponse.followers.total,
           country: jsonResponse.country,
           spotifyUrl: jsonResponse.external_urls.spotify,
           email: jsonResponse.email,
+          product: jsonResponse.product,
+          explicitContent: jsonResponse.explicit_content.filter_enabled
         });
       });
   };
 
   render() {
     return (
-      <div>
-        <h4>User data</h4>
-        <div>Name: {this.state.displayName}</div>
-        <div>User id: {this.state.userId}</div>
-        <div>Email: {this.state.email}</div>
-        <div>Country: {this.state.country}</div>
-        <div>Followers: {this.state.followers}</div>
-        <div>
-          Spotify URI:{' '}
-          <a
-            href={this.state.spotifyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {this.state.spotifyUrl}
-          </a>
-        </div>
-      </div>
+      <Table responsive bordered hover variant="dark">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td>{this.state.displayName}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Email</th>
+            <td>{this.state.email}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Country</th>
+            <td>{this.state.country}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>User id</th>
+            <td>{this.state.userId}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Followers</th>
+            <td>{this.state.followers}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Spotify URI</th>
+            <td>
+              {' '}
+              <a
+                href={this.state.spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {this.state.spotifyUrl}
+              </a>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Subscription level</th>
+            <td>{this.state.product}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Explicit content filter</th>
+            <td>{this.state.explicitContent}</td>
+          </tr>
+        </tbody>
+      </Table>
     );
   }
 }

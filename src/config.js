@@ -12,7 +12,7 @@ export const redirectUri = 'http://localhost:3000/';
 // user must authorize access to the data defined in the scopes
 // do not remove playlist-modify-*
 export const scopes = [
-  'user-top-read',
+  // 'user-top-read',
   'user-read-private',
   'user-read-email',
   // 'user-read-playback-state',

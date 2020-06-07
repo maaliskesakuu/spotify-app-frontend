@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './History.css';
 import hash from '../../hash';
+// import parseISO from 'date-fns/parseISO';
 
 class History extends Component {
   constructor() {
@@ -26,7 +27,7 @@ class History extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=50', {
+    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=20', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -40,8 +41,14 @@ class History extends Component {
         this.setState({
           musicHistory: data,
         })
-      );
+      )
+      .catch(error => {
+        console.log(error);
+      });
   };
+
+  //format date and time
+  // {parseISO(music.played_at)}
 
   render() {
     return (
@@ -63,13 +70,13 @@ class History extends Component {
                   allow="encrypted-media"
                   title="preview"
                 />
+                {this.state.playTime}
                 {/* <img src={music.track.album.images[2].url} alt="album cover" /> */}
-                <div className="title">
-                  {/* <p>
+                {/* <div className="title"> */}
+                {/* <p>
                     {music.track.name} | {music.track.artists[0].name}
                   </p> */}
-                  <p>last played: {music.played_at}</p>
-                </div>
+                {/* </div> */}
               </div>
             );
           })}
