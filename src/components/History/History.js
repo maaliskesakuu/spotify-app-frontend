@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./History.css";
 import hash from "../../hash";
+import { compareAsc, format } from "date-fns"; //for retrieving the date
 
 class History extends Component {
   constructor() {
@@ -27,9 +28,9 @@ class History extends Component {
   // fetching data of recently played songs
   getRecentlyPlayed = () => {
     const tokens =
-      "BQBtzMOa1T-fZnuNiDiHWQMB_8BzBisT_ULMS5YHQZbkoFe8hecaKI5yw0sNxPaood7mP1kC3-7xjA17F8ME13OcgpPNJ7ftQblaKgJQTpkZFbiAG5HlAMIi4g9d-2cupxltXusIMSN2JwmNLPpKrNqsOEsoWMbZqvj1wN5wJi15jrPBsNm2Xyg";
+      "BQCoNi_K6PjdmMiYWlA8HUVWviHld__R3w1dZGW4HRnfuUw9CleiXhQ8YqOjz1QUgjO8LYr9rgGu-KATWB4PU8D9-dsC3ANWMbiOsz0ZzB3HnxByf0gikBanfqI79n6xgz_jveI0Len2wwWvOmLj0q1Xy4_u5DBlooj5A81_PGPcJlcRnP_DzpQ";
     // Fetching the track/image name
-    fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=10`, {
+    fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
       // method: "GET",
       headers: {
         Accept: "application/json",
@@ -38,7 +39,7 @@ class History extends Component {
       },
     })
       .then((res) => res.json())
-      .then((data) => data.items.tracks.album.images[0].url)
+      .then((data) => data.items)
       .then((data) =>
         this.setState({
           musicHistory: data,
@@ -50,49 +51,56 @@ class History extends Component {
   };
 
   render() {
+    const { musicHistory } = this.state;
+    //displaying the date and time
+    const dates = [
+      new Date(1995, 6, 2),
+      new Date(1987, 1, 11),
+      new Date(1989, 6, 10),
+    ];
+    dates.sort(compareAsc);
+
+    //table displays information
+    const TableItem = (item, index) => (
+      <tr key={item.played_at}>
+        <td>{index + 1}</td>
+        <td>{item.track.name}</td>
+        <td>{item.track.artists[0].name}</td>
+        <td>{format(new Date(item.played_at), "yyyy-MM-dd | mm:ss")}</td>
+      </tr>
+    );
+
+    //clear music history
+    const clearHistoryHandler = () => {
+      this.setState({ musicHistory: [] });
+    };
+
+    const RecentlyPlayed = () => (
+      <div className="recently-played">
+        <h2 className="head"> Listening History</h2>
+        <button onClick={clearHistoryHandler}>Clear History</button>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Track title</th>
+              <th>Artist</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>
+        </table>
+      </div>
+    );
+
     return (
       <div>
-        <div className="_containerss">
+        <div>
           {console.log(this.state.musicHistory)}
-
-          {this.state.musicHistory.map((music, index) => {
-            return (
-              <div key={index}>
-                {/* <iframe
-                  src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9sIqqvKsjG8"
-                  width="900"
-                  height="1000"
-                  frameborder="0"
-                  allowtransparency="true"
-                  allow="encrypted-media"
-                /> */}
-
-                <iframe
-                  src={
-                    "https://open.spotify.com/embed/track"
-                    //  music.track.album.images[0].url
-                  }
-                  // src="https://api.spotify.com/v1/me/player/recently-played"
-                  // src={music.track.album.images[0].url}
-                  alt="_images"
-                  className="_shape"
-                  width="400"
-                  height="80"
-                  frameBorder="0"
-                  allowtransparency="true"
-                  allow="encrypted-media"
-                  title="preview"
-                />
-                <div className="title">
-                  <p>
-                    {music.track.name} | {music.track.artists[0].name}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
         </div>
       </div>
+      // </div>
     );
   }
 }
