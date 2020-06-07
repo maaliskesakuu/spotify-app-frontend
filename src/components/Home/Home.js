@@ -11,7 +11,8 @@ class Home extends Component {
       musicHistory: [],
       audio: new Audio(""),
     };
-    //this.playMusic = this.playMusic.bind(this);
+    this.playMusic = this.playMusic.bind(this);
+    this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
   componentDidMount() {
@@ -28,9 +29,10 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = () => {
+    //let tokens = hash.access_token;
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQBiFBtqNZhlgQR79LNVsN5V3vTBH6NjPVM_JwMZrqYr9jw2Z9LtsvhyExapH3pzZq7K2CNNwcK-WJugBpfkuMg5jlJ2tUm2Nprb9lG5AeAmWLXu7RzvIoccFN_D7c4Hzbc2Wlhq9jtBf0KncjhR8NVvqy499lGHip91YqifkUjshOlcIihjPC8";
+      "BQCjIh44YgZpVfiSm3W137lzbYtnkQ8tqnHgiGNhRz_L2oA27O5Oo-VLAuIufqyN_ssDVIruhhHNHTUeDqiGCWnEpcrc-wgViu6w63aN_pP3y7gRXL9YO_u_tyLqR9uWfjkf1rKRJK7v0luWntUhVFZ5F1neEY79WLMcDjvbJ8q-KNXFbfQXjFc";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=5`, {
       method: "GET",
@@ -45,7 +47,6 @@ class Home extends Component {
       .then((data) =>
         this.setState({
           musicHistory: data,
-          audio: data,
         })
       );
 
@@ -54,25 +55,28 @@ class Home extends Component {
   };
 
   //play music on hover
-  // playMusic() {
-  //   // console.log("Play music");
-  //   this.setState({ audio: new Audio(this.props.audio) }, () => {
-  //     this.state.audio.play();
-  //   });
-  // }
-
-  handleMusic = () => {
+  playMusic = (preview) => {
+    console.log(preview);
     console.log("Play music");
-    // this.playMusic();
+    if (preview) {
+      this.setState({ audio: new Audio(preview) }, () => {
+        this.state.audio.play();
+      });
+    } else {
+      console.log("no preview");
+    }
+  };
+  //pause music when mouse is out of card
+  pauseMusic = () => {
+    this.state.audio.pause();
+    this.setState({ audio: new Audio("") });
   };
 
   render() {
     return (
       <div>
-        {/* {this.state.audio} */}
         <h4>Recently played</h4>
         <div className="_container">
-          {console.log(this.state.audio)}
           {console.log(this.state.musicHistory)}
 
           {this.state.musicHistory.map((music, index) => {
@@ -83,7 +87,8 @@ class Home extends Component {
                     src={music.track.album.images[0].url}
                     alt="_image"
                     className="shape"
-                    onMouseOver={this.handleMusic}
+                    onMouseOver={() => this.playMusic(music.track.preview_url)}
+                    onMouseOut={this.pauseMusic}
                   />
                 </div>
                 <div className="titles">

@@ -27,7 +27,7 @@ class History extends Component {
   // fetching data of recently played songs
   getRecentlyPlayed = () => {
     const tokens =
-      "BQBiFBtqNZhlgQR79LNVsN5V3vTBH6NjPVM_JwMZrqYr9jw2Z9LtsvhyExapH3pzZq7K2CNNwcK-WJugBpfkuMg5jlJ2tUm2Nprb9lG5AeAmWLXu7RzvIoccFN_D7c4Hzbc2Wlhq9jtBf0KncjhR8NVvqy499lGHip91YqifkUjshOlcIihjPC8";
+      "BQBtzMOa1T-fZnuNiDiHWQMB_8BzBisT_ULMS5YHQZbkoFe8hecaKI5yw0sNxPaood7mP1kC3-7xjA17F8ME13OcgpPNJ7ftQblaKgJQTpkZFbiAG5HlAMIi4g9d-2cupxltXusIMSN2JwmNLPpKrNqsOEsoWMbZqvj1wN5wJi15jrPBsNm2Xyg";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=10`, {
       // method: "GET",
@@ -38,7 +38,7 @@ class History extends Component {
       },
     })
       .then((res) => res.json())
-      .then((data) => data.items)
+      .then((data) => data.items.tracks.album.images[0].url)
       .then((data) =>
         this.setState({
           musicHistory: data,
@@ -67,9 +67,13 @@ class History extends Component {
                   allow="encrypted-media"
                 /> */}
 
-                <img
-                  // src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9sIqqvKsjG8"
-                  src={music.track.album.images[0].url}
+                <iframe
+                  src={
+                    "https://open.spotify.com/embed/track"
+                    //  music.track.album.images[0].url
+                  }
+                  // src="https://api.spotify.com/v1/me/player/recently-played"
+                  // src={music.track.album.images[0].url}
                   alt="_images"
                   className="_shape"
                   width="400"

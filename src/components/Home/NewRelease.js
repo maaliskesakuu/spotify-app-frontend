@@ -8,7 +8,10 @@ class NewRelease extends Component {
     this.state = {
       token: null,
       newRelease: [],
+      // audio: new Audio(""),
     };
+    // this.playMusic = this.playMusic.bind(this);
+    // this.pauseMusic = this.pauseMusic.bind(this);
     this.getNewRelease = this.getNewRelease.bind(this);
   }
   componentDidMount() {
@@ -23,11 +26,12 @@ class NewRelease extends Component {
     }
   }
 
-  // fetching data of recently played songs
+  // fetching data of  newly released songs
   getNewRelease = () => {
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQBXOUBFowPTuLRNPkMPpXt7JCRHSnEJkMtFQ7cozMk2wg6qlnnjZ3bAi0YRWbi2cHZv3QleFdVsPyHikNnivlZoXgIzoPL_Wek-UqqQKwE3TRhNMk-cE9GrbNKTCjbPIHYxfMoj6GZimoj1pnx6yaKbDP-K4tzuIdnNOS4W_g-Nt06tpil8nJM";
+      "BQDnIUU58AEAfgY7SaxJm_OS9xfii1qWEcsKe7snY1qZDZyzfSBWdmO_p1MwmAo4wHkthJSdW_cvAO-v7GpHYrx-866hEY1MS0GJ7CxXcSR1hyaKukIgpKQ6fpvTVuZr1ys2qb6ulUgom24rp-SPn49PQXWW-Q89JWYIXOpUWVmBxAhCWL-YqfY";
+    // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/browse/new-releases?limit=5`, {
       method: "GET",
       headers: {
@@ -48,6 +52,24 @@ class NewRelease extends Component {
     //setTimeout(() => this.getCurrentlyPlaying(tokens), 7500);
   };
 
+  //play music on hover
+  // playMusic = (preview) => {
+  //   console.log(preview);
+  //   console.log("Play music");
+  //   if (preview) {
+  //     this.setState({ audio: new Audio(preview) }, () => {
+  //       this.state.audio.play();
+  //     });
+  //   } else {
+  //     console.log("no preview");
+  //   }
+  // };
+  // //pause music when mouse is out of card
+  // pauseMusic = () => {
+  //   this.state.audio.pause();
+  //   this.setState({ audio: new Audio("") });
+  // };
+
   render() {
     return (
       <div>
@@ -63,6 +85,10 @@ class NewRelease extends Component {
                       src={songs.images[0].url}
                       alt="_images"
                       className="shapes"
+                      // onMouseOver={() =>
+                      //   this.playMusic(songs.track.preview_url)
+                      // }
+                      // onMouseOut={this.pauseMusic}
                     />
                   </div>
                 </div>
