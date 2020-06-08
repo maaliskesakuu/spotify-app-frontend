@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./History.css";
 import hash from "../../hash";
 import { compareAsc, format } from "date-fns"; //for retrieving the date
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../FontawesomeIcons/icons";
 
 class History extends Component {
   constructor() {
@@ -31,7 +33,7 @@ class History extends Component {
   // fetching data of recently played songs
   getRecentlyPlayed = () => {
     const tokens =
-      "BQCoNi_K6PjdmMiYWlA8HUVWviHld__R3w1dZGW4HRnfuUw9CleiXhQ8YqOjz1QUgjO8LYr9rgGu-KATWB4PU8D9-dsC3ANWMbiOsz0ZzB3HnxByf0gikBanfqI79n6xgz_jveI0Len2wwWvOmLj0q1Xy4_u5DBlooj5A81_PGPcJlcRnP_DzpQ";
+      "BQBHGxAte2iRNZuUyIDfSoM1-cZFPueJ4CvygaDJYqsrWV_MHbU8vqkDG10W3zjsdziY15NjvE-EDZB4E_2camIkUvp2PzA3o4Alo-wHJvsdP0I27RnbgsVaGAJfI0DAPxu4glFIUL5H4_kYQAnLdBIa3-bQfNOwsLexVxZ-c6blRqLPErjpUyc";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
       // method: "GET",
@@ -86,11 +88,13 @@ class History extends Component {
     const TableItem = (item, index) => (
       <tr key={item.played_at}>
         <td>{index + 1}</td>
+
         <td
           onMouseEnter={() => this.playMusic(item.track.preview_url)}
           className="play"
           onMouseOut={this.pauseMusic}
         >
+          <FontAwesomeIcon icon="play-circle" />
           {item.track.name}
         </td>
         <td>{item.track.artists[0].name}</td>
@@ -128,7 +132,6 @@ class History extends Component {
           {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
         </div>
       </div>
-      // </div>
     );
   }
 }

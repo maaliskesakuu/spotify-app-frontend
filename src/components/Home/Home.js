@@ -32,7 +32,7 @@ class Home extends Component {
     //let tokens = hash.access_token;
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQCoNi_K6PjdmMiYWlA8HUVWviHld__R3w1dZGW4HRnfuUw9CleiXhQ8YqOjz1QUgjO8LYr9rgGu-KATWB4PU8D9-dsC3ANWMbiOsz0ZzB3HnxByf0gikBanfqI79n6xgz_jveI0Len2wwWvOmLj0q1Xy4_u5DBlooj5A81_PGPcJlcRnP_DzpQ";
+      "BQBHGxAte2iRNZuUyIDfSoM1-cZFPueJ4CvygaDJYqsrWV_MHbU8vqkDG10W3zjsdziY15NjvE-EDZB4E_2camIkUvp2PzA3o4Alo-wHJvsdP0I27RnbgsVaGAJfI0DAPxu4glFIUL5H4_kYQAnLdBIa3-bQfNOwsLexVxZ-c6blRqLPErjpUyc";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=5`, {
       method: "GET",
