@@ -5,6 +5,8 @@ import { format } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../FontawesomeIcons/icons'
 
+import * as constants from '../../constants/constants';
+
 class History extends Component {
   constructor() {
     super();
@@ -33,7 +35,7 @@ class History extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch('https://api.spotify.com/v1/me/player/recently-played', {
+    fetch(constants.API + 'me/player/recently-played', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -86,7 +88,7 @@ class History extends Component {
           {' '}{item.track.name}
         </td>
         <td>{item.track.artists[0].name}</td>
-        <td>{format(new Date(item.played_at), 'yyyy-MM-dd | hh:mm:ss')}</td>
+        <td>{format(new Date(item.played_at), 'yyyy-MM-dd | HH:mm:ss')}</td>
       </tr>
     );
 
