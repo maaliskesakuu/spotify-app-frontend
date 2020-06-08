@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './History.css';
 import hash from '../../hash';
-import { compareAsc, format } from 'date-fns';
+import { format } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../FontawesomeIcons/icons'
 
@@ -55,8 +55,6 @@ class History extends Component {
 
   //play music onmouseEnter
   playMusic = preview => {
-    console.log(preview);
-    console.log('Play music');
     if (preview) {
       this.setState({ audio: new Audio(preview) }, () => {
         this.state.audio.play();
@@ -68,20 +66,12 @@ class History extends Component {
 
   //pause music when mouseOut
   pauseMusic = () => {
-    console.log('Paused');
     this.state.audio.pause();
     this.setState({ audio: new Audio('') });
   };
 
   render() {
     const { musicHistory } = this.state;
-    //displaying the date and time
-    const dates = [
-      new Date(1995, 6, 2),
-      new Date(1987, 1, 11),
-      new Date(1989, 6, 10),
-    ];
-    dates.sort(compareAsc);
 
     //table displays information
     const TableItem = (item, index) => (
@@ -126,7 +116,6 @@ class History extends Component {
     return (
       <div>
         <div>
-          {console.log(this.state.musicHistory)}
           {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
         </div>
       </div>

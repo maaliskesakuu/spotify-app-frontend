@@ -72,16 +72,6 @@ class Track extends Component {
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>
           </Card.Body>
-
-          {/* <iframe
-            src={'https://open.spotify.com/embed/track/' + this.props.track.id}
-            width="300"
-            height="80"
-            frameBorder="0"
-            allowtransparency="true"
-            allow="encrypted-media"
-            title="preview"
-          /> */}
         </Card>
         {this.renderAction()}
       </Col>

@@ -55,8 +55,6 @@ class Home extends Component {
 
   //play music on hover
   playMusic = preview => {
-    console.log(preview);
-    console.log('Play music');
     if (preview) {
       this.setState({ audio: new Audio(preview) }, () => {
         this.state.audio.play();
@@ -112,7 +110,7 @@ class Home extends Component {
                 </div>
                 <div className="titles">
                   <p>
-                    {music.track.name} - {music.track.artists[0].name}
+                    {music.track.name} | {music.track.artists[0].name}
                   </p>
                 </div>
               </div>

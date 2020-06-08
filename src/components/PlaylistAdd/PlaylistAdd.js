@@ -31,7 +31,7 @@ class PlaylistAdd extends Component {
           />
         </CardDeck>
         <Button variant="success" className="mt-3" onClick={this.props.onSave}>
-          save to Spotify
+          Save to Spotify
         </Button>
       </div>
     );

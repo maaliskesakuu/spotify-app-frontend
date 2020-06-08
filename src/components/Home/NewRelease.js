@@ -52,13 +52,9 @@ class NewRelease extends Component {
 
   // //play music on hover
   // playMusic = preview => {
-  //   console.log(preview);
-  //   console.log('Play music');
-
   //   if (preview) {
   //     this.setState({ audio: new Audio() }, () => {
   //       this.state.audio.play();
-  //       console.log(this.state.audio);
   //     });
   //   } else {
   //     console.log('no preview');

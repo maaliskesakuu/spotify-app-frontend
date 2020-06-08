@@ -29,7 +29,7 @@ const activities = [
   },
   {
     id: 4,
-    activity: 'Be well',
+    activity: 'Well-being',
     category_id: 'wellness',
   },
 ];
@@ -56,12 +56,9 @@ class Activities extends Component {
     this.removeTrackSearch = this.removeTrackSearch.bind(this);
     this.doThese = this.doThese.bind(this);
     this.savePlaylistAdd = this.savePlaylistAdd.bind(this);
-
     // searchbar's search
     this.search = this.search.bind(this);
-
     // en empty, collaborative playlist
-    this.addPlaylistName = this.addPlaylistName.bind(this);
     this.addPlaylistDescription = this.addPlaylistDescription.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
   }
@@ -72,7 +69,6 @@ class Activities extends Component {
     fetch(
       `https://api.spotify.com/v1/search?type=track,artist&q=${term}&limit=20`,
       {
-        //       // fetch(`https://api.spotify.com/v1/search?type=track&q=%20genre:workout&limit=10`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -98,10 +94,9 @@ class Activities extends Component {
       })
       .then(searchResults => {
         this.setState({ searchResults: searchResults });
-        console.log(searchResults);
       })
       .catch(error => {
-        console.log(error.data);
+        console.log(error);
       });
   }
 
@@ -124,13 +119,11 @@ class Activities extends Component {
         if (!jsonResponse.playlists) {
           return [];
         }
-
         //Making array with playlist IDs
         var ID_array = [];
         jsonResponse.playlists.items.forEach(item => {
           ID_array.push(item.id);
         });
-        console.log(ID_array);
 
         return ID_array;
       })
@@ -166,12 +159,11 @@ class Activities extends Component {
               this.setState({
                 searchResults: this.state.searchResults.concat(searchResults),
               });
-              console.log(this.state.searchResults);
             });
         }
       })
       .catch(error => {
-        console.log(error.data);
+        console.log(error);
       });
   }
 
@@ -189,7 +181,6 @@ class Activities extends Component {
     }
     tracks.push(track);
     this.setState({ playlistTracks: tracks });
-    console.log(tracks);
   }
 
   removeTrack(track) {
@@ -231,7 +222,6 @@ class Activities extends Component {
       .then(response => response.json())
       .then(jsonResponse => {
         userId = jsonResponse.id;
-
         //post the data and create the playlist
         fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           method: 'POST',
@@ -263,26 +253,18 @@ class Activities extends Component {
                 }),
               }
             )
-              .then(response => response.json())
-              .then(jsonResponse => {
-                console.log(jsonResponse);
-                alert('playlist with selected tracks added to Spotify');
-              })
               .then(() => {
+                alert('playlist with selected tracks added to Spotify');
                 this.setState({
                   playlistName: 'New Playlist',
                   playlistTracks: [],
                 });
               })
               .catch(error => {
-                console.log(error.data);
+                console.log(error);
               });
           });
       });
-  }
-
-  addPlaylistName(name) {
-    this.setState({ playlistName: name });
   }
 
   addPlaylistDescription(desc) {
@@ -297,13 +279,11 @@ class Activities extends Component {
     let userId;
     let playlist = this.state.playlistName;
     let playlistDesc = this.state.playlistDescription;
-
     //get userId
     fetch('https://api.spotify.com/v1/me', { headers: headers })
       .then(response => response.json())
       .then(jsonResponse => {
         userId = jsonResponse.id;
-
         //post the data and create the playlist
         fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           method: 'POST',
@@ -319,23 +299,15 @@ class Activities extends Component {
             public: 'false',
           }),
         })
-          .then(response => response.json())
-          .then(jsonResponse => {
-            const playlistId = jsonResponse.id;
-            alert(`Created a new playlist, id: ${playlistId}`);
-            console.log(this.state.playlistName);
-            console.log(this.state.playlistDescription);
-          })
           .then(() => {
+            alert('Created a new playlist and saved it to Spotify');
             this.setState({
               playlistName: 'New Playlist',
               playlistDescription: '',
             });
-            console.log(this.state.playlistName);
-            console.log(this.state.playlistDescription);
           })
           .catch(error => {
-            console.log(error.data);
+            console.log(error);
           });
       });
   }
@@ -357,7 +329,7 @@ class Activities extends Component {
     return (
       <div>
         <h2 style={{ textAlign: 'center' }} className="mt-5">
-          What you want to do?
+          What are you in the mood for?
         </h2>
         <Container>
           <Row>{activityList}</Row>
@@ -375,7 +347,7 @@ class Activities extends Component {
           title={this.state.playlistName}
         />
         <Playlist
-          onNameChange={this.addPlaylistName}
+          onNameChange={this.updatePlaylistName}
           onDescriptionChange={this.addPlaylistDescription}
           onSave={this.savePlaylist}
           description={this.state.playlistDescription}
