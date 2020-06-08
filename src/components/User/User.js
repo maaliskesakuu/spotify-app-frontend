@@ -61,7 +61,7 @@ class User extends Component {
   render() {
     return (
       <div>
-        <h2 className="head">User data</h2>
+        <h2 className="head">User Data</h2>
       <Table responsive bordered hover>
         <tbody>
           <tr>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './History.css';
 import hash from '../../hash';
 import { compareAsc, format } from 'date-fns';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../FontawesomeIcons/icons'
 
 class History extends Component {
   constructor() {
@@ -90,7 +92,8 @@ class History extends Component {
           className="play"
           onMouseOut={this.pauseMusic}
         >
-          {item.track.name}
+          <FontAwesomeIcon icon='play-circle' />
+          {' '}{item.track.name}
         </td>
         <td>{item.track.artists[0].name}</td>
         <td>{format(new Date(item.played_at), 'yyyy-MM-dd | hh:mm:ss')}</td>

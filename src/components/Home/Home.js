@@ -66,6 +66,7 @@ class Home extends Component {
     }
   };
 
+  //pause music when mouse is out of card
   pauseMusic = () => {
     this.state.audio.pause();
     this.setState({ audio: new Audio('') });
@@ -88,7 +89,7 @@ class Home extends Component {
                   />
                   <Card.Body>
                     <Card.Text>
-                      {music.track.name} - {music.track.artists[0].name}
+                      {music.track.name} | {music.track.artists[0].name}
                     </Card.Text>
                   </Card.Body>
                 </Card>

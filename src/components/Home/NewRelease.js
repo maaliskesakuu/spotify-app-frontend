@@ -12,11 +12,11 @@ class NewRelease extends Component {
     this.state = {
       token: null,
       newRelease: [],
-      audio: new Audio(''),
+      // audio: new Audio(''),
     };
 
-    this.playMusic = this.playMusic.bind(this);
-    this.pauseMusic = this.pauseMusic.bind(this);
+    // this.playMusic = this.playMusic.bind(this);
+    // this.pauseMusic = this.pauseMusic.bind(this);
     this.getNewRelease = this.getNewRelease.bind(this);
   }
 
@@ -50,26 +50,26 @@ class NewRelease extends Component {
       .catch(err => console.log(err));
   };
 
-  //play music on hover
-  playMusic = preview => {
-    console.log(this.state.newRelease);
+  // //play music on hover
+  // playMusic = preview => {
+  //   console.log(preview);
+  //   console.log('Play music');
 
-    console.log('Play music');
+  //   if (preview) {
+  //     this.setState({ audio: new Audio() }, () => {
+  //       this.state.audio.play();
+  //       console.log(this.state.audio);
+  //     });
+  //   } else {
+  //     console.log('no preview');
+  //   }
+  // };
 
-    if (preview) {
-      this.setState({ audio: new Audio() }, () => {
-        this.state.audio.play();
-        console.log(this.state.audio);
-      });
-    } else {
-      console.log('no preview');
-    }
-  };
-
-  pauseMusic = () => {
-    this.state.audio.pause();
-    this.setState({ audio: new Audio('') });
-  };
+  //pause music when mouse is out of card
+  // pauseMusic = () => {
+  //   this.state.audio.pause();
+  //   this.setState({ audio: new Audio('') });
+  // };
 
   render() {
     return (
@@ -84,12 +84,12 @@ class NewRelease extends Component {
                     src={songs.images[0].url}
                     alt="_images"
                     className="shapes"
-                    onMouseOver={() => this.playMusic(songs.preview_url)}
-                    onMouseOut={this.pauseMusic}
+                    // onMouseOver={() => this.playMusic(songs.preview_url)}
+                    // onMouseOut={this.pauseMusic}
                   />
                   <Card.Body>
                     <Card.Text>
-                      {songs.name} - {songs.artists[0].name}
+                      {songs.name} | {songs.artists[0].name}
                     </Card.Text>
                   </Card.Body>
                 </Card>
