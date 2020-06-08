@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './History.css';
 import hash from '../../hash';
-// import parseISO from 'date-fns/parseISO';
+import { compareAsc, format } from 'date-fns';
 
 class History extends Component {
   constructor() {
@@ -10,7 +10,11 @@ class History extends Component {
       searchResults: [],
       token: null,
       musicHistory: [],
+      audio: new Audio(''),
     };
+
+    this.playMusic = this.playMusic.bind(this);
+    this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
 
@@ -27,7 +31,7 @@ class History extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=20', {
+    fetch('https://api.spotify.com/v1/me/player/recently-played', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -47,39 +51,80 @@ class History extends Component {
       });
   };
 
-  //format date and time
-  // {parseISO(music.played_at)}
+  //play music onmouseEnter
+  playMusic = preview => {
+    console.log(preview);
+    console.log('Play music');
+    if (preview) {
+      this.setState({ audio: new Audio(preview) }, () => {
+        this.state.audio.play();
+      });
+    } else {
+      console.log('no preview');
+    }
+  };
+
+  //pause music when mouseOut
+  pauseMusic = () => {
+    console.log('Paused');
+    this.state.audio.pause();
+    this.setState({ audio: new Audio('') });
+  };
 
   render() {
+    const { musicHistory } = this.state;
+    //displaying the date and time
+    const dates = [
+      new Date(1995, 6, 2),
+      new Date(1987, 1, 11),
+      new Date(1989, 6, 10),
+    ];
+    dates.sort(compareAsc);
+
+    //table displays information
+    const TableItem = (item, index) => (
+      <tr key={item.played_at}>
+        <td>{index + 1}</td>
+        <td
+          onMouseEnter={() => this.playMusic(item.track.preview_url)}
+          className="play"
+          onMouseOut={this.pauseMusic}
+        >
+          {item.track.name}
+        </td>
+        <td>{item.track.artists[0].name}</td>
+        <td>{format(new Date(item.played_at), 'yyyy-MM-dd | hh:mm:ss')}</td>
+      </tr>
+    );
+
+    //clear music history
+    const clearHistoryHandler = () => {
+      this.setState({ musicHistory: [] });
+    };
+
+    const RecentlyPlayed = () => (
+      <div className="recently-played">
+        <h2 className="head"> Listening History</h2>
+        <button onClick={clearHistoryHandler}>Clear History</button>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Track title</th>
+              <th>Artist</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>
+        </table>
+      </div>
+    );
+
     return (
       <div>
-        <h4>History</h4>
-        <div className="_containerss">
-          {this.state.musicHistory.map((music, index) => {
-            return (
-              <div key={index}>
-                <iframe
-                  // src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9sIqqvKsjG8"
-                  src={'https://open.spotify.com/embed/track/' + music.track.id}
-                  width="300"
-                  height="80"
-                  // width="900"
-                  // height="1000"
-                  frameBorder="0"
-                  allowtransparency="true"
-                  allow="encrypted-media"
-                  title="preview"
-                />
-                {this.state.playTime}
-                {/* <img src={music.track.album.images[2].url} alt="album cover" /> */}
-                {/* <div className="title"> */}
-                {/* <p>
-                    {music.track.name} | {music.track.artists[0].name}
-                  </p> */}
-                {/* </div> */}
-              </div>
-            );
-          })}
+        <div>
+          {console.log(this.state.musicHistory)}
+          {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
         </div>
       </div>
     );

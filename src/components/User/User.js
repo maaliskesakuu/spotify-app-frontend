@@ -60,7 +60,9 @@ class User extends Component {
 
   render() {
     return (
-      <Table responsive bordered hover variant="dark">
+      <div>
+        <h2 className="head">User data</h2>
+      <Table responsive bordered hover>
         <tbody>
           <tr>
             <th>Name</th>
@@ -119,6 +121,7 @@ class User extends Component {
           </tr>
         </tbody>
       </Table>
+      </div>
     );
   }
 }
