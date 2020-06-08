@@ -79,7 +79,7 @@ class Track extends Component {
           )}
           <Card.Body>
             <Card.Text>
-              {this.props.track.track} - {this.props.track.artist}
+            {this.props.track.name} | {this.props.track.artist}
             </Card.Text>
           </Card.Body>
 
