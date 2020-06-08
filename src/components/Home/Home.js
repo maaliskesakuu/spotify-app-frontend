@@ -32,7 +32,7 @@ class Home extends Component {
     //let tokens = hash.access_token;
     //  const url = "https://api.spotify.com/v1/me/player/recently-played?limit=10";
     const tokens =
-      "BQBHGxAte2iRNZuUyIDfSoM1-cZFPueJ4CvygaDJYqsrWV_MHbU8vqkDG10W3zjsdziY15NjvE-EDZB4E_2camIkUvp2PzA3o4Alo-wHJvsdP0I27RnbgsVaGAJfI0DAPxu4glFIUL5H4_kYQAnLdBIa3-bQfNOwsLexVxZ-c6blRqLPErjpUyc";
+      "BQD48metnZrcpHrqWcXkPG-B33Niha5hiaczbwlvUW3AXlID0AmFEwRuTpGNpSj0J0dfWZ15gifz-CCqnJ90DIJrcOlzt6FkAaK79GZ1EZEJwPYylk6oGGu_9HueApYpcX3jX1XnOicjFP71707ESPw2Udp66AS6j0LJoW_m3MlXkkGwz8y1Txk";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=5`, {
       method: "GET",
@@ -50,8 +50,8 @@ class Home extends Component {
         })
       );
 
-    // refresh the song playing
-    //setTimeout(() => this.getCurrentlyPlaying(tokens), 7500);
+    // // refresh the song playing
+    // setTimeout(() => this.getRecentlyPlayed(tokens), 7500);
   };
 
   //play music on hover
@@ -69,13 +69,14 @@ class Home extends Component {
   //pause music when mouse is out of card
   pauseMusic = () => {
     this.state.audio.pause();
-    this.setState({ audio: new Audio("") });
+    // this.setState({ audio: new Audio("") });
   };
 
   render() {
     return (
       <div>
         <h4>Recently played</h4>
+
         <div className="_container">
           {console.log(this.state.musicHistory)}
 
@@ -92,7 +93,7 @@ class Home extends Component {
                   />
                 </div>
                 <div className="titles">
-                  <p>
+                  <p className="tracks">
                     {music.track.name} | {music.track.artists[0].name}
                   </p>
                 </div>

@@ -1,6 +1,79 @@
 .container {
+  padding-top: 2rem;
+  padding-bottom: 8rem;
+  width: 800px;
+  height: 650px;
+  background: rgba(1, 22, 51, 0.6);
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 15rem;
+  border-radius: 4px;
+}
+/* 
+.background,
+html {
+  background-image: url("https://source.unsplash.com/vddccTqwal8/2400x1600");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+.background {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10rem;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(95, 193, 243, 0.7),
+    rgba(130, 233, 247, 0.8),
+    rgb(95, 193, 243, 0.9),
+    rgb(79, 117, 229, 0.7)
+  );
+  background-size: cover;
 }
+.login {
+  text-decoration: none;
+  color: rgb(0, 18, 54);
+  font-family: "Roboto", sans-serif;
+  font-size: large;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  border: none;
+  background-color: aliceblue;
+  border-radius: 20px;
+  margin-bottom: 5rem;
+}
+button:hover {
+  background-color: rgb(248, 206, 128);
+}
+video {
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.ico,
+h3 {
+  color: rgb(247, 190, 86);
+}
+h1,
+h2 {
+  color: aliceblue;
+}
+p {
+  color: rgb(248, 206, 128);
+}
+
+/* @media only screen and (max-width: 400px) {
+  .container {
+    width: 50px;
+    height: 200px;
+  }
+} */

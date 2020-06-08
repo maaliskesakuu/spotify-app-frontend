@@ -1,11 +1,3 @@
-require("dotenv").config({ path: "config.js" });
-// const Datastore = require("nedb");
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const cors = require("cors");
-// const cron = require("node-cron");
-// const Pusher = require("pusher");
-
 /* get the hash of the url (when the user grants access the final url contains a hash fragment) */
 const hash = window.location.hash
   .substring(1)

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { authEndpoint, clientId, redirectUri, scopes } from "../../config";
 import hash from "../../hash";
-//import Player from "./Player";
 import "./App.css";
 import Navbar from "../Navbar/Navbar";
+import Video from "../Video/snow.mp4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../FontawesomeIcons/icons";
 
 class App extends Component {
   // testing to show what is being played
@@ -35,61 +37,53 @@ class App extends Component {
     }
   }
 
-  // testing to show what is being played
-  // getRecentlyPlayed(token) {
-  //const url = `https://api.spotify.com/v1/me/player/recently-played?limit=10`;
-  //console.log(url);
-  // const tokens =
-  //   "BQDXhJPcgQrEZpCbwJSwihZWuKiRzReVnx6gn78kb0JalmBk_zPm4B44xQq6Vj6WlJnEs30_cKKlZ3WobWAQqCJY-iYK04ER4hQlNtYwvT5DeYQ76NrlKaiFRbUVf5L0q7FXGeylOlfLhEJOiecIVGcCZo4Nq1rJY8oXj-rwe6Q5";
-  // Make a call using the token
-  // fetch(url, {
-  //   method: "GET",
-  //   headers: {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer ${tokens}`,
-  //   },
-  // beforeSend: (xhr) => {
-  //   xhr.setRequestHeader("Authorization", "Bearer " + tokens);
-  // },
-  // success: (data) => {
-  // this.setState({
-  //   item: data.item,
-  //   is_playing: data.is_playing,
-  // });
-  // },
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  //   .then((data) => data.item)
-  //   .catch((error) => console.log(error));
-  // refresh the song playing
-  //setTimeout(() => this.getCurrentlyPlaying(tokens), 7500);
-  // }
-  // testing to show what is being played ends here
-
   render() {
     return (
       <div>
-        <header>
+        <div className="background">
           {!this.state.token && (
             // this is the call to the Spotify Account Service
+
             <div className="container">
-              <a
-                href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                  "%20"
-                )}&response_type=token&show_dialog=true`}
-              >
-                Login to Spotify
-              </a>
+              <video autoPlay loop muted>
+                <source src={Video} type="Video/mp4" />
+              </video>
+              <h1>Welcome</h1>
+              <img src="spotify.png" alt="logo" style={{ width: "100px" }} />
+              <h2>We made your music life much easier</h2>
+              <div className="icon_wrap">
+                <FontAwesomeIcon icon="play" className="ico" />
+                <h3>Play </h3>
+                <p>music based on your activity</p>
+                <br />
+                <FontAwesomeIcon icon="mouse-pointer" className="ico" />
+                <h3>Hover</h3>
+                <p>to get a glimpse of your tracks</p>
+                <br />
+                <FontAwesomeIcon icon="plus" className="ico" />
+                <h3>Add</h3>
+                <p> tracks to your library</p>
+              </div>
+              <br />
+
+              <button className="btn">
+                <a
+                  className="login"
+                  href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+                    "%20"
+                  )}&response_type=token&show_dialog=true`}
+                >
+                  Get started!
+                </a>
+              </button>
             </div>
           )}
-          {this.state.token && (
-            // When you have a token show this
-            <Navbar item={this.state.item} is_playing={this.state.is_playing} />
-            // <Player item={this.state.item} is_playing={this.state.is_playing} />
-          )}
-        </header>
+        </div>
+        {this.state.token && (
+          // When you have a token show this
+          <Navbar item={this.state.item} is_playing={this.state.is_playing} />
+          // <Player item={this.state.item} is_playing={this.state.is_playing} />
+        )}
       </div>
     );
   }
