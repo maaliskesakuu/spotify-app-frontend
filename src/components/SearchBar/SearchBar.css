@@ -4,20 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
 .SearchBar input {
-  width: 287px;
-  padding: 0.88rem 0;
+  width: 17rem;
+  padding: 0.5rem;
   border: 1px solid #000;
-  border-radius: 3px;
+  border-radius: 0.25rem;
   margin-bottom: 1rem;
   color: #010c3f;
-  text-align: center;
   font-size: 1rem;
-}
-
-.SearchBar input:focus {
-  outline: none;
 }

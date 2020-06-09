@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./SearchBar.css";
+import './SearchBar.css';
 
 import Button from 'react-bootstrap/Button';
 
@@ -38,7 +38,9 @@ class SearchBar extends Component {
           onChange={this.handleTermChange}
           onKeyUp={this.handleEnter}
         ></input>
-        <Button variant="success" onClick={this.search}>Search</Button>
+        <Button variant="success" onClick={this.search}>
+          Search
+        </Button>
       </div>
     );
   }
