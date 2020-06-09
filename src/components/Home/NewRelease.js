@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 
+import * as constants from '../../constants/constants';
+
 class NewRelease extends Component {
   constructor() {
     super();
@@ -32,7 +34,7 @@ class NewRelease extends Component {
   }
 
   getNewRelease = token => {
-    fetch('https://api.spotify.com/v1/browse/new-releases?limit=4', {
+    fetch(constants.API + 'browse/new-releases?limit=4', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

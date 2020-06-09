@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 
+import * as constants from '../../constants/constants';
+
 class Home extends Component {
   constructor() {
     super();
@@ -34,7 +36,7 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch('https://api.spotify.com/v1/me/player/recently-played?limit=4', {
+    fetch(constants.API + 'me/player/recently-played?limit=4', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

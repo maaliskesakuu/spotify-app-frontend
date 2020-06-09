@@ -21,25 +21,36 @@ const NavBar = () => {
           <img
             src="/logoMusic.png"
             alt="app's logo"
-            style={{ width: '8vw' }}
+            style={{ width: '8vw', cursor: "pointer" }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-        <Nav>
-          <LinkContainer to="/">            
-            <NavItem className="mr-5"><FontAwesomeIcon icon='home'></FontAwesomeIcon> Home</NavItem>
+        <Nav style={{cursor: "pointer"}}>
+          <LinkContainer to="/">
+            <NavItem className="mr-5">
+              <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
+            </NavItem>
           </LinkContainer>
           <LinkContainer to="/activities">
-            <NavItem className="mr-5"><FontAwesomeIcon icon='plus-circle'></FontAwesomeIcon> Create Playlist</NavItem>
+            <NavItem className="mr-5">
+              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
+              Playlist
+            </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">
-            <NavItem className="mr-5"><FontAwesomeIcon icon='history'></FontAwesomeIcon> History Playlist</NavItem>
+            <NavItem className="mr-5">
+              <FontAwesomeIcon icon="history"></FontAwesomeIcon> History
+              Playlist
+            </NavItem>
           </LinkContainer>
           <LinkContainer to="/user">
-            <NavItem className="mr-5"><FontAwesomeIcon icon='user'></FontAwesomeIcon> Profile</NavItem>
+            <NavItem className="mr-5">
+              <FontAwesomeIcon icon="user"></FontAwesomeIcon> Profile
+            </NavItem>
           </LinkContainer>
+          <a href="//accounts.spotify.com/logout">Log out</a>
         </Nav>
       </Navbar.Collapse>
       {/* <div> 

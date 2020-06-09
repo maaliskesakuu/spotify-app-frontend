@@ -11,6 +11,9 @@ import Button from 'react-bootstrap/Button';
 
 import hash from '../../hash';
 
+import * as constants from '../../constants/constants';
+// return constants.API + `/search?q=${this.state.query}&app_id=${constants.APP_ID}
+
 const activities = [
   {
     id: 1,
@@ -67,7 +70,7 @@ class Activities extends Component {
     let accessToken = hash.access_token;
 
     fetch(
-      `https://api.spotify.com/v1/search?type=track,artist&q=${term}&limit=20`,
+      constants.API + `search?type=track,artist&q=${term}&limit=20`,
       {
         headers: {
           Accept: 'application/json',
@@ -103,7 +106,7 @@ class Activities extends Component {
   getMusic() {
     let token = hash.access_token;
     fetch(
-      `https://api.spotify.com/v1/browse/categories/${this.state.selectedCategory}/playlists?limit=2`, //API call to get playlists with category
+      constants.API + `browse/categories/${this.state.selectedCategory}/playlists?limit=2`, //API call to get playlists with category
       {
         headers: {
           Accept: 'application/json',
@@ -130,7 +133,7 @@ class Activities extends Component {
       .then(ID_array => {
         for (var i = 0; i < ID_array.length; i++) {
           fetch(
-            `https://api.spotify.com/v1/playlists/${ID_array[i]}/tracks?limit=10`, //API call with playlists IDs to get tracks
+            constants.API + `playlists/${ID_array[i]}/tracks?limit=10`, //API call with playlists IDs to get tracks
             {
               headers: {
                 Accept: 'application/json',
@@ -218,12 +221,12 @@ class Activities extends Component {
     let userId;
     let playlist = this.state.playlistName;
 
-    fetch('https://api.spotify.com/v1/me', { headers: headers })
+    fetch(constants.API + 'me', { headers: headers })
       .then(response => response.json())
       .then(jsonResponse => {
         userId = jsonResponse.id;
         //post the data and create the playlist
-        fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        fetch(constants.API + `users/${userId}/playlists`, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -240,7 +243,7 @@ class Activities extends Component {
             const playlistId = jsonResponse.id;
 
             fetch(
-              `https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,
+              constants.API + `users/${userId}/playlists/${playlistId}/tracks`,
               {
                 method: 'POST',
                 headers: {
@@ -280,12 +283,12 @@ class Activities extends Component {
     let playlist = this.state.playlistName;
     let playlistDesc = this.state.playlistDescription;
     //get userId
-    fetch('https://api.spotify.com/v1/me', { headers: headers })
+    fetch(constants.API + 'me', { headers: headers })
       .then(response => response.json())
       .then(jsonResponse => {
         userId = jsonResponse.id;
         //post the data and create the playlist
-        fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        fetch(constants.API + `users/${userId}/playlists`, {
           method: 'POST',
           headers: {
             Accept: 'application/json',

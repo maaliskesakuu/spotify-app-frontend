@@ -3,6 +3,8 @@ import hash from '../../hash';
 
 import Table from 'react-bootstrap/Table';
 
+import * as constants from '../../constants/constants';
+
 class User extends Component {
   constructor() {
     super();
@@ -15,7 +17,7 @@ class User extends Component {
       spotifyUrl: '',
       email: '',
       product: '',
-      explicitContent: ''
+      type: '',
     };
     this.getUserData = this.getUserData.bind(this);
   }
@@ -33,7 +35,7 @@ class User extends Component {
 
   // fetching user data
   getUserData = token => {
-    fetch('https://api.spotify.com/v1/me/', {
+    fetch(constants.API + 'me/', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -53,7 +55,7 @@ class User extends Component {
           spotifyUrl: jsonResponse.external_urls.spotify,
           email: jsonResponse.email,
           product: jsonResponse.product,
-          explicitContent: jsonResponse.explicit_content.filter_enabled
+          type: jsonResponse.type,
         });
       });
   };
@@ -62,65 +64,65 @@ class User extends Component {
     return (
       <div>
         <h2 className="head">User Data</h2>
-      <Table responsive bordered hover>
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <td>{this.state.displayName}</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th>Email</th>
-            <td>{this.state.email}</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th>Country</th>
-            <td>{this.state.country}</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th>User id</th>
-            <td>{this.state.userId}</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th>Followers</th>
-            <td>{this.state.followers}</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th>Spotify URI</th>
-            <td>
-              {' '}
-              <a
-                href={this.state.spotifyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {this.state.spotifyUrl}
-              </a>
-            </td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th>Subscription level</th>
-            <td>{this.state.product}</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th>Explicit content filter</th>
-            <td>{this.state.explicitContent}</td>
-          </tr>
-        </tbody>
-      </Table>
+        <Table responsive bordered hover>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <td>{this.state.displayName}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>Email</th>
+              <td>{this.state.email}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>Country</th>
+              <td>{this.state.country}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>User id</th>
+              <td>{this.state.userId}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>Followers</th>
+              <td>{this.state.followers}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>Spotify URI</th>
+              <td>
+                {' '}
+                <a
+                  href={this.state.spotifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {this.state.spotifyUrl}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>Subscription level</th>
+              <td>{this.state.product}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>Type</th>
+              <td>{this.state.type}</td>
+            </tr>
+          </tbody>
+        </Table>
       </div>
     );
   }
