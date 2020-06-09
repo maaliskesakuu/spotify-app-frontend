@@ -21,13 +21,13 @@ const NavBar = () => {
           <img
             src="/logoMusic.png"
             alt="app's logo"
-            style={{ width: '8vw' }}
+            style={{ width: '8vw', cursor: "pointer" }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-        <Nav>
+        <Nav style={{cursor: "pointer"}}>
           <LinkContainer to="/">
             <NavItem className="mr-5">
               <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home

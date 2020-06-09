@@ -63,9 +63,9 @@ class Playlist extends Component {
                 create and save to Spotify
               </Button>
             </Form>
-            <Button variant="light" id="closePopup" onClick={this.closePopup}>
+            {/* <Button variant="light" id="closePopup" onClick={this.closePopup}>
               X
-            </Button>
+            </Button> */}
           </Col>
         </Container>
       </div>
