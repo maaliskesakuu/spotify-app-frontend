@@ -1,16 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 
 .container {
+  padding-top: 2rem;
+  padding-bottom: 8rem;
+  width: 800px;
+  height: 650px;
+  background: rgba(253, 254, 255, 0.8);
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 15rem;
+  border-radius: 4px;
+}
+
+.background {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10rem;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(95, 193, 243, 0.7),
+    rgb(241, 173, 46, 0.2),
+    rgb(95, 193, 243, 0.5),
+    rgb(95, 193, 243, 0.3),
+    rgba(124, 63, 168, 0.4),
+    rgba(124, 63, 168, 0.9)
+  );
+  background-size: cover;
 }
 
-header, body, main {
-  font-family: 'Montserrat', sans-serif;
+.login {
+  text-decoration: none;
+  color: aliceblue;
+  font-family: 'Muli', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
 }
+
+.login:hover {
+  color: rgba(39, 3, 65);
+}
+
+.btn {
+  width: 150px;
+  height: 50px;
+}
+
+.btn:hover {
+  background-color: rgb(36, 23, 0, 0.2); 
+}
+
+video {
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.ico,
+h3 {
+  line-height: 1px;
+  color: rgb(139, 0, 238, 0.5);
+}
+
+h2 {
+  color: rgb(126, 2, 214);
+  font-family: 'Muli', sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-family: 'Muli', sans-serif;
+  font-size: 2.5rem;
+  color: rgb(126, 2, 214);
+}
+
+p {
+  color: rgb(139, 0, 238, 0.8);
+}
+
+/* header, body, main {
+  font-family: 'Montserrat', sans-serif;
+} */
 
 /* .App {
   height: 100%;

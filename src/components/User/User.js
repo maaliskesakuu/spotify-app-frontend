@@ -62,9 +62,9 @@ class User extends Component {
 
   render() {
     return (
-      <div>
-        <h2 className="head">User Data</h2>
-        <Table responsive bordered hover>
+      <div style={{height: "100vh"}}>
+        <h2 className="my-3 head">User Data</h2>
+        <Table responsive bordered hover variant="dark">
           <tbody>
             <tr>
               <th>Name</th>

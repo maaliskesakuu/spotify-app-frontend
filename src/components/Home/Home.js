@@ -36,7 +36,7 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch(constants.API + 'me/player/recently-played?limit=5', {
+    fetch(constants.API + 'me/player/recently-played?limit=10', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -76,7 +76,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h4>Recently played</h4>
+        <h2 className='my-3' style={{ textAlign: "center"}}>Recently played</h2>
         <CardDeck>
           {this.state.musicHistory.map((music, index) => {
             return (

@@ -72,7 +72,7 @@ class NewRelease extends Component {
   render() {
     return (
       <div>
-        <h4>New</h4>
+        <h2 className='my-3' style={{ textAlign: "center"}}>New releases</h2>
         <CardDeck>
           {this.state.newRelease.map((songs, index) => {
             return (

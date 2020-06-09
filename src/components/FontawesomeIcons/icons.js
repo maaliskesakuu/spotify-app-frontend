@@ -6,7 +6,10 @@ import {
   faPlusCircle,
   faPlayCircle,
   faUser,
-  faMusic
+  faMusic, 
+  faSearch,
+  faMousePointer,
+  faPlus
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHome, faHistory, faPlusCircle, faPlayCircle, faUser, faMusic);
+library.add(faHome, faHistory, faPlusCircle, faPlayCircle, faUser, faMusic, faSearch, faMousePointer, faPlus);
