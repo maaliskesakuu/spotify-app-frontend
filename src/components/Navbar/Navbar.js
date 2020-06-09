@@ -35,8 +35,7 @@ const NavBar = () => {
           </LinkContainer>
           <LinkContainer to="/activities">
             <NavItem className="mr-5">
-              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
-              Playlist
+              <FontAwesomeIcon icon="music"></FontAwesomeIcon> Recent and New
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">

@@ -50,7 +50,8 @@ class Home extends Component {
         this.setState({
           musicHistory: data,
         })
-      ).catch(error => {
+      )
+      .catch(error => {
         console.log(error);
       });
   };

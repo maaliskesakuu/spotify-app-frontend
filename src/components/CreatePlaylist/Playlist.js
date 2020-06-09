@@ -30,13 +30,15 @@ class Playlist extends Component {
 
   render() {
     return (
-      <div>
-         <h2 style={{ textAlign: 'center' }} className="mt-5">Want to make a playlist with friends?</h2>
+      <div style={{ textAlign: 'center' }}>
+        <h2 className="my-5">Want to make a playlist with friends?</h2>
+        <p>Is there a party coming and you want to make a playlist with your friends? <br />
+        Make a collaborative playlist and share its Spotify URI with them so that they can add their favorite tracks, too!</p>
         <Container>
           <Col md={{ span: 8}} className="popup">
             <Form className="mx-5 px-lg-5 px-xl-5">
               <Form.Group className="mt-3">
-                <Form.Label>Create a new, collaborative playlist</Form.Label>
+                <Form.Label>Create a collaborative playlist</Form.Label>
                 <Form.Control
                   type="text"
                   name="title"
@@ -60,7 +62,7 @@ class Playlist extends Component {
                 className="mb-3"
                 onClick={this.props.onSave}
               >
-                create and save to Spotify
+                Create and save to Spotify
               </Button>
             </Form>
             {/* <Button variant="light" id="closePopup" onClick={this.closePopup}>

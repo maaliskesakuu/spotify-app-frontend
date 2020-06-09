@@ -11,9 +11,9 @@ const Routers = () => {
     <Router>
       <NavBar />
       <Switch>
-        <Route path="/" exact component={Home}></Route>
+        <Route path="/" exact component={Activities}></Route>
         <Route path="/history" exact component={History}></Route>
-        <Route path="/activities" component={Activities}></Route>
+        <Route path="/activities" component={Home}></Route>
         <Route path="/user" component={User}></Route>
       </Switch>
     </Router>
