@@ -33,7 +33,7 @@ class History extends Component {
   // fetching data of recently played songs
   getRecentlyPlayed = () => {
     const tokens =
-      "BQD48metnZrcpHrqWcXkPG-B33Niha5hiaczbwlvUW3AXlID0AmFEwRuTpGNpSj0J0dfWZ15gifz-CCqnJ90DIJrcOlzt6FkAaK79GZ1EZEJwPYylk6oGGu_9HueApYpcX3jX1XnOicjFP71707ESPw2Udp66AS6j0LJoW_m3MlXkkGwz8y1Txk";
+      "BQBHq6TtsjhlWIM9vunWXDFTIsieF8qt5yobvWVuk_b4L_vRFUBjrNHgVNqFqHr2rHEGTUcsvroD_mBjv88acDvuK91Ju2GcPHAhHfktk0H3MXvK54BoLFSN19GDo2p-nLk0j-lnRgNAPZd5R7VIGhJREZsLolZLvgMRTyui0rtjoxd0ink95As";
     // Fetching the track/image name
     fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
       // method: "GET",

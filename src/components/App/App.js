@@ -48,12 +48,12 @@ class App extends Component {
               <video autoPlay loop muted>
                 <source src={Video} type="Video/mp4" />
               </video>
-              <h1>Welcome</h1>
-              <img src="spotify.png" alt="logo" style={{ width: "100px" }} />
+              <h1>Welcome </h1>
+              <img src="logo.png" alt="logo" style={{ width: "120px" }} />
               <h2>We made your music life much easier</h2>
               <div className="icon_wrap">
-                <FontAwesomeIcon icon="play" className="ico" />
-                <h3>Play </h3>
+                <FontAwesomeIcon icon="search" className="ico" />
+                <h3>Search </h3>
                 <p>music based on your activity</p>
                 <br />
                 <FontAwesomeIcon icon="mouse-pointer" className="ico" />
@@ -61,8 +61,8 @@ class App extends Component {
                 <p>to get a glimpse of your tracks</p>
                 <br />
                 <FontAwesomeIcon icon="plus" className="ico" />
-                <h3>Add</h3>
-                <p> tracks to your library</p>
+                <h3>Create</h3>
+                <p> a your own library</p>
               </div>
               <br />
 

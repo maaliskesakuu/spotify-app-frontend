@@ -3,7 +3,7 @@
   padding-bottom: 8rem;
   width: 800px;
   height: 650px;
-  background: rgba(1, 22, 51, 0.6);
+  background: rgba(253, 254, 255, 0.8);
   text-align: center;
   margin-top: 5rem;
   margin-bottom: 15rem;
@@ -24,29 +24,33 @@ html {
   background-image: linear-gradient(
     to bottom,
     rgb(95, 193, 243, 0.7),
-    rgba(130, 233, 247, 0.8),
-    rgb(95, 193, 243, 0.9),
-    rgb(79, 117, 229, 0.7)
+    rgb(241, 173, 46, 0.2),
+    rgb(95, 193, 243, 0.5),
+    rgb(95, 193, 243, 0.3),
+    rgba(124, 63, 168, 0.4),
+    rgba(124, 63, 168, 0.9)
   );
   background-size: cover;
 }
 .login {
   text-decoration: none;
-  color: rgb(0, 18, 54);
-  font-family: "Roboto", sans-serif;
-  font-size: large;
+  color: aliceblue;
+  font-size: larger;
+}
+.login:hover {
+  color: rgba(39, 3, 65);
 }
 
 button {
-  width: 200px;
+  width: 150px;
   height: 50px;
   border: none;
-  background-color: aliceblue;
+  background-color: rgb(247, 161, 1);
   border-radius: 20px;
   margin-bottom: 5rem;
 }
 button:hover {
-  background-color: rgb(248, 206, 128);
+  background-color: rgb(36, 23, 0, 0.2);
 }
 video {
   position: fixed;
@@ -61,14 +65,16 @@ video {
 
 .ico,
 h3 {
-  color: rgb(247, 190, 86);
+  line-height: 1px;
+  color: rgba(39, 3, 65);
 }
 h1,
 h2 {
-  color: aliceblue;
+  color: rgb(231, 130, 0, 0.8);
 }
+
 p {
-  color: rgb(248, 206, 128);
+  color: rgba(39, 3, 65, 0.7);
 }
 
 /* @media only screen and (max-width: 400px) {
