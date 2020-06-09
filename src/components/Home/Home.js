@@ -36,7 +36,7 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch(constants.API + 'me/player/recently-played?limit=4', {
+    fetch(constants.API + 'me/player/recently-played?limit=5', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

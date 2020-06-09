@@ -34,7 +34,7 @@ class NewRelease extends Component {
   }
 
   getNewRelease = token => {
-    fetch(constants.API + 'browse/new-releases?limit=4', {
+    fetch(constants.API + 'browse/new-releases?limit=5', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
