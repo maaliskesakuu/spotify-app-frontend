@@ -1,15 +1,20 @@
+import env from './env';
+
 //endpoint of the Spotify Accounts service
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
-// our app's client id
-export const clientId = 'cc0b23ed0ef842bdba9556fd9aad1863';
+// // our app's client id
+export const clientId = env.SPOTIFY_CLIENT_ID;
 
 // the address to which the Spotify Accounts service redirects
-export const redirectUri = 'http://localhost:3000/callback';
+export const redirectUri = 'http://localhost:3000/';
 
 // user must authorize access to the data defined in the scopes
+// do not remove playlist-modify-*
 export const scopes = [
-  'user-top-read',
-  'user-read-currently-playing',
-  'user-read-playback-state',
+  'user-read-private',
+  'user-read-email',
+  'user-read-recently-played',
+  'playlist-modify-public',
+  'playlist-modify-private',
 ];

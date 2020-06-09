@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem;
+}
+
+header, body, main {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* .App {
+  height: 100%;
+  background-image: url("https://source.unsplash.com/8e0EHPUx3Mo");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+ }   */

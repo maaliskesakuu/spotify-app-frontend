@@ -1,0 +1,14 @@
+.popup {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  min-height: 25vh;
+  display: grid;
+}
+
+/* #closePopup {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+} */
