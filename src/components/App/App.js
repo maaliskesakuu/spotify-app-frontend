@@ -50,7 +50,7 @@ class App extends Component {
               </video>
               <h1>Welcome </h1>
               <img src="logo.png" alt="logo" style={{ width: "120px" }} />
-              <h2>We made your music life much easier</h2>
+              <h2>We made your music life much easier.</h2>
               <div className="icon_wrap">
                 <FontAwesomeIcon icon="search" className="ico" />
                 <h3>Search </h3>
@@ -62,7 +62,7 @@ class App extends Component {
                 <br />
                 <FontAwesomeIcon icon="plus" className="ico" />
                 <h3>Create</h3>
-                <p> a your own library</p>
+                <p> your own library</p>
               </div>
               <br />
 

@@ -35,7 +35,9 @@ html {
 .login {
   text-decoration: none;
   color: aliceblue;
-  font-size: larger;
+  font-family: "Muli", sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
 }
 .login:hover {
   color: rgba(39, 3, 65);
@@ -45,7 +47,7 @@ button {
   width: 150px;
   height: 50px;
   border: none;
-  background-color: rgb(247, 161, 1);
+  background-color: rgb(231, 130, 0);
   border-radius: 20px;
   margin-bottom: 5rem;
 }
@@ -66,15 +68,22 @@ video {
 .ico,
 h3 {
   line-height: 1px;
-  color: rgba(39, 3, 65);
+  color: rgb(139, 0, 238, 0.5);
 }
-h1,
+
 h2 {
-  color: rgb(231, 130, 0, 0.8);
+  color: rgb(126, 2, 214);
+  font-family: "Muli", sans-serif;
+  font-weight: 600;
+}
+h1 {
+  font-family: "Muli", sans-serif;
+  font-size: 2.5rem;
+  color: rgb(126, 2, 214);
 }
 
 p {
-  color: rgba(39, 3, 65, 0.7);
+  color: rgb(139, 0, 238, 0.8);
 }
 
 /* @media only screen and (max-width: 400px) {
