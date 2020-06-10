@@ -1,6 +1,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 
-.container {
+#container {
   padding-top: 2rem;
   padding-bottom: 8rem;
   width: 800px;
@@ -40,12 +40,12 @@
   color: rgba(39, 3, 65);
 }
 
-.btn {
+#btn {
   width: 150px;
   height: 50px;
 }
 
-.btn:hover {
+#btn:hover {
   background-color: rgb(36, 23, 0, 0.2); 
 }
 
@@ -66,11 +66,12 @@ h3 {
   color: rgb(139, 0, 238, 0.5);
 }
 
-h2 {
+#container > h2 {
   color: rgb(126, 2, 214);
   font-family: 'Muli', sans-serif;
   font-weight: 600;
 }
+
 
 h1 {
   font-family: 'Muli', sans-serif;
@@ -78,7 +79,7 @@ h1 {
   color: rgb(126, 2, 214);
 }
 
-p {
+#container > p {
   color: rgb(139, 0, 238, 0.8);
 }
 

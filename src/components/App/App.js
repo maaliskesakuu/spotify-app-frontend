@@ -31,59 +31,61 @@ class App extends Component {
 
   render() {
     return (
-      <div className="background">
-        <header>
-          {!this.state.token && (
-            // this is the call to the Spotify Account Service
-            <div className="container">
-              <video autoPlay loop muted>
-                <source src={Video} type="Video/mp4" />
-              </video>
-              <h1>Welcome</h1>
-              <img src="logoMusic.png" alt="logo" style={{ width: '120px' }} />
-              <h2>We made your music life much easier.</h2>
-              <div className="icon_wrap">
-                <FontAwesomeIcon icon="search" className="ico" />
-                <h3>Search</h3>
-                <p>music based on your activity</p>
-                <br />
-                <FontAwesomeIcon icon="mouse-pointer" className="ico" />
-                <h3>Hover</h3>
-                <p>to get a glimpse of your tracks</p>
-                <br />
-                <FontAwesomeIcon icon="plus" className="ico" />
-                <h3>Create</h3>
-                <p>your own library</p>
-              </div>
+      <>
+        <div className="background">
+          <header>
+            {!this.state.token && (
+              // this is the call to the Spotify Account Service
+              <div id="container">
+                <video autoPlay loop muted>
+                  <source src={Video} type="Video/mp4" />
+                </video>
+                <h1>Welcome</h1>
+                <img
+                  src="logoMusic.png"
+                  alt="logo"
+                  style={{ width: '120px' }}
+                />
+                <h2>We made your music life much easier.</h2>
+                <div className="icon_wrap">
+                  <FontAwesomeIcon icon="search" className="ico" />
+                  <h3>Search</h3>
+                  <p>music based on your activity</p>
+                  <br />
+                  <FontAwesomeIcon icon="mouse-pointer" iclassName="ico" />
+                  <h3>Hover</h3>
+                  <p>to get a glimpse of your tracks</p>
+                  <br />
+                  <FontAwesomeIcon icon="plus" className="ico" />
+                  <h3>Create</h3>
+                  <p>your own library</p>
+                </div>
 
-              <button
-                className="btn"
-                style={{
-                  border: 'none',
-                  backgroundColor: 'rgb(231, 130, 0)',
-                  borderRadius: '20px',
-                  marginBottom: '5rem',
-                }}
-              >
-                <a
-                  className="login"
-                  href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                    '%20'
-                  )}&response_type=token&show_dialog=true`}
-                  style={{ color: 'white' }}
+                <button
+                  id="btn"
+                  style={{
+                    border: 'none',
+                    backgroundColor: 'rgb(231, 130, 0)',
+                    borderRadius: '20px',
+                    marginBottom: '5rem',
+                  }}
                 >
-                  Get started!
-                </a>
-              </button>
-            </div>
-          )}
-
-          {this.state.token && (
-            //When you have a token show this
-            <Routers />
-          )}
-        </header>
-      </div>
+                  <a
+                    className="login"
+                    href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+                      '%20'
+                    )}&response_type=token&show_dialog=true`}
+                    style={{ color: 'white' }}
+                  >
+                    Get started!
+                  </a>
+                </button>
+              </div>
+            )}
+          </header>
+        </div>
+        <main>{this.state.token && <Routers />}</main>
+      </>
     );
   }
 }
