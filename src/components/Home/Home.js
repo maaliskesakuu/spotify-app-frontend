@@ -6,6 +6,7 @@ import hash from '../../hash';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
+import Container from 'react-bootstrap/Container';
 
 import * as constants from '../../constants/constants';
 
@@ -76,28 +77,34 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h2 className='my-5' style={{ textAlign: "center"}}>Recently played</h2>
-        <CardDeck>
-          {this.state.musicHistory.map((music, index) => {
-            return (
-              <Col md={3} key={index}>
-                <Card style={{ margin: '10px' }} key={index}>
-                  <Card.Img
-                    src={music.track.album.images[0].url}
-                    alt="_image"
-                    onMouseOver={() => this.playMusic(music.track.preview_url)}
-                    onMouseOut={this.pauseMusic}
-                  />
-                  <Card.Body>
-                    <Card.Text>
-                      {music.track.name} | {music.track.artists[0].name}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
-        </CardDeck>
+        <h2 className="my-5" style={{ textAlign: 'center' }}>
+          Recently played
+        </h2>
+        <Container>
+          <CardDeck>
+            {this.state.musicHistory.map((music, index) => {
+              return (
+                <Col md={3} key={index}>
+                  <Card style={{ margin: '10px' }} key={index}>
+                    <Card.Img
+                      src={music.track.album.images[0].url}
+                      alt="_image"
+                      onMouseOver={() =>
+                        this.playMusic(music.track.preview_url)
+                      }
+                      onMouseOut={this.pauseMusic}
+                    />
+                    <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
+                      <Card.Text>
+                        {music.track.name} | {music.track.artists[0].name}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </CardDeck>
+        </Container>
         {/* <div className="_container">
           {this.state.musicHistory.map((music, index) => {
             return (

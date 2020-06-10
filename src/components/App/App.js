@@ -52,7 +52,7 @@ class App extends Component {
                   <h3>Search</h3>
                   <p>music based on your activity</p>
                   <br />
-                  <FontAwesomeIcon icon="mouse-pointer" iclassName="ico" />
+                  <FontAwesomeIcon icon="mouse-pointer" className="ico" />
                   <h3>Hover</h3>
                   <p>to get a glimpse of your tracks</p>
                   <br />
@@ -75,7 +75,7 @@ class App extends Component {
                     href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
                       '%20'
                     )}&response_type=token&show_dialog=true`}
-                    style={{ color: 'white' }}
+                    style={{ color: "black" }}
                   >
                     Get started!
                   </a>

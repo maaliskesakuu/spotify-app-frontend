@@ -279,7 +279,7 @@ class Activities extends Component {
       return (
         <Button
           key={activity.category_id}
-          style={{ margin: '10px' }}
+          style={{ margin: '1.3rem', width: '10rem', padding: "1rem" }}
           onClick={this.activityButtonClicked}
           value={activity.category_id}
         >
@@ -290,7 +290,7 @@ class Activities extends Component {
 
     return (
       <div>
-        <h2 style={{ textAlign: 'center' }} className="mt-5">
+        <h2 style={{ textAlign: 'center' }} className="my-5">
           What are you in the mood for?
         </h2>
         <Container>

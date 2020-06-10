@@ -35,7 +35,7 @@ class Playlist extends Component {
   //create an empty, collaborative playlist
   savePlaylist(e) {
     e.preventDefault();
-    
+
     let accessToken = hash.access_token;
     let userId;
     let playlist = this.state.playlistName;
@@ -77,16 +77,27 @@ class Playlist extends Component {
 
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
-        <h2 className="my-5">Want to make a playlist with friends?</h2>
-        <p>
-          Is there a party coming and you want to make a playlist with your
-          friends? <br />
-          Make a collaborative playlist and share its Spotify URI with them so
-          that they can add their favorite tracks, too!
-        </p>
-        <Container>
-          <Col md={{ span: 8 }} className="popup">
+      <>
+        <div className="mx-3" style={{ textAlign: 'center' }}>
+          <h2 className="my-5">Want to make a playlist with friends?</h2>
+          <p>
+            Is there a party coming and you want to make a playlist with your
+            friends?
+          </p>
+          <img
+            src="/heidi-fin-H4fYXZ1hyco-unsplash.jpg"
+            alt="computer with Spotify"
+            className="mb-3"
+            style={{ width: "18rem", borderRadius: "5px" }}
+          ></img>
+          {/* Photo by Heidi Fin on Unsplash */}
+          <p>
+            Make a collaborative playlist and share its Spotify URI with them so
+            they can add their favorite tracks, too!
+          </p>
+        </div>
+        <Container className="my-3">
+          <Col md={{ span: 8, offset: 2 }} className="popup">
             <Form className="mx-5 px-lg-5 px-xl-5">
               <Form.Group className="mt-3">
                 <Form.Label>Create a collaborative playlist</Form.Label>
@@ -112,13 +123,18 @@ class Playlist extends Component {
                 variant="success"
                 className="mb-3"
                 onClick={this.savePlaylist}
+                style={{
+                  border: 'none',
+                  color: 'black',
+                  backgroundColor: 'white',
+                }}
               >
                 Save to Spotify
               </Button>
             </Form>
           </Col>
         </Container>
-      </div>
+      </>
     );
   }
 }
