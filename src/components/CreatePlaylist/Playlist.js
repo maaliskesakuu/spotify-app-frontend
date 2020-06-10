@@ -79,29 +79,35 @@ class Playlist extends Component {
     return (
       <>
         {/* <div className="mx-3"> */}
-          <Container>
-          <h2 className="my-5" style={{ textAlign: 'center' }}>Want to make a playlist with friends?</h2>
+        <Container>
+          <h2 className="my-5" style={{ textAlign: 'center' }}>
+            Want to make a playlist with friends?
+          </h2>
           <img
             src="/heidi-fin-H4fYXZ1hyco-unsplash.jpg"
             alt="computer with Spotify"
-            className="mb-5 mr-3"
-            style={{ width: '18rem', borderRadius: '5px', float: "left" }}
+            className="mb-5 ml-3"
+            style={{ width: '18rem', borderRadius: '5px', float: 'right' }}
           ></img>
           {/* Photo by Heidi Fin on Unsplash */}
           <p>
-            Is there a party coming and you would like to make a playlist for the party with your
-            friends or family?
+            Is there a party coming and you would like to make a playlist for
+            the party with your friends or family?
           </p>
           <p>
             Make a collaborative playlist and share its Spotify URI with them so
             they can add their favorite tracks to it, too!
           </p>
-          <p>Making a playlist is easy. Go ahead and fill in the form below. You can give your playlist a name that you like or use the one that is in the form already and add a fitting description if you will.</p>
-          </Container>
+          <p>
+            Making a playlist is easy. Go ahead and fill in the form below. You
+            can give your playlist a name that you like or use the one that is
+            in the form already and add a fitting description if you will.
+          </p>
+        </Container>
         {/* </div> */}
-        <Container className="mb-3 mt-5" style={{ clear: "left" }}>
+        <Container className="mb-3 mt-5" style={{ clear: 'right' }}>
           <Col md={{ span: 8, offset: 2 }} className="popup">
-            <Form className="mx-sm-0 mx-lg-5 mt-3 px-lg-5">
+            <Form className="mx-sm-0 mx-lg-5 my-5 px-lg-5">
               <Form.Group className="mt-3">
                 <Form.Label>Create a collaborative playlist</Form.Label>
                 <Form.Control
