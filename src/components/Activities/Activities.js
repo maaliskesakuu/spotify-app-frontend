@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
 import SearchResults from '../SearchResults/SearchResults';
 import SearchBar from '../SearchBar/Searchbar';
-import Playlist from '../CreatePlaylist/Playlist';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -49,7 +48,6 @@ class Activities extends Component {
       selectedCategory: '',
       searchResults: [],
       playlistName: 'New Playlist',
-      playlistDescription: '',
       playlistTracks: [],
     };
 
@@ -65,9 +63,6 @@ class Activities extends Component {
     this.savePlaylistAdd = this.savePlaylistAdd.bind(this);
     // searchbar's search
     this.search = this.search.bind(this);
-    // en empty, collaborative playlist
-    this.addPlaylistDescription = this.addPlaylistDescription.bind(this);
-    this.savePlaylist = this.savePlaylist.bind(this);
   }
 
   // search with a term given by the user
@@ -279,51 +274,6 @@ class Activities extends Component {
       });
   }
 
-  addPlaylistDescription(desc) {
-    this.setState({ playlistDescription: desc });
-  }
-
-  //create an empty, collaborative playlist
-  savePlaylist(e) {
-    e.preventDefault();
-    let accessToken = hash.access_token;
-    const headers = { Authorization: `Bearer ${accessToken}` };
-    let userId;
-    let playlist = this.state.playlistName;
-    let playlistDesc = this.state.playlistDescription;
-    //get userId
-    fetch(constants.API + 'me', { headers: headers })
-      .then(response => response.json())
-      .then(jsonResponse => {
-        userId = jsonResponse.id;
-        //post the data and create the playlist
-        fetch(constants.API + `users/${userId}/playlists`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-          },
-          body: JSON.stringify({
-            name: playlist,
-            description: playlistDesc,
-            collaborative: true,
-            public: 'false',
-          }),
-        })
-          .then(() => {
-            alert('Created a new playlist and saved it to Spotify');
-            this.setState({
-              playlistName: 'New Playlist',
-              playlistDescription: '',
-            });
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      });
-  }
-
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
@@ -366,13 +316,6 @@ class Activities extends Component {
         ) : (
           ''
         )}
-        <Playlist
-          onNameChange={this.updatePlaylistName}
-          onDescriptionChange={this.addPlaylistDescription}
-          onSave={this.savePlaylist}
-          description={this.state.playlistDescription}
-          title={this.state.playlistName}
-        />
       </div>
     );
   }

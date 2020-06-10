@@ -76,7 +76,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h2 className='my-3' style={{ textAlign: "center"}}>Recently played</h2>
+        <h2 className='my-5' style={{ textAlign: "center"}}>Recently played</h2>
         <CardDeck>
           {this.state.musicHistory.map((music, index) => {
             return (

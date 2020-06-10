@@ -34,7 +34,7 @@ class NewRelease extends Component {
   }
 
   getNewRelease = token => {
-    fetch(constants.API + 'browse/new-releases?limit=5', {
+    fetch(constants.API + 'browse/new-releases?limit=10', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -72,7 +72,7 @@ class NewRelease extends Component {
   render() {
     return (
       <div>
-        <h2 className='my-3' style={{ textAlign: "center"}}>New releases</h2>
+        <h2 className='my-5' style={{ textAlign: "center"}}>New releases</h2>
         <CardDeck>
           {this.state.newRelease.map((songs, index) => {
             return (
