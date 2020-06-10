@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'react-bootstrap/Container';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 import * as constants from '../../constants/constants';
 
@@ -22,6 +24,7 @@ class Home extends Component {
     this.playMusic = this.playMusic.bind(this);
     this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
+    this.renderTooltip = this.renderTooltip.bind(this);
   }
 
   componentDidMount() {
@@ -57,15 +60,16 @@ class Home extends Component {
       });
   };
 
+  //show tooltip
+  renderTooltip(props) {
+    return <Tooltip {...props}>Sorry, no preview</Tooltip>;
+  }
+
   //play music on hover
   playMusic = preview => {
-    if (preview) {
-      this.setState({ audio: new Audio(preview) }, () => {
-        this.state.audio.play();
-      });
-    } else {
-      console.log('no preview');
-    }
+    this.setState({ audio: new Audio(preview) }, () => {
+      this.state.audio.play();
+    });
   };
 
   //pause music when mouse is out of card
@@ -86,14 +90,27 @@ class Home extends Component {
               return (
                 <Col md={3} key={index}>
                   <Card style={{ margin: '10px' }} key={index}>
-                    <Card.Img
-                      src={music.track.album.images[0].url}
-                      alt="_image"
-                      onMouseOver={() =>
-                        this.playMusic(music.track.preview_url)
-                      }
-                      onMouseOut={this.pauseMusic}
-                    />
+                    {/* Conditinal tooltips */}
+                    {!music.track.preview_url ? (
+                      <OverlayTrigger
+                        placement="bottom"
+                        overlay={this.renderTooltip}
+                      >
+                        <Card.Img
+                          variant="top"
+                          src={music.track.album.images[0].url}
+                        />
+                      </OverlayTrigger>
+                    ) : (
+                      <Card.Img
+                        src={music.track.album.images[0].url}
+                        alt="_image"
+                        onMouseOver={() =>
+                          this.playMusic(music.track.preview_url)
+                        }
+                        onMouseOut={this.pauseMusic}
+                      />
+                    )}
                     <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
                       <Card.Text>
                         {music.track.name} | {music.track.artists[0].name}

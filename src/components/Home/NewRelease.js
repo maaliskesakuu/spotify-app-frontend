@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'react-bootstrap/Container';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 import * as constants from '../../constants/constants';
 
@@ -16,11 +18,15 @@ class NewRelease extends Component {
       token: null,
       newRelease: [],
       // audio: new Audio(''),
+      tooltipText: '',
     };
 
     // this.playMusic = this.playMusic.bind(this);
     // this.pauseMusic = this.pauseMusic.bind(this);
     this.getNewRelease = this.getNewRelease.bind(this);
+    this.renderTooltip = this.renderTooltip.bind(this);
+    this.setText = this.setText.bind(this);
+    this.getText = this.getText.bind(this);
   }
 
   componentDidMount() {
@@ -70,6 +76,19 @@ class NewRelease extends Component {
   //   this.setState({ audio: new Audio('') });
   // };
 
+  setText(text) {
+    this.setState({ tooltipText: text });
+  }
+
+  getText() {
+    return this.state.tooltipText;
+  }
+
+  //show tooltip
+  renderTooltip(props) {
+    return <Tooltip {...props}>Release date {this.getText()}</Tooltip>
+  }
+
   render() {
     return (
       <div>
@@ -81,14 +100,18 @@ class NewRelease extends Component {
             {this.state.newRelease.map((songs, index) => {
               return (
                 <Col md={3} key={index}>
-                  <Card style={{ margin: '10px' }} key={index}>
+                  {/* <Card style={{ margin: '10px' }} key={index}>
                     <Card.Img
                       src={songs.images[0].url}
                       alt="_images"
                       className="shapes"
-                      // onMouseOver={() => this.playMusic(songs.preview_url)}
-                      // onMouseOut={this.pauseMusic}
-                    />
+                      onMouseOver={() => this.playMusic(songs.preview_url)}
+                       onMouseOut={this.pauseMusic}
+                    /> */}
+                  <Card style={{ margin: '10px' }} key={index} onMouseOver={() => { this.setText(songs.release_date) }}>
+                    <OverlayTrigger placement="bottom" overlay={this.renderTooltip}>
+                      <Card.Img src={songs.images[0].url} alt="_images" className="shapes" />
+                    </OverlayTrigger>
                     <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
                       <Card.Text>
                         {songs.name} | {songs.artists[0].name}
