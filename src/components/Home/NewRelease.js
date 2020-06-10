@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import hash from '../../hash';
+import React, { Component } from "react";
+import hash from "../../hash";
 // import './NewRelease.css';
 
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import CardDeck from 'react-bootstrap/CardDeck';
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 class NewRelease extends Component {
   constructor() {
@@ -14,12 +16,13 @@ class NewRelease extends Component {
     this.state = {
       token: null,
       newRelease: [],
-      // audio: new Audio(''),
+      tooltipText: "",
     };
 
-    // this.playMusic = this.playMusic.bind(this);
-    // this.pauseMusic = this.pauseMusic.bind(this);
     this.getNewRelease = this.getNewRelease.bind(this);
+    this.renderTooltip = this.renderTooltip.bind(this);
+    this.setText = this.setText.bind(this);
+    this.getText = this.getText.bind(this);
   }
 
   componentDidMount() {
@@ -33,41 +36,37 @@ class NewRelease extends Component {
     }
   }
 
-  getNewRelease = token => {
-    fetch(constants.API + 'browse/new-releases?limit=4', {
-      method: 'GET',
+  getNewRelease = (token) => {
+    fetch(constants.API + "browse/new-releases?limit=4", {
+      method: "GET",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
-      .then(data => data.albums.items)
-      .then(data =>
+      .then((res) => res.json())
+      .then((data) => data.albums.items)
+      .then((data) =>
         this.setState({
           newRelease: data,
         })
       )
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
-  // //play music on hover
-  // playMusic = preview => {
-  //   if (preview) {
-  //     this.setState({ audio: new Audio() }, () => {
-  //       this.state.audio.play();
-  //     });
-  //   } else {
-  //     console.log('no preview');
-  //   }
-  // };
+  setText(text) {
+    this.setState({ tooltipText: text });
+  }
 
-  //pause music when mouse is out of card
-  // pauseMusic = () => {
-  //   this.state.audio.pause();
-  //   this.setState({ audio: new Audio('') });
-  // };
+  getText() {
+    return this.state.tooltipText;
+  }
+
+  //show tooltip
+  renderTooltip(props) {
+    return <Tooltip {...props}>Release date {this.getText()}</Tooltip>;
+  }
 
   render() {
     return (
@@ -77,14 +76,23 @@ class NewRelease extends Component {
           {this.state.newRelease.map((songs, index) => {
             return (
               <Col md={3} key={index}>
-                <Card style={{ margin: '10px' }} key={index}>
-                  <Card.Img
-                    src={songs.images[0].url}
-                    alt="_images"
-                    className="shapes"
-                    // onMouseOver={() => this.playMusic(songs.preview_url)}
-                    // onMouseOut={this.pauseMusic}
-                  />
+                <Card
+                  style={{ margin: "10px" }}
+                  key={index}
+                  onMouseOver={() => {
+                    this.setText(songs.release_date);
+                  }}
+                >
+                  <OverlayTrigger
+                    placement="bottom"
+                    overlay={this.renderTooltip}
+                  >
+                    <Card.Img
+                      src={songs.images[0].url}
+                      alt="_images"
+                      className="shapes"
+                    />
+                  </OverlayTrigger>
                   <Card.Body>
                     <Card.Text>
                       {songs.name} | {songs.artists[0].name}
