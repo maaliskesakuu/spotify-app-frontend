@@ -44,20 +44,20 @@ class Track extends Component {
     this.setState({ audio: new Audio("") });
   }
 
-  renderAction() {
+     renderAction() {
     if (this.props.isRemoval) {
       return (
-        <Button onClick={this.removeTrack} style={{ marginLeft: "10px" }}>
+        <Button onClick={this.removeTrack} style={{ position:"absolute", right:"10px", bottom:"10px", backgroundColor:"cadetblue", border:"none" }}>
           -
         </Button>
       );
     }
-    return (
-      <Button onClick={this.addTrack} style={{ marginLeft: "10px" }}>
+     return (
+      <Button onClick={this.addTrack} style={{ position:"absolute", right:"10px", bottom:"10px", backgroundColor:"cadetblue", border:"none" }}>
         +
       </Button>
-    );
-  }
+    ); 
+  } 
 
   render() {
     return (
@@ -77,13 +77,13 @@ class Track extends Component {
               onMouseOut={this.pauseMusic}
             />
           )}
-          <Card.Body>
+          <Card.Body style={{ minHeight: "100px", padding: "10px" }}>
             <Card.Text>
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>
+            {this.renderAction()}
           </Card.Body>
         </Card>
-        {this.renderAction()}
       </Col>
     );
   }
