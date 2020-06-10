@@ -130,8 +130,8 @@ class Playlist extends Component {
                 onClick={this.savePlaylist}
                 style={{
                   border: 'none',
-                  color: 'black',
-                  backgroundColor: 'white',
+                  // color: 'black',
+                  // backgroundColor: 'white',
                 }}
               >
                 Create and save to Spotify

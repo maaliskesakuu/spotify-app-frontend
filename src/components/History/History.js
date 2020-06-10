@@ -88,7 +88,7 @@ class History extends Component {
           {' '}{item.track.name}
         </td>
         <td>{item.track.artists[0].name}</td>
-        <td>{format(new Date(item.played_at), 'yyyy-MM-dd | HH:mm:ss')}</td>
+        <td>{format(new Date(item.played_at), 'yyyy-MM-dd HH:mm:ss')}</td>
       </tr>
     );
 
