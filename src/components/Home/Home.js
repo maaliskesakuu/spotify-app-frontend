@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import './Home.css';
-import NewRelease from './NewRelease';
-import hash from '../../hash';
+import NewRelease from "./NewRelease";
+import hash from "../../hash";
 
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import CardDeck from 'react-bootstrap/CardDeck';
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 class Home extends Component {
   constructor() {
@@ -15,12 +17,13 @@ class Home extends Component {
     this.state = {
       token: null,
       musicHistory: [],
-      audio: new Audio(''),
+      audio: new Audio(""),
     };
 
     this.playMusic = this.playMusic.bind(this);
     this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
+    this.renderTooltip = this.renderTooltip.bind(this);
   }
 
   componentDidMount() {
@@ -35,41 +38,43 @@ class Home extends Component {
   }
 
   // fetching data of recently played songs
-  getRecentlyPlayed = token => {
-    fetch(constants.API + 'me/player/recently-played?limit=4', {
-      method: 'GET',
+  getRecentlyPlayed = (token) => {
+    fetch(constants.API + "me/player/recently-played?limit=4", {
+      method: "GET",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
-      .then(data => data.items)
-      .then(data =>
+      .then((res) => res.json())
+      .then((data) => data.items)
+      .then((data) =>
         this.setState({
           musicHistory: data,
         })
-      ).catch(error => {
+      )
+      .catch((error) => {
         console.log(error);
       });
   };
 
+  //show tooltip
+  renderTooltip(props) {
+    return <Tooltip {...props}>Sorry, no preview</Tooltip>;
+  }
+
   //play music on hover
-  playMusic = preview => {
-    if (preview) {
-      this.setState({ audio: new Audio(preview) }, () => {
-        this.state.audio.play();
-      });
-    } else {
-      console.log('no preview');
-    }
+  playMusic = (preview) => {
+    this.setState({ audio: new Audio(preview) }, () => {
+      this.state.audio.play();
+    });
   };
 
   //pause music when mouse is out of card
   pauseMusic = () => {
     this.state.audio.pause();
-    this.setState({ audio: new Audio('') });
+    this.setState({ audio: new Audio("") });
   };
 
   render() {
@@ -80,13 +85,28 @@ class Home extends Component {
           {this.state.musicHistory.map((music, index) => {
             return (
               <Col md={3} key={index}>
-                <Card style={{ margin: '10px' }} key={index}>
-                  <Card.Img
-                    src={music.track.album.images[0].url}
-                    alt="_image"
-                    onMouseOver={() => this.playMusic(music.track.preview_url)}
-                    onMouseOut={this.pauseMusic}
-                  />
+                <Card style={{ margin: "10px" }} key={index}>
+                  {/* Conditional tooltips */}
+                  {!music.track.preview_url ? (
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={this.renderTooltip}
+                    >
+                      <Card.Img
+                        variant="top"
+                        src={music.track.album.images[0].url}
+                      />
+                    </OverlayTrigger>
+                  ) : (
+                    <Card.Img
+                      src={music.track.album.images[0].url}
+                      alt="_image"
+                      onMouseOver={() =>
+                        this.playMusic(music.track.preview_url)
+                      }
+                      onMouseOut={this.pauseMusic}
+                    />
+                  )}
                   <Card.Body>
                     <Card.Text>
                       {music.track.name} | {music.track.artists[0].name}
