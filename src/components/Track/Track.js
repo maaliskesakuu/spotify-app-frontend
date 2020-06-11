@@ -47,13 +47,33 @@ class Track extends Component {
      renderAction() {
     if (this.props.isRemoval) {
       return (
-        <Button onClick={this.removeTrack} style={{ position:"absolute", right:"10px", bottom:"10px", backgroundColor:"cadetblue", border:"none" }}>
+
+        <Button
+          onClick={this.removeTrack}
+          style={{
+            position: 'absolute',
+            right: '10px',
+            bottom: '10px',
+            backgroundColor: 'cadetblue',
+            border: 'none',
+          }}
+        >
           -
         </Button>
       );
     }
-     return (
-      <Button onClick={this.addTrack} style={{ position:"absolute", right:"10px", bottom:"10px", backgroundColor:"cadetblue", border:"none" }}>
+
+    return (
+      <Button
+        onClick={this.addTrack}
+        style={{
+          position: 'absolute',
+          right: '10px',
+          bottom: '10px',
+          backgroundColor: 'cadetblue',
+          border: 'none',
+        }}
+      >
         +
       </Button>
     ); 
@@ -77,7 +97,8 @@ class Track extends Component {
               onMouseOut={this.pauseMusic}
             />
           )}
-          <Card.Body style={{ minHeight: "100px", padding: "10px" }}>
+          <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
+
             <Card.Text>
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>

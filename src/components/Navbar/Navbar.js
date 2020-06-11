@@ -33,10 +33,14 @@ const NavBar = () => {
               <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
             </NavItem>
           </LinkContainer>
-          <LinkContainer to="/activities">
+          <LinkContainer to="/playlist">
             <NavItem className="mr-5">
-              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
-              Playlist
+              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create Playlist
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/featured">
+            <NavItem className="mr-5">
+              <FontAwesomeIcon icon="music"></FontAwesomeIcon> Recent and New
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">

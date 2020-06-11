@@ -4,6 +4,7 @@ import TrackList from '../TrackList/TrackList';
 
 import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck';
+import Container from 'react-bootstrap/Container';
 
 class PlaylistAdd extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class PlaylistAdd extends Component {
   render() {
     return (
       <div className="Playlist">
+        <Container>
         <input
           onChange={this.handleNameChange}
           value={this.props.title}
@@ -30,9 +32,10 @@ class PlaylistAdd extends Component {
             onRemove={this.props.onRemove}
           />
         </CardDeck>
-        <Button variant="success" className="mt-3" onClick={this.props.onSave}>
-          Save to Spotify
+        <Button variant="success" className="my-3" onClick={this.props.onSave}>
+            Save to Spotify
         </Button>
+        </Container>
       </div>
     );
   }

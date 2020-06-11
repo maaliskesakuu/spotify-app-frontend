@@ -10,13 +10,13 @@ class SearchResults extends Component {
     return (
       <div>
         <Container>
-        {/* <h2>Results</h2> */}
-        <CardDeck className="my-5">
-          <TrackList
-            tracks={this.props.searchResults}
-            onAdd={this.props.onAdd}
-          />
-        </CardDeck>
+          {/* <h2>Results</h2> */}
+          <CardDeck className="my-5">
+            <TrackList
+              tracks={this.props.searchResults}
+              onAdd={this.props.onAdd}
+            />
+          </CardDeck>
         </Container>
       </div>
     );

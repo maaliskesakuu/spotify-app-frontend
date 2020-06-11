@@ -62,67 +62,67 @@ class User extends Component {
 
   render() {
     return (
-      <div>
-        <h2 className="head">User Data</h2>
-        <Table responsive bordered hover>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <td>{this.state.displayName}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>Email</th>
-              <td>{this.state.email}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>Country</th>
-              <td>{this.state.country}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>User id</th>
-              <td>{this.state.userId}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>Followers</th>
-              <td>{this.state.followers}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>Spotify URI</th>
-              <td>
-                {' '}
-                <a
-                  href={this.state.spotifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {this.state.spotifyUrl}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>Subscription level</th>
-              <td>{this.state.product}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>Type</th>
-              <td>{this.state.type}</td>
-            </tr>
-          </tbody>
-        </Table>
+      <div style={{ height: '100vh' }}>
+        <h2 className="my-5 head">User Data</h2>
+          <Table responsive bordered hover>
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td>{this.state.displayName}</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th>Email</th>
+                <td>{this.state.email}</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th>Country</th>
+                <td>{this.state.country}</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th>User id</th>
+                <td>{this.state.userId}</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th>Followers</th>
+                <td>{this.state.followers}</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th>Spotify URI</th>
+                <td>
+                  {' '}
+                  <a
+                    href={this.state.spotifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {this.state.spotifyUrl}
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th>Subscription level</th>
+                <td>{this.state.product}</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <th>Type</th>
+                <td>{this.state.type}</td>
+              </tr>
+            </tbody>
+          </Table>
       </div>
     );
   }

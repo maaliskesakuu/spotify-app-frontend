@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
 import SearchResults from '../SearchResults/SearchResults';
 import SearchBar from '../SearchBar/Searchbar';
-import Playlist from '../CreatePlaylist/Playlist';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,7 +11,6 @@ import Button from 'react-bootstrap/Button';
 import hash from '../../hash';
 
 import * as constants from '../../constants/constants';
-// return constants.API + `/search?q=${this.state.query}&app_id=${constants.APP_ID}
 
 const activities = [
   {
@@ -35,6 +33,11 @@ const activities = [
     activity: 'Well-being',
     category_id: 'wellness',
   },
+  {
+    id: 5,
+    activity: 'Something Else',
+    category_id: 'somethingelse',
+  },
 ];
 
 class Activities extends Component {
@@ -45,7 +48,6 @@ class Activities extends Component {
       selectedCategory: '',
       searchResults: [],
       playlistName: 'New Playlist',
-      playlistDescription: '',
       playlistTracks: [],
     };
 
@@ -61,24 +63,19 @@ class Activities extends Component {
     this.savePlaylistAdd = this.savePlaylistAdd.bind(this);
     // searchbar's search
     this.search = this.search.bind(this);
-    // en empty, collaborative playlist
-    this.addPlaylistDescription = this.addPlaylistDescription.bind(this);
-    this.savePlaylist = this.savePlaylist.bind(this);
   }
 
+  // search with a term given by the user
   search(term) {
     let accessToken = hash.access_token;
 
-    fetch(
-      constants.API + `search?type=track,artist&q=${term}&limit=20`,
-      {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    )
+    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
       .then(response => {
         return response.json();
       })
@@ -105,8 +102,14 @@ class Activities extends Component {
 
   getMusic() {
     let token = hash.access_token;
+
+    if (this.state.selectedCategory === 'somethingelse') {
+      return;
+    }
+
     fetch(
-      constants.API + `browse/categories/${this.state.selectedCategory}/playlists?limit=2`, //API call to get playlists with category
+      constants.API +
+        `browse/categories/${this.state.selectedCategory}/playlists?limit=2`, //API call to get playlists with category
       {
         headers: {
           Accept: 'application/json',
@@ -235,7 +238,7 @@ class Activities extends Component {
           },
           body: JSON.stringify({
             name: playlist,
-            public: 'false',
+            public: 'true',
           }),
         })
           .then(response => response.json())
@@ -261,6 +264,7 @@ class Activities extends Component {
                 this.setState({
                   playlistName: 'New Playlist',
                   playlistTracks: [],
+                  searchResults: [],
                 });
               })
               .catch(error => {
@@ -270,57 +274,12 @@ class Activities extends Component {
       });
   }
 
-  addPlaylistDescription(desc) {
-    this.setState({ playlistDescription: desc });
-  }
-
-  //create an empty, collaborative playlist
-  savePlaylist(e) {
-    e.preventDefault();
-    let accessToken = hash.access_token;
-    const headers = { Authorization: `Bearer ${accessToken}` };
-    let userId;
-    let playlist = this.state.playlistName;
-    let playlistDesc = this.state.playlistDescription;
-    //get userId
-    fetch(constants.API + 'me', { headers: headers })
-      .then(response => response.json())
-      .then(jsonResponse => {
-        userId = jsonResponse.id;
-        //post the data and create the playlist
-        fetch(constants.API + `users/${userId}/playlists`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-          },
-          body: JSON.stringify({
-            name: playlist,
-            description: playlistDesc,
-            collaborative: true,
-            public: 'false',
-          }),
-        })
-          .then(() => {
-            alert('Created a new playlist and saved it to Spotify');
-            this.setState({
-              playlistName: 'New Playlist',
-              playlistDescription: '',
-            });
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      });
-  }
-
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
         <Button
           key={activity.category_id}
-          style={{ margin: '10px' }}
+          style={{ margin: '1.3rem', width: '10rem', padding: "1rem" }}
           onClick={this.activityButtonClicked}
           value={activity.category_id}
         >
@@ -331,31 +290,32 @@ class Activities extends Component {
 
     return (
       <div>
-        <h2 style={{ textAlign: 'center' }} className="mt-5">
+        <h2 style={{ textAlign: 'center' }} className="my-5">
           What are you in the mood for?
         </h2>
         <Container>
           <Row>{activityList}</Row>
         </Container>
-        <SearchBar onSearch={this.search} />
+        {this.state.selectedCategory === 'somethingelse' ? (
+          <SearchBar onSearch={this.search}></SearchBar>
+        ) : (
+          ''
+        )}
         <SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}
         />
-        <PlaylistAdd
-          playlistTracks={this.state.playlistTracks}
-          onNameChange={this.updatePlaylistName}
-          onRemove={this.removeTrack}
-          onSave={this.savePlaylistAdd}
-          title={this.state.playlistName}
-        />
-        <Playlist
-          onNameChange={this.updatePlaylistName}
-          onDescriptionChange={this.addPlaylistDescription}
-          onSave={this.savePlaylist}
-          description={this.state.playlistDescription}
-          title={this.state.playlistName}
-        />
+        {this.state.selectedCategory !== '' ? (
+          <PlaylistAdd
+            playlistTracks={this.state.playlistTracks}
+            onNameChange={this.updatePlaylistName}
+            onRemove={this.removeTrack}
+            onSave={this.savePlaylistAdd}
+            title={this.state.playlistName}
+          ></PlaylistAdd>
+        ) : (
+          ''
+        )}
       </div>
     );
   }
