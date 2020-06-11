@@ -1,10 +1,10 @@
-ul, LINK {
-  text-decoration: none;
-}
-.mr-5{
+.mr-5 {
   color: white;
   font-size: 1rem;
 }
-Nav a{
+
+Nav a, Nav a:hover {
   color: white;
+  margin-right: 1rem;
 }
+

@@ -279,9 +279,15 @@ class Activities extends Component {
     const activityList = this.state.activities.map(activity => {
       return (
         <Button
-          variant="warning"
           key={activity.category_id}
-          style={{ margin: '1.3rem', width: '10rem', padding: "1rem" }}
+          style={{
+            margin: '1.3rem',
+            width: '11rem',
+            padding: '1rem',
+            backgroundColor: 'rgb(126, 2, 214)',
+            border: 'none',
+            fontSize: 'large',
+          }}
           onClick={this.activityButtonClicked}
           value={activity.category_id}
         >
@@ -292,17 +298,19 @@ class Activities extends Component {
 
     return (
       <div>
-        <h2 style={{ textAlign: 'center' }} className="text-light">
-          What are you in the mood for?
-        </h2>
-        <Container>
-          <Row>{activityList}</Row>
+        <Container style={{ backgroundColor: 'rgba(253, 254, 255, 0.8)', borderRadius: "5px" }} className="my-5">
+          <h2 style={{ textAlign: 'center' }} className="my-5 pt-5 text_light">
+            What are you in the mood for?
+          </h2>
+          <Container className="mt-5">
+            <Row>{activityList}</Row>
+          </Container>
+          {this.state.selectedCategory === 'somethingelse' ? (
+            <SearchBar onSearch={this.search}></SearchBar>
+          ) : (
+            ''
+          )}
         </Container>
-        {this.state.selectedCategory === 'somethingelse' ? (
-          <SearchBar onSearch={this.search}></SearchBar>
-        ) : (
-          ''
-        )}
         <SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}

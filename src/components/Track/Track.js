@@ -49,13 +49,12 @@ class Track extends Component {
       return (
 
         <Button
-         variant="warning"
           onClick={this.removeTrack}
           style={{
             position: 'absolute',
             right: '10px',
             bottom: '10px',
-            backgroundColor: 'cadetblue',
+            backgroundColor: 'rgb(126, 2, 214)',
             border: 'none',
           }}
         >
@@ -71,7 +70,7 @@ class Track extends Component {
           position: 'absolute',
           right: '10px',
           bottom: '10px',
-          backgroundColor: 'cadetblue',
+          backgroundColor: 'rgb(126, 2, 214)',
           border: 'none',
         }}
       >

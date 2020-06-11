@@ -9,7 +9,7 @@ import {
   faMusic, 
   faSearch,
   faMousePointer,
-  faPlus
+  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faHome, faHistory, faPlusCircle, faPlayCircle, faUser, faMusic, faSearch, faMousePointer, faPlus);

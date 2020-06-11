@@ -3,15 +3,15 @@
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(253, 254, 255, 0.7);
 }
 
 .Playlist input {
-  width: 50%;
+  width: 60%;
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
   font-weight: bolder;
   font-size: 1.2rem;
 }

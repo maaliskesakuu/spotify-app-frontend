@@ -10,6 +10,7 @@
   width: 17rem;
   padding: 0.5rem;
   border: 1px solid #000;
+  box-shadow: 0 2px 3px black;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   color: #010c3f;

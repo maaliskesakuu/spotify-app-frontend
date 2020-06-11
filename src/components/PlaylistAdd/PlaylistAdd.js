@@ -21,20 +21,24 @@ class PlaylistAdd extends Component {
     return (
       <div className="Playlist">
         <Container>
-        <input
-          onChange={this.handleNameChange}
-          value={this.props.title}
-        ></input>
-        <CardDeck>
-          <TrackList
-            tracks={this.props.playlistTracks}
-            isRemoval={true}
-            onRemove={this.props.onRemove}
-          />
-        </CardDeck>
-        <Button variant="warning" className="my-3" onClick={this.props.onSave}>
+          <input
+            onChange={this.handleNameChange}
+            value={this.props.title}
+          ></input>
+          <CardDeck>
+            <TrackList
+              tracks={this.props.playlistTracks}
+              isRemoval={true}
+              onRemove={this.props.onRemove}
+            />
+          </CardDeck>
+          <Button
+            className="my-3"
+            onClick={this.props.onSave}
+            style={{ backgroundColor: 'rgb(126, 2, 214)', border: 'none' }}
+          >
             Save to Spotify
-        </Button>
+          </Button>
         </Container>
       </div>
     );

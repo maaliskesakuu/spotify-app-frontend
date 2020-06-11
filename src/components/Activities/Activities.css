@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 
-h2, .text-light{
-    color: white;
+h2, .text_light{
+    margin-top: 1rem;
     font-weight: 100;
     font-size: 3rem;
     

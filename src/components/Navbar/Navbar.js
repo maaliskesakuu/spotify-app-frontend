@@ -1,5 +1,4 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import './Navbar.css';
 import '../FontawesomeIcons/icons';
@@ -10,16 +9,13 @@ import Nav from 'react-bootstrap/Nav';
 import NavItem from 'react-bootstrap/NavItem';
 
 const NavBar = () => {
-  //  const styles = {
-  //    textDecoration: 'none',
-  //  };
 
   return (
-    <Navbar bg="" variant="dark" expand="md" className="px-3">
+    <Navbar expand="md" style={{backgroundColor: "rgba(0, 0, 0, 0.9)", padding: "0"}} sticky="top">
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img
-            src="/desktop/harmony.png"
+            src="/harmony.png"
             alt="app's logo"
             style={{ width: '8vw', cursor: "pointer" }}
           ></img>
@@ -54,32 +50,9 @@ const NavBar = () => {
               <FontAwesomeIcon icon="user"></FontAwesomeIcon> Profile
             </NavItem>
           </LinkContainer>
-          <a href="http//:localhost:3000">Log out</a>
+          <a href="//accounts.spotify.com">Log out</a>
         </Nav>
       </Navbar.Collapse>
-      {/* <div> 
-      <a href="/"><img src="/logoMusic.png" alt="app's logo"></img></a>
-      <ul>
-        <Link to="/" style={styles}>
-          Home
-        </Link>
-      </ul>
-      <ul>
-        <Link to="/history" style={styles}>
-          History Playlist
-        </Link>
-      </ul>
-      <ul>
-        <Link to="/activities" style={styles}>
-          Search Music and Create a Playlist
-        </Link>
-      </ul>
-      <ul>
-        <Link to="/playlist" style={styles}>
-          Make a Collaborative Playlist
-        </Link>
-      </ul>
-      </div>  */}
     </Navbar>
   );
 };
