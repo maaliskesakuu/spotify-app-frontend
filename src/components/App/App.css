@@ -1,0 +1,120 @@
+#container {
+  padding-top: 4rem;
+  max-width: 40%;
+  height: 55rem;
+  background: rgba(253, 254, 255, 0.8);
+  text-align: center;
+  margin-bottom: 15rem;
+  border-radius: 4px;
+  margin-left: 28rem;
+}
+
+.background {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(95, 193, 243, 0.7),
+    rgb(241, 173, 46, 0.2),
+    rgb(95, 193, 243, 0.5),
+    rgb(95, 193, 243, 0.3),
+    rgba(124, 63, 168, 0.4),
+    rgba(124, 63, 168, 0.9)
+  );
+}
+
+.login {
+  text-decoration: none;
+  font-family: "Muli", sans-serif;
+  font-size: 1rem;
+  color: white;
+  font-weight: 610;
+}
+
+.login:hover {
+  text-decoration: none;
+  color: rgb(42, 0, 70);
+}
+
+#btn {
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 1.5rem;
+  background: rgb(42, 0, 70);
+}
+
+#btn:hover {
+  background: rgba(209, 209, 209, 0.5);
+}
+
+video {
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.ico,
+h3 {
+  line-height: 1px;
+  color: rgb(139, 0, 238, 0.8);
+}
+
+#container > h2 {
+  color: rgb(126, 2, 214);
+  font-family: "Muli", sans-serif;
+  font-weight: 600;
+  padding: 2rem;
+}
+
+h1 {
+  font-family: "Muli", sans-serif;
+  font-size: 2.5rem;
+  color: rgb(126, 2, 214);
+}
+
+/* #container > p {
+  color: rgb(139, 0, 238, 0.8);
+} */
+
+/* Media queries */
+/*  Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  #container {
+    margin-left: 9rem;
+    margin-top: 2rem;
+    max-width: 48%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #container {
+    margin-left: 13rem;
+    margin-top: 2rem;
+    max-width: 48%;
+  }
+}
+
+/* Large devices (desktops, 993px and up) */
+@media (min-width: 993px) {
+  #container {
+    margin-left: 19rem;
+    margin-top: 2rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #container {
+    margin-left: 26.5rem;
+    margin-top: 2rem;
+  }
+}

@@ -1,0 +1,31 @@
+.head {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 2px;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+
+.play {
+  cursor: pointer;
+}
+
+.play:hover {
+  background: rgb(214, 213, 213, 0.3);
+}

@@ -1,0 +1,27 @@
+.shapes {
+  width: 250px;
+  height: 250px;
+  margin: 1rem;
+  /* transition: transform 200ms ease; */
+  border-radius: 5px;
+}
+
+/* .shapes:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+} */
+
+.inner {
+  background: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 1rem;
+}
+
+.contains {
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  margin-bottom: 9.3rem;
+}

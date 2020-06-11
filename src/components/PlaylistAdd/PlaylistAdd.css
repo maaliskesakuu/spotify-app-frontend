@@ -1,0 +1,18 @@
+.Playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Playlist input {
+  width: 50%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+
