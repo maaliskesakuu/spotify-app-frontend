@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import './Track.css';
 
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 class Track extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      audio: new Audio(''),
+      audio: new Audio(""),
     };
 
     this.addTrack = this.addTrack.bind(this);
@@ -41,12 +41,13 @@ class Track extends Component {
 
   pauseMusic() {
     this.state.audio.pause();
-    this.setState({ audio: new Audio('') });
+    this.setState({ audio: new Audio("") });
   }
 
-  renderAction() {
+     renderAction() {
     if (this.props.isRemoval) {
       return (
+
         <Button
           onClick={this.removeTrack}
           style={{
@@ -61,6 +62,7 @@ class Track extends Component {
         </Button>
       );
     }
+
     return (
       <Button
         onClick={this.addTrack}
@@ -74,15 +76,15 @@ class Track extends Component {
       >
         +
       </Button>
-    );
-  }
+    ); 
+  } 
 
   render() {
     return (
       <Col md={3}>
-        <Card style={{ margin: '10px' }}>
+        <Card style={{ margin: "10px" }}>
           {/* Cards */}
-          {/* Conditional tooptips */}
+          {/* Conditional tooltips */}
           {!this.props.track.preview ? (
             <OverlayTrigger placement="bottom" overlay={this.renderTooltip}>
               <Card.Img variant="top" src={this.props.track.img} />
@@ -96,6 +98,7 @@ class Track extends Component {
             />
           )}
           <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
+
             <Card.Text>
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>
