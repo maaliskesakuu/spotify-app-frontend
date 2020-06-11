@@ -107,10 +107,10 @@ class History extends Component {
         {/* <table class="table table-dark"> */}
           <thead>
             <tr>
-              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>#</th>
-              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>Track title</th>
-              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>Artist</th>
-              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>Time</th>
+              <th>#</th>
+              <th>Track title</th>
+              <th>Artist</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>

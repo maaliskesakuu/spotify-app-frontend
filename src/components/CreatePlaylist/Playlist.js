@@ -92,26 +92,26 @@ class Playlist extends Component {
           <img
             src="/heidi-fin-H4fYXZ1hyco-unsplash.jpg"
             alt="computer with Spotify"
-            className="mb-5 mx-5"
-            style={{ width: '18rem', borderRadius: '5px', float: 'right' }}
+            className="mb-5 mx-5 mx-xs-0"
+            style={{ width: '15rem', borderRadius: '5px', float: 'right' }}
           ></img>
           {/* Photo by Heidi Fin on Unsplash */}
-          <p className="playlist-text">
+          <p className="playlist-text mx-sm-5">
             Is there a party coming and you would like to make a playlist for
             the party with your friends or family?
           </p>
-          <p className="playlist-text">
+          <p className="playlist-text mx-sm-5">
             Make a collaborative playlist and share its Spotify URI with them so
             they can add their favorite tracks to it, too!
           </p>
-          <p className="playlist-text">
+          <p className="playlist-text mx-sm-5">
             Making a playlist is easy. Go ahead and fill in the form below. You
             can give your playlist a name that you like or use the one that is
             in the form already and add a fitting description if you will.
           </p>
         {/* </Container> */}
         {/* </div> */}
-        <Container className="mb-3 mt-5" style={{ clear: 'right' }}>
+        <Container className="mb-3 mt-5" style={{ clear: 'right', paddingLeft: '0', paddingRight: '0' }}>
           <Col md={{ span: 8, offset: 2 }} className="popup">
             <Form className="mx-sm-0 mx-lg-5 my-5 px-lg-5">
               <Form.Group className="mt-3">

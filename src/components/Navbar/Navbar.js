@@ -11,7 +11,7 @@ import NavItem from 'react-bootstrap/NavItem';
 const NavBar = () => {
 
   return (
-    <Navbar expand="md" style={{backgroundColor: "rgba(0, 0, 0, 0.9)", boxShadow: "0 1px 10px rgba(253, 254, 255, 0.3)", padding: "0"}} sticky="top">
+    <Navbar variant="dark" expand="md" style={{backgroundColor: "rgba(0, 0, 0, 0.9)", boxShadow: "0 1px 10px rgba(253, 254, 255, 0.2)", padding: "0"}} sticky="top">
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img

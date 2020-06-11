@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import hash from '../../hash';
-import "./User.css"
+import './User.css';
 
 import Table from 'react-bootstrap/Table';
+import Col from 'react-bootstrap/Col';
 
 import * as constants from '../../constants/constants';
 
@@ -63,69 +64,78 @@ class User extends Component {
 
   render() {
     return (
-      <div style={{ height: '100vh' }} className="container">
-        <h2 className="my-5 head">User Data</h2>
+      <div style={{ height: '100vh', paddingRight: '0', paddingLeft: '0'  }} className="container">
+        <h2 className="my-5 head">Profile</h2>
         <div className="box">
-          <Table responsive bordered hover variant="dark"  className="col-6">
-            <tbody >
-              <tr>
-                <th>Name</th>
-                <td>{this.state.displayName}</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>Email</th>
-                <td>{this.state.email}</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>Country</th>
-                <td>{this.state.country}</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>User id</th>
-                <td>{this.state.userId}</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>Followers</th>
-                <td>{this.state.followers}</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>Spotify URI</th>
-                <td>
-                  {' '}
-                  <a
-                    href={this.state.spotifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {this.state.spotifyUrl}
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>Subscription level</th>
-                <td>{this.state.product}</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>Type</th>
-                <td>{this.state.type}</td>
-              </tr>
-            </tbody>
-          </Table>
-          </div>
+          <Col
+            md={{ span: 10, offset: 1 }}
+            sm={{ span: 12 }}
+            lg={{ span: 8, offset:2 }}
+            className="px-sm-0"
+            style={{ paddingRight: '0', paddingLeft: '0' }}
+          >
+            <Table responsive hover className="my-5 mx-sm-0 px-sm-0 px-xs-0">
+              {/* <Table responsive bordered hover variant="dark"  className="col-6"> */}
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <td>{this.state.displayName}</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th>Email</th>
+                  <td>{this.state.email}</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th>Country</th>
+                  <td>{this.state.country}</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th>User id</th>
+                  <td>{this.state.userId}</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th>Followers</th>
+                  <td>{this.state.followers}</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th>Spotify URI</th>
+                  <td>
+                    {' '}
+                    <a
+                      href={this.state.spotifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {this.state.spotifyUrl}
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th>Subscription level</th>
+                  <td>{this.state.product}</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th>Type</th>
+                  <td>{this.state.type}</td>
+                </tr>
+              </tbody>
+            </Table>
+          </Col>
+        </div>
       </div>
     );
   }
