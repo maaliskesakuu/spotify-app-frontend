@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Activities.css';
 
 import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
 import SearchResults from '../SearchResults/SearchResults';
@@ -278,6 +279,7 @@ class Activities extends Component {
     const activityList = this.state.activities.map(activity => {
       return (
         <Button
+          variant="warning"
           key={activity.category_id}
           style={{ margin: '1.3rem', width: '10rem', padding: "1rem" }}
           onClick={this.activityButtonClicked}
@@ -290,7 +292,7 @@ class Activities extends Component {
 
     return (
       <div>
-        <h2 style={{ textAlign: 'center' }} className="my-5">
+        <h2 style={{ textAlign: 'center' }} className="text-light">
           What are you in the mood for?
         </h2>
         <Container>

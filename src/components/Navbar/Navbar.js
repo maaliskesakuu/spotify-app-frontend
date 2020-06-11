@@ -15,11 +15,11 @@ const NavBar = () => {
   //  };
 
   return (
-    <Navbar bg="light" variant="light" expand="md" className="px-3">
+    <Navbar bg="" variant="dark" expand="md" className="px-3">
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img
-            src="/logoMusic.png"
+            src="/desktop/harmony.png"
             alt="app's logo"
             style={{ width: '8vw', cursor: "pointer" }}
           ></img>
@@ -54,7 +54,7 @@ const NavBar = () => {
               <FontAwesomeIcon icon="user"></FontAwesomeIcon> Profile
             </NavItem>
           </LinkContainer>
-          <a href="//accounts.spotify.com/logout">Log out</a>
+          <a href="http//:localhost:3000">Log out</a>
         </Nav>
       </Navbar.Collapse>
       {/* <div> 

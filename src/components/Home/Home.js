@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './Home.css';
+ import './Home.css';
 import NewRelease from './NewRelease';
 import hash from '../../hash';
 

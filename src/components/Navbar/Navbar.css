@@ -1,3 +1,10 @@
 ul, LINK {
   text-decoration: none;
 }
+.mr-5{
+  color: white;
+  font-size: 1rem;
+}
+Nav a{
+  color: white;
+}

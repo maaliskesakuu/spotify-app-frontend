@@ -48,6 +48,7 @@ class Track extends Component {
     if (this.props.isRemoval) {
       return (
         <Button
+         variant="warning"
           onClick={this.removeTrack}
           style={{
             position: 'absolute',

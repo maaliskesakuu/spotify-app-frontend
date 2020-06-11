@@ -100,8 +100,8 @@ class History extends Component {
     const RecentlyPlayed = () => (
       <div className="recently-played">
         <h2 className="my-5 head"> Listening History</h2>
-        <button onClick={clearHistoryHandler}>Clear History</button>
-        <table className="table">
+        <button className="btn" onClick={clearHistoryHandler}>Clear History</button>
+        <table class="table table-dark">
           <thead>
             <tr>
               <th>#</th>

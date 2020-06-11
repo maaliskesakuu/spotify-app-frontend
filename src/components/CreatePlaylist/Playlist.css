@@ -6,3 +6,9 @@
   min-height: 25vh;
   display: grid;
 }
+.playlist-text{
+  font-size: 1.2rem;
+  color:white;
+ margin-left: 4rem;
+
+}

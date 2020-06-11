@@ -32,7 +32,7 @@ class PlaylistAdd extends Component {
             onRemove={this.props.onRemove}
           />
         </CardDeck>
-        <Button variant="success" className="my-3" onClick={this.props.onSave}>
+        <Button variant="warning" className="my-3" onClick={this.props.onSave}>
             Save to Spotify
         </Button>
         </Container>

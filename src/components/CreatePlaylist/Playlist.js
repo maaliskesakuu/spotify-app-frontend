@@ -88,15 +88,15 @@ class Playlist extends Component {
             style={{ width: '18rem', borderRadius: '5px', float: "left" }}
           ></img>
           {/* Photo by Heidi Fin on Unsplash */}
-          <p>
+          <p className="playlist-text">
             Is there a party coming and you would like to make a playlist for the party with your
             friends or family?
           </p>
-          <p>
+          <p className="playlist-text">
             Make a collaborative playlist and share its Spotify URI with them so
             they can add their favorite tracks to it, too!
           </p>
-          <p>Making a playlist is easy. Go ahead and fill in the form below. You can give your playlist a name that you like or use the one that is in the form already and add a fitting description if you will.</p>
+          <p className="playlist-text">Making a playlist is easy. Go ahead and fill in the form below. You can give your playlist a name that you like or use the one that is in the form already and add a fitting description if you will.</p>
           </Container>
         {/* </div> */}
         <Container className="mb-3 mt-5" style={{ clear: "left" }}>
@@ -125,7 +125,7 @@ class Playlist extends Component {
                 ></Form.Control>
               </Form.Group>
               <Button
-                variant="success"
+                variant="warning"
                 className="mb-3"
                 onClick={this.savePlaylist}
                 style={{

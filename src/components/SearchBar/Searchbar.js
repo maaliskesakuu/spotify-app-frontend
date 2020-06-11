@@ -38,7 +38,7 @@ class SearchBar extends Component {
           onChange={this.handleTermChange}
           onKeyUp={this.handleEnter}
         ></input>
-        <Button variant="success" onClick={this.search}>
+        <Button variant="warning" onClick={this.search}>
           Search
         </Button>
       </div>

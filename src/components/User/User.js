@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import hash from '../../hash';
+import "./User.css"
 
 import Table from 'react-bootstrap/Table';
 
@@ -62,10 +63,11 @@ class User extends Component {
 
   render() {
     return (
-      <div style={{ height: '100vh' }}>
+      <div style={{ height: '100vh' }} className="container">
         <h2 className="my-5 head">User Data</h2>
-          <Table responsive bordered hover>
-            <tbody>
+        <div className="box">
+          <Table responsive bordered hover variant="dark"  className="col-6">
+            <tbody >
               <tr>
                 <th>Name</th>
                 <td>{this.state.displayName}</td>
@@ -123,6 +125,7 @@ class User extends Component {
               </tr>
             </tbody>
           </Table>
+          </div>
       </div>
     );
   }
