@@ -62,7 +62,7 @@ class Track extends Component {
   render() {
     return (
       <Col md={3}>
-        <Card style={{ margin: "10px" }}>
+        <Card style={{ margin: "10px", boxShadow:"0 0 10px #333" }}>
           {/* Cards */}
           {/* Conditional tooltips */}
           {!this.props.track.preview ? (
