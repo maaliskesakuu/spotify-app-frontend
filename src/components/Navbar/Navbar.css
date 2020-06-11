@@ -8,3 +8,6 @@ ul, LINK {
 Nav a{
   color: white;
 }
+Nav img{
+  size: 25px;
+}

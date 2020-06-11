@@ -19,9 +19,9 @@ const NavBar = () => {
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img
-            src="/desktop/harmony.png"
+            src="/harmony.png"
             alt="app's logo"
-            style={{ width: '8vw', cursor: "pointer" }}
+            style={{ width: '15vw', cursor: "pointer" }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>

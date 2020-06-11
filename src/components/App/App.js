@@ -42,9 +42,9 @@ class App extends Component {
                 </video>
                 <h1>Welcome</h1>
                 <img
-                  src="/desktop/harmony.png"
+                  src="/harmony.png"
                   alt="logo"
-                  style={{ width: '120px' }}
+                  style={{ width: '170px' }}
                 />
                 <h2>We made your music life much easier.</h2>
                 <div className="icon_wrap">
