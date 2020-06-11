@@ -108,7 +108,7 @@ class NewRelease extends Component {
                       onMouseOver={() => this.playMusic(songs.preview_url)}
                        onMouseOut={this.pauseMusic}
                     /> */}
-                  <Card style={{ margin: '10px' }} key={index} onMouseOver={() => { this.setText(songs.release_date) }}>
+                  <Card style={{ margin: '10px', boxShadow:"0 0 10px #333" }} key={index} onMouseOver={() => { this.setText(songs.release_date) }}>
                     <OverlayTrigger placement="bottom" overlay={this.renderTooltip}>
                       <Card.Img src={songs.images[0].url} alt="_images" className="shapes" />
                     </OverlayTrigger>

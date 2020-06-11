@@ -89,7 +89,7 @@ class Home extends Component {
             {this.state.musicHistory.map((music, index) => {
               return (
                 <Col md={3} key={index}>
-                  <Card style={{ margin: '10px' }} key={index}>
+                  <Card style={{ margin: '10px',  boxShadow:"0 0 10px #333" }} key={index}>
                     {/* Conditinal tooltips */}
                     {!music.track.preview_url ? (
                       <OverlayTrigger
