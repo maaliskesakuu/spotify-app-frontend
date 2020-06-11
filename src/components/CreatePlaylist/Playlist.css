@@ -1,14 +1,13 @@
 .popup {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
   border-radius: 5px;
   position: relative;
   min-height: 25vh;
   display: grid;
 }
-.playlist-text{
+.playlist-text {
   font-size: 1.2rem;
-  color:white;
- margin-left: 4rem;
-
+  color: black;
+  margin-left: 4rem;
 }

@@ -81,7 +81,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h2 className="my-5" style={{ textAlign: 'center' }}>
+        <h2 className="my-5" style={{ color:"white", textAlign: 'center' }}>
           Recently played
         </h2>
         <Container>

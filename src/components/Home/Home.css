@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 
-
-
-
 .shape {
   width: 250px;
   height: 250px;
@@ -33,15 +30,13 @@ h4 {
   display: flex;
   align-content: center;
   margin-left: 5rem;
-  
 }
 
 .titles {
   padding-left: 1rem;
 }
-body{
-  background-image: url("https://source.unsplash.com/YrtFlrLo2DQ");
+body {
+  background-image: url('https://source.unsplash.com/YrtFlrLo2DQ');
   background-size: cover;
   background-repeat: no-repeat;
-  
 }

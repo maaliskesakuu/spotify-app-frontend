@@ -5,6 +5,8 @@ import { format } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../FontawesomeIcons/icons'
 
+// import Button from 'react-bootstrap/Button';
+
 import * as constants from '../../constants/constants';
 
 class History extends Component {
@@ -100,14 +102,15 @@ class History extends Component {
     const RecentlyPlayed = () => (
       <div className="recently-played">
         <h2 className="my-5 head"> Listening History</h2>
-        <button className="btn" onClick={clearHistoryHandler}>Clear History</button>
-        <table class="table table-dark">
+        {/* <Button onClick={clearHistoryHandler} style={{ backgroundColor: 'rgb(126, 2, 214)', border: "none" }}>Clear History</Button> */}
+        <table className="table mb-5">
+        {/* <table class="table table-dark"> */}
           <thead>
             <tr>
-              <th>#</th>
-              <th>Track title</th>
-              <th>Artist</th>
-              <th>Time</th>
+              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>#</th>
+              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>Track title</th>
+              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>Artist</th>
+              <th style={{borderBottom: '1px solid rgba(126, 2, 214, 0.9)'}}>Time</th>
             </tr>
           </thead>
           <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>

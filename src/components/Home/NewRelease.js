@@ -41,7 +41,7 @@ class NewRelease extends Component {
   }
 
   getNewRelease = token => {
-    fetch(constants.API + 'browse/new-releases?limit=10', {
+    fetch(constants.API + 'browse/new-releases?limit=20', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -92,7 +92,7 @@ class NewRelease extends Component {
   render() {
     return (
       <div>
-        <h2 className="my-5" style={{ textAlign: 'center' }}>
+        <h2 className="my-5" style={{ color:"white", textAlign: 'center' }}>
           New releases
         </h2>
         <Container>

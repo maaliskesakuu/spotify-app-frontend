@@ -280,6 +280,7 @@ class Activities extends Component {
       return (
         <Button
           key={activity.category_id}
+          className="mb-5"
           style={{
             margin: '1.3rem',
             width: '11rem',
@@ -298,7 +299,7 @@ class Activities extends Component {
 
     return (
       <div>
-        <Container style={{ backgroundColor: 'rgba(253, 254, 255, 0.8)', borderRadius: "5px" }} className="my-5">
+        <Container style={{ backgroundColor: 'rgba(253, 254, 255, 0.9)', borderRadius: "5px" }} className="my-5">
           <h2 style={{ textAlign: 'center' }} className="my-5 pt-5 text_light">
             What are you in the mood for?
           </h2>
