@@ -1,20 +1,16 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
-
 #container {
-  padding-top: 2rem;
-  padding-bottom: 8rem;
-  width: 800px;
-  height: 650px;
+  padding-top: 3rem;
+  width: 100vw;
+  height: 55rem;
   background: rgba(253, 254, 255, 0.8);
   text-align: center;
-  margin-top: 5rem;
-  margin-bottom: 15rem;
+  margin: 2rem auto;
   border-radius: 4px;
 }
 
 .background {
   display: flex;
-  align-items: center;
+  align-content: center;
   justify-content: center;
   background-image: linear-gradient(
     to bottom,
@@ -25,19 +21,20 @@
     rgba(124, 63, 168, 0.4),
     rgba(124, 63, 168, 0.9)
   );
-  background-size: cover;
+  height: 100%;
 }
 
 .login {
   text-decoration: none;
-  color: aliceblue;
-  font-family: 'Muli', sans-serif;
-  font-weight: 900;
-  font-size: 1.1rem;
+  font-family: "Muli", sans-serif;
+  font-size: 1rem;
+  color: white;
+  font-weight: 610;
 }
 
 .login:hover {
-  color: rgba(39, 3, 65);
+  text-decoration: none;
+  color: rgba(42, 0, 70);
 }
 
 #btn {
@@ -46,7 +43,7 @@
 }
 
 #btn:hover {
-  background-color: rgb(36, 23, 0, 0.2); 
+  background-color: rgb(209, 209, 209, 0.5);
 }
 
 video {
@@ -63,34 +60,54 @@ video {
 .ico,
 h3 {
   line-height: 1px;
-  color: rgb(139, 0, 238, 0.5);
+  color: rgb(139, 0, 238, 0.8);
 }
 
 #container > h2 {
   color: rgb(126, 2, 214);
-  font-family: 'Muli', sans-serif;
+  font-family: "Muli", sans-serif;
   font-weight: 600;
+  padding: 2rem;
 }
 
-
 h1 {
-  font-family: 'Muli', sans-serif;
+  font-family: "Muli", sans-serif;
   font-size: 2.5rem;
   color: rgb(126, 2, 214);
 }
 
-#container > p {
-  color: rgb(139, 0, 238, 0.8);
+/* Media queries */
+@media (min-width: 300px) {
+  #container {
+    max-width: 90%;
+  }
 }
 
-/* header, body, main {
-  font-family: 'Montserrat', sans-serif;
-} */
+/*  Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  #container {
+    max-width: 48%;
+  }
+}
 
-/* .App {
-  height: 100%;
-  background-image: url("https://source.unsplash.com/8e0EHPUx3Mo");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; 
- }   */
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #container {
+    max-width: 60%;
+  }
+}
+
+/* Large devices (desktops, 993px and up) */
+@media (min-width: 993px) {
+  #container {
+    max-width: 65%;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #container {
+    margin-bottom: 15rem;
+    max-width: 55%;
+  }
+}

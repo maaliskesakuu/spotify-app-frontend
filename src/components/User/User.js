@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import hash from '../../hash';
-import './User.css';
+import React, { Component } from "react";
+import hash from "../../hash";
+import "./User.css";
 
-import Table from 'react-bootstrap/Table';
-import Col from 'react-bootstrap/Col';
+import Table from "react-bootstrap/Table";
+import Col from "react-bootstrap/Col";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 class User extends Component {
   constructor() {
     super();
     this.state = {
       token: null,
-      userId: '',
-      displayName: '',
-      followers: '',
-      country: '',
-      spotifyUrl: '',
-      email: '',
-      product: '',
-      type: '',
+      userId: "",
+      displayName: "",
+      followers: "",
+      country: "",
+      spotifyUrl: "",
+      email: "",
+      product: "",
+      type: "",
     };
     this.getUserData = this.getUserData.bind(this);
   }
@@ -37,11 +37,11 @@ class User extends Component {
 
   // fetching user data
   getUserData = token => {
-    fetch(constants.API + 'me/', {
-      method: 'GET',
+    fetch(constants.API + "me/", {
+      method: "GET",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
@@ -64,18 +64,20 @@ class User extends Component {
 
   render() {
     return (
-      <div style={{ height: '100vh', paddingRight: '0', paddingLeft: '0'  }} className="container">
+      <div
+        style={{ height: "100vh", paddingRight: "0", paddingLeft: "0" }}
+        className="container"
+      >
         <h2 className="my-5 head">Profile</h2>
         <div className="box">
           <Col
             md={{ span: 10, offset: 1 }}
             sm={{ span: 12 }}
-            lg={{ span: 8, offset:2 }}
+            lg={{ span: 8, offset: 2 }}
             className="px-sm-0"
-            style={{ paddingRight: '0', paddingLeft: '0' }}
+            style={{ paddingRight: "0", paddingLeft: "0" }}
           >
             <Table responsive hover className="my-5 mx-sm-0 px-sm-0 px-xs-0">
-              {/* <Table responsive bordered hover variant="dark"  className="col-6"> */}
               <tbody>
                 <tr>
                   <th>Name</th>
@@ -110,7 +112,7 @@ class User extends Component {
                 <tr>
                   <th>Spotify URI</th>
                   <td>
-                    {' '}
+                    {" "}
                     <a
                       href={this.state.spotifyUrl}
                       target="_blank"

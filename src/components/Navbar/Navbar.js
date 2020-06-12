@@ -1,29 +1,33 @@
-import React from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import './Navbar.css';
-import '../FontawesomeIcons/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { LinkContainer } from "react-router-bootstrap";
+import "./Navbar.css";
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavItem from 'react-bootstrap/NavItem';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import NavItem from "react-bootstrap/NavItem";
 
 const NavBar = () => {
-
   return (
-    <Navbar variant="dark" expand="md" style={{backgroundColor: "rgba(0, 0, 0, 0.9)", boxShadow: "0 1px 10px rgba(253, 254, 255, 0.2)", padding: "0"}} sticky="top">
+    <Navbar
+      variant="dark"
+      expand="md"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", padding: "0" }}
+      sticky="top"
+    >
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img
             src="/harmony.png"
             alt="app's logo"
-            style={{ width: '8vw', cursor: "pointer" }}
+            style={{ width: "8vw", cursor: "pointer" }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-        <Nav style={{cursor: "pointer"}}>
+        <Nav style={{ cursor: "pointer" }}>
           <LinkContainer to="/">
             <NavItem className="mr-5">
               <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
@@ -31,7 +35,8 @@ const NavBar = () => {
           </LinkContainer>
           <LinkContainer to="/playlist">
             <NavItem className="mr-5">
-              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create Playlist
+              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
+              Playlist
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/featured">

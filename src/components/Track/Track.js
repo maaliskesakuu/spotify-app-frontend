@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import './Track.css';
 
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -44,18 +43,17 @@ class Track extends Component {
     this.setState({ audio: new Audio("") });
   }
 
-     renderAction() {
+  renderAction() {
     if (this.props.isRemoval) {
       return (
-
         <Button
           onClick={this.removeTrack}
           style={{
-            position: 'absolute',
-            right: '10px',
-            bottom: '10px',
-            backgroundColor: 'rgb(126, 2, 214)',
-            border: 'none',
+            position: "absolute",
+            right: "10px",
+            bottom: "10px",
+            backgroundColor: "rgb(126, 2, 214)",
+            border: "none",
           }}
         >
           -
@@ -67,22 +65,22 @@ class Track extends Component {
       <Button
         onClick={this.addTrack}
         style={{
-          position: 'absolute',
-          right: '10px',
-          bottom: '10px',
-          backgroundColor: 'rgb(126, 2, 214)',
-          border: 'none',
+          position: "absolute",
+          right: "10px",
+          bottom: "10px",
+          backgroundColor: "rgb(126, 2, 214)",
+          border: "none",
         }}
       >
         +
       </Button>
-    ); 
-  } 
+    );
+  }
 
   render() {
     return (
       <Col md={3}>
-        <Card style={{ margin: "10px" }}>
+        <Card style={{ margin: "10px", boxShadow: "0 0 10px #333" }}>
           {/* Cards */}
           {/* Conditional tooltips */}
           {!this.props.track.preview ? (
@@ -97,8 +95,7 @@ class Track extends Component {
               onMouseOut={this.pauseMusic}
             />
           )}
-          <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
-
+          <Card.Body style={{ minHeight: "7rem", padding: "10px" }}>
             <Card.Text>
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>

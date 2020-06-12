@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
-import hash from '../../hash';
-import './App.css';
-import Routers from '../../Routers';
-import Video from '../Video/snow.mp4';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../FontawesomeIcons/icons';
+import React, { Component } from "react";
+import { authEndpoint, clientId, redirectUri, scopes } from "../../config";
+import hash from "../../hash";
+import "./App.css";
+import Routers from "../../Routers";
+import Video from "../Video/snow.mp4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../FontawesomeIcons/icons";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   constructor(props) {
@@ -40,12 +40,8 @@ class App extends Component {
                 <video autoPlay loop muted>
                   <source src={Video} type="Video/mp4" />
                 </video>
-                <h1>Welcome</h1>
-                <img
-                  src="/harmony.png"
-                  alt="logo"
-                  style={{ width: '120px' }}
-                />
+                <h1>Welcome to</h1>
+                <img src="/harmony.png" alt="logo" style={{ width: "120px" }} />
                 <h2>We made your music life much easier.</h2>
                 <div className="icon_wrap">
                   <FontAwesomeIcon icon="search" className="ico" />
@@ -64,18 +60,18 @@ class App extends Component {
                 <button
                   id="btn"
                   style={{
-                    border: 'none',
-                    backgroundColor: 'rgb(231, 130, 0)',
-                    borderRadius: '20px',
-                    marginBottom: '5rem',
+                    border: "none",
+                    backgroundColor: "rgb(42, 0, 70)",
+                    borderRadius: "25px",
+                    marginTop: "1.5rem",
                   }}
                 >
                   <a
                     className="login"
                     href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                      '%20'
+                      "%20"
                     )}&response_type=token&show_dialog=true`}
-                    style={{ color: "black" }}
+                    style={{ color: "white" }}
                   >
                     Get started!
                   </a>

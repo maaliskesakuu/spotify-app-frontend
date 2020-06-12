@@ -5,8 +5,7 @@
 
 table {
   width: 100%;
-  /* color: white; */
-  background-color: rgba(253, 254, 255, 0.9);
+  background-color: rgba(253, 254, 255, 0.8);
 }
 
 th,
@@ -30,5 +29,5 @@ td:last-child {
 }
 
 .play:hover {
-  background: rgba(139, 37, 167, 0.3);
+  background: rgb(214, 213, 213, 0.3);
 }

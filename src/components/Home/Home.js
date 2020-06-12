@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
- import './Home.css';
-import NewRelease from './NewRelease';
-import hash from '../../hash';
+import React, { Component } from "react";
+import "./Home.css";
+import NewRelease from "./NewRelease";
+import hash from "../../hash";
 
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import CardDeck from 'react-bootstrap/CardDeck';
-import Container from 'react-bootstrap/Container';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
+import Container from "react-bootstrap/Container";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 class Home extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class Home extends Component {
     this.state = {
       token: null,
       musicHistory: [],
-      audio: new Audio(''),
+      audio: new Audio(""),
     };
 
     this.playMusic = this.playMusic.bind(this);
@@ -40,11 +40,11 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch(constants.API + 'me/player/recently-played?limit=10', {
-      method: 'GET',
+    fetch(constants.API + "me/player/recently-played?limit=10", {
+      method: "GET",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
@@ -75,13 +75,13 @@ class Home extends Component {
   //pause music when mouse is out of card
   pauseMusic = () => {
     this.state.audio.pause();
-    this.setState({ audio: new Audio('') });
+    this.setState({ audio: new Audio("") });
   };
 
   render() {
     return (
       <div>
-        <h2 className="my-5" style={{ color:"white", textAlign: 'center' }}>
+        <h2 className="my-5" style={{ color: "white", textAlign: "center" }}>
           Recently played
         </h2>
         <Container>
@@ -89,7 +89,7 @@ class Home extends Component {
             {this.state.musicHistory.map((music, index) => {
               return (
                 <Col md={3} key={index}>
-                  <Card style={{ margin: '10px' }} key={index}>
+                  <Card style={{ margin: "10px", boxShadow: "0 0 10px #333" }} key={index}>
                     {/* Conditinal tooltips */}
                     {!music.track.preview_url ? (
                       <OverlayTrigger
@@ -111,7 +111,7 @@ class Home extends Component {
                         onMouseOut={this.pauseMusic}
                       />
                     )}
-                    <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
+                    <Card.Body style={{ minHeight: "7rem", padding: "10px" }}>
                       <Card.Text>
                         {music.track.name} | {music.track.artists[0].name}
                       </Card.Text>
@@ -122,28 +122,6 @@ class Home extends Component {
             })}
           </CardDeck>
         </Container>
-        {/* <div className="_container">
-          {this.state.musicHistory.map((music, index) => {
-            return (
-              <div key={index}>
-                <div className="inner_container">
-                  <img
-                    src={music.track.album.images[0].url}
-                    alt="_image"
-                    className="shape"
-                    onMouseOver={() => this.playMusic(music.track.preview_url)}
-                    onMouseOut={this.pauseMusic}
-                  />
-                </div>
-                <div className="titles">
-                  <p>
-                    {music.track.name} | {music.track.artists[0].name}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div> */}
         <NewRelease />
       </div>
     );

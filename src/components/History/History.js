@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import './History.css';
-import hash from '../../hash';
-import { format } from 'date-fns';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../FontawesomeIcons/icons'
+import React, { Component } from "react";
+import "./History.css";
+import hash from "../../hash";
+import { format } from "date-fns";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../FontawesomeIcons/icons";
 
-// import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 class History extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class History extends Component {
       searchResults: [],
       token: null,
       musicHistory: [],
-      audio: new Audio(''),
+      audio: new Audio(""),
     };
 
     this.playMusic = this.playMusic.bind(this);
@@ -37,11 +38,11 @@ class History extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch(constants.API + 'me/player/recently-played', {
-      method: 'GET',
+    fetch(constants.API + "me/player/recently-played", {
+      method: "GET",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
@@ -64,14 +65,14 @@ class History extends Component {
         this.state.audio.play();
       });
     } else {
-      console.log('no preview');
+      console.log("no preview");
     }
   };
 
   //pause music when mouseOut
   pauseMusic = () => {
     this.state.audio.pause();
-    this.setState({ audio: new Audio('') });
+    this.setState({ audio: new Audio("") });
   };
 
   render() {
@@ -86,11 +87,10 @@ class History extends Component {
           className="play"
           onMouseOut={this.pauseMusic}
         >
-          <FontAwesomeIcon icon='play-circle' />
-          {' '}{item.track.name}
+          <FontAwesomeIcon icon="play-circle" /> {item.track.name}
         </td>
         <td>{item.track.artists[0].name}</td>
-        <td>{format(new Date(item.played_at), 'yyyy-MM-dd | HH:mm:ss')}</td>
+        <td>{format(new Date(item.played_at), "yyyy-MM-dd | HH:mm:ss")}</td>
       </tr>
     );
 
@@ -102,9 +102,13 @@ class History extends Component {
     const RecentlyPlayed = () => (
       <div className="recently-played">
         <h2 className="my-5 head"> Listening History</h2>
-        {/* <Button onClick={clearHistoryHandler} style={{ backgroundColor: 'rgb(126, 2, 214)', border: "none" }}>Clear History</Button> */}
+        <Button
+          onClick={clearHistoryHandler}
+          style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
+        >
+          Clear History
+        </Button>
         <table className="table mb-5">
-        {/* <table class="table table-dark"> */}
           <thead>
             <tr>
               <th>#</th>
@@ -119,11 +123,9 @@ class History extends Component {
     );
 
     return (
-      <div>
-        <div>
-          {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
-        </div>
-      </div>
+      <Container className="p-0">
+        <div>{musicHistory.length !== 0 ? <RecentlyPlayed /> : null}</div>
+      </Container>
     );
   }
 }

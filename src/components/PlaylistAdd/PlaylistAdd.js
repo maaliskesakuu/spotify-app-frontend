@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import './PlaylistAdd.css';
-import TrackList from '../TrackList/TrackList';
+import React, { Component } from "react";
+import "./PlaylistAdd.css";
+import TrackList from "../TrackList/TrackList";
 
-import Button from 'react-bootstrap/Button';
-import CardDeck from 'react-bootstrap/CardDeck';
-import Container from 'react-bootstrap/Container';
+import Button from "react-bootstrap/Button";
+import CardDeck from "react-bootstrap/CardDeck";
+import Container from "react-bootstrap/Container";
 
 class PlaylistAdd extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class PlaylistAdd extends Component {
   render() {
     return (
       <div className="Playlist">
-        <Container>
+        <Container className="mb-3">
           <input
             onChange={this.handleNameChange}
             value={this.props.title}
@@ -35,7 +35,7 @@ class PlaylistAdd extends Component {
           <Button
             className="my-3"
             onClick={this.props.onSave}
-            style={{ backgroundColor: 'rgb(126, 2, 214)', border: 'none' }}
+            style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
           >
             Save to Spotify
           </Button>

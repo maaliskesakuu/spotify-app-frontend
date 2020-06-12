@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import './SearchBar.css';
+import React, { Component } from "react";
+import "./Searchbar.css";
 
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      term: '',
+      term: "",
     };
 
     this.handleTermChange = this.handleTermChange.bind(this);
@@ -38,7 +38,11 @@ class SearchBar extends Component {
           onChange={this.handleTermChange}
           onKeyUp={this.handleEnter}
         ></input>
-        <Button style={{backgroundColor: 'rgb(126, 2, 214)', border: "none"}} className="mb-5" onClick={this.search}>
+        <Button
+          style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
+          className="mb-5"
+          onClick={this.search}
+        >
           Search
         </Button>
       </div>

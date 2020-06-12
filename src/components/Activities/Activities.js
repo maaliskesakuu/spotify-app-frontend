@@ -1,43 +1,43 @@
-import React, { Component } from 'react';
-import './Activities.css';
+import React, { Component } from "react";
+import "./Activities.css";
 
-import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
-import SearchResults from '../SearchResults/SearchResults';
-import SearchBar from '../SearchBar/Searchbar';
+import PlaylistAdd from "../PlaylistAdd/PlaylistAdd";
+import SearchResults from "../SearchResults/SearchResults";
+import SearchBar from "../SearchBar/Searchbar";
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
-import hash from '../../hash';
+import hash from "../../hash";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 const activities = [
   {
     id: 1,
-    activity: 'Focus',
-    category_id: 'focus',
+    activity: "Focus",
+    category_id: "focus",
   },
   {
     id: 2,
-    activity: 'Work Out',
-    category_id: 'workout',
+    activity: "Work Out",
+    category_id: "workout",
   },
   {
     id: 3,
-    activity: 'Sleep',
-    category_id: 'sleep',
+    activity: "Sleep",
+    category_id: "sleep",
   },
   {
     id: 4,
-    activity: 'Well-being',
-    category_id: 'wellness',
+    activity: "Well-being",
+    category_id: "wellness",
   },
   {
     id: 5,
-    activity: 'Something Else',
-    category_id: 'somethingelse',
+    activity: "Something Else",
+    category_id: "somethingelse",
   },
 ];
 
@@ -46,9 +46,9 @@ class Activities extends Component {
     super(props);
     this.state = {
       activities: activities,
-      selectedCategory: '',
+      selectedCategory: "",
       searchResults: [],
-      playlistName: 'New Playlist',
+      playlistName: "New Playlist",
       playlistTracks: [],
     };
 
@@ -72,8 +72,8 @@ class Activities extends Component {
 
     fetch(constants.API + `search?type=track,artist&q=${term}&limit=20`, {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
     })
@@ -104,7 +104,7 @@ class Activities extends Component {
   getMusic() {
     let token = hash.access_token;
 
-    if (this.state.selectedCategory === 'somethingelse') {
+    if (this.state.selectedCategory === "somethingelse") {
       return;
     }
 
@@ -113,8 +113,8 @@ class Activities extends Component {
         `browse/categories/${this.state.selectedCategory}/playlists?limit=2`, //API call to get playlists with category
       {
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       }
@@ -140,8 +140,8 @@ class Activities extends Component {
             constants.API + `playlists/${ID_array[i]}/tracks?limit=10`, //API call with playlists IDs to get tracks
             {
               headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
+                Accept: "application/json",
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
             }
@@ -225,21 +225,21 @@ class Activities extends Component {
     let userId;
     let playlist = this.state.playlistName;
 
-    fetch(constants.API + 'me', { headers: headers })
+    fetch(constants.API + "me", { headers: headers })
       .then(response => response.json())
       .then(jsonResponse => {
         userId = jsonResponse.id;
         //post the data and create the playlist
         fetch(constants.API + `users/${userId}/playlists`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+            Accept: "application/json",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify({
             name: playlist,
-            public: 'true',
+            public: "true",
           }),
         })
           .then(response => response.json())
@@ -249,10 +249,10 @@ class Activities extends Component {
             fetch(
               constants.API + `users/${userId}/playlists/${playlistId}/tracks`,
               {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
                   Authorization: `Bearer ${accessToken}`,
                 },
                 body: JSON.stringify({
@@ -261,9 +261,9 @@ class Activities extends Component {
               }
             )
               .then(() => {
-                alert('playlist with selected tracks added to Spotify');
+                alert("playlist with selected tracks added to Spotify");
                 this.setState({
-                  playlistName: 'New Playlist',
+                  playlistName: "New Playlist",
                   playlistTracks: [],
                   searchResults: [],
                 });
@@ -282,12 +282,12 @@ class Activities extends Component {
           key={activity.category_id}
           className="mb-5"
           style={{
-            margin: '1.3rem',
-            width: '11rem',
-            padding: '1rem',
-            backgroundColor: 'rgb(126, 2, 214)',
-            border: 'none',
-            fontSize: 'large',
+            margin: "1.3rem",
+            width: "11rem",
+            padding: "1rem",
+            backgroundColor: "rgb(126, 2, 214)",
+            border: "none",
+            fontSize: "large",
           }}
           onClick={this.activityButtonClicked}
           value={activity.category_id}
@@ -299,24 +299,31 @@ class Activities extends Component {
 
     return (
       <div>
-        <Container style={{ backgroundColor: 'rgba(253, 254, 255, 0.9)', borderRadius: "5px" }} className="my-5">
-          <h2 style={{ textAlign: 'center' }} className="my-5 pt-5 text_light">
+        <Container
+          style={{
+            backgroundColor: "rgba(253, 254, 255, 0.8)",
+            borderRadius: "5px",
+            minHeight: "45vh",
+          }}
+          className="my-5"
+        >
+          <h2 style={{ textAlign: "center" }} className="my-5 pt-5 text_light">
             What are you in the mood for?
           </h2>
           <Container className="mt-5">
             <Row>{activityList}</Row>
           </Container>
-          {this.state.selectedCategory === 'somethingelse' ? (
+          {this.state.selectedCategory === "somethingelse" ? (
             <SearchBar onSearch={this.search}></SearchBar>
           ) : (
-            ''
+            ""
           )}
         </Container>
         <SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}
         />
-        {this.state.selectedCategory !== '' ? (
+        {this.state.selectedCategory !== "" ? (
           <PlaylistAdd
             playlistTracks={this.state.playlistTracks}
             onNameChange={this.updatePlaylistName}
@@ -325,7 +332,7 @@ class Activities extends Component {
             title={this.state.playlistName}
           ></PlaylistAdd>
         ) : (
-          ''
+          ""
         )}
       </div>
     );
