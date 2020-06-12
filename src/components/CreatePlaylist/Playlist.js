@@ -80,8 +80,7 @@ class Playlist extends Component {
       <>
         <Container
           style={{
-            backgroundColor: "rgba(253, 254, 255, 0.8)",
-            borderRadius: "4px",
+            backgroundColor: "rgba(253, 254, 255, 0.8)"
           }}
           className="my-5 pb-5"
         >
@@ -137,6 +136,7 @@ class Playlist extends Component {
                   ></Form.Control>
                 </Form.Group>
                 <Button
+                  size="lg"
                   className="mb-3"
                   onClick={this.savePlaylist}
                   style={{

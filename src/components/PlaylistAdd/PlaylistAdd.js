@@ -33,6 +33,7 @@ class PlaylistAdd extends Component {
             />
           </CardDeck>
           <Button
+            size="lg"
             className="my-3"
             onClick={this.props.onSave}
             style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}

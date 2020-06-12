@@ -6,6 +6,9 @@ import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 class Track extends Component {
   constructor(props) {
     super(props);
@@ -52,11 +55,11 @@ class Track extends Component {
             position: "absolute",
             right: "10px",
             bottom: "10px",
-            backgroundColor: "rgb(126, 2, 214)",
+            backgroundColor: "#C40000",
             border: "none",
           }}
         >
-          -
+          <FontAwesomeIcon icon="minus"></FontAwesomeIcon>
         </Button>
       );
     }
@@ -72,7 +75,7 @@ class Track extends Component {
           border: "none",
         }}
       >
-        +
+        <FontAwesomeIcon icon="plus"></FontAwesomeIcon>
       </Button>
     );
   }

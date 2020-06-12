@@ -39,6 +39,7 @@ class SearchBar extends Component {
           onKeyUp={this.handleEnter}
         ></input>
         <Button
+          size="lg"
           style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
           className="mb-5"
           onClick={this.search}

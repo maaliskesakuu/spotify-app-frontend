@@ -13,7 +13,7 @@ const NavBar = () => {
     <Navbar
       variant="dark"
       expand="md"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", padding: "0" }}
+      style={{ backgroundColor: "rgb(42, 0, 70)", paddingRight: "0.6rem" }}
       sticky="top"
     >
       <LinkContainer to="/#">
@@ -21,7 +21,7 @@ const NavBar = () => {
           <img
             src="/harmony.png"
             alt="app's logo"
-            style={{ width: "8vw", cursor: "pointer" }}
+            style={{ width: "9vw", cursor: "pointer" }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>
@@ -29,29 +29,29 @@ const NavBar = () => {
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav style={{ cursor: "pointer" }}>
           <LinkContainer to="/">
-            <NavItem className="mr-5">
+            <NavItem className="mr-5 mb-1">
               <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/playlist">
-            <NavItem className="mr-5">
+            <NavItem className="mr-5 mb-1">
               <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
               Playlist
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/featured">
-            <NavItem className="mr-5">
+            <NavItem className="mr-5 mb-1">
               <FontAwesomeIcon icon="music"></FontAwesomeIcon> Recent and New
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">
-            <NavItem className="mr-5">
+            <NavItem className="mr-5 mb-1">
               <FontAwesomeIcon icon="history"></FontAwesomeIcon> History
               Playlist
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/user">
-            <NavItem className="mr-5">
+            <NavItem className="mr-5 mb-1">
               <FontAwesomeIcon icon="user"></FontAwesomeIcon> Profile
             </NavItem>
           </LinkContainer>

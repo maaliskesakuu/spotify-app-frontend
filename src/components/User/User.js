@@ -65,53 +65,55 @@ class User extends Component {
   render() {
     return (
       <div
-        style={{ height: "100vh", paddingRight: "0", paddingLeft: "0" }}
-        className="container"
+        style={{ paddingRight: "0", paddingLeft: "0" }}
+        className="mb-5 container"
       >
-        <h2 className="my-5 head">Profile</h2>
+        <h2 className="my-5 head">{this.state.displayName}'s profile</h2>
         <div className="box">
           <Col
-            md={{ span: 10, offset: 1 }}
+            md={{ span: 8, offset: 2 }}
             sm={{ span: 12 }}
             lg={{ span: 8, offset: 2 }}
             className="px-sm-0"
             style={{ paddingRight: "0", paddingLeft: "0" }}
           >
-            <Table responsive hover className="my-5 mx-sm-0 px-sm-0 px-xs-0">
+            <Table responsive hover striped className="my-5 mx-sm-0 px-sm-0 px-xs-0">
               <tbody>
-                <tr>
-                  <th>Name</th>
-                  <td>{this.state.displayName}</td>
+                <tr style={{padding: "0.75rem 0.6rem"}}>
+                  <th style={{padding: "0.75rem 0.6rem"}}>Display name</th>
                 </tr>
-              </tbody>
-              <tbody>
-                <tr>
-                  <th>Email</th>
-                  <td>{this.state.email}</td>
+                <tr style={{padding: "0.75rem 0.6rem"}}>
+                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.displayName}</td>
                 </tr>
-              </tbody>
-              <tbody>
-                <tr>
-                  <th>Country</th>
-                  <td>{this.state.country}</td>
+                <tr style={{padding: "0.75rem 0.6rem"}}>
+                  <th style={{padding: "0.75rem 0.6rem"}}>Email</th>
                 </tr>
-              </tbody>
-              <tbody>
-                <tr>
-                  <th>User id</th>
-                  <td>{this.state.userId}</td>
+                <tr style={{padding: "0.75rem 0.6rem"}}>
+                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.email}</td>
                 </tr>
-              </tbody>
-              <tbody>
-                <tr>
-                  <th>Followers</th>
-                  <td>{this.state.followers}</td>
+                <tr style={{padding: "0.75rem 0.6rem"}}>
+                  <th style={{padding: "0.75rem 0.6rem"}}>Country</th>
                 </tr>
-              </tbody>
-              <tbody>
+                <tr style={{padding: "0.75rem 0.6rem"}}>
+                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.country}</td>
+                </tr>
                 <tr>
-                  <th>Spotify URI</th>
-                  <td>
+                  <th style={{padding: "0.75rem 0.6rem"}}>User id</th>
+                </tr>
+                <tr>
+                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.userId}</td>
+                </tr>
+                <tr>
+                  <th style={{padding: "0.75rem 0.6rem"}}>Followers</th>
+                </tr>
+                <tr>
+                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.followers}</td>
+                </tr>
+                <tr>
+                  <th style={{padding: "0.75rem 0.6rem"}}>Spotify URI</th>
+                </tr>
+                <tr>
+                  <td style={{padding: "0.75rem 0.6rem"}}>
                     {" "}
                     <a
                       href={this.state.spotifyUrl}
@@ -122,17 +124,17 @@ class User extends Component {
                     </a>
                   </td>
                 </tr>
-              </tbody>
-              <tbody>
-                <tr>
-                  <th>Subscription level</th>
-                  <td>{this.state.product}</td>
+                <tr style={{padding: "0.75rem 0.6rem"}}>
+                  <th style={{padding: "0.75rem 0.6rem"}}>Subscription level</th>
                 </tr>
-              </tbody>
-              <tbody>
                 <tr>
-                  <th>Type</th>
-                  <td>{this.state.type}</td>
+                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.product}</td>
+                </tr>
+                <tr>
+                  <th style={{padding: "0.75rem 0.6rem"}}>Type</th>
+                </tr>
+                <tr>
+                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.type}</td>
                 </tr>
               </tbody>
             </Table>

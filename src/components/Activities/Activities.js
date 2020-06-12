@@ -110,7 +110,7 @@ class Activities extends Component {
 
     fetch(
       constants.API +
-        `browse/categories/${this.state.selectedCategory}/playlists?limit=2`, //API call to get playlists with category
+        `browse/categories/${this.state.selectedCategory}/playlists?limit=5`, //API call to get playlists with category
       {
         headers: {
           Accept: "application/json",
@@ -137,7 +137,7 @@ class Activities extends Component {
       .then(ID_array => {
         for (var i = 0; i < ID_array.length; i++) {
           fetch(
-            constants.API + `playlists/${ID_array[i]}/tracks?limit=10`, //API call with playlists IDs to get tracks
+            constants.API + `playlists/${ID_array[i]}/tracks?limit=4`, //API call with playlists IDs to get tracks
             {
               headers: {
                 Accept: "application/json",
@@ -289,7 +289,7 @@ class Activities extends Component {
             margin: "1.3rem",
             width: "11rem",
             padding: "1rem",
-            backgroundColor: "rgb(126, 2, 214)",
+            backgroundColor: "rgb(42, 0, 70)",
             border: "none",
             fontSize: "large",
           }}
@@ -306,7 +306,6 @@ class Activities extends Component {
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
-            borderRadius: "5px",
             minHeight: "45vh",
           }}
           className="my-5"

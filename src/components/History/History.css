@@ -10,7 +10,6 @@ table {
 
 th,
 td {
-  padding: 12px 15px;
   border-bottom: 2px solid #dee2e6;
 }
 
@@ -29,5 +28,10 @@ td:last-child {
 }
 
 .play:hover {
-  background: rgb(214, 213, 213, 0.3);
+  background: rgba(42, 0, 70, 0.1);
+}
+
+.size {
+  height: 2.5rem;
+  width: 2.5rem;
 }

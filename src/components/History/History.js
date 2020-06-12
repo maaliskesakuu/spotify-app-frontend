@@ -90,16 +90,16 @@ class History extends Component {
     //table displays information
     const TableItem = (item, index) => (
       <tr key={item.played_at}>
-        <td>{index + 1}</td>
-        <td><img src={item.track.album.images[2].url} alt="album cover" /></td>
-        <td
+        <td style={{padding: "0.75rem 0.6rem"}}>{index + 1}</td>
+        <td style={{padding: "0.75rem 0.3rem"}}><img className="size" src={item.track.album.images[2].url} alt="album cover"></img></td>
+        <td style={{padding: "0.75rem 0.3rem"}}
           onClick={() => this.playMusic(item.track.preview_url)}
           className="play"
         >
           <FontAwesomeIcon icon="play-circle" /> {item.track.name}
         </td>
-        <td>{item.track.artists[0].name}</td>
-        <td>{format(new Date(item.played_at), "yyyy-MM-dd | HH:mm:ss")}</td>
+        <td style={{padding: "0.75rem 0.3rem"}}>{item.track.artists[0].name}</td>
+        <td style={{padding: "0.75rem 0.3rem"}}>{format(new Date(item.played_at), "yyyy-MM-dd | HH:mm:ss")}</td>
       </tr>
     );
 
@@ -121,11 +121,11 @@ class History extends Component {
         <table className="table mb-5">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Cover</th>
-              <th>Track title</th>
-              <th>Artist</th>
-              <th>Time</th>
+              <th style={{padding: "0.75rem 0.6rem"}}>#</th>
+              <th style={{padding: "0.75rem 0.3rem"}}>Cover</th>
+              <th style={{padding: "0.75rem 0.3rem"}}>Track title</th>
+              <th style={{padding: "0.75rem 0.3rem"}}>Artist</th>
+              <th style={{padding: "0.75rem 0.3rem"}}>Time</th>
             </tr>
           </thead>
           <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>
