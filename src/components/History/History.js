@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import './History.css';
-import hash from '../../hash';
-import { format } from 'date-fns';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../FontawesomeIcons/icons'
+import React, { Component } from "react";
+import "./History.css";
+import hash from "../../hash";
+import { format } from "date-fns";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../FontawesomeIcons/icons";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 class History extends Component {
   constructor() {
@@ -14,11 +14,10 @@ class History extends Component {
       searchResults: [],
       token: null,
       musicHistory: [],
-      audio: new Audio(''),
+      audio: new Audio(""),
     };
 
     this.playMusic = this.playMusic.bind(this);
-    this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
 
@@ -34,42 +33,54 @@ class History extends Component {
   }
 
   // fetching data of recently played songs
-  getRecentlyPlayed = token => {
-    fetch(constants.API + 'me/player/recently-played', {
-      method: 'GET',
+  getRecentlyPlayed = (token) => {
+    fetch(constants.API + "me/player/recently-played", {
+      method: "GET",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
-      .then(data => data.items)
-      .then(data =>
+      .then((res) => res.json())
+      .then((data) => data.items)
+      .then((data) =>
         this.setState({
           musicHistory: data,
         })
       )
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
 
-  //play music onmouseEnter
-  playMusic = preview => {
-    if (preview) {
+  //play music onClick
+  playMusic = (preview) => {
+    //if there's no preview url
+    if (!preview) {
+      console.log("no preview");
+      this.state.audio.pause();
+      return;
+    }
+    //if paused, then play
+    if (this.state.audio.paused === true) {
+      this.setState({ audio: new Audio(preview) }, () => {
+        this.state.audio.play();
+      });
+    }
+    //if playing and other track clicked, play clicked track
+    else if (
+      this.state.audio.paused === false &&
+      this.state.audio.src !== preview
+    ) {
+      this.state.audio.pause();
       this.setState({ audio: new Audio(preview) }, () => {
         this.state.audio.play();
       });
     } else {
-      console.log('no preview');
+      //if same track is clicked again, then pause
+      this.state.audio.pause();
     }
-  };
-
-  //pause music when mouseOut
-  pauseMusic = () => {
-    this.state.audio.pause();
-    this.setState({ audio: new Audio('') });
   };
 
   render() {
@@ -80,15 +91,13 @@ class History extends Component {
       <tr key={item.played_at}>
         <td>{index + 1}</td>
         <td
-          onMouseEnter={() => this.playMusic(item.track.preview_url)}
+          onClick={() => this.playMusic(item.track.preview_url)}
           className="play"
-          onMouseOut={this.pauseMusic}
         >
-          <FontAwesomeIcon icon='play-circle' />
-          {' '}{item.track.name}
+          <FontAwesomeIcon icon="play-circle" /> {item.track.name}
         </td>
         <td>{item.track.artists[0].name}</td>
-        <td>{format(new Date(item.played_at), 'yyyy-MM-dd | HH:mm:ss')}</td>
+        <td>{format(new Date(item.played_at), "yyyy-MM-dd | HH:mm:ss")}</td>
       </tr>
     );
 
@@ -117,9 +126,7 @@ class History extends Component {
 
     return (
       <div>
-        <div>
-          {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
-        </div>
+        <div>{musicHistory.length !== 0 ? <RecentlyPlayed /> : null}</div>
       </div>
     );
   }
