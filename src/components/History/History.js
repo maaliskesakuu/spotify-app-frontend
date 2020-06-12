@@ -90,7 +90,7 @@ class History extends Component {
     //table displays information
     const TableItem = (item, index) => (
       <tr key={item.played_at}>
-        <td style={{padding: "0.75rem 0.6rem"}}>{index + 1}</td>
+        <td style={{padding: "0.75rem 0.3rem 0.75rem 0.6rem"}}>{index + 1}</td>
         <td style={{padding: "0.75rem 0.3rem"}}><img className="size" src={item.track.album.images[2].url} alt="album cover"></img></td>
         <td style={{padding: "0.75rem 0.3rem"}}
           onClick={() => this.playMusic(item.track.preview_url)}
@@ -121,7 +121,7 @@ class History extends Component {
         <table className="table mb-5">
           <thead>
             <tr>
-              <th style={{padding: "0.75rem 0.6rem"}}>#</th>
+              <th style={{padding: "0.75rem 0.3rem 0.75rem 0.6rem"}}>#</th>
               <th style={{padding: "0.75rem 0.3rem"}}>Cover</th>
               <th style={{padding: "0.75rem 0.3rem"}}>Track title</th>
               <th style={{padding: "0.75rem 0.3rem"}}>Artist</th>

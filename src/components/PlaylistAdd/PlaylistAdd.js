@@ -19,10 +19,10 @@ class PlaylistAdd extends Component {
 
   render() {
     return (
-      <div className="Playlist">
-        <Container className="mb-3">
+      <Container className="Playlist mb-5">
+        <Container className="mb-3 mx-0 px-0">
           <input
-            onChange={this.handleNameChange}
+            onChange={this.handleNameChange} 
             value={this.props.title}
           ></input>
           <CardDeck>
@@ -34,14 +34,14 @@ class PlaylistAdd extends Component {
           </CardDeck>
           <Button
             size="lg"
-            className="my-3"
+            className="mb-5 mt-3 ml-3"
             onClick={this.props.onSave}
             style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
           >
             Save to Spotify
           </Button>
         </Container>
-      </div>
+      </Container>
     );
   }
 }

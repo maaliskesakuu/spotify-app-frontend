@@ -13,15 +13,14 @@ const NavBar = () => {
     <Navbar
       variant="dark"
       expand="md"
-      style={{ backgroundColor: "rgb(42, 0, 70)", paddingRight: "0.6rem" }}
-      sticky="top"
+      style={{ backgroundColor: "#0c0028", paddingLeft: "0.6rem", marginRight: "0", paddingRight: "0.6rem" }}
     >
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img
             src="/harmony.png"
             alt="app's logo"
-            style={{ width: '15vw', cursor: "pointer" }}
+            style={{ width: '9vw', cursor: "pointer", padding: '0' }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>
@@ -29,33 +28,33 @@ const NavBar = () => {
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav style={{ cursor: "pointer" }}>
           <LinkContainer to="/">
-            <NavItem className="mr-5 mb-1">
+            <NavItem className="mr-3 mb-1">
               <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/playlist">
-            <NavItem className="mr-5 mb-1">
+            <NavItem className="mr-3 mb-1">
               <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
               Playlist
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/featured">
-            <NavItem className="mr-5 mb-1">
+            <NavItem className="mr-3 mb-1">
               <FontAwesomeIcon icon="music"></FontAwesomeIcon> Recent and New
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">
-            <NavItem className="mr-5 mb-1">
+            <NavItem className="mr-3 mb-1">
               <FontAwesomeIcon icon="history"></FontAwesomeIcon> History
               Playlist
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/user">
-            <NavItem className="mr-5 mb-1">
+            <NavItem className="mr-3 mb-1">
               <FontAwesomeIcon icon="user"></FontAwesomeIcon> Profile
             </NavItem>
           </LinkContainer>
-          <a href="//accounts.spotify.com">Log out</a>
+          <a href="//accounts.spotify.com" className="mr-3 mb-1">Log out</a>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

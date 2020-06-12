@@ -40,13 +40,13 @@ class App extends Component {
                 <video autoPlay loop muted>
                   <source src={Video} type="Video/mp4" />
                 </video>
-                <h1>Welcome</h1>
+                <h1>Welcome!</h1>
                 <img
                   src="/harmony.png"
                   alt="logo"
-                  style={{ width: '170px' }}
+                  style={{ width: '10rem' }}
                 />
-                <h2>We made your music life much easier.</h2>
+                <h2 className="mb-1">We made your music life much easier.</h2>
                 <div className="icon_wrap">
                   <FontAwesomeIcon icon="search" className="ico" />
                   <h3>Search</h3>

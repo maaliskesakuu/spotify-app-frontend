@@ -13,38 +13,36 @@ import hash from "../../hash";
 
 import * as constants from "../../constants/constants";
 
-
 const activities = [
   {
     id: 1,
-    activity: 'Focus',
-    category_id: 'focus',
-    img_1:"https://source.unsplash.com/7KLa-xLbSXA/400x400",
-    
+    activity: "Focus",
+    category_id: "focus",
+    img_: "https://source.unsplash.com/7KLa-xLbSXA/400x400",
   },
   {
     id: 2,
-    activity: 'Work Out',
-    category_id: 'workout',
-    img_2:"https://source.unsplash.com/n6gnCa77Urc/400x400",
+    activity: "Work Out",
+    category_id: "workout",
+    img_: "https://source.unsplash.com/n6gnCa77Urc/400x400",
   },
   {
     id: 3,
-    activity: 'Sleep',
-    category_id: 'sleep',
-    img:"https://source.unsplash.com/rUc9hVE-L-E/400x400",
+    activity: "Sleep",
+    category_id: "sleep",
+    img_: "https://source.unsplash.com/rUc9hVE-L-E/400x400",
   },
   {
     id: 4,
-    activity: 'Well-being',
-    category_id: 'wellness',
-    img:"https://source.unsplash.com/NTyBbu66_SI/400x400",
+    activity: "Well-being",
+    category_id: "wellness",
+    img_: "https://source.unsplash.com/NTyBbu66_SI/400x400",
   },
   {
     id: 5,
-    activity: 'Something Else',
-    category_id: 'somethingelse',
-    img:"https://source.unsplash.com//jcbBopAsVc8/400x400",
+    activity: "Something Else",
+    category_id: "somethingelse",
+    img_: "https://source.unsplash.com//jcbBopAsVc8/400x400",
   },
 ];
 
@@ -289,14 +287,34 @@ class Activities extends Component {
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
+        // <Button
+        //   key={activity.category_id}
+        //   className="mb-5"
+        //   style={{
+        //     margin: "1.3rem",
+        //     width: "11rem",
+        //     padding: "1rem",
+        //     backgroundColor: "rgb(42, 0, 70)",
+        //     border: "none",
+        //     fontSize: "large",
+        //   }}
+        //   onClick={this.activityButtonClicked}
+        //   value={activity.category_id}
+        // >
+        //   {activity.activity}
+        // </Button>
         <Button
+          className="act-btn"
+          // variant="warning"
+          // text="light"
           key={activity.category_id}
-          className="mb-5"
           style={{
             margin: "1.3rem",
-            width: "11rem",
+            width: "20rem",
+            height: "10rem",
             padding: "1rem",
             backgroundColor: "rgb(42, 0, 70)",
+            color: "white", 
             border: "none",
             fontSize: "large",
           }}
@@ -320,7 +338,7 @@ class Activities extends Component {
           <h2 style={{ textAlign: "center" }} className="my-5 pt-5 text_light">
             What are you in the mood for?
           </h2>
-          <Container className="mt-5">
+          <Container className="my-5">
             <Row>{activityList}</Row>
           </Container>
           {this.state.selectedCategory === "somethingelse" ? (
