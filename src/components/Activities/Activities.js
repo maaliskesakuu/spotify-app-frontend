@@ -150,17 +150,21 @@ class Activities extends Component {
               return response.json();
             })
             .then(jsonResponse => {
-              if (!jsonResponse.items) {
+              try {
+                if (!jsonResponse.items) {
+                  return [];
+                }
+                return jsonResponse.items.map(item => ({
+                  id: item.track.id,
+                  name: item.track.name,
+                  artist: item.track.artists[0].name,
+                  uri: item.track.uri,
+                  preview: item.track.preview_url,
+                  img: item.track.album.images[0].url,
+                }));
+              } catch (err) {
                 return [];
               }
-              return jsonResponse.items.map(item => ({
-                id: item.track.id,
-                name: item.track.name,
-                artist: item.track.artists[0].name,
-                uri: item.track.uri,
-                preview: item.track.preview_url,
-                img: item.track.album.images[0].url,
-              }));
             })
             .then(searchResults => {
               this.setState({

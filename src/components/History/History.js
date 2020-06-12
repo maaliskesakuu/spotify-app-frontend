@@ -5,7 +5,6 @@ import { format } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../FontawesomeIcons/icons";
 
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 import * as constants from "../../constants/constants";
@@ -92,6 +91,7 @@ class History extends Component {
     const TableItem = (item, index) => (
       <tr key={item.played_at}>
         <td>{index + 1}</td>
+        <td><img src={item.track.album.images[2].url} alt="album cover" /></td>
         <td
           onClick={() => this.playMusic(item.track.preview_url)}
           className="play"
@@ -111,16 +111,18 @@ class History extends Component {
     const RecentlyPlayed = () => (
       <div className="recently-played">
         <h2 className="my-5 head"> Listening History</h2>
-        <Button
+        <button
+          className="text-secondary"
           onClick={clearHistoryHandler}
-          style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
+          style={{  border: "none" }}
         >
           Clear History
-        </Button>
+        </button>
         <table className="table mb-5">
           <thead>
             <tr>
               <th>#</th>
+              <th>Cover</th>
               <th>Track title</th>
               <th>Artist</th>
               <th>Time</th>
