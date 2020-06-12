@@ -13,31 +13,38 @@ import hash from "../../hash";
 
 import * as constants from "../../constants/constants";
 
+
 const activities = [
   {
     id: 1,
-    activity: "Focus",
-    category_id: "focus",
+    activity: 'Focus',
+    category_id: 'focus',
+    img_1:"https://source.unsplash.com/7KLa-xLbSXA/400x400",
+    
   },
   {
     id: 2,
-    activity: "Work Out",
-    category_id: "workout",
+    activity: 'Work Out',
+    category_id: 'workout',
+    img_2:"https://source.unsplash.com/n6gnCa77Urc/400x400",
   },
   {
     id: 3,
-    activity: "Sleep",
-    category_id: "sleep",
+    activity: 'Sleep',
+    category_id: 'sleep',
+    img:"https://source.unsplash.com/rUc9hVE-L-E/400x400",
   },
   {
     id: 4,
-    activity: "Well-being",
-    category_id: "wellness",
+    activity: 'Well-being',
+    category_id: 'wellness',
+    img:"https://source.unsplash.com/NTyBbu66_SI/400x400",
   },
   {
     id: 5,
-    activity: "Something Else",
-    category_id: "somethingelse",
+    activity: 'Something Else',
+    category_id: 'somethingelse',
+    img:"https://source.unsplash.com//jcbBopAsVc8/400x400",
   },
 ];
 
