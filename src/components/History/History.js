@@ -21,7 +21,6 @@ class History extends Component {
     };
 
     this.playMusic = this.playMusic.bind(this);
-    this.pauseMusic = this.pauseMusic.bind(this);
     this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
 
@@ -58,21 +57,32 @@ class History extends Component {
       });
   };
 
-  //play music onmouseEnter
+  //play music onClick
   playMusic = preview => {
-    if (preview) {
+    // if there's no preview url
+    if (!preview) {
+      this.state.audio.pause();
+      return;
+    }
+    //if paused, then play
+    if (this.state.audio.paused === true) {
+      this.setState({ audio: new Audio(preview) }, () => {
+        this.state.audio.play();
+      });
+    }
+    //if playing and other track clicked, play clicked track
+    else if (
+      this.state.audio.paused === false &&
+      this.state.audio.src !== preview
+    ) {
+      this.state.audio.pause();
       this.setState({ audio: new Audio(preview) }, () => {
         this.state.audio.play();
       });
     } else {
-      console.log("no preview");
+      //if same track is clicked again, then pause
+      this.state.audio.pause();
     }
-  };
-
-  //pause music when mouseOut
-  pauseMusic = () => {
-    this.state.audio.pause();
-    this.setState({ audio: new Audio("") });
   };
 
   render() {
@@ -83,9 +93,8 @@ class History extends Component {
       <tr key={item.played_at}>
         <td>{index + 1}</td>
         <td
-          onMouseEnter={() => this.playMusic(item.track.preview_url)}
+          onClick={() => this.playMusic(item.track.preview_url)}
           className="play"
-          onMouseOut={this.pauseMusic}
         >
           <FontAwesomeIcon icon="play-circle" /> {item.track.name}
         </td>
