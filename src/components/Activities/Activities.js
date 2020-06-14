@@ -175,6 +175,8 @@ class Activities extends Component {
               this.setState({
                 searchResults: this.state.searchResults.concat(searchResults),
               });
+            }).catch(error => {
+              console.log(error);
             });
         }
       })

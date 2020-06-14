@@ -10,12 +10,30 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+} from "react-share";
+
+import {
+  WhatsappIcon,
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  TelegramIcon,
+} from "react-share";
+
 class Playlist extends Component {
   constructor() {
     super();
     this.state = {
       playlistName: "New Playlist",
       playlistDescription: "",
+      playlistId: "",
+      value: "",
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -62,8 +80,15 @@ class Playlist extends Component {
             public: "false",
           }),
         })
-          .then(() => {
-            alert("Created a new playlist and saved it to Spotify");
+          .then(response => response.json())
+          .then(jsonResponse => {
+            const playlistId = jsonResponse.id;
+            let value = "https://open.spotify.com/playlist/";
+            this.setState({ playlistId: playlistId });
+            this.setState({ value: value + playlistId });
+            alert(
+              `Created a new playlist id:${playlistId} and saved it to Spotify`
+            );
             this.setState({
               playlistName: "New Playlist",
               playlistDescription: "",
@@ -80,27 +105,27 @@ class Playlist extends Component {
       <>
         <Container
           style={{
-            backgroundColor: "rgba(253, 254, 255, 0.8)"
+            backgroundColor: "rgba(253, 254, 255, 0.8)",
           }}
           className="my-5 pb-5"
         >
           <h2 className="my-5 pt-5" style={{ textAlign: "center" }}>
             Want to make a playlist with friends?
           </h2>
-          <img
+          {/* <img
             src="/heidi-fin-H4fYXZ1hyco-unsplash.jpg"
             alt="computer with Spotify"
-            className="mb-5 mx-5 mx-xs-0"
+            className="mb-5 mx-5 mx-xs-0 mx-s-0"
             style={{ width: "15rem", borderRadius: "4px", float: "right" }}
-          ></img>
+          ></img> */}
           {/* Photo by Heidi Fin on Unsplash */}
           <p className="playlist-text mx-sm-5">
             Is there a party coming and you would like to make a playlist for
             the party with your friends or family?
           </p>
           <p className="playlist-text mx-sm-5">
-            Make a collaborative playlist and share its Spotify URI with them so
-            they can add their favorite tracks to it, too!
+            Make a collaborative playlist and share its Spotify web address with
+            them so they can add their favorite tracks to it, too!
           </p>
           <p className="playlist-text mx-sm-5">
             Making a playlist is easy. Go ahead and fill in the form below. You
@@ -146,6 +171,31 @@ class Playlist extends Component {
                 >
                   Create and save to Spotify
                 </Button>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>The playlist's web address</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows="2"
+                    ref={textarea => (this.textArea = textarea)}
+                    value={this.state.value}
+                    readOnly
+                  />
+                  <WhatsappShareButton url={this.state.value}>
+                    <WhatsappIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></WhatsappIcon>
+                  </WhatsappShareButton>
+                  <EmailShareButton url={this.state.value}>
+                    <EmailIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></EmailIcon>
+                  </EmailShareButton>
+                  <FacebookShareButton url={this.state.value}>
+                    <FacebookIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></FacebookIcon>
+                  </FacebookShareButton>
+                  <LinkedinShareButton url={this.state.value}>
+                    <LinkedinIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></LinkedinIcon>
+                  </LinkedinShareButton>
+                  <TelegramShareButton url={this.state.value}>
+                    <TelegramIcon size={32} round={true}style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></TelegramIcon>
+                  </TelegramShareButton>
+                </Form.Group>
               </Form>
             </Col>
           </Container>

@@ -35,15 +35,30 @@ class Track extends Component {
     return <Tooltip {...props}>Sorry, no preview</Tooltip>;
   }
 
+  // playMusic() {
+  //   this.setState({ audio: new Audio(this.props.track.preview) }, () => {
+  //     this.state.audio.play();
+  //   });
+  // }
+
   playMusic() {
-    this.setState({ audio: new Audio(this.props.track.preview) }, () => {
-      this.state.audio.play();
-    });
+    setTimeout(() => {
+      this.setState({ audio: new Audio(this.props.track.preview) }, () => {
+        this.state.audio.play();
+      });
+    }, 300);
   }
 
+  // pauseMusic() {
+  //   this.state.audio.pause();
+  //   this.setState({ audio: new Audio("") });
+  // }
+
   pauseMusic() {
-    this.state.audio.pause();
-    this.setState({ audio: new Audio("") });
+    setTimeout(() => {
+      this.state.audio.pause();
+      this.setState({ audio: new Audio("") });
+    }, 400);
   }
 
   renderAction() {
@@ -96,6 +111,7 @@ class Track extends Component {
               src={this.props.track.img}
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
+              onClick={this.pauseMusic}
             />
           )}
           <Card.Body style={{ minHeight: "7rem", padding: "10px" }}>

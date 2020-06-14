@@ -89,7 +89,10 @@ class Home extends Component {
             {this.state.musicHistory.map((music, index) => {
               return (
                 <Col md={3} key={index}>
-                  <Card style={{ margin: "10px", boxShadow: "0 0 10px #333" }} key={index}>
+                  <Card
+                    style={{ margin: "10px", boxShadow: "0 0 10px #333" }}
+                    key={index}
+                  >
                     {/* Conditinal tooltips */}
                     {!music.track.preview_url ? (
                       <OverlayTrigger
@@ -109,6 +112,7 @@ class Home extends Component {
                           this.playMusic(music.track.preview_url)
                         }
                         onMouseOut={this.pauseMusic}
+                        onClick={this.pauseMusic}
                       />
                     )}
                     <Card.Body style={{ minHeight: "7rem", padding: "10px" }}>
