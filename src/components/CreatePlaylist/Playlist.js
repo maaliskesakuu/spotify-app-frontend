@@ -13,7 +13,6 @@ import Button from "react-bootstrap/Button";
 import {
   EmailShareButton,
   FacebookShareButton,
-  LinkedinShareButton,
   TelegramShareButton,
   WhatsappShareButton,
 } from "react-share";
@@ -22,7 +21,6 @@ import {
   WhatsappIcon,
   EmailIcon,
   FacebookIcon,
-  LinkedinIcon,
   TelegramIcon,
 } from "react-share";
 
@@ -112,13 +110,6 @@ class Playlist extends Component {
           <h2 className="my-5 pt-5" style={{ textAlign: "center" }}>
             Want to make a playlist with friends?
           </h2>
-          {/* <img
-            src="/heidi-fin-H4fYXZ1hyco-unsplash.jpg"
-            alt="computer with Spotify"
-            className="mb-5 mx-5 mx-xs-0 mx-s-0"
-            style={{ width: "15rem", borderRadius: "4px", float: "right" }}
-          ></img> */}
-          {/* Photo by Heidi Fin on Unsplash */}
           <p className="playlist-text mx-sm-5">
             Is there a party coming and you would like to make a playlist for
             the party with your friends or family?
@@ -181,19 +172,16 @@ class Playlist extends Component {
                     readOnly
                   />
                   <WhatsappShareButton url={this.state.value}>
-                    <WhatsappIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></WhatsappIcon>
+                    <WhatsappIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></WhatsappIcon>
                   </WhatsappShareButton>
                   <EmailShareButton url={this.state.value}>
-                    <EmailIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></EmailIcon>
+                    <EmailIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></EmailIcon>
                   </EmailShareButton>
                   <FacebookShareButton url={this.state.value}>
-                    <FacebookIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></FacebookIcon>
+                    <FacebookIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></FacebookIcon>
                   </FacebookShareButton>
-                  <LinkedinShareButton url={this.state.value}>
-                    <LinkedinIcon size={32} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></LinkedinIcon>
-                  </LinkedinShareButton>
                   <TelegramShareButton url={this.state.value}>
-                    <TelegramIcon size={32} round={true}style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></TelegramIcon>
+                    <TelegramIcon size={40} round={true}style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></TelegramIcon>
                   </TelegramShareButton>
                 </Form.Group>
               </Form>

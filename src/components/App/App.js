@@ -48,15 +48,15 @@ class App extends Component {
                 />
                 <h2 className="mb-1">We made your music life much easier.</h2>
                 <div className="icon_wrap">
-                  <FontAwesomeIcon icon="search" className="ico" />
+                  <FontAwesomeIcon icon="search" className="ico mb-3" />
                   <h3>Search</h3>
                   <p>music based on your activity</p>
                   <br />
-                  <FontAwesomeIcon icon="mouse-pointer" className="ico" />
+                  <FontAwesomeIcon icon="mouse-pointer" className="ico mb-3" />
                   <h3>Hover</h3>
                   <p>to get a glimpse of your tracks</p>
                   <br />
-                  <FontAwesomeIcon icon="plus" className="ico" />
+                  <FontAwesomeIcon icon="plus" className="ico mb-3" />
                   <h3>Create</h3>
                   <p>your own library</p>
                 </div>

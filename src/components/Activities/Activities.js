@@ -289,34 +289,14 @@ class Activities extends Component {
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
-        // <Button
-        //   key={activity.category_id}
-        //   className="mb-5"
-        //   style={{
-        //     margin: "1.3rem",
-        //     width: "11rem",
-        //     padding: "1rem",
-        //     backgroundColor: "rgb(42, 0, 70)",
-        //     border: "none",
-        //     fontSize: "large",
-        //   }}
-        //   onClick={this.activityButtonClicked}
-        //   value={activity.category_id}
-        // >
-        //   {activity.activity}
-        // </Button>
         <Button
-          className="act-btn"
-          // variant="warning"
-          // text="light"
           key={activity.category_id}
+          className="mb-5"
           style={{
             margin: "1.3rem",
-            width: "20rem",
-            height: "10rem",
+            width: "11rem",
             padding: "1rem",
             backgroundColor: "rgb(42, 0, 70)",
-            color: "white", 
             border: "none",
             fontSize: "large",
           }}
@@ -333,7 +313,6 @@ class Activities extends Component {
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
-            minHeight: "45vh",
           }}
           className="my-5"
         >
