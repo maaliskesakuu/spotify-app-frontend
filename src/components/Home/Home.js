@@ -81,7 +81,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h2 className="my-5 text_light" style={{ color: "white", textAlign: "center" }}>
+        <h2
+          className="my-5 text_light"
+          style={{ color: "white", textAlign: "center" }}
+        >
           Recently played
         </h2>
         <Container>
@@ -112,10 +115,17 @@ class Home extends Component {
                           this.playMusic(music.track.preview_url)
                         }
                         onMouseOut={this.pauseMusic}
-                        onClick={this.pauseMusic}
+                        onTouchStart={this.playMusic}
+                        onTouchEnd={this.pauseMusic}
                       />
                     )}
-                    <Card.Body style={{ height: "6.5rem", padding: "10px", overflow: "scroll" }}>
+                    <Card.Body
+                      style={{
+                        height: "6.5rem",
+                        padding: "10px",
+                        overflow: "scroll",
+                      }}
+                    >
                       <Card.Text>
                         {music.track.name} | {music.track.artists[0].name}
                       </Card.Text>

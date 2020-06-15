@@ -112,9 +112,13 @@ class Track extends Component {
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
               // onClick={this.pauseMusic}
+              onTouchStart={this.playMusic}
+              onTouchEnd={this.pauseMusic}
             />
           )}
-          <Card.Body style={{ height: "6.5rem", padding: "10px", overflow: "scroll" }}>
+          <Card.Body
+            style={{ height: "6.5rem", padding: "10px", overflow: "scroll" }}
+          >
             <Card.Text>
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>
