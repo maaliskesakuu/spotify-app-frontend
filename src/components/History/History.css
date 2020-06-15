@@ -1,0 +1,37 @@
+.head {
+  text-align: center;
+  color: white;
+}
+
+table {
+  width: 100%;
+  background-color: rgba(253, 254, 255, 0.8);
+}
+
+th,
+td {
+  border-bottom: 2px solid #dee2e6;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 2px;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+
+.play {
+  cursor: pointer;
+}
+
+.play:hover {
+  background: rgba(42, 0, 70, 0.1);
+}
+
+.size {
+  height: 2.5rem;
+  width: 2.5rem;
+}

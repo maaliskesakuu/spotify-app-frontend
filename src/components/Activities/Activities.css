@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+h2, .text_light{
+    margin-top: 1rem;
+    font-weight: 100;
+    font-size: 3rem;
+}
+
+.act-btn{
+    /* background-image: url("https://source.unsplash.com/2gu4hKuFhi0/400x400"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-animation: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    animation: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-size: 2rem;
+   
+}
