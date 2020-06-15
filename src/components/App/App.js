@@ -32,21 +32,18 @@ class App extends Component {
   render() {
     return (
       <>
-        <div className="background">
-          <header>
-            {!this.state.token && (
-              // this is the call to the Spotify Account Service
+        <main>
+          {!this.state.token && (
+            <div className="background">
               <div id="container">
                 <video autoPlay loop muted>
                   <source src={Video} type="Video/mp4" />
                 </video>
                 <h1 className="mb-0">Welcome!</h1>
-                <img
-                  src="/harmony.png"
-                  alt="logo"
-                  style={{ width: '10rem' }}
-                />
-                <h2 className="mb-1 mt-0 pt-0">We made your music life much easier.</h2>
+                <img src="/harmony.png" alt="logo" style={{ width: "10rem" }} />
+                <h2 className="mb-1 mt-0 pt-0">
+                  We made your music life much easier.
+                </h2>
                 <div className="icon_wrap">
                   <FontAwesomeIcon icon="search" className="ico mb-3" />
                   <h3>Search</h3>
@@ -61,30 +58,37 @@ class App extends Component {
                   <p>your own library</p>
                 </div>
 
-                <button
-                  id="btn"
-                  style={{
-                    border: "none",
-                    backgroundColor: "rgb(42, 0, 70)",
-                    borderRadius: "25px",
-                    marginTop: "1.5rem",
-                  }}
+                {/* this is the call to the Spotify Account Service */}
+                <a
+                  className="login"
+                  href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+                    "%20"
+                  )}&response_type=token&show_dialog=true`}
                 >
-                  <a
-                    className="login"
-                    href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                      "%20"
-                    )}&response_type=token&show_dialog=true`}
-                    style={{ color: "white" }}
+                  <button
+                    id="btn"
+                    style={{
+                      border: "none",
+                      backgroundColor: "rgb(42, 0, 70)",
+                      borderRadius: "25px",
+                      marginTop: "1.5rem",
+                      color: "white",
+                      fontWeight: "610",
+                    }}
                   >
                     Get started!
-                  </a>
-                </button>
+                  </button>
+                </a>
               </div>
-            )}
-          </header>
-        </div>
-        <main>{this.state.token && <Routers />}</main>
+            </div>
+          )}
+
+          {this.state.token && (
+            <div className="loggedInBackground">
+              <Routers />{" "}
+            </div>
+          )}
+        </main>
       </>
     );
   }
