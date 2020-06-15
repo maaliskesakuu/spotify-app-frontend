@@ -38,7 +38,7 @@ class PlaylistAdd extends Component {
             onClick={this.props.onSave}
             style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
           >
-            Create and save to Spotify
+            Save to Spotify
           </Button>
         </Container>
       </Container>

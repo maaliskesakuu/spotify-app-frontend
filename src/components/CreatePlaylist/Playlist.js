@@ -160,7 +160,7 @@ class Playlist extends Component {
                     backgroundColor: "rgb(126, 2, 214)",
                   }}
                 >
-                  Create and save to Spotify
+                  Save to Spotify
                 </Button>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Playlist's web address to share</Form.Label>

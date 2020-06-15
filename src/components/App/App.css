@@ -80,7 +80,7 @@ h1 {
   background-image: url('https://source.unsplash.com/YrtFlrLo2DQ');
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: purple;
+  background-color: rgb(42, 0, 70);
   padding-bottom: 0.5rem;
   min-height: 880px;
 }

@@ -126,18 +126,25 @@ class Activities extends Component {
         if (!jsonResponse.playlists) {
           return [];
         }
-        //Making array with playlist IDs
-        var ID_array = [];
+        //making array of objects with playlist ids and total amount of tracks in the playlist
+        let playlistArray = [];
         jsonResponse.playlists.items.forEach(item => {
-          ID_array.push(item.id);
+          playlistArray.push({
+            id: item.id,
+            total: item.tracks.total,
+          });
         });
 
-        return ID_array;
+        return playlistArray;
       })
-      .then(ID_array => {
-        for (var i = 0; i < ID_array.length; i++) {
+      .then(playlistArray => {
+        for (let i = 0; i < playlistArray.length; i++) {
+          let limitNumber = 4;
+          let max = playlistArray[i].total - limitNumber;
+          let offsetNumber = Math.floor(Math.random() * (max + 1)); //get random offset number min = 0 and max = total amount of tracks - limitNumber
           fetch(
-            constants.API + `playlists/${ID_array[i]}/tracks?limit=4`, //API call with playlists IDs to get tracks
+            constants.API +
+              `playlists/${playlistArray[i].id}/tracks?market=from_token&offset=${offsetNumber}&limit=${limitNumber}`, //API call with playlists IDs to get tracks
             {
               headers: {
                 Accept: "application/json",
