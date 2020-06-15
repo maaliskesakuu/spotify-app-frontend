@@ -41,9 +41,17 @@ class Track extends Component {
   //   });
   // }
 
-  playMusic() {
+  // playMusic() {
+  //   setTimeout(() => {
+  //     this.setState({ audio: new Audio(this.props.track.preview) }, () => {
+  //       this.state.audio.play();
+  //     });
+  //   }, 300);
+  // }
+
+  playMusic(preview) {
     setTimeout(() => {
-      this.setState({ audio: new Audio(this.props.track.preview) }, () => {
+      this.setState({ audio: new Audio(preview) }, () => {
         this.state.audio.play();
       });
     }, 300);
@@ -112,7 +120,10 @@ class Track extends Component {
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
               // onClick={this.pauseMusic}
-              onTouchStart={this.playMusic}
+              // onTouchStart={this.playMusic}
+              onTouchStart={() =>
+                this.playMusic(music.track.preview_url)
+              }
               onTouchEnd={this.pauseMusic}
             />
           )}
