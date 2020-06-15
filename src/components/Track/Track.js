@@ -117,13 +117,12 @@ class Track extends Component {
             <Card.Img
               variant="top"
               src={this.props.track.img}
-              onMouseOver={this.playMusic}
+              // onMouseOver={this.playMusic}
+              onMouseOver={this.playMusic(this.props.track.preview)}
               onMouseOut={this.pauseMusic}
               // onClick={this.pauseMusic}
               // onTouchStart={this.playMusic}
-              onTouchStart={() =>
-                this.playMusic(this.props.track.preview_url)
-              }
+              onTouchStart={() => this.playMusic(this.props.track.preview)}
               onTouchEnd={this.pauseMusic}
             />
           )}
