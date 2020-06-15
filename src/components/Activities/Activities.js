@@ -18,31 +18,26 @@ const activities = [
     id: 1,
     activity: "Focus",
     category_id: "focus",
-    img_: "https://source.unsplash.com/7KLa-xLbSXA/400x400",
   },
   {
     id: 2,
     activity: "Work Out",
     category_id: "workout",
-    img_: "https://source.unsplash.com/n6gnCa77Urc/400x400",
   },
   {
     id: 3,
     activity: "Sleep",
     category_id: "sleep",
-    img_: "https://source.unsplash.com/rUc9hVE-L-E/400x400",
   },
   {
     id: 4,
     activity: "Well-being",
     category_id: "wellness",
-    img_: "https://source.unsplash.com/NTyBbu66_SI/400x400",
   },
   {
     id: 5,
     activity: "Something Else",
     category_id: "somethingelse",
-    img_: "https://source.unsplash.com//jcbBopAsVc8/400x400",
   },
 ];
 
@@ -75,7 +70,7 @@ class Activities extends Component {
   search(term) {
     let accessToken = hash.access_token;
 
-    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20`, {
+    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20&market=from_token`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -131,18 +126,25 @@ class Activities extends Component {
         if (!jsonResponse.playlists) {
           return [];
         }
-        //Making array with playlist IDs
-        var ID_array = [];
+        //making array of objects with playlist ids and total amount of tracks in the playlist
+        let playlistArray = [];
         jsonResponse.playlists.items.forEach(item => {
-          ID_array.push(item.id);
+          playlistArray.push({
+            id: item.id,
+            total: item.tracks.total,
+          });
         });
 
-        return ID_array;
+        return playlistArray;
       })
-      .then(ID_array => {
-        for (var i = 0; i < ID_array.length; i++) {
+      .then(playlistArray => {
+        for (let i = 0; i < playlistArray.length; i++) {
+          let limitNumber = 4;
+          let max = playlistArray[i].total - limitNumber;
+          let offsetNumber = Math.floor(Math.random() * (max + 1)); //get random offset number min = 0 and max = total amount of tracks - limitNumber
           fetch(
-            constants.API + `playlists/${ID_array[i]}/tracks?limit=4`, //API call with playlists IDs to get tracks
+            constants.API +
+              `playlists/${playlistArray[i].id}/tracks?market=from_token&offset=${offsetNumber}&limit=${limitNumber}`, //API call with playlists IDs to get tracks
             {
               headers: {
                 Accept: "application/json",
@@ -175,7 +177,8 @@ class Activities extends Component {
               this.setState({
                 searchResults: this.state.searchResults.concat(searchResults),
               });
-            }).catch(error => {
+            })
+            .catch(error => {
               console.log(error);
             });
         }
@@ -292,10 +295,8 @@ class Activities extends Component {
         
         <Button
           key={activity.category_id}
-          className="mb-5"
+          className="mb-5 mt-0 activity_button"
           style={{
-            margin: "1.3rem",
-            width: "11rem",
             padding: "1rem",
             backgroundColor: "rgb(42, 0, 70)",
             border: "none",
@@ -322,7 +323,7 @@ class Activities extends Component {
           <h2 style={{ textAlign: "center" }} className="my-5 pt-5 text_light">
             What are you in the mood for?
           </h2>
-          <Container className="my-5">
+          <Container className="mt-5">
             <Row>{activityList}</Row>
           </Container>
           {this.state.selectedCategory === "somethingelse" ? (

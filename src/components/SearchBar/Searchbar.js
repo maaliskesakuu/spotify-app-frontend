@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       term: "",
     };
@@ -32,7 +31,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="SearchBar mt-5">
+      <div className="SearchBar">
         <input
           placeholder="Enter a keyword"
           onChange={this.handleTermChange}

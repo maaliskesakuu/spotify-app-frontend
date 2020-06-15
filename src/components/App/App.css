@@ -76,6 +76,15 @@ h1 {
   color: rgb(126, 2, 214);
 }
 
+.loggedInBackground {
+  background-image: url('https://source.unsplash.com/YrtFlrLo2DQ');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(42, 0, 70);
+  padding-bottom: 0.5rem;
+  min-height: 880px;
+}
+
 /* Media queries */
 @media (min-width: 300px) {
   #container {
@@ -109,5 +118,15 @@ h1 {
   #container {
     margin-bottom: 15rem;
     max-width: 55%;
+  }
+
+  .loggedInBackground {
+    min-height: 1100px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .loggedInBackground {
+    min-height: 1811px;
   }
 }
