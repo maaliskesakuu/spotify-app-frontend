@@ -113,7 +113,7 @@ class Track extends Component {
               onMouseOut={this.pauseMusic}
               // onClick={this.pauseMusic}
               onTouchStart={this.playMusic}
-              onTouchEnd={this.pauseMusic}
+              onTouchMove={this.pauseMusic}
             />
           )}
           <Card.Body

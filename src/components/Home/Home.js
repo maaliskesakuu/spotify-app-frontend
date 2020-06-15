@@ -115,8 +115,10 @@ class Home extends Component {
                           this.playMusic(music.track.preview_url)
                         }
                         onMouseOut={this.pauseMusic}
-                        onTouchStart={this.playMusic}
-                        onTouchEnd={this.pauseMusic}
+                        onTouchStart={() =>
+                          this.playMusic(music.track.preview_url)
+                        }
+                        onTouchMove={this.pauseMusic}
                       />
                     )}
                     <Card.Body
