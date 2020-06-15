@@ -1,42 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import PlaylistAdd from '../PlaylistAdd/PlaylistAdd';
-import SearchResults from '../SearchResults/SearchResults';
-import SearchBar from '../SearchBar/Searchbar';
+import PlaylistAdd from "../PlaylistAdd/PlaylistAdd";
+import SearchResults from "../SearchResults/SearchResults";
+import SearchBar from "../SearchBar/Searchbar";
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
-import hash from '../../hash';
+import hash from "../../hash";
 
-import * as constants from '../../constants/constants';
+import * as constants from "../../constants/constants";
 
 const activities = [
   {
     id: 1,
-    activity: 'Focus',
-    category_id: 'focus',
+    activity: "Focus",
+    category_id: "focus",
   },
   {
     id: 2,
-    activity: 'Work Out',
-    category_id: 'workout',
+    activity: "Work Out",
+    category_id: "workout",
   },
   {
     id: 3,
-    activity: 'Sleep',
-    category_id: 'sleep',
+    activity: "Sleep",
+    category_id: "sleep",
   },
   {
     id: 4,
-    activity: 'Well-being',
-    category_id: 'wellness',
+    activity: "Well-being",
+    category_id: "wellness",
   },
   {
     id: 5,
-    activity: 'Something Else',
-    category_id: 'somethingelse',
+    activity: "Something Else",
+    category_id: "somethingelse",
   },
 ];
 
@@ -45,9 +45,9 @@ class Activities extends Component {
     super(props);
     this.state = {
       activities: activities,
-      selectedCategory: '',
+      selectedCategory: "",
       searchResults: [],
-      playlistName: 'New Playlist',
+      playlistName: "New Playlist",
       playlistTracks: [],
     };
 
@@ -71,19 +71,19 @@ class Activities extends Component {
 
     fetch(constants.API + `search?type=track,artist&q=${term}&limit=20`, {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         if (!jsonResponse.tracks) {
           return [];
         }
-        return jsonResponse.tracks.items.map(track => ({
+        return jsonResponse.tracks.items.map((track) => ({
           id: track.id,
           name: track.name,
           artist: track.artists[0].name,
@@ -92,10 +92,10 @@ class Activities extends Component {
           img: track.album.images[0].url,
         }));
       })
-      .then(searchResults => {
+      .then((searchResults) => {
         this.setState({ searchResults: searchResults });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -103,56 +103,62 @@ class Activities extends Component {
   getMusic() {
     let token = hash.access_token;
 
-    if (this.state.selectedCategory === 'somethingelse') {
+    if (this.state.selectedCategory === "somethingelse") {
       return;
     }
 
     fetch(
       constants.API +
-        `browse/categories/${this.state.selectedCategory}/playlists?limit=2`, //API call to get playlists with category
+        `browse/categories/${this.state.selectedCategory}/playlists?limit=5`, //API call to get playlists with category
       {
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       }
     )
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         if (!jsonResponse.playlists) {
           return [];
         }
-        //Making array with playlist IDs
-        var ID_array = [];
-        jsonResponse.playlists.items.forEach(item => {
-          ID_array.push(item.id);
+        //making array of objects with playlist ids and total amount of tracks in the playlist
+        var playlistArray = [];
+        jsonResponse.playlists.items.forEach((item) => {
+          playlistArray.push({
+            id: item.id,
+            total: item.tracks.total,
+          });
         });
-
-        return ID_array;
+        return playlistArray;
       })
-      .then(ID_array => {
-        for (var i = 0; i < ID_array.length; i++) {
+      .then((playlistArray) => {
+        for (var i = 0; i < playlistArray.length; i++) {
+          var limitNumber = 4;
+          var max = playlistArray[i].total - limitNumber;
+          let offsetNumber = Math.floor(Math.random() * (max + 1)); //get random offset number min = 0 and max = total amount of tracks - limitNumber
           fetch(
-            constants.API + `playlists/${ID_array[i]}/tracks?limit=10`, //API call with playlists IDs to get tracks
+            constants.API +
+              `playlists/${playlistArray[i].id}/tracks?market=from_token&offset=${offsetNumber}&limit=${limitNumber}`, //API call with playlists IDs to get tracks
             {
               headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
+                Accept: "application/json",
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
             }
           )
-            .then(response => {
+            .then((response) => {
               return response.json();
             })
-            .then(jsonResponse => {
+            .then((jsonResponse) => {
               if (!jsonResponse.items) {
                 return [];
               }
-              return jsonResponse.items.map(item => ({
+              return jsonResponse.items.map((item) => ({
                 id: item.track.id,
                 name: item.track.name,
                 artist: item.track.artists[0].name,
@@ -161,14 +167,14 @@ class Activities extends Component {
                 img: item.track.album.images[0].url,
               }));
             })
-            .then(searchResults => {
+            .then((searchResults) => {
               this.setState({
                 searchResults: this.state.searchResults.concat(searchResults),
               });
             });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -182,7 +188,7 @@ class Activities extends Component {
 
   addTrack(track) {
     let tracks = this.state.playlistTracks;
-    if (tracks.find(savedTrack => savedTrack.id === track.id)) {
+    if (tracks.find((savedTrack) => savedTrack.id === track.id)) {
       return;
     }
     tracks.push(track);
@@ -192,14 +198,14 @@ class Activities extends Component {
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
     let trackSearch = this.state.searchResults;
-    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+    tracks = tracks.filter((currentTrack) => currentTrack.id !== track.id);
     trackSearch.unshift(track);
     this.setState({ playlistTracks: tracks });
   }
 
   removeTrackSearch(track) {
     let tracks = this.state.searchResults;
-    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+    tracks = tracks.filter((currentTrack) => currentTrack.id !== track.id);
     this.setState({ searchResults: tracks });
   }
 
@@ -213,7 +219,7 @@ class Activities extends Component {
   }
 
   savePlaylistAdd(name) {
-    const trackUris = this.state.playlistTracks.map(track => track.uri);
+    const trackUris = this.state.playlistTracks.map((track) => track.uri);
 
     if (!name || !trackUris.length) {
       return;
@@ -224,34 +230,34 @@ class Activities extends Component {
     let userId;
     let playlist = this.state.playlistName;
 
-    fetch(constants.API + 'me', { headers: headers })
-      .then(response => response.json())
-      .then(jsonResponse => {
+    fetch(constants.API + "me", { headers: headers })
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         userId = jsonResponse.id;
         //post the data and create the playlist
         fetch(constants.API + `users/${userId}/playlists`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+            Accept: "application/json",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify({
             name: playlist,
-            public: 'true',
+            public: "true",
           }),
         })
-          .then(response => response.json())
-          .then(jsonResponse => {
+          .then((response) => response.json())
+          .then((jsonResponse) => {
             const playlistId = jsonResponse.id;
 
             fetch(
               constants.API + `users/${userId}/playlists/${playlistId}/tracks`,
               {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
                   Authorization: `Bearer ${accessToken}`,
                 },
                 body: JSON.stringify({
@@ -260,14 +266,14 @@ class Activities extends Component {
               }
             )
               .then(() => {
-                alert('playlist with selected tracks added to Spotify');
+                alert("playlist with selected tracks added to Spotify");
                 this.setState({
-                  playlistName: 'New Playlist',
+                  playlistName: "New Playlist",
                   playlistTracks: [],
                   searchResults: [],
                 });
               })
-              .catch(error => {
+              .catch((error) => {
                 console.log(error);
               });
           });
@@ -275,11 +281,11 @@ class Activities extends Component {
   }
 
   render() {
-    const activityList = this.state.activities.map(activity => {
+    const activityList = this.state.activities.map((activity) => {
       return (
         <Button
           key={activity.category_id}
-          style={{ margin: '1.3rem', width: '10rem', padding: "1rem" }}
+          style={{ margin: "1.3rem", width: "10rem", padding: "1rem" }}
           onClick={this.activityButtonClicked}
           value={activity.category_id}
         >
@@ -290,22 +296,22 @@ class Activities extends Component {
 
     return (
       <div>
-        <h2 style={{ textAlign: 'center' }} className="my-5">
+        <h2 style={{ textAlign: "center" }} className="my-5">
           What are you in the mood for?
         </h2>
         <Container>
           <Row>{activityList}</Row>
         </Container>
-        {this.state.selectedCategory === 'somethingelse' ? (
+        {this.state.selectedCategory === "somethingelse" ? (
           <SearchBar onSearch={this.search}></SearchBar>
         ) : (
-          ''
+          ""
         )}
         <SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}
         />
-        {this.state.selectedCategory !== '' ? (
+        {this.state.selectedCategory !== "" ? (
           <PlaylistAdd
             playlistTracks={this.state.playlistTracks}
             onNameChange={this.updatePlaylistName}
@@ -314,7 +320,7 @@ class Activities extends Component {
             title={this.state.playlistName}
           ></PlaylistAdd>
         ) : (
-          ''
+          ""
         )}
       </div>
     );
