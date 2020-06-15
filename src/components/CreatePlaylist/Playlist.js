@@ -101,6 +101,7 @@ class Playlist extends Component {
   render() {
     return (
       <>
+      <div className="box">
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
@@ -188,6 +189,7 @@ class Playlist extends Component {
             </Col>
           </Container>
         </Container>
+        </div>
       </>
     );
   }

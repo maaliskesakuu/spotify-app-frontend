@@ -134,9 +134,11 @@ class History extends Component {
     );
 
     return (
+      <div className="box">
       <Container className="p-0">
         <div>{musicHistory.length !== 0 ? <RecentlyPlayed /> : null}</div>
       </Container>
+      </div>
     );
   }
 }

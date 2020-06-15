@@ -289,6 +289,7 @@ class Activities extends Component {
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
+        
         <Button
           key={activity.category_id}
           className="mb-5"
@@ -305,11 +306,13 @@ class Activities extends Component {
         >
           {activity.activity}
         </Button>
+        
       );
     });
 
     return (
-      <div>
+      <div className="box">
+        
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
