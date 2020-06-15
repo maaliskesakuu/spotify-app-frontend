@@ -122,7 +122,7 @@ class Track extends Component {
               // onClick={this.pauseMusic}
               // onTouchStart={this.playMusic}
               onTouchStart={() =>
-                this.playMusic(music.track.preview_url)
+                this.playMusic(this.props.track.preview_url)
               }
               onTouchEnd={this.pauseMusic}
             />
