@@ -111,7 +111,7 @@ class Track extends Component {
               src={this.props.track.img}
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
-              onClick={this.pauseMusic}
+              // onClick={this.pauseMusic}
             />
           )}
           <Card.Body style={{ height: "6.5rem", padding: "10px", overflow: "scroll" }}>
