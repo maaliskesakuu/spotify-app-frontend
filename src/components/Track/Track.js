@@ -35,11 +35,11 @@ class Track extends Component {
     return <Tooltip {...props}>Sorry, no preview</Tooltip>;
   }
 
-  // playMusic() {
-  //   this.setState({ audio: new Audio(this.props.track.preview) }, () => {
-  //     this.state.audio.play();
-  //   });
-  // }
+  playMusic() {
+    this.setState({ audio: new Audio(this.props.track.preview) }, () => {
+      this.state.audio.play();
+    });
+  }
 
   // playMusic() {
   //   setTimeout(() => {
@@ -56,12 +56,6 @@ class Track extends Component {
   //     });
   //   }, 300);
   // }
-
-  playMusic(preview) {
-    this.setState({ audio: new Audio(preview) }, () => {
-      this.state.audio.play();
-    });
-  }
 
   pauseMusic() {
     this.state.audio.pause();
@@ -123,12 +117,9 @@ class Track extends Component {
             <Card.Img
               variant="top"
               src={this.props.track.img}
-              // onMouseOver={this.playMusic}
-              onMouseOver={this.playMusic(this.props.track.preview)}
+              onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
-              // onClick={this.pauseMusic}
-              // onTouchStart={this.playMusic}
-              onTouchStart={() => this.playMusic(this.props.track.preview)}
+              onTouchStart={this.playMusic}
               onTouchEnd={this.pauseMusic}
             />
           )}
