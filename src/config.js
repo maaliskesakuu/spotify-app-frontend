@@ -7,9 +7,9 @@ export const authEndpoint = "https://accounts.spotify.com/authorize";
 export const clientId = env.SPOTIFY_CLIENT_ID;
 
 // the address to which the Spotify Accounts service redirects
-// export const redirectUri = "https://harmony-fbddf.web.app/";
+export const redirectUri = "https://harmony-fbddf.web.app/";
 
-export const redirectUri = "http://localhost:3000/"
+// export const redirectUri = "http://localhost:3000/"
 
 // user must authorize access to the data defined in the scopes
 // do not remove playlist-modify-*
