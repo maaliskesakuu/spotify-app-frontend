@@ -107,7 +107,7 @@ class Playlist extends Component {
           }}
           className="my-5 pb-5"
         >
-          <h2 className="my-5 pt-5" style={{ textAlign: "center" }}>
+          <h2 className="my-5 pt-5 text_light" style={{ textAlign: "center" }}>
             Want to make a playlist with friends?
           </h2>
           <p className="playlist-text mx-sm-5">
@@ -116,12 +116,12 @@ class Playlist extends Component {
           </p>
           <p className="playlist-text mx-sm-5">
             Make a collaborative playlist and share its Spotify web address with
-            them so they can add their favorite tracks to it, too!
+            whom you want so they can add their favorite tracks to it, too!
           </p>
           <p className="playlist-text mx-sm-5">
             Making a playlist is easy. Go ahead and fill in the form below. You
             can give your playlist a name that you like or use the one that is
-            in the form already and add a fitting description if you will.
+            in the form already and add a description to your liking.
           </p>
           <Container
             className="mb-3 mt-5"
@@ -163,7 +163,7 @@ class Playlist extends Component {
                   Create and save to Spotify
                 </Button>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>The playlist's web address</Form.Label>
+                  <Form.Label>Playlist's web address to share</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows="2"
@@ -172,16 +172,16 @@ class Playlist extends Component {
                     readOnly
                   />
                   <WhatsappShareButton url={this.state.value}>
-                    <WhatsappIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></WhatsappIcon>
+                    <WhatsappIcon size={40} round={true} style={{marginTop: "1rem", marginRight: "1rem" }}></WhatsappIcon>
                   </WhatsappShareButton>
                   <EmailShareButton url={this.state.value}>
-                    <EmailIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></EmailIcon>
+                    <EmailIcon size={40} round={true} style={{marginTop: "1rem", marginRight: "1rem" }}></EmailIcon>
                   </EmailShareButton>
                   <FacebookShareButton url={this.state.value}>
-                    <FacebookIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></FacebookIcon>
+                    <FacebookIcon size={40} round={true} style={{marginTop: "1rem", marginRight: "1rem" }}></FacebookIcon>
                   </FacebookShareButton>
                   <TelegramShareButton url={this.state.value}>
-                    <TelegramIcon size={40} round={true}style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></TelegramIcon>
+                    <TelegramIcon size={40} round={true}style={{marginTop: "1rem", marginRight: "1rem" }}></TelegramIcon>
                   </TelegramShareButton>
                 </Form.Group>
               </Form>

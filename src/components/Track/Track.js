@@ -114,7 +114,7 @@ class Track extends Component {
               onClick={this.pauseMusic}
             />
           )}
-          <Card.Body style={{ minHeight: "7rem", padding: "10px" }}>
+          <Card.Body style={{ height: "6.5rem", padding: "10px", overflow: "scroll" }}>
             <Card.Text>
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>

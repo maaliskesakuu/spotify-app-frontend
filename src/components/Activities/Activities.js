@@ -18,31 +18,26 @@ const activities = [
     id: 1,
     activity: "Focus",
     category_id: "focus",
-    img_: "https://source.unsplash.com/7KLa-xLbSXA/400x400",
   },
   {
     id: 2,
     activity: "Work Out",
     category_id: "workout",
-    img_: "https://source.unsplash.com/n6gnCa77Urc/400x400",
   },
   {
     id: 3,
     activity: "Sleep",
     category_id: "sleep",
-    img_: "https://source.unsplash.com/rUc9hVE-L-E/400x400",
   },
   {
     id: 4,
     activity: "Well-being",
     category_id: "wellness",
-    img_: "https://source.unsplash.com/NTyBbu66_SI/400x400",
   },
   {
     id: 5,
     activity: "Something Else",
     category_id: "somethingelse",
-    img_: "https://source.unsplash.com//jcbBopAsVc8/400x400",
   },
 ];
 
@@ -175,7 +170,8 @@ class Activities extends Component {
               this.setState({
                 searchResults: this.state.searchResults.concat(searchResults),
               });
-            }).catch(error => {
+            })
+            .catch(error => {
               console.log(error);
             });
         }
@@ -291,10 +287,8 @@ class Activities extends Component {
       return (
         <Button
           key={activity.category_id}
-          className="mb-5"
+          className="mb-5 mt-0 activity_button"
           style={{
-            margin: "1.3rem",
-            width: "11rem",
             padding: "1rem",
             backgroundColor: "rgb(42, 0, 70)",
             border: "none",
@@ -319,7 +313,7 @@ class Activities extends Component {
           <h2 style={{ textAlign: "center" }} className="my-5 pt-5 text_light">
             What are you in the mood for?
           </h2>
-          <Container className="my-5">
+          <Container className="mt-5">
             <Row>{activityList}</Row>
           </Container>
           {this.state.selectedCategory === "somethingelse" ? (

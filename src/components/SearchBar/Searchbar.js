@@ -32,7 +32,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="SearchBar mt-5">
+      <div className="SearchBar">
         <input
           placeholder="Enter a keyword"
           onChange={this.handleTermChange}

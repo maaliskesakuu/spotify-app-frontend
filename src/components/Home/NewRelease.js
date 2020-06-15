@@ -71,7 +71,7 @@ class NewRelease extends Component {
   render() {
     return (
       <div>
-        <h2 className="my-5" style={{ color: "white", textAlign: "center" }}>
+        <h2 className="my-5 text_light" style={{ color: "white", textAlign: "center" }}>
           New releases
         </h2>
         <Container className="mb-5">
@@ -96,7 +96,7 @@ class NewRelease extends Component {
                         className="shapes"
                       />
                     </OverlayTrigger>
-                    <Card.Body style={{ minHeight: "7rem", padding: "10px" }}>
+                    <Card.Body style={{ height: "6.5rem", padding: "10px", overflow: "scroll" }}>
                       <Card.Text>
                         {songs.name} | {songs.artists[0].name}
                       </Card.Text>
