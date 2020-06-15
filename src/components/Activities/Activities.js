@@ -70,7 +70,7 @@ class Activities extends Component {
   search(term) {
     let accessToken = hash.access_token;
 
-    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20`, {
+    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20&market=from_token`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

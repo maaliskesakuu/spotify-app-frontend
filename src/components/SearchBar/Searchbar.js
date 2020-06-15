@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       term: "",
     };
