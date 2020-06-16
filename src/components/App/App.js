@@ -3,6 +3,7 @@ import { authEndpoint, clientId, redirectUri, scopes } from "../../config";
 import hash from "../../hash";
 import "./App.css";
 import Routers from "../../Routers";
+import Footer from "../Footer/Footer";
 import Video from "../Video/snow.mp4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../FontawesomeIcons/icons";
@@ -89,6 +90,9 @@ class App extends Component {
             </div>
           )}
         </main>
+        <footer>
+        {this.state.token && <Footer />}
+        </footer>
       </>
     );
   }
