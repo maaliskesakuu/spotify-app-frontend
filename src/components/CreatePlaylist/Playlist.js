@@ -12,6 +12,8 @@ import {
   FacebookShareButton,
   TelegramShareButton,
   WhatsappShareButton,
+  TwitterShareButton,
+  FacebookMessengerShareButton,
 } from "react-share";
 
 import {
@@ -19,6 +21,8 @@ import {
   EmailIcon,
   FacebookIcon,
   TelegramIcon,
+  TwitterIcon,
+  FacebookMessengerIcon,
 } from "react-share";
 
 class Playlist extends Component {
@@ -107,23 +111,22 @@ class Playlist extends Component {
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
-          }}        
+          }}
           className="my-5 pb-5"
         >
-            <p className="playlist-text mx-sm-5 pt-5">
-              Is there a party coming and you would like to make a playlist for
-              the party with your friends or family?
-            </p>
-            <p className="playlist-text mx-sm-5">
-              Make a collaborative playlist and share its Spotify web address
-              with whom you want so they can add their favorite tracks to it,
-              too!
-            </p>
-            <p className="playlist-text mx-sm-5">
-              Making a playlist is easy. Go ahead and fill in the form below.
-              You can give your playlist a name that you like or use the one
-              that is in it already and add a description to your liking.
-            </p>
+          <p className="playlist-text mx-sm-5 pt-5">
+            Is there a party coming and you would like to make a playlist for
+            the party with your friends or family?
+          </p>
+          <p className="playlist-text mx-sm-5">
+            Make a collaborative playlist and share its Spotify web address with
+            whom you want so they can add their favorite tracks to it, too!
+          </p>
+          <p className="playlist-text mx-sm-5">
+            Making a playlist is easy. Go ahead and fill in the form below. You
+            can give your playlist a name that you like or use the one that is
+            in it already and add a description to your liking.
+          </p>
           <Container
             className="mb-3 mt-5"
             style={{ paddingLeft: "0", paddingRight: "0" }}
@@ -193,6 +196,13 @@ class Playlist extends Component {
                       style={{ marginTop: "1rem", marginRight: "1rem" }}
                     ></FacebookIcon>
                   </FacebookShareButton>
+                  <FacebookMessengerShareButton url={this.state.value}>
+                    <FacebookMessengerIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "1rem", marginRight: "1rem" }}
+                    ></FacebookMessengerIcon>
+                  </FacebookMessengerShareButton>
                   <TelegramShareButton url={this.state.value}>
                     <TelegramIcon
                       size={40}
@@ -200,6 +210,13 @@ class Playlist extends Component {
                       style={{ marginTop: "1rem", marginRight: "1rem" }}
                     ></TelegramIcon>
                   </TelegramShareButton>
+                  <TwitterShareButton url={this.state.value}>
+                    <TwitterIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "1rem", marginRight: "1rem" }}
+                    ></TwitterIcon>
+                  </TwitterShareButton>
                 </Form.Group>
               </Form>
             </Col>
