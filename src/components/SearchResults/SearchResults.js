@@ -7,7 +7,7 @@ class SearchResults extends Component {
   render() {
     return (
       <div>
-        <Container className="box">
+        <Container>
           <CardDeck className="my-5 py-3">
             <TrackList
               tracks={this.props.searchResults}
