@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import hash from "../../hash";
 import "./User.css";
 
-import Table from "react-bootstrap/Table";
-import Col from "react-bootstrap/Col";
+import { Table, Col } from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
 

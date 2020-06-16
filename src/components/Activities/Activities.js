@@ -5,9 +5,7 @@ import PlaylistAdd from "../PlaylistAdd/PlaylistAdd";
 import SearchResults from "../SearchResults/SearchResults";
 import SearchBar from "../SearchBar/Searchbar";
 
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Button } from "react-bootstrap";
 
 import hash from "../../hash";
 

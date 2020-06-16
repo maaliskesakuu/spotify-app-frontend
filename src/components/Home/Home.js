@@ -3,12 +3,14 @@ import "./Home.css";
 import NewRelease from "./NewRelease";
 import hash from "../../hash";
 
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import CardDeck from "react-bootstrap/CardDeck";
-import Container from "react-bootstrap/Container";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+import {
+  Col,
+  Card,
+  CardDeck,
+  Container,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
 
