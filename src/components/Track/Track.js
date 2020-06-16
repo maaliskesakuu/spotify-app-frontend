@@ -5,9 +5,6 @@ import { Col, Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "../FontawesomeIcons/icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 class Track extends Component {
   constructor(props) {
     super(props);
@@ -109,12 +106,10 @@ class Track extends Component {
             <Card.Img
               variant="top"
               src={this.props.track.img}
-              onTouchStart={this.playMusicOnTouch}
-              onTouchEnd={this.pauseMusicOnTouch}
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
-              onTouchStart={this.playMusic}
-              onTouchEnd={this.pauseMusic}
+              onTouchStart={this.playMusicOnTouch}
+              onTouchEnd={this.pauseMusicOnTouch}
             />
           )}
           <Card.Body
