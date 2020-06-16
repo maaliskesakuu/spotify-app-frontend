@@ -76,8 +76,8 @@ class NewRelease extends Component {
         <h2 className="my-5 text_light" style={{ color: "white", textAlign: "center" }}>
           New releases
         </h2>
-        <Container className="py-5 mb-5">
-          <CardDeck className="box">
+        <Container className="mb-5">
+          <CardDeck className="box py-5 ">
             {this.state.newRelease.map((songs, index) => {
               return (
                 <Col md={3} key={index}>
