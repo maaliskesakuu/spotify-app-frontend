@@ -6,6 +6,7 @@ import NavBar from './components/Navbar/Navbar';
 import Activities from './components/Activities/Activities';
 import Playlist from './components/CreatePlaylist/Playlist'
 import User from './components/User/User';
+import Footer from './components/Footer/Footer';
 
 const Routers = () => {
   return (
@@ -18,6 +19,7 @@ const Routers = () => {
         <Route path="/playlist" component={Playlist}></Route>
         <Route path="/user" component={User}></Route>
       </Switch>
+      <Footer/>
     </Router>
   );
 };
