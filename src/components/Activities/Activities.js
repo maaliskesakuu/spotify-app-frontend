@@ -289,8 +289,7 @@ class Activities extends Component {
 
   render() {
     const activityList = this.state.activities.map(activity => {
-      return (
-        
+      return (        
         <Button
           key={activity.category_id}
           className="activity_button"
@@ -304,8 +303,7 @@ class Activities extends Component {
           value={activity.category_id}
         >
           {activity.activity}
-        </Button>
-        
+        </Button>        
       );
     });
 
