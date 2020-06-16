@@ -319,7 +319,7 @@ class Activities extends Component {
           className="my-5"
         >
           <Container className="mt-5">
-            <Row>{activityList}</Row>
+            <Row style={{justifyContent:"center"}}>{activityList}</Row>
           </Container>
           {this.state.selectedCategory === "somethingelse" ? (
             <SearchBar onSearch={this.search}></SearchBar>
