@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+import { Col, Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -114,6 +113,8 @@ class Track extends Component {
               onTouchEnd={this.pauseMusicOnTouch}
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
+              onTouchStart={this.playMusic}
+              onTouchEnd={this.pauseMusic}
             />
           )}
           <Card.Body

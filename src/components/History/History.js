@@ -33,7 +33,7 @@ class History extends Component {
   }
 
   // fetching data of recently played songs
-  getRecentlyPlayed = (token) => {
+  getRecentlyPlayed = token => {
     fetch(constants.API + "me/player/recently-played", {
       method: "GET",
       headers: {
@@ -55,10 +55,9 @@ class History extends Component {
   };
 
   //play music onClick
-  playMusic = (preview) => {
-    //if there's no preview url
+  playMusic = preview => {
+    // if there's no preview url
     if (!preview) {
-      console.log("no preview");
       this.state.audio.pause();
       return;
     }
@@ -89,15 +88,29 @@ class History extends Component {
     //table displays information
     const TableItem = (item, index) => (
       <tr key={item.played_at}>
-        <td>{index + 1}</td>
+        <td style={{ padding: "0.75rem 0.3rem 0.75rem 0.6rem" }}>
+          {index + 1}
+        </td>
+        <td style={{ padding: "0.75rem 0.3rem" }}>
+          <img
+            className="size"
+            src={item.track.album.images[2].url}
+            alt="album cover"
+          ></img>
+        </td>
         <td
+          style={{ padding: "0.75rem 0.3rem" }}
           onClick={() => this.playMusic(item.track.preview_url)}
           className="play"
         >
           <FontAwesomeIcon icon="play-circle" /> {item.track.name}
         </td>
-        <td>{item.track.artists[0].name}</td>
-        <td>{format(new Date(item.played_at), "yyyy-MM-dd | HH:mm:ss")}</td>
+        <td style={{ padding: "0.75rem 0.3rem" }}>
+          {item.track.artists[0].name}
+        </td>
+        <td style={{ padding: "0.75rem 0.3rem" }}>
+          {format(new Date(item.played_at), "yyyy-MM-dd | HH:mm:ss")}
+        </td>
       </tr>
     );
 
@@ -108,15 +121,21 @@ class History extends Component {
 
     const RecentlyPlayed = () => (
       <div className="recently-played">
-        <h2 className="my-5 head"> Listening History</h2>
-        <button onClick={clearHistoryHandler}>Clear History</button>
+        <button
+          className="text-secondary"
+          onClick={clearHistoryHandler}
+          style={{ border: "none" }}
+        >
+          Clear History
+        </button>
         <table className="table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Track title</th>
-              <th>Artist</th>
-              <th>Time</th>
+              <th style={{ padding: "0.75rem 0.3rem 0.75rem 0.6rem" }}>#</th>
+              <th style={{ padding: "0.75rem 0.3rem" }}>Cover</th>
+              <th style={{ padding: "0.75rem 0.3rem" }}>Track title</th>
+              <th style={{ padding: "0.75rem 0.3rem" }}>Artist</th>
+              <th style={{ padding: "0.75rem 0.3rem" }}>Time</th>
             </tr>
           </thead>
           <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>
@@ -125,8 +144,16 @@ class History extends Component {
     );
 
     return (
-      <div>
-        <div>{musicHistory.length !== 0 ? <RecentlyPlayed /> : null}</div>
+      <div
+        style={{ paddingRight: "0", paddingLeft: "0" }}
+        className="mb-5 container"
+      >
+        <h2 className="my-5 head text_light"> Listening History</h2>
+        <div className="box py-5">
+          <div className="mx-sm-5">
+            {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
+            </div>
+        </div>
       </div>
     );
   }
