@@ -21,12 +21,13 @@ Application uses followig parts of Spotify Web API
 * User profile information
 
 ### How to use spotify API
-Go to [spotify link](https://developer.spotify.com/dashboard/), log in and create a new App.
+Go to [spotify Dashboard](https://developer.spotify.com/dashboard/), log in and create a new App.
 
 Add localhost:3000/ as Redirect URI in your Spotify App Settings.
 
-* Grab the Client Id that will be added to env.js.
+
 * Register an application with Spotify
+* Grab the Client Id that will be added to env.js.
 * Authenticate a user and get authorization to access user data
 * Retrieve the data from a Web API endpoint
 
