@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import hash from "../../hash";
 
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import CardDeck from "react-bootstrap/CardDeck";
-import Container from "react-bootstrap/Container";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+import {
+  Col,
+  Card,
+  CardDeck,
+  Container,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
 
@@ -36,7 +38,7 @@ class NewRelease extends Component {
     }
   }
 
-  getNewRelease = token => {
+  getNewRelease = (token) => {
     fetch(constants.API + "browse/new-releases?limit=20", {
       method: "GET",
       headers: {
@@ -45,14 +47,14 @@ class NewRelease extends Component {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
-      .then(data => data.albums.items)
-      .then(data =>
+      .then((res) => res.json())
+      .then((data) => data.albums.items)
+      .then((data) =>
         this.setState({
           newRelease: data,
         })
       )
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   setText(text) {

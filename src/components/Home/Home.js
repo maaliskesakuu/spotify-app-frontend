@@ -3,12 +3,14 @@ import "./Home.css";
 import NewRelease from "./NewRelease";
 import hash from "../../hash";
 
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import CardDeck from "react-bootstrap/CardDeck";
-import Container from "react-bootstrap/Container";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+import {
+  Col,
+  Card,
+  CardDeck,
+  Container,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
 
@@ -39,7 +41,7 @@ class Home extends Component {
   }
 
   // fetching data of recently played songs
-  getRecentlyPlayed = token => {
+  getRecentlyPlayed = (token) => {
     fetch(constants.API + "me/player/recently-played?limit=10", {
       method: "GET",
       headers: {
@@ -48,14 +50,14 @@ class Home extends Component {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
-      .then(data => data.items)
-      .then(data =>
+      .then((res) => res.json())
+      .then((data) => data.items)
+      .then((data) =>
         this.setState({
           musicHistory: data,
         })
       )
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -66,7 +68,7 @@ class Home extends Component {
   }
 
   //play music on hover
-  playMusic = preview => {
+  playMusic = (preview) => {
     this.setState({ audio: new Audio(preview) }, () => {
       this.state.audio.play();
     });

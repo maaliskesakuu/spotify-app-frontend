@@ -5,10 +5,7 @@ import hash from "../../hash";
 
 import * as constants from "../../constants/constants";
 
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Container, Col, Form, Button } from "react-bootstrap";
 
 import {
   EmailShareButton,
@@ -60,8 +57,8 @@ class Playlist extends Component {
     fetch(constants.API + "me", {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
-      .then(response => response.json())
-      .then(jsonResponse => {
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         userId = jsonResponse.id;
         //post the data and create the playlist
         fetch(constants.API + `users/${userId}/playlists`, {
@@ -78,8 +75,8 @@ class Playlist extends Component {
             public: "false",
           }),
         })
-          .then(response => response.json())
-          .then(jsonResponse => {
+          .then((response) => response.json())
+          .then((jsonResponse) => {
             const playlistId = jsonResponse.id;
             let value = "https://open.spotify.com/playlist/";
             this.setState({ playlistId: playlistId });
@@ -92,7 +89,7 @@ class Playlist extends Component {
               playlistDescription: "",
             });
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       });
@@ -167,21 +164,37 @@ class Playlist extends Component {
                   <Form.Control
                     as="textarea"
                     rows="2"
-                    ref={textarea => (this.textArea = textarea)}
+                    ref={(textarea) => (this.textArea = textarea)}
                     value={this.state.value}
                     readOnly
                   />
                   <WhatsappShareButton url={this.state.value}>
-                    <WhatsappIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></WhatsappIcon>
+                    <WhatsappIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "0.5rem", marginRight: "0.5rem" }}
+                    ></WhatsappIcon>
                   </WhatsappShareButton>
                   <EmailShareButton url={this.state.value}>
-                    <EmailIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></EmailIcon>
+                    <EmailIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "0.5rem", marginRight: "0.5rem" }}
+                    ></EmailIcon>
                   </EmailShareButton>
                   <FacebookShareButton url={this.state.value}>
-                    <FacebookIcon size={40} round={true} style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></FacebookIcon>
+                    <FacebookIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "0.5rem", marginRight: "0.5rem" }}
+                    ></FacebookIcon>
                   </FacebookShareButton>
                   <TelegramShareButton url={this.state.value}>
-                    <TelegramIcon size={40} round={true}style={{marginTop: "0.5rem", marginRight: "0.5rem" }}></TelegramIcon>
+                    <TelegramIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "0.5rem", marginRight: "0.5rem" }}
+                    ></TelegramIcon>
                   </TelegramShareButton>
                 </Form.Group>
               </Form>

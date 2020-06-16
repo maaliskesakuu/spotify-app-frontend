@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import "./PlaylistAdd.css";
 import TrackList from "../TrackList/TrackList";
 
-import Button from "react-bootstrap/Button";
-import CardDeck from "react-bootstrap/CardDeck";
-import Container from "react-bootstrap/Container";
+import { Button, CardDeck, Container } from "react-bootstrap";
 
 class PlaylistAdd extends Component {
   constructor(props) {
@@ -22,7 +20,7 @@ class PlaylistAdd extends Component {
       <Container className="Playlist mb-5">
         <Container className="mb-3 mx-0 px-0">
           <input
-            onChange={this.handleNameChange} 
+            onChange={this.handleNameChange}
             value={this.props.title}
           ></input>
           <CardDeck>

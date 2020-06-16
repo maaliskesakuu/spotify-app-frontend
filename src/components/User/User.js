@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import hash from "../../hash";
 import "./User.css";
 
-import Table from "react-bootstrap/Table";
-import Col from "react-bootstrap/Col";
+import { Table, Col } from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
 
@@ -36,7 +35,7 @@ class User extends Component {
   }
 
   // fetching user data
-  getUserData = token => {
+  getUserData = (token) => {
     fetch(constants.API + "me/", {
       method: "GET",
       headers: {
@@ -45,10 +44,10 @@ class User extends Component {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         this.setState({
           userId: jsonResponse.id,
           displayName: jsonResponse.display_name,
@@ -77,43 +76,58 @@ class User extends Component {
             className="px-sm-0"
             style={{ paddingRight: "0", paddingLeft: "0" }}
           >
-            <Table responsive hover striped className="my-5 mx-sm-0 px-sm-0 px-xs-0">
+            <Table
+              responsive
+              hover
+              striped
+              className="my-5 mx-sm-0 px-sm-0 px-xs-0"
+            >
               <tbody>
-                <tr style={{padding: "0.75rem 0.6rem"}}>
-                  <th style={{padding: "0.75rem 0.6rem"}}>Display name</th>
+                <tr style={{ padding: "0.75rem 0.6rem" }}>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>Display name</th>
                 </tr>
-                <tr style={{padding: "0.75rem 0.6rem"}}>
-                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.displayName}</td>
+                <tr style={{ padding: "0.75rem 0.6rem" }}>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
+                    {this.state.displayName}
+                  </td>
                 </tr>
-                <tr style={{padding: "0.75rem 0.6rem"}}>
-                  <th style={{padding: "0.75rem 0.6rem"}}>Email</th>
+                <tr style={{ padding: "0.75rem 0.6rem" }}>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>Email</th>
                 </tr>
-                <tr style={{padding: "0.75rem 0.6rem"}}>
-                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.email}</td>
+                <tr style={{ padding: "0.75rem 0.6rem" }}>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
+                    {this.state.email}
+                  </td>
                 </tr>
-                <tr style={{padding: "0.75rem 0.6rem"}}>
-                  <th style={{padding: "0.75rem 0.6rem"}}>Country</th>
+                <tr style={{ padding: "0.75rem 0.6rem" }}>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>Country</th>
                 </tr>
-                <tr style={{padding: "0.75rem 0.6rem"}}>
-                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.country}</td>
-                </tr>
-                <tr>
-                  <th style={{padding: "0.75rem 0.6rem"}}>User id</th>
-                </tr>
-                <tr>
-                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.userId}</td>
-                </tr>
-                <tr>
-                  <th style={{padding: "0.75rem 0.6rem"}}>Followers</th>
+                <tr style={{ padding: "0.75rem 0.6rem" }}>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
+                    {this.state.country}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.followers}</td>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>User id</th>
                 </tr>
                 <tr>
-                  <th style={{padding: "0.75rem 0.6rem"}}>Spotify URI</th>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
+                    {this.state.userId}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{padding: "0.75rem 0.6rem"}}>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>Followers</th>
+                </tr>
+                <tr>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
+                    {this.state.followers}
+                  </td>
+                </tr>
+                <tr>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>Spotify URI</th>
+                </tr>
+                <tr>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
                     {" "}
                     <a
                       href={this.state.spotifyUrl}
@@ -124,17 +138,23 @@ class User extends Component {
                     </a>
                   </td>
                 </tr>
-                <tr style={{padding: "0.75rem 0.6rem"}}>
-                  <th style={{padding: "0.75rem 0.6rem"}}>Subscription level</th>
+                <tr style={{ padding: "0.75rem 0.6rem" }}>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>
+                    Subscription level
+                  </th>
                 </tr>
                 <tr>
-                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.product}</td>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
+                    {this.state.product}
+                  </td>
                 </tr>
                 <tr>
-                  <th style={{padding: "0.75rem 0.6rem"}}>Type</th>
+                  <th style={{ padding: "0.75rem 0.6rem" }}>Type</th>
                 </tr>
                 <tr>
-                  <td style={{padding: "0.75rem 0.6rem"}}>{this.state.type}</td>
+                  <td style={{ padding: "0.75rem 0.6rem" }}>
+                    {this.state.type}
+                  </td>
                 </tr>
               </tbody>
             </Table>

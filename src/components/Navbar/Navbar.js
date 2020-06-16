@@ -11,7 +11,8 @@ const NavItems = (props) => {
 
   return (
     <li className="nav-item mr-3 mb-1">
-      <a className="icon-button" onClick={() => setOpen(!open)}>
+      eslint-disable-next-line
+      <a id="icon-button" onClick={() => setOpen(!open)}>
         {/* <FontAwesomeIcon icon="user" /> */}
         <p>
           My account <FontAwesomeIcon icon="caret-down" />
