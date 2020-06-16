@@ -104,19 +104,12 @@ class Playlist extends Component {
         >
           Want to make a playlist with friends?
         </h2>
-        {/* <div className="box py-5 mb-5"> */}
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
           }}        
-          className="box my-5 pb-5"
+          className="my-5 pb-5"
         >
-          {/* <h2
-            className="my-5 pt-5 text_light"
-            style={{ textAlign: "center", color: "white" }}
-          >
-            Want to make a playlist with friends?
-          </h2> */}
             <p className="playlist-text mx-sm-5 pt-5">
               Is there a party coming and you would like to make a playlist for
               the party with your friends or family?
@@ -212,7 +205,6 @@ class Playlist extends Component {
             </Col>
           </Container>
         </Container>
-        {/* </div> */}
       </div>
     );
   }
