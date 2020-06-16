@@ -14,7 +14,7 @@ const NavItems = props => {
       {/* eslint-disable-next-line */}
       <a id="icon-button" onClick={() => setOpen(!open)}>
         <p>
-          My account <FontAwesomeIcon icon="caret-down" />
+          My Account <FontAwesomeIcon icon="caret-down" />
         </p>
       </a>
       {open && props.children}

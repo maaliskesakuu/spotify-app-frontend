@@ -76,7 +76,7 @@ class User extends Component {
             className="px-sm-0"
             style={{ paddingRight: "0", paddingLeft: "0" }}
           >
-            <Table responsive hover striped className="my-5 mx-sm-0 px-sm-0 px-xs-0">
+            <Table responsive striped className="my-5 mx-sm-0 px-sm-0 px-xs-0">
               <tbody>
                 <tr style={{padding: "0.75rem 0.6rem"}}>
                   <th style={{padding: "0.75rem 0.6rem"}}>Display name</th>

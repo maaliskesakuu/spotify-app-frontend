@@ -89,7 +89,7 @@ class Home extends Component {
         >
           Recently played
         </h2>
-        <Container>
+        <Container className="box py-5">
           <CardDeck>
             {this.state.musicHistory.map((music, index) => {
               return (

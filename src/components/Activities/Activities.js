@@ -293,7 +293,7 @@ class Activities extends Component {
         
         <Button
           key={activity.category_id}
-          className="mb-5 mt-0 activity_button"
+          className="activity_button"
           style={{
             padding: "1rem",
             backgroundColor: "rgb(42, 0, 70)",
@@ -310,17 +310,16 @@ class Activities extends Component {
     });
 
     return (
-      <div className="box">
-        
+      <>
+         <h2 style={{ color: "white", textAlign: "center" }} className="my-5 text_light">
+            What are you in the mood for?
+          </h2>        
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
           }}
           className="my-5"
         >
-          <h2 style={{ textAlign: "center" }} className="my-5 pt-5 text_light">
-            What are you in the mood for?
-          </h2>
           <Container className="mt-5">
             <Row>{activityList}</Row>
           </Container>
@@ -330,10 +329,10 @@ class Activities extends Component {
             ""
           )}
         </Container>
-        <SearchResults
+        {this.state.selectedCategory !== "" ? (<SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}
-        />
+        /> ): ('')}
         {this.state.selectedCategory !== "" ? (
           <PlaylistAdd
             playlistTracks={this.state.playlistTracks}
@@ -345,7 +344,7 @@ class Activities extends Component {
         ) : (
           ""
         )}
-      </div>
+        </>
     );
   }
 }

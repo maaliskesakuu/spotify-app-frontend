@@ -7,8 +7,8 @@ class SearchResults extends Component {
   render() {
     return (
       <div>
-        <Container>
-          <CardDeck className="my-5">
+        <Container className="box">
+          <CardDeck className="my-5 py-3">
             <TrackList
               tracks={this.props.searchResults}
               onAdd={this.props.onAdd}

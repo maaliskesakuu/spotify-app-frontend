@@ -97,33 +97,43 @@ class Playlist extends Component {
 
   render() {
     return (
-      <>
-      <div className="box">
+      <div>
+        <h2
+          className="my-5 p-1 text_light"
+          style={{ color: "white", textAlign: "center" }}
+        >
+          Want to make a playlist with friends?
+        </h2>
+        {/* <div className="box py-5 mb-5"> */}
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
-          }}
-          className="my-5 pb-5"
+          }}        
+          className="box my-5 pb-5"
         >
-          <h2 className="my-5 pt-5 text_light" style={{ textAlign: "center" }}>
+          {/* <h2
+            className="my-5 pt-5 text_light"
+            style={{ textAlign: "center", color: "white" }}
+          >
             Want to make a playlist with friends?
-          </h2>
-          <p className="playlist-text mx-sm-5">
-            Is there a party coming and you would like to make a playlist for
-            the party with your friends or family?
-          </p>
-          <p className="playlist-text mx-sm-5">
-            Make a collaborative playlist and share its Spotify web address with
-            whom you want so they can add their favorite tracks to it, too!
-          </p>
-          <p className="playlist-text mx-sm-5">
-            Making a playlist is easy. Go ahead and fill in the form below. You
-            can give your playlist a name that you like or use the one that is
-            in the form already and add a description to your liking.
-          </p>
+          </h2> */}
+            <p className="playlist-text mx-sm-5 pt-5">
+              Is there a party coming and you would like to make a playlist for
+              the party with your friends or family?
+            </p>
+            <p className="playlist-text mx-sm-5">
+              Make a collaborative playlist and share its Spotify web address
+              with whom you want so they can add their favorite tracks to it,
+              too!
+            </p>
+            <p className="playlist-text mx-sm-5">
+              Making a playlist is easy. Go ahead and fill in the form below.
+              You can give your playlist a name that you like or use the one
+              that is in it already and add a description to your liking.
+            </p>
           <Container
             className="mb-3 mt-5"
-            style={{ clear: "right", paddingLeft: "0", paddingRight: "0" }}
+            style={{ paddingLeft: "0", paddingRight: "0" }}
           >
             <Col md={{ span: 8, offset: 2 }} className="popup">
               <Form className="mx-sm-0 mx-lg-5 my-5 px-lg-5">
@@ -170,24 +180,40 @@ class Playlist extends Component {
                     readOnly
                   />
                   <WhatsappShareButton url={this.state.value}>
-                    <WhatsappIcon size={40} round={true} style={{marginTop: "1rem", marginRight: "1rem" }}></WhatsappIcon>
+                    <WhatsappIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "1rem", marginRight: "1rem" }}
+                    ></WhatsappIcon>
                   </WhatsappShareButton>
                   <EmailShareButton url={this.state.value}>
-                    <EmailIcon size={40} round={true} style={{marginTop: "1rem", marginRight: "1rem" }}></EmailIcon>
+                    <EmailIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "1rem", marginRight: "1rem" }}
+                    ></EmailIcon>
                   </EmailShareButton>
                   <FacebookShareButton url={this.state.value}>
-                    <FacebookIcon size={40} round={true} style={{marginTop: "1rem", marginRight: "1rem" }}></FacebookIcon>
+                    <FacebookIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "1rem", marginRight: "1rem" }}
+                    ></FacebookIcon>
                   </FacebookShareButton>
                   <TelegramShareButton url={this.state.value}>
-                    <TelegramIcon size={40} round={true}style={{marginTop: "1rem", marginRight: "1rem" }}></TelegramIcon>
+                    <TelegramIcon
+                      size={40}
+                      round={true}
+                      style={{ marginTop: "1rem", marginRight: "1rem" }}
+                    ></TelegramIcon>
                   </TelegramShareButton>
                 </Form.Group>
               </Form>
             </Col>
           </Container>
         </Container>
-        </div>
-      </>
+        {/* </div> */}
+      </div>
     );
   }
 }

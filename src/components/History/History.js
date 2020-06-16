@@ -5,8 +5,6 @@ import { format } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../FontawesomeIcons/icons";
 
-import Container from "react-bootstrap/Container";
-
 import * as constants from "../../constants/constants";
 
 class History extends Component {
@@ -123,7 +121,6 @@ class History extends Component {
 
     const RecentlyPlayed = () => (
       <div className="recently-played">
-        <h2 className="my-5 head text_light"> Listening History</h2>
         <button
           className="text-secondary"
           onClick={clearHistoryHandler}
@@ -131,7 +128,7 @@ class History extends Component {
         >
           Clear History
         </button>
-        <table className="table mb-5">
+        <table className="table">
           <thead>
             <tr>
               <th style={{ padding: "0.75rem 0.3rem 0.75rem 0.6rem" }}>#</th>
@@ -147,10 +144,16 @@ class History extends Component {
     );
 
     return (
-      <div className="box">
-      <Container className="p-0">
-        <div>{musicHistory.length !== 0 ? <RecentlyPlayed /> : null}</div>
-      </Container>
+      <div
+        style={{ paddingRight: "0", paddingLeft: "0" }}
+        className="mb-5 container"
+      >
+        <h2 className="my-5 head text_light"> Listening History</h2>
+        <div className="box py-5">
+          <div className="mx-sm-5">
+            {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
+            </div>
+        </div>
       </div>
     );
   }
