@@ -1,12 +1,11 @@
 import React, { Component } from "react";
+import "./Activities.css";
 
 import PlaylistAdd from "../PlaylistAdd/PlaylistAdd";
 import SearchResults from "../SearchResults/SearchResults";
 import SearchBar from "../SearchBar/Searchbar";
 
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Button } from "react-bootstrap";
 
 import hash from "../../hash";
 
@@ -69,7 +68,7 @@ class Activities extends Component {
   search(term) {
     let accessToken = hash.access_token;
 
-    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20`, {
+    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20&market=from_token`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -126,19 +125,20 @@ class Activities extends Component {
           return [];
         }
         //making array of objects with playlist ids and total amount of tracks in the playlist
-        var playlistArray = [];
-        jsonResponse.playlists.items.forEach((item) => {
+        let playlistArray = [];
+        jsonResponse.playlists.items.forEach(item => {
           playlistArray.push({
             id: item.id,
             total: item.tracks.total,
           });
         });
+
         return playlistArray;
       })
-      .then((playlistArray) => {
-        for (var i = 0; i < playlistArray.length; i++) {
-          var limitNumber = 4;
-          var max = playlistArray[i].total - limitNumber;
+      .then(playlistArray => {
+        for (let i = 0; i < playlistArray.length; i++) {
+          let limitNumber = 4;
+          let max = playlistArray[i].total - limitNumber;
           let offsetNumber = Math.floor(Math.random() * (max + 1)); //get random offset number min = 0 and max = total amount of tracks - limitNumber
           fetch(
             constants.API +
@@ -154,23 +154,30 @@ class Activities extends Component {
             .then((response) => {
               return response.json();
             })
-            .then((jsonResponse) => {
-              if (!jsonResponse.items) {
+            .then(jsonResponse => {
+              try {
+                if (!jsonResponse.items) {
+                  return [];
+                }
+                return jsonResponse.items.map(item => ({
+                  id: item.track.id,
+                  name: item.track.name,
+                  artist: item.track.artists[0].name,
+                  uri: item.track.uri,
+                  preview: item.track.preview_url,
+                  img: item.track.album.images[0].url,
+                }));
+              } catch (err) {
                 return [];
               }
-              return jsonResponse.items.map((item) => ({
-                id: item.track.id,
-                name: item.track.name,
-                artist: item.track.artists[0].name,
-                uri: item.track.uri,
-                preview: item.track.preview_url,
-                img: item.track.album.images[0].url,
-              }));
             })
             .then((searchResults) => {
               this.setState({
                 searchResults: this.state.searchResults.concat(searchResults),
               });
+            })
+            .catch(error => {
+              console.log(error);
             });
         }
       })
@@ -231,8 +238,8 @@ class Activities extends Component {
     let playlist = this.state.playlistName;
 
     fetch(constants.API + "me", { headers: headers })
-      .then((response) => response.json())
-      .then((jsonResponse) => {
+      .then(response => response.json())
+      .then(jsonResponse => {
         userId = jsonResponse.id;
         //post the data and create the playlist
         fetch(constants.API + `users/${userId}/playlists`, {
@@ -281,36 +288,49 @@ class Activities extends Component {
   }
 
   render() {
-    const activityList = this.state.activities.map((activity) => {
-      return (
+    const activityList = this.state.activities.map(activity => {
+      return (        
         <Button
           key={activity.category_id}
-          style={{ margin: "1.3rem", width: "10rem", padding: "1rem" }}
+          className="activity_button"
+          style={{
+            padding: "1rem",
+            backgroundColor: "rgb(42, 0, 70)",
+            border: "none",
+            fontSize: "large",
+          }}
           onClick={this.activityButtonClicked}
           value={activity.category_id}
         >
           {activity.activity}
-        </Button>
+        </Button>        
       );
     });
 
     return (
-      <div>
-        <h2 style={{ textAlign: "center" }} className="my-5">
-          What are you in the mood for?
-        </h2>
-        <Container>
-          <Row>{activityList}</Row>
+      <>
+         <h2 style={{ color: "white", textAlign: "center" }} className="my-5 text_light">
+            What are you in the mood for?
+          </h2>        
+        <Container
+          style={{
+            backgroundColor: "rgba(253, 254, 255, 0.8)",
+          }}
+          className="my-5"
+        >
+          <Container className="mt-5">
+            <Row>{activityList}</Row>
+          </Container>
+          {this.state.selectedCategory === "somethingelse" ? (
+            <SearchBar onSearch={this.search}></SearchBar>
+          ) : (
+            ""
+          )}
         </Container>
-        {this.state.selectedCategory === "somethingelse" ? (
-          <SearchBar onSearch={this.search}></SearchBar>
-        ) : (
-          ""
-        )}
-        <SearchResults
+        {this.state.selectedCategory !== "" ? (<SearchResults
           searchResults={this.state.searchResults}
           onAdd={this.doThese}
-        />
+        /> ): ('')}
         {this.state.selectedCategory !== "" ? (
           <PlaylistAdd
             playlistTracks={this.state.playlistTracks}
@@ -322,7 +342,7 @@ class Activities extends Component {
         ) : (
           ""
         )}
-      </div>
+        </>
     );
   }
 }

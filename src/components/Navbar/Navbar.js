@@ -1,85 +1,91 @@
-import React from 'react';
-//import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
-import './Navbar.css';
-import '../FontawesomeIcons/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import { LinkContainer } from "react-router-bootstrap";
+import "./Navbar.css";
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavItem from 'react-bootstrap/NavItem';
+import { Nav, NavItem, Navbar, NavDropdown } from "react-bootstrap";
 
-const NavBar = () => {
-  //  const styles = {
-  //    textDecoration: 'none',
-  //  };
+const NavItems = props => {
+  const [open, setOpen] = useState(false);
 
   return (
-    <Navbar bg="light" variant="light" expand="md" className="px-3">
+    <li className="nav-item mr-3 mb-1">
+      {/* eslint-disable-next-line */}
+      <a id="icon-button" onClick={() => setOpen(!open)}>
+        <p>
+          My Account <FontAwesomeIcon icon="caret-down" />
+        </p>
+      </a>
+      {open && props.children}
+    </li>
+  );
+};
+
+const NavBar = () => {
+  return (
+    <Navbar
+      variant="dark"
+      expand="md"
+      style={{
+        backgroundColor: "#0c0028",
+        paddingLeft: "0.6rem",
+        marginRight: "0",
+        paddingRight: "0.6rem",
+      }}
+    >
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img
-            src="/logoMusic.png"
+            src="/harmony.png"
             alt="app's logo"
-            style={{ width: '8vw', cursor: "pointer" }}
+            style={{ width: "9vw", cursor: "pointer", padding: "0" }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-        <Nav style={{cursor: "pointer"}}>
+        <Nav style={{ cursor: "pointer" }}>
           <LinkContainer to="/">
-            <NavItem className="mr-5">
+            <NavItem className="mr-3 mb-1 mr-5">
               <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/playlist">
-            <NavItem className="mr-5">
-              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create Playlist
+            <NavItem className="mr-3 mb-1 mr-5">
+              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
+              Playlist
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/featured">
-            <NavItem className="mr-5">
+            <NavItem className="mr-3 mb-1 mr-5">
               <FontAwesomeIcon icon="music"></FontAwesomeIcon> Recent and New
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">
-            <NavItem className="mr-5">
+            <NavItem className="mr-3 mb-1 mr-5">
               <FontAwesomeIcon icon="history"></FontAwesomeIcon> History
               Playlist
             </NavItem>
           </LinkContainer>
-          <LinkContainer to="/user">
-            <NavItem className="mr-5">
-              <FontAwesomeIcon icon="user"></FontAwesomeIcon> Profile
-            </NavItem>
-          </LinkContainer>
-          <a href="//accounts.spotify.com/logout">Log out</a>
+
+          <NavItems>
+            <div className="item_box">
+              <LinkContainer to="/user">
+                <NavItem className="mr-3 mb-1 mr-5">Profile</NavItem>
+              </LinkContainer>
+              <NavDropdown.Divider />
+              <a
+                href="//harmony-fbddf.web.app/"
+                rel="noopener noreferrer"
+                className="mr-3 mr-5 out"
+              >
+                Log out
+              </a>
+            </div>
+          </NavItems>
         </Nav>
       </Navbar.Collapse>
-      {/* <div> 
-      <a href="/"><img src="/logoMusic.png" alt="app's logo"></img></a>
-      <ul>
-        <Link to="/" style={styles}>
-          Home
-        </Link>
-      </ul>
-      <ul>
-        <Link to="/history" style={styles}>
-          History Playlist
-        </Link>
-      </ul>
-      <ul>
-        <Link to="/activities" style={styles}>
-          Search Music and Create a Playlist
-        </Link>
-      </ul>
-      <ul>
-        <Link to="/playlist" style={styles}>
-          Make a Collaborative Playlist
-        </Link>
-      </ul>
-      </div>  */}
     </Navbar>
   );
 };

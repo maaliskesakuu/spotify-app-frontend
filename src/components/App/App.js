@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
-import hash from '../../hash';
-import './App.css';
-import Routers from '../../Routers';
-import Footer from '../Footer/Footer';
-import Video from '../Video/snow.mp4';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../FontawesomeIcons/icons';
+import React, { Component } from "react";
+import { authEndpoint, clientId, redirectUri, scopes } from "../../config";
+import hash from "../../hash";
+import "./App.css";
+import Routers from "../../Routers";
+import Footer from "../Footer/Footer";
+import Video from "../Video/snow.mp4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../FontawesomeIcons/icons";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   constructor(props) {
@@ -33,59 +33,63 @@ class App extends Component {
   render() {
     return (
       <>
-        <div className="background">
-          <header>
-            {!this.state.token && (
-              // this is the call to the Spotify Account Service
+        <main>
+          {!this.state.token && (
+            <div className="background">
               <div id="container">
                 <video autoPlay loop muted>
                   <source src={Video} type="Video/mp4" />
                 </video>
-                <h1>Welcome</h1>
-                <img
-                  src="logoMusic.png"
-                  alt="logo"
-                  style={{ width: '120px' }}
-                />
-                <h2>We made your music life much easier.</h2>
+                <h1 className="mb-0">Welcome!</h1>
+                <img src="/harmony.png" alt="logo" style={{ width: "10rem" }} />
+                <h2 className="mb-1 mt-0 pt-0">
+                  We made your music life much easier.
+                </h2>
                 <div className="icon_wrap">
-                  <FontAwesomeIcon icon="search" className="ico" />
+                  <FontAwesomeIcon icon="search" className="ico mb-3" />
                   <h3>Search</h3>
                   <p>music based on your activity</p>
                   <br />
-                  <FontAwesomeIcon icon="mouse-pointer" className="ico" />
+                  <FontAwesomeIcon icon="mouse-pointer" className="ico mb-3" />
                   <h3>Hover</h3>
                   <p>to get a glimpse of your tracks</p>
                   <br />
-                  <FontAwesomeIcon icon="plus" className="ico" />
+                  <FontAwesomeIcon icon="plus" className="ico mb-3" />
                   <h3>Create</h3>
                   <p>your own library</p>
                 </div>
 
-                <button
-                  id="btn"
-                  style={{
-                    border: 'none',
-                    backgroundColor: 'rgb(231, 130, 0)',
-                    borderRadius: '20px',
-                    marginBottom: '5rem',
-                  }}
+                {/* this is the call to the Spotify Account Service */}
+                <a
+                  className="login"
+                  href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+                    "%20"
+                  )}&response_type=token&show_dialog=true`}
                 >
-                  <a
-                    className="login"
-                    href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                      '%20'
-                    )}&response_type=token&show_dialog=true`}
-                    style={{ color: "black" }}
+                  <button
+                    id="btn"
+                    style={{
+                      border: "none",
+                      backgroundColor: "rgb(42, 0, 70)",
+                      borderRadius: "25px",
+                      marginTop: "1.5rem",
+                      color: "white",
+                      fontWeight: "610",
+                    }}
                   >
                     Get started!
-                  </a>
-                </button>
+                  </button>
+                </a>
               </div>
-            )}
-          </header>
-        </div>
-        <main style={{minHeight:"100vh"}}>{this.state.token && <Routers />}</main>
+            </div>
+          )}
+
+          {this.state.token && (
+            <div className="loggedInBackground">
+              <Routers />{" "}
+            </div>
+          )}
+        </main>
         <footer>
         {this.state.token && <Footer />}
         </footer>

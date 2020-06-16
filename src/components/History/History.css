@@ -1,15 +1,16 @@
 .head {
   text-align: center;
+  color: white;
 }
 
 table {
   width: 100%;
+  background-color: rgba(253, 254, 255, 0.8);
 }
 
 th,
 td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 2px solid #dee2e6;
 }
 
 th:first-child,
@@ -27,5 +28,10 @@ td:last-child {
 }
 
 .play:hover {
-  background: rgb(214, 213, 213, 0.3);
+  background: rgba(42, 0, 70, 0.1);
+}
+
+.size {
+  height: 2.5rem;
+  width: 2.5rem;
 }

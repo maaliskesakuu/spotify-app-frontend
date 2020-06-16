@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-// import './Track.css';
 
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+import { Col, Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Track extends Component {
   constructor(props) {
@@ -44,21 +42,20 @@ class Track extends Component {
     this.setState({ audio: new Audio("") });
   }
 
-     renderAction() {
+  renderAction() {
     if (this.props.isRemoval) {
       return (
-
         <Button
           onClick={this.removeTrack}
           style={{
-            position: 'absolute',
-            right: '10px',
-            bottom: '10px',
-            backgroundColor: 'cadetblue',
-            border: 'none',
+            position: "absolute",
+            right: "10px",
+            bottom: "10px",
+            backgroundColor: "#C40000",
+            border: "none",
           }}
         >
-          -
+          <FontAwesomeIcon icon="minus"></FontAwesomeIcon>
         </Button>
       );
     }
@@ -67,22 +64,22 @@ class Track extends Component {
       <Button
         onClick={this.addTrack}
         style={{
-          position: 'absolute',
-          right: '10px',
-          bottom: '10px',
-          backgroundColor: 'cadetblue',
-          border: 'none',
+          position: "absolute",
+          right: "10px",
+          bottom: "10px",
+          backgroundColor: "rgb(126, 2, 214)",
+          border: "none",
         }}
       >
-        +
+        <FontAwesomeIcon icon="plus"></FontAwesomeIcon>
       </Button>
-    ); 
-  } 
+    );
+  }
 
   render() {
     return (
       <Col md={3}>
-        <Card style={{ margin: "10px", boxShadow:"0 0 10px #333" }}>
+        <Card style={{ margin: "10px", boxShadow: "0 0 10px #333" }}>
           {/* Cards */}
           {/* Conditional tooltips */}
           {!this.props.track.preview ? (
@@ -95,10 +92,13 @@ class Track extends Component {
               src={this.props.track.img}
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
+              onTouchStart={this.playMusic}
+              onTouchEnd={this.pauseMusic}
             />
           )}
-          <Card.Body style={{ minHeight: '7rem', padding: '10px' }}>
-
+          <Card.Body
+            style={{ height: "6.5rem", padding: "10px", overflow: "scroll" }}
+          >
             <Card.Text>
               {this.props.track.name} | {this.props.track.artist}
             </Card.Text>

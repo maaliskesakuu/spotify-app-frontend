@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
-import './SearchResults.css';
-import TrackList from '../TrackList/TrackList';
+import React, { Component } from "react";
+import TrackList from "../TrackList/TrackList";
 
-import CardDeck from 'react-bootstrap/CardDeck';
-import Container from 'react-bootstrap/Container';
+import { CardDeck, Container } from "react-bootstrap";
 
 class SearchResults extends Component {
   render() {
     return (
       <div>
         <Container>
-          {/* <h2>Results</h2> */}
-          <CardDeck className="my-5">
+          <CardDeck className="my-5 py-3 box">
             <TrackList
               tracks={this.props.searchResults}
               onAdd={this.props.onAdd}
