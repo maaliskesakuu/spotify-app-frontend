@@ -1,4 +1,5 @@
-#Harmony
+# Harmony
+![harmony music image](https://github.com/maaliskesakuu/spotify-app-frontend/blob/master/Screenshot%202020-06-17%20at%200.15.26.png)
 
 
 
@@ -8,4 +9,27 @@ This application uses Spotify Web API to discover users most listened tracks and
 
 Try it out 
 
-#Spotify
+## Spotify
+Application uses followig parts of Spotify Web API
+
+*Authorization
+*Get users Tracks based on category 
+*Get Top Tracks for Artist
+*Get Recently played/History tracks for user
+*Creating playlist
+*Adding tracks to playlist
+*User profile information
+
+### How to use spotify API
+Go to [spotify link] (https://developer.spotify.com/dashboard/), log in and create a new App.
+
+Add localhost:3000/ as Redirect URI in your Spotify App Settings.
+
+*Grab the Client Id that will be added to env.js.
+*Register an application with Spotify
+*Authenticate a user and get authorization to access user data
+*Retrieve the data from a Web API endpoint
+
+## Techlogies Used
+*Bootsrap
+*
