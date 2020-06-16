@@ -3,6 +3,7 @@ import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
 import hash from '../../hash';
 import './App.css';
 import Routers from '../../Routers';
+import Footer from '../Footer/Footer';
 import Video from '../Video/snow.mp4';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../FontawesomeIcons/icons';
@@ -84,7 +85,10 @@ class App extends Component {
             )}
           </header>
         </div>
-        <main>{this.state.token && <Routers />}</main>
+        <main style={{minHeight:"100vh"}}>{this.state.token && <Routers />}</main>
+        <footer>
+        {this.state.token && <Footer />}
+        </footer>
       </>
     );
   }
