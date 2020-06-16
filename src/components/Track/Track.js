@@ -41,33 +41,10 @@ class Track extends Component {
     });
   }
 
-  // playMusic() {
-  //   setTimeout(() => {
-  //     this.setState({ audio: new Audio(this.props.track.preview) }, () => {
-  //       this.state.audio.play();
-  //     });
-  //   }, 300);
-  // }
-
-  // playMusic(preview) {
-  //   setTimeout(() => {
-  //     this.setState({ audio: new Audio(preview) }, () => {
-  //       this.state.audio.play();
-  //     });
-  //   }, 300);
-  // }
-
   pauseMusic() {
     this.state.audio.pause();
     this.setState({ audio: new Audio("") });
   }
-
-  // pauseMusic() {
-  //   setTimeout(() => {
-  //     this.state.audio.pause();
-  //     this.setState({ audio: new Audio("") });
-  //   }, 400);
-  // }
 
   renderAction() {
     if (this.props.isRemoval) {
