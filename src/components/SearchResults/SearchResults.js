@@ -8,7 +8,7 @@ class SearchResults extends Component {
     return (
       <div>
         <Container>
-          <CardDeck className="my-5 py-3">
+          <CardDeck className="my-5 py-3 box">
             <TrackList
               tracks={this.props.searchResults}
               onAdd={this.props.onAdd}
