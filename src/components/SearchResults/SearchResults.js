@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import TrackList from "../TrackList/TrackList";
 
-import CardDeck from "react-bootstrap/CardDeck";
-import Container from "react-bootstrap/Container";
+import { CardDeck, Container } from "react-bootstrap";
 
 class SearchResults extends Component {
   render() {

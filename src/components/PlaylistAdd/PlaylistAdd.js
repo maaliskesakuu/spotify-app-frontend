@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import "./PlaylistAdd.css";
 import TrackList from "../TrackList/TrackList";
 
-import Button from "react-bootstrap/Button";
-import CardDeck from "react-bootstrap/CardDeck";
-import Container from "react-bootstrap/Container";
+import { Button, CardDeck, Container } from "react-bootstrap";
 
 class PlaylistAdd extends Component {
   constructor(props) {
