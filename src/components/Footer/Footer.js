@@ -24,7 +24,7 @@ const Footer = () => {
         <img
           src="/Spotify_logo_RGB_White.png"
           alt="Spotify Logo"
-          style={{ width: "8vw", cursor: "pointer" }}
+          style={{ width: "8rem", cursor: "pointer" }}
         />
       </a>
     </div>
