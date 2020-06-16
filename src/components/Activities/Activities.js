@@ -75,14 +75,14 @@ class Activities extends Component {
         Authorization: `Bearer ${accessToken}`,
       },
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         if (!jsonResponse.tracks) {
           return [];
         }
-        return jsonResponse.tracks.items.map(track => ({
+        return jsonResponse.tracks.items.map((track) => ({
           id: track.id,
           name: track.name,
           artist: track.artists[0].name,
@@ -91,10 +91,10 @@ class Activities extends Component {
           img: track.album.images[0].url,
         }));
       })
-      .then(searchResults => {
+      .then((searchResults) => {
         this.setState({ searchResults: searchResults });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -117,10 +117,10 @@ class Activities extends Component {
         },
       }
     )
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         if (!jsonResponse.playlists) {
           return [];
         }
@@ -151,7 +151,7 @@ class Activities extends Component {
               },
             }
           )
-            .then(response => {
+            .then((response) => {
               return response.json();
             })
             .then(jsonResponse => {
@@ -171,7 +171,7 @@ class Activities extends Component {
                 return [];
               }
             })
-            .then(searchResults => {
+            .then((searchResults) => {
               this.setState({
                 searchResults: this.state.searchResults.concat(searchResults),
               });
@@ -181,7 +181,7 @@ class Activities extends Component {
             });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -195,7 +195,7 @@ class Activities extends Component {
 
   addTrack(track) {
     let tracks = this.state.playlistTracks;
-    if (tracks.find(savedTrack => savedTrack.id === track.id)) {
+    if (tracks.find((savedTrack) => savedTrack.id === track.id)) {
       return;
     }
     tracks.push(track);
@@ -205,14 +205,14 @@ class Activities extends Component {
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
     let trackSearch = this.state.searchResults;
-    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+    tracks = tracks.filter((currentTrack) => currentTrack.id !== track.id);
     trackSearch.unshift(track);
     this.setState({ playlistTracks: tracks });
   }
 
   removeTrackSearch(track) {
     let tracks = this.state.searchResults;
-    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+    tracks = tracks.filter((currentTrack) => currentTrack.id !== track.id);
     this.setState({ searchResults: tracks });
   }
 
@@ -226,7 +226,7 @@ class Activities extends Component {
   }
 
   savePlaylistAdd(name) {
-    const trackUris = this.state.playlistTracks.map(track => track.uri);
+    const trackUris = this.state.playlistTracks.map((track) => track.uri);
 
     if (!name || !trackUris.length) {
       return;
@@ -254,8 +254,8 @@ class Activities extends Component {
             public: "true",
           }),
         })
-          .then(response => response.json())
-          .then(jsonResponse => {
+          .then((response) => response.json())
+          .then((jsonResponse) => {
             const playlistId = jsonResponse.id;
 
             fetch(
@@ -280,7 +280,7 @@ class Activities extends Component {
                   searchResults: [],
                 });
               })
-              .catch(error => {
+              .catch((error) => {
                 console.log(error);
               });
           });
