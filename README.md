@@ -37,7 +37,7 @@ Add localhost:3000/ as Redirect URI in your Spotify App Settings.
 * Replayify App by [Pasi Lampinen](https://github.com/palampinen/replayify)
 
 ## Techlogies Used
-* Bootsrap
+* Bootstrap
 * Favicon
 * Fontawsome
 
