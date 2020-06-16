@@ -19,9 +19,17 @@ h2,
   }
 }
 
-@media (max-width: 767px) {
-    .activity_button {
-        margin-left:1rem;
-        width: 10rem;
-      }
-  }
+.act-btn{
+    /* background-image: url("https://source.unsplash.com/2gu4hKuFhi0/400x400"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-animation: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    animation: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-size: 2rem;
+   
+}
+.box{
+  background: rgba(151, 95, 215, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+}
