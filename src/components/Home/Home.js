@@ -90,7 +90,7 @@ class Home extends Component {
           Recently played
         </h2>
         <Container>
-          <CardDeck className="box py-5">
+          <CardDeck className="box py-3">
             {this.state.musicHistory.map((music, index) => {
               return (
                 <Col md={3} key={index}>

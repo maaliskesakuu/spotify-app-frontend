@@ -77,7 +77,7 @@ class NewRelease extends Component {
           New releases
         </h2>
         <Container className="mb-5">
-          <CardDeck className="box py-5 ">
+          <CardDeck className="box py-3">
             {this.state.newRelease.map((songs, index) => {
               return (
                 <Col md={3} key={index}>
