@@ -103,7 +103,7 @@ class History extends Component {
           onClick={() => this.playMusic(item.track.preview_url)}
           className="play"
         >
-          <FontAwesomeIcon icon="play-circle" /> {item.track.name}
+          <FontAwesomeIcon icon={item.track.preview_url ? "play-circle" : ""}/> {item.track.name}
         </td>
         <td style={{ padding: "0.75rem 0.3rem" }}>
           {item.track.artists[0].name}
