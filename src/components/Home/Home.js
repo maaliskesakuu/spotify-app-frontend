@@ -66,11 +66,19 @@ class Home extends Component {
   }
 
   //play music on hover
-  playMusic = preview => {
-    this.setState({ audio: new Audio(preview) }, () => {
-      this.state.audio.play();
+  // playMusic = preview => {
+  //   this.setState({ audio: new Audio(preview) }, () => {
+  //     this.state.audio.play();
+  //   });
+  // };
+
+  playMusic(preview) {
+    this.setState({ audio: new Audio(preview) }, async () => {
+      try {
+        await this.state.audio.play();
+      } catch {}
     });
-  };
+  }
 
   //pause music when mouse is out of card
   pauseMusic() {

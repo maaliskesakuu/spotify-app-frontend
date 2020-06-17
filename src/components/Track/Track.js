@@ -10,6 +10,7 @@ class Track extends Component {
     super(props);
     this.state = {
       audio: new Audio(""),
+      isPlaying: true,
     };
 
     this.addTrack = this.addTrack.bind(this);
@@ -32,8 +33,10 @@ class Track extends Component {
   }
 
   playMusic() {
-    this.setState({ audio: new Audio(this.props.track.preview) }, () => {
-      this.state.audio.play();
+    this.setState({ audio: new Audio(this.props.track.preview) }, async () => {
+      try {
+        await this.state.audio.play();
+      } catch {}
     });
   }
 
