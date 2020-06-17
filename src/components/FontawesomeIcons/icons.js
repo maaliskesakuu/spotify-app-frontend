@@ -11,6 +11,7 @@ import {
   faPlus,
   faMinus,
   faCaretDown,
+  faBan
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHome, faHistory, faPlusCircle, faPlayCircle, faMusic, faSearch, faMousePointer, faPlus, faMinus, faCaretDown);
+library.add(faHome, faHistory, faPlusCircle, faPlayCircle, faMusic, faSearch, faMousePointer, faPlus, faMinus, faCaretDown, faBan);
