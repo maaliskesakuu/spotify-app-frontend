@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import hash from "../../hash";
 
+import Home from './Home';
+
 import {
   Col,
   Card,
@@ -39,7 +41,7 @@ class NewRelease extends Component {
   }
 
   getNewRelease = token => {
-    fetch(constants.API + "browse/new-releases?limit=20", {
+    fetch(constants.API + "browse/new-releases?limit=12", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -109,6 +111,7 @@ class NewRelease extends Component {
             })}
           </CardDeck>
         </Container>
+        <Home />
       </div>
     );
   }

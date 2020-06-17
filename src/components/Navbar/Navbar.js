@@ -59,7 +59,7 @@ const NavBar = () => {
           </LinkContainer>
           <LinkContainer to="/featured">
             <NavItem className="mr-3 mb-1 mr-5">
-              <FontAwesomeIcon icon="music"></FontAwesomeIcon> Recent and New
+              <FontAwesomeIcon icon="music"></FontAwesomeIcon> New and Recent 
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">

@@ -68,13 +68,17 @@ class Activities extends Component {
   search(term) {
     let accessToken = hash.access_token;
 
-    fetch(constants.API + `search?type=track,artist&q=${term}&limit=20&market=from_token`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    fetch(
+      constants.API +
+        `search?type=track,artist&q=${term}&limit=20&market=from_token`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    )
       .then(response => {
         return response.json();
       })
@@ -289,7 +293,7 @@ class Activities extends Component {
 
   render() {
     const activityList = this.state.activities.map(activity => {
-      return (        
+      return (
         <Button
           key={activity.category_id}
           className="activity_button"
@@ -303,15 +307,18 @@ class Activities extends Component {
           value={activity.category_id}
         >
           {activity.activity}
-        </Button>        
+        </Button>
       );
     });
 
     return (
       <>
-         <h2 style={{ color: "white", textAlign: "center" }} className="my-5 text_light">
-            What are you in the mood for?
-          </h2>        
+        <h2
+          style={{ color: "white", textAlign: "center" }}
+          className="my-5 text_light"
+        >
+          What are you in the mood for?
+        </h2>
         <Container
           style={{
             backgroundColor: "rgba(253, 254, 255, 0.8)",
@@ -319,7 +326,7 @@ class Activities extends Component {
           className="my-5"
         >
           <Container className="mt-5">
-            <Row>{activityList}</Row>
+            <Row style={{ justifyContent: "center" }}>{activityList}</Row>
           </Container>
           {this.state.selectedCategory === "somethingelse" ? (
             <SearchBar onSearch={this.search}></SearchBar>
@@ -327,10 +334,14 @@ class Activities extends Component {
             ""
           )}
         </Container>
-        {this.state.selectedCategory !== "" ? (<SearchResults
-          searchResults={this.state.searchResults}
-          onAdd={this.doThese}
-        /> ): ('')}
+        {this.state.selectedCategory !== "" ? (
+          <SearchResults
+            searchResults={this.state.searchResults}
+            onAdd={this.doThese}
+          />
+        ) : (
+          ""
+        )}
         {this.state.selectedCategory !== "" ? (
           <PlaylistAdd
             playlistTracks={this.state.playlistTracks}
@@ -342,7 +353,7 @@ class Activities extends Component {
         ) : (
           ""
         )}
-        </>
+      </>
     );
   }
 }
