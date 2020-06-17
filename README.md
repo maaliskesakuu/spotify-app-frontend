@@ -5,7 +5,7 @@
 
 This is a schoool project that  was bootstrapped with [Create React App]
 
-This application uses Spotify Web API to discover users most listened tracks and artists from Spotify. User can listen to diffrent music based on a particular category or what mood they are in, user can also create playlist from their favorite tracks and artists.
+This application uses Spotify Web API to discover users most listened tracks and artists from Spotify. User can listen to previews of different music based on a particular category or what mood they are in, user can also create playlist from their favorite tracks and artists to Spotify app.
 
 Try it out [Harmony Demo](https://harmony-fbddf.web.app/)
 
@@ -35,6 +35,7 @@ Add localhost:3000/ as Redirect URI in your Spotify App Settings.
 * From React Spotify Player by[Joe Karlsson](https://github.com/JoeKarlsson/react-spotify-player)
 * Musicophile by [Simplilearn](https://www.simplilearn.com/react-tutorial-article)
 * Replayify App by [Pasi Lampinen](https://github.com/palampinen/replayify)
+* Pusher article by [Ayooluwa Isaiah](https://pusher.com/tutorials/spotify-history-react-node#set-up-the-server)
 
 ## Techlogies Used
 * Bootstrap
