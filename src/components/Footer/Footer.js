@@ -22,7 +22,7 @@ const Footer = () => {
       </p>
       <a href="https://www.spotify.com">
         <img
-          src="/Spotify_logo_RGB_White.png"
+          src="/Spotify_Logo_RGB_White.png"
           alt="Spotify Logo"
           style={{ width: "8vw", cursor: "pointer" }}
         />
