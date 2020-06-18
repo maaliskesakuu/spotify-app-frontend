@@ -68,7 +68,6 @@ const NavBar = () => {
               Playlist
             </NavItem>
           </LinkContainer>
-
           <NavItems>
             <div className="item_box">
               <LinkContainer to="/user">
