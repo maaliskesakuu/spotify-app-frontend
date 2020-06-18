@@ -18,6 +18,8 @@ class Track extends Component {
     this.playMusic = this.playMusic.bind(this);
     this.pauseMusic = this.pauseMusic.bind(this);
     this.renderTooltip = this.renderTooltip.bind(this);
+    this.playMusicOnTouch = this.playMusicOnTouch.bind(this);
+    this.pauseMusicOnTouch = this.pauseMusicOnTouch.bind(this);
   }
 
   addTrack(event) {
@@ -40,7 +42,14 @@ class Track extends Component {
     });
   }
 
-  pauseMusic() {
+   pauseMusic() {
+     if(window.innerWidth > 1279){
+    this.state.audio.pause();
+    this.setState({ audio: new Audio("") });
+     }
+  } 
+
+  pauseMusicOnTouch() {
     this.state.audio.pause();
     this.setState({ audio: new Audio("") });
   }
@@ -95,8 +104,8 @@ class Track extends Component {
               src={this.props.track.img}
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
-              onTouchStart={this.playMusic}
-              onTouchEnd={this.pauseMusic}
+              onTouchStart={this.playMusicOnTouch}
+              onTouchEnd={this.pauseMusicOnTouch}
             />
           )}
           <Card.Body
