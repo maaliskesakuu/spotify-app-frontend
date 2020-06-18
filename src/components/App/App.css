@@ -1,11 +1,14 @@
 #container {
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
   width: 100vw;
-  height: 55rem;
+  height: 58rem;
   background: rgba(253, 254, 255, 0.8);
   text-align: center;
   margin: 2rem auto;
   border-radius: 4px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
 }
 
 .background {
@@ -67,7 +70,7 @@ h3 {
   color: rgb(126, 2, 214);
   font-family: "Muli", sans-serif;
   font-weight: 600;
-  padding: 1rem;
+  padding: 3rem;
 }
 
 h1 {
@@ -77,7 +80,7 @@ h1 {
 }
 
 .loggedInBackground {
-  background-image: url('https://source.unsplash.com/YrtFlrLo2DQ');
+  background-image: url("https://source.unsplash.com/YrtFlrLo2DQ");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgb(42, 0, 70);
@@ -116,7 +119,7 @@ h1 {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   #container {
-    margin-bottom: 15rem;
+    margin-bottom: 12rem;
     max-width: 55%;
   }
 
@@ -128,5 +131,10 @@ h1 {
 @media (min-width: 1441px) {
   .loggedInBackground {
     min-height: 1811px;
+  }
+
+  #container {
+    margin-bottom: 18rem;
+    max-width: 55%;
   }
 }

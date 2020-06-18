@@ -59,7 +59,7 @@ const NavBar = () => {
           </LinkContainer>
           <LinkContainer to="/featured">
             <NavItem className="mr-3 mb-1 mr-5">
-              <FontAwesomeIcon icon="music"></FontAwesomeIcon> Recent and New
+              <FontAwesomeIcon icon="music"></FontAwesomeIcon> New and Recent
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/history">
@@ -68,7 +68,6 @@ const NavBar = () => {
               Playlist
             </NavItem>
           </LinkContainer>
-
           <NavItems>
             <div className="item_box">
               <LinkContainer to="/user">
@@ -76,7 +75,7 @@ const NavBar = () => {
               </LinkContainer>
               <NavDropdown.Divider />
               <a
-                href="//harmony-fbddf.web.app/"
+                href="//accounts.spotify.com/"
                 rel="noopener noreferrer"
                 className="mr-3 mr-5 out"
               >

@@ -20,9 +20,13 @@ const Footer = () => {
       >
         Data supplied and made available by Spotify
       </p>
-      <a href="https://www.spotify.com">
+      <a
+        href="https://www.spotify.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
-          src="/Spotify_logo_RGB_White.png"
+          src="/Spotify_Logo_RGB_White.png"
           alt="Spotify Logo"
           style={{ width: "8rem", cursor: "pointer" }}
         />

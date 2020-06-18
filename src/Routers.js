@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import History from "./components/History/History";
-import Home from "./components/Home/Home";
+import NewRelease from "./components/Home/NewRelease";
 import NavBar from "./components/Navbar/Navbar";
 import Activities from "./components/Activities/Activities";
 import Playlist from "./components/CreatePlaylist/Playlist";
@@ -14,7 +14,7 @@ const Routers = () => {
       <Switch>
         <Route path="/" exact component={Activities}></Route>
         <Route path="/history" component={History}></Route>
-        <Route path="/featured" component={Home}></Route>
+        <Route path="/featured" component={NewRelease}></Route>
         <Route path="/playlist" component={Playlist}></Route>
         <Route path="/user" component={User}></Route>
       </Switch>

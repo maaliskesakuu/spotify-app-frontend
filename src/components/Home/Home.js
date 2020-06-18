@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NewRelease from "./NewRelease";
 import hash from "../../hash";
 
 import {
@@ -41,7 +40,7 @@ class Home extends Component {
 
   // fetching data of recently played songs
   getRecentlyPlayed = token => {
-    fetch(constants.API + "me/player/recently-played?limit=10", {
+    fetch(constants.API + "me/player/recently-played?limit=12", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -67,17 +66,19 @@ class Home extends Component {
   }
 
   //play music on hover
-  playMusic = preview => {
-    this.setState({ audio: new Audio(preview) }, () => {
-      this.state.audio.play();
+  playMusic(preview) {
+    this.setState({ audio: new Audio(preview) }, async () => {
+      try {
+        await this.state.audio.play();
+      } catch {}
     });
-  };
+  }
 
   //pause music when mouse is out of card
-  pauseMusic = () => {
+  pauseMusic() {
     this.state.audio.pause();
     this.setState({ audio: new Audio("") });
-  };
+  }
 
   render() {
     return (
@@ -88,7 +89,7 @@ class Home extends Component {
         >
           Recently played
         </h2>
-        <Container>
+        <Container className="mb-5">
           <CardDeck className="box py-3">
             {this.state.musicHistory.map((music, index) => {
               return (
@@ -139,7 +140,6 @@ class Home extends Component {
             })}
           </CardDeck>
         </Container>
-        <NewRelease />
       </div>
     );
   }

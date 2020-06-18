@@ -41,7 +41,14 @@ class App extends Component {
                   <source src={Video} type="Video/mp4" />
                 </video>
                 <h1 className="mb-0">Welcome!</h1>
-                <img src="/harmony.png" alt="logo" style={{ width: "10rem" }} />
+                <img
+                  src="/harmony.png"
+                  alt="logo"
+                  style={{
+                    width: "10rem",
+                    margin: "0 auto",
+                  }}
+                />
                 <h2 className="mb-1 mt-0 pt-0">
                   We made your music life much easier.
                 </h2>
@@ -90,9 +97,7 @@ class App extends Component {
             </div>
           )}
         </main>
-        <footer>
-        {this.state.token && <Footer />}
-        </footer>
+        <footer>{this.state.token && <Footer />}</footer>
       </>
     );
   }
