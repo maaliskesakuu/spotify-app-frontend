@@ -42,14 +42,14 @@ class History extends Component {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
-      .then(data => data.items)
-      .then(data =>
+      .then((res) => res.json())
+      .then((data) => data.items)
+      .then((data) =>
         this.setState({
           musicHistory: data,
         })
       )
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
