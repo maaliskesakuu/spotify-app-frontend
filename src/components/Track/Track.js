@@ -18,6 +18,8 @@ class Track extends Component {
     this.playMusic = this.playMusic.bind(this);
     this.pauseMusic = this.pauseMusic.bind(this);
     this.renderTooltip = this.renderTooltip.bind(this);
+    // this.playMusicOnTouch = this.playMusicOnTouch.bind(this);
+    // this.pauseMusicOnTouch = this.pauseMusicOnTouch.bind(this);
   }
 
   addTrack(event) {
@@ -33,6 +35,9 @@ class Track extends Component {
   }
 
   playMusic() {
+    // if (window.innerWidth <= 1279) {
+    //   return;
+    // }
     this.setState({ audio: new Audio(this.props.track.preview) }, async () => {
       try {
         await this.state.audio.play();
@@ -40,10 +45,27 @@ class Track extends Component {
     });
   }
 
+  // playMusicOnTouch() {
+  //   if (window.innerWidth > 1279) {
+  //     return;
+  //   }
+  //   this.setState({ audio: new Audio(this.props.track.preview) }, async () => {
+  //     try {
+  //       await this.state.audio.play();
+  //     } catch {}
+  //   });
+  // }
+
   pauseMusic() {
     this.state.audio.pause();
     this.setState({ audio: new Audio("") });
   }
+
+  // pauseMusicOnTouch(e) {
+  //   e.preventDefault();
+  //   this.state.audio.pause();
+  //   this.setState({ audio: new Audio("") });
+  // }
 
   renderAction() {
     if (this.props.isRemoval) {
@@ -95,8 +117,8 @@ class Track extends Component {
               src={this.props.track.img}
               onMouseOver={this.playMusic}
               onMouseOut={this.pauseMusic}
-              onTouchStart={this.playMusic}
-              onTouchEnd={this.pauseMusic}
+              // onTouchStart={this.playMusicOnTouch}
+              // onTouchEnd={this.pauseMusicOnTouch}
             />
           )}
           <Card.Body
