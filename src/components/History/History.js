@@ -8,18 +8,13 @@ import "../FontawesomeIcons/icons";
 import * as constants from "../../constants/constants";
 
 class History extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchResults: [],
-      token: null,
-      musicHistory: [],
-      audio: new Audio(""),
-    };
 
-    this.playMusic = this.playMusic.bind(this);
-    this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
-  }
+  state = {
+    searchResults: [],
+    token: null,
+    musicHistory: [],
+    audio: new Audio(""),
+  };
 
   componentDidMount() {
     let _token = hash.access_token;

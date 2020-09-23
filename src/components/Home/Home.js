@@ -13,19 +13,12 @@ import {
 import * as constants from "../../constants/constants";
 
 class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: null,
-      musicHistory: [],
-      audio: new Audio(""),
-    };
 
-    this.playMusic = this.playMusic.bind(this);
-    this.pauseMusic = this.pauseMusic.bind(this);
-    this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
-    this.renderTooltip = this.renderTooltip.bind(this);
-  }
+  state = {
+    token: null,
+    musicHistory: [],
+    audio: new Audio(""),
+  };
 
   componentDidMount() {
     let _token = hash.access_token;
@@ -102,7 +95,7 @@ class Home extends Component {
                     {!music.track.preview_url ? (
                       <OverlayTrigger
                         placement="bottom"
-                        overlay={this.renderTooltip}
+                        overlay={this.renderTooltip.bind(this)}
                       >
                         <Card.Img
                           variant="top"
@@ -116,11 +109,11 @@ class Home extends Component {
                         onMouseOver={() =>
                           this.playMusic(music.track.preview_url)
                         }
-                        onMouseOut={this.pauseMusic}
-                        onTouchStart={() =>
-                          this.playMusic(music.track.preview_url)
-                        }
-                        onTouchEnd={this.pauseMusic}
+                        onMouseOut={this.pauseMusic.bind(this)}
+                        // onTouchStart={() =>
+                        //   this.playMusic(music.track.preview_url)
+                        // }
+                        // onTouchEnd={this.pauseMusic}
                       />
                     )}
                     <Card.Body

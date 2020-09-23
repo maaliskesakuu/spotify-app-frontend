@@ -4,16 +4,8 @@ import "./SearchBar.css";
 import Button from "react-bootstrap/Button";
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      term: "",
-    };
 
-    this.handleTermChange = this.handleTermChange.bind(this);
-    this.search = this.search.bind(this);
-    this.handleEnter = this.handleEnter.bind(this);
-  }
+  state = { term: '' };
 
   handleTermChange(event) {
     this.setState({ term: event.target.value });
@@ -34,14 +26,14 @@ class SearchBar extends Component {
       <div className="SearchBar">
         <input
           placeholder="Enter a keyword"
-          onChange={this.handleTermChange}
-          onKeyUp={this.handleEnter}
+          onChange={this.handleTermChange.bind(this)}
+          onKeyUp={this.handleEnter.bind(this)}
         ></input>
         <Button
           size="lg"
           style={{ backgroundColor: "rgb(126, 2, 214)", border: "none" }}
           className="mb-5"
-          onClick={this.search}
+          onClick={this.search.bind(this)}
         >
           Search
         </Button>

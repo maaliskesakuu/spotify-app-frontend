@@ -7,21 +7,18 @@ import { Table, Col } from "react-bootstrap";
 import * as constants from "../../constants/constants";
 
 class User extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: null,
-      userId: "",
-      displayName: "",
-      followers: "",
-      country: "",
-      spotifyUrl: "",
-      email: "",
-      product: "",
-      type: "",
-    };
-    this.getUserData = this.getUserData.bind(this);
-  }
+
+  state = {
+    token: null,
+    userId: "",
+    displayName: "",
+    followers: "",
+    country: "",
+    spotifyUrl: "",
+    email: "",
+    product: "",
+    type: "",
+  };
 
   componentDidMount() {
     let _token = hash.access_token;

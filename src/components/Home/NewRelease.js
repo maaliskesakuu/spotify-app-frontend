@@ -15,18 +15,11 @@ import {
 import * as constants from "../../constants/constants";
 
 class NewRelease extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: null,
-      newRelease: [],
-      tooltipText: "",
-    };
 
-    this.getNewRelease = this.getNewRelease.bind(this);
-    this.renderTooltip = this.renderTooltip.bind(this);
-    this.setText = this.setText.bind(this);
-    this.getText = this.getText.bind(this);
+  state = {
+    token: null,
+    newRelease: [],
+    tooltipText: "",
   }
 
   componentDidMount() {
@@ -92,7 +85,7 @@ class NewRelease extends Component {
                   >
                     <OverlayTrigger
                       placement="bottom"
-                      overlay={this.renderTooltip}
+                      overlay={this.renderTooltip.bind(this)}
                     >
                       <Card.Img
                         src={songs.images[0].url}
