@@ -40,7 +40,6 @@ const activities = [
 ];
 
 class Activities extends Component {
-
   state = {
     activities: activities,
     selectedCategory: "",
@@ -147,7 +146,7 @@ class Activities extends Component {
               try {
                 if (!jsonResponse.items) {
                   return [];
-                }                  
+                }
                 return jsonResponse.items.map(item => ({
                   id: item.track.id,
                   name: item.track.name,
@@ -161,9 +160,37 @@ class Activities extends Component {
               }
             })
             .then(searchResults => {
-              this.setState({
-                searchResults: this.state.searchResults.concat(searchResults),
-              });
+              // this.setState({
+              //   searchResults: this.state.searchResults.concat(searchResults),
+              // });
+              // })
+
+              let tracks = this.state.playlistTracks;
+              console.log("tracks " + JSON.stringify(tracks));
+              
+              for (let searchResult of searchResults) {
+                let results = this.state.searchResults;
+              console.log("results " + JSON.stringify(results));
+
+                try {
+                  if (tracks.find(track => track.id === searchResult.id)) {
+                    return console.log("one");
+                  }
+
+                  if (results.find(result => result.id === searchResult.id)) {
+                    return console.log("two");
+                    // searchResults.splice(i, 1);
+                  }
+
+                  this.setState({
+                    searchResults: this.state.searchResults.concat(
+                      searchResult
+                    ),
+                  });
+                } catch (err) {
+                  console.log(err);
+                }
+              }
             })
             .catch(error => {
               console.log(error);
@@ -187,27 +214,26 @@ class Activities extends Component {
     if (tracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
     }
-    tracks.push(track);
-    this.setState({ playlistTracks: tracks });
+    this.setState({ playlistTracks: tracks.concat(track) });
   }
 
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
-    let trackSearch = this.state.searchResults;
+    let searchResultsTracks = this.state.searchResults;
     tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
-    trackSearch.unshift(track);
+    this.setState({ searchResults: searchResultsTracks.concat(track) });
     this.setState({ playlistTracks: tracks });
   }
 
-  removeTrackSearch(track) {
+  removeTrackFromSearchResults(track) {
     let tracks = this.state.searchResults;
     tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
     this.setState({ searchResults: tracks });
   }
 
-  doThese(track) {
+  addAndRemoveTrack(track) {
     this.addTrack(track);
-    this.removeTrackSearch(track);
+    this.removeTrackFromSearchResults(track);
   }
 
   updatePlaylistName(name) {
@@ -273,6 +299,9 @@ class Activities extends Component {
                 console.log(error);
               });
           });
+      })
+      .catch(error => {
+        console.log(error);
       });
   }
 
@@ -322,7 +351,7 @@ class Activities extends Component {
         {this.state.selectedCategory !== "" ? (
           <SearchResults
             searchResults={this.state.searchResults}
-            onAdd={this.doThese.bind(this)}
+            onAdd={this.addAndRemoveTrack.bind(this)}
           />
         ) : (
           ""
