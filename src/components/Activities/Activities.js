@@ -160,26 +160,22 @@ class Activities extends Component {
               }
             })
             .then(searchResults => {
-              // this.setState({
-              //   searchResults: this.state.searchResults.concat(searchResults),
-              // });
-              // })
 
-              let tracks = this.state.playlistTracks;
-              console.log("tracks " + JSON.stringify(tracks));
-              
               for (let searchResult of searchResults) {
+                let tracks = this.state.playlistTracks;
+                console.log(tracks)
                 let results = this.state.searchResults;
-              console.log("results " + JSON.stringify(results));
+                console.log(results)
 
                 try {
                   if (tracks.find(track => track.id === searchResult.id)) {
-                    return console.log("one");
+                    console.log("the same track found: " + searchResult.name);
+                    return "";
                   }
 
                   if (results.find(result => result.id === searchResult.id)) {
-                    return console.log("two");
-                    // searchResults.splice(i, 1);
+                    console.log("the same result found: " + searchResult.name);
+                    return "";
                   }
 
                   this.setState({
