@@ -1,26 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Navbar.css";
 import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Nav, NavItem, Navbar, NavDropdown } from "react-bootstrap";
-
-const NavItems = props => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <li className="nav-item mr-3 mb-1">
-      {/* eslint-disable-next-line */}
-      <a id="icon-button" onClick={() => setOpen(!open)}>
-        <p>
-          My Account <FontAwesomeIcon icon="caret-down" />
-        </p>
-      </a>
-      {open && props.children}
-    </li>
-  );
-};
+import { Nav, NavItem, Navbar, Dropdown, NavLink } from "react-bootstrap";
 
 const NavBar = () => {
   return (
@@ -68,21 +52,27 @@ const NavBar = () => {
               Playlist
             </NavItem>
           </LinkContainer>
-          <NavItems>
-            <div className="item_box">
+
+          <Dropdown as={NavItem}>
+            <Dropdown.Toggle
+              as={NavLink}
+              style={{
+                color: "white",
+                paddingTop: "0",
+                paddingRight: "50px",
+              }}
+            >
+              My Account
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
               <LinkContainer to="/user">
-                <NavItem className="mr-3 mb-1 mr-5">Profile</NavItem>
+                <Dropdown.Item> Profile</Dropdown.Item>
               </LinkContainer>
-              <NavDropdown.Divider />
-              <a
-                href="//accounts.spotify.com/"
-                rel="noopener noreferrer"
-                className="mr-3 mr-5 out"
-              >
-                Log out
-              </a>
-            </div>
-          </NavItems>
+              <Dropdown.Item href="//accounts.spotify.com/">
+                Log Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
