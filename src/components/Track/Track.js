@@ -6,7 +6,6 @@ import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Track extends Component {
-
   state = {
     audio: new Audio(""),
     isPlaying: true,
@@ -25,37 +24,43 @@ class Track extends Component {
   }
 
   playMusic() {
-    // if (window.innerWidth <= 1279) {
-    //   return;
-    // }
+    if (window.innerWidth <= 1279) {
+      return;
+    }
     this.setState({ audio: new Audio(this.props.track.preview) }, async () => {
       try {
         await this.state.audio.play();
-      } catch {}
+      } catch (err) {
+        console.log(err);
+      }
     });
   }
 
-  // playMusicOnTouch() {
-  //   if (window.innerWidth > 1279) {
-  //     return;
-  //   }
-  //   this.setState({ audio: new Audio(this.props.track.preview) }, async () => {
-  //     try {
-  //       await this.state.audio.play();
-  //     } catch {}
-  //   });
-  // }
+  playMusicOnTouch() {
+    if (window.innerWidth > 1279) {
+      return;
+    }
+    this.setState({ audio: new Audio(this.props.track.preview) }, async () => {
+      try {
+        await this.state.audio.play();
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
 
   pauseMusic() {
+    if (window.innerWidth <= 1279) {
+      return;
+    }
     this.state.audio.pause();
     this.setState({ audio: new Audio("") });
   }
 
-  // pauseMusicOnTouch(e) {
-  //   e.preventDefault();
-  //   this.state.audio.pause();
-  //   this.setState({ audio: new Audio("") });
-  // }
+  pauseMusicOnTouch() {
+    this.state.audio.pause();
+    this.setState({ audio: new Audio("") });
+  }
 
   renderAction() {
     if (this.props.isRemoval) {
@@ -98,7 +103,10 @@ class Track extends Component {
           {/* Cards */}
           {/* Conditional tooltips */}
           {!this.props.track.preview ? (
-            <OverlayTrigger placement="bottom" overlay={this.renderTooltip.bind(this)}>
+            <OverlayTrigger
+              placement="bottom"
+              overlay={this.renderTooltip.bind(this)}
+            >
               <Card.Img variant="top" src={this.props.track.img} />
             </OverlayTrigger>
           ) : (
@@ -107,8 +115,8 @@ class Track extends Component {
               src={this.props.track.img}
               onMouseOver={this.playMusic.bind(this)}
               onMouseOut={this.pauseMusic.bind(this)}
-              // onTouchStart={this.playMusicOnTouch}
-              // onTouchEnd={this.pauseMusicOnTouch}
+              onTouchStart={this.playMusicOnTouch.bind(this)}
+              onTouchEnd={this.pauseMusicOnTouch.bind(this)}
             />
           )}
           <Card.Body

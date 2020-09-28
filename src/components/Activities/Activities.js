@@ -163,19 +163,15 @@ class Activities extends Component {
 
               for (let searchResult of searchResults) {
                 let tracks = this.state.playlistTracks;
-                console.log(tracks)
                 let results = this.state.searchResults;
-                console.log(results)
 
                 try {
                   if (tracks.find(track => track.id === searchResult.id)) {
-                    console.log("the same track found: " + searchResult.name);
-                    return "";
+                    return;
                   }
 
                   if (results.find(result => result.id === searchResult.id)) {
-                    console.log("the same result found: " + searchResult.name);
-                    return "";
+                    return;
                   }
 
                   this.setState({
