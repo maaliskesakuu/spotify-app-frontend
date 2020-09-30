@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import hash from "../../hash";
 
-import { Col, Card, CardDeck, Container } from "react-bootstrap";
+import { Col, Card, CardDeck, Container} from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
 
@@ -9,6 +9,8 @@ class Home extends Component {
   state = {
     token: null,
     playlists: [],
+    img: "/pexels-vova-krasilnikov-2796145-smaller.jpg",
+    //Kuvaaja Vova Krasilnikov palvelusta Pexels
   };
 
   componentDidMount() {
@@ -23,7 +25,7 @@ class Home extends Component {
   }
 
   getPlaylists = token => {
-    fetch(constants.API + "me/playlists", {
+    fetch(constants.API + "me/playlists?limit=48", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -32,19 +34,12 @@ class Home extends Component {
       },
     })
       .then(res => res.json())
-      .then(data => data.items)
-      //   .then(data => {
-      //     if (!data.items) {
-      //       return [];
-      //     }
-      //     return data.items.map(item => ({
-      //       id: item.id,
-      //       name: item.name,
-      //       img: item.images,
-      //       description: item.description,
-      //       owner: item.user,
-      //     }));
-      //   })
+      .then(data => {
+        if (!data.items) {
+          return [];
+        }
+        return data.items;
+      })
       .then(data =>
         this.setState({
           playlists: data,
@@ -76,18 +71,19 @@ class Home extends Component {
                   >
                     <Card.Body
                       style={{
-                        height: "30rem",
+                        height: "35rem",
                         padding: "10px",
                         overflow: "scroll",
                       }}
                     >
                       <Card.Img
                         variant="top"
-                        src="/Spotify_Logo_RGB_White.png"
+                        src={this.state.img}
                         style={{
                           backgroundColor: "#0c0028",
                           padding: "0.5rem",
                           marginBottom: "10px",
+                          borderRadius: "5px"
                         }}
                       ></Card.Img>
                       <div>
@@ -95,7 +91,7 @@ class Home extends Component {
                         {playlist.name} {<hr />} <strong>Description: </strong>
                         {playlist.description} {<hr />} <strong>Owner: </strong>
                         {playlist.owner.display_name} {<hr />}
-                        <strong>Total number of tracks: </strong>
+                        <strong>Tracks: </strong>
                         {playlist.tracks.total} {<hr />}
                         <strong>Playlist: </strong>
                         <a
@@ -103,7 +99,7 @@ class Home extends Component {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Go to the playlist in Spotify
+                          Go to Playlist in Spotify
                         </a>
                       </div>
                     </Card.Body>
