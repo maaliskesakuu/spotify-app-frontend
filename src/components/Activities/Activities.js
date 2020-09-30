@@ -11,6 +11,9 @@ import hash from "../../hash";
 
 import * as constants from "../../constants/constants";
 
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const activities = [
   {
     id: 1,
@@ -48,6 +51,7 @@ class Activities extends Component {
       searchResults: [],
       playlistName: "New Playlist",
       playlistTracks: [],
+      muted: false,
     };
 
     this.activityButtonClicked = this.activityButtonClicked.bind(this);
@@ -291,6 +295,10 @@ class Activities extends Component {
       });
   }
 
+  mute(){
+    this.setState({ muted: !this.state.muted })
+  }
+
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
@@ -334,10 +342,12 @@ class Activities extends Component {
             ""
           )}
         </Container>
+        <Button onClick={this.mute.bind(this)}>Mute <FontAwesomeIcon icon={this.state.muted ? "volume-mute" : "volume-up"}></FontAwesomeIcon></Button>
         {this.state.selectedCategory !== "" ? (
           <SearchResults
             searchResults={this.state.searchResults}
             onAdd={this.doThese}
+            muted={this.state.muted}
           />
         ) : (
           ""
