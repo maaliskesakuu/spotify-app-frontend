@@ -57,6 +57,11 @@ const NavBar = () => {
               Playlist
             </NavItem>
           </LinkContainer>
+          <LinkContainer to="/playlists">
+            <NavItem className="mr-3 mb-1 mr-5">
+              <FontAwesomeIcon icon="list"></FontAwesomeIcon> Playlists
+            </NavItem>
+          </LinkContainer>
           <LinkContainer to="/featured">
             <NavItem className="mr-3 mb-1 mr-5">
               <FontAwesomeIcon icon="music"></FontAwesomeIcon> New and Recent

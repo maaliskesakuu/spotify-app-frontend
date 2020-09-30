@@ -12,8 +12,8 @@ import {
 
 import * as constants from "../../constants/constants";
 
-class Home extends Component {
-
+class Home extends Component { 
+  
   state = {
     token: null,
     musicHistory: [],
