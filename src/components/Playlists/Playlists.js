@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import hash from "../../hash";
 
-import { Col, Card, CardDeck, Container} from "react-bootstrap";
+import { Col, Card, CardDeck, Container } from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
+
+import Pagination from "react-pagination-js";
+import "react-pagination-js/dist/styles.css";
 
 class Home extends Component {
   state = {
@@ -11,6 +14,8 @@ class Home extends Component {
     playlists: [],
     img: "/pexels-vova-krasilnikov-2796145-smaller.jpg",
     //Kuvaaja Vova Krasilnikov palvelusta Pexels
+    currentPage: 1,
+    total: null,
   };
 
   componentDidMount() {
@@ -24,8 +29,9 @@ class Home extends Component {
     }
   }
 
+  // get the first, initial page of playlists
   getPlaylists = token => {
-    fetch(constants.API + "me/playlists?limit=48", {
+    fetch(constants.API + "me/playlists?limit=12", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -35,14 +41,47 @@ class Home extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        if (!data.items) {
+        if (!data) {
           return [];
         }
-        return data.items;
+        return data;
       })
       .then(data =>
         this.setState({
-          playlists: data,
+          playlists: data.items,
+          total: data.total,
+        })
+      )
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  changeCurrentPage = numPage => {
+    this.setState({ currentPage: numPage });
+
+    //fetch playlist data based on pageNumber
+    let _offset = numPage * 12 - 12;
+    let _token = hash.access_token;
+
+    fetch(constants.API + `me/playlists?limit=12&offset=${_offset}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${_token}`,
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (!data) {
+          return [];
+        }
+        return data;
+      })
+      .then(data =>
+        this.setState({
+          playlists: data.items
         })
       )
       .catch(error => {
@@ -61,7 +100,6 @@ class Home extends Component {
             My Playlists
           </h2>
           <CardDeck className="box py-3">
-            {console.log(this.state.playlists)}
             {this.state.playlists.map((playlist, index) => {
               return (
                 <Col md={3} key={index}>
@@ -83,7 +121,7 @@ class Home extends Component {
                           backgroundColor: "#0c0028",
                           padding: "0.5rem",
                           marginBottom: "10px",
-                          borderRadius: "5px"
+                          borderRadius: "5px",
                         }}
                       ></Card.Img>
                       <div>
@@ -99,7 +137,7 @@ class Home extends Component {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Go to Playlist in Spotify
+                          Playlist in Spotify
                         </a>
                       </div>
                     </Card.Body>
@@ -108,6 +146,13 @@ class Home extends Component {
               );
             })}
           </CardDeck>
+          <Pagination
+            currentPage={this.state.currentPage}
+            totalSize={this.state.total}
+            sizePerPage={12}
+            changeCurrentPage={this.changeCurrentPage}
+            theme="bootstrap"
+          />
         </Container>
       </div>
     );
