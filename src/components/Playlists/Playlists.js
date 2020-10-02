@@ -81,7 +81,7 @@ class Home extends Component {
       })
       .then(data =>
         this.setState({
-          playlists: data.items
+          playlists: data.items,
         })
       )
       .catch(error => {
@@ -99,7 +99,7 @@ class Home extends Component {
           >
             My Playlists
           </h2>
-          <CardDeck className="box py-3">
+          <CardDeck className="box pt-3 pb-5" style={{ position: "relative" }}>
             {this.state.playlists.map((playlist, index) => {
               return (
                 <Col md={3} key={index}>
@@ -119,7 +119,6 @@ class Home extends Component {
                         src={this.state.img}
                         style={{
                           backgroundColor: "#0c0028",
-                          padding: "0.5rem",
                           marginBottom: "10px",
                           borderRadius: "5px",
                         }}
@@ -145,14 +144,17 @@ class Home extends Component {
                 </Col>
               );
             })}
+            <div style={{ position: "absolute", bottom: "5px", left: "1.5rem" }}>
+            <Pagination
+              currentPage={this.state.currentPage}
+              totalSize={this.state.total}
+              sizePerPage={12}
+              changeCurrentPage={this.changeCurrentPage}
+              theme="bootstrap"
+             
+              />
+              </div>
           </CardDeck>
-          <Pagination
-            currentPage={this.state.currentPage}
-            totalSize={this.state.total}
-            sizePerPage={12}
-            changeCurrentPage={this.changeCurrentPage}
-            theme="bootstrap"
-          />
         </Container>
       </div>
     );

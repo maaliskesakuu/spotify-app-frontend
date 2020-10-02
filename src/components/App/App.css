@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 #container {
   /* padding-top: 3rem; */
   width: 100vw;
@@ -80,9 +84,11 @@ h1 {
 }
 
 .loggedInBackground {
-  background-image: url("https://source.unsplash.com/YrtFlrLo2DQ");
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background: url("https://source.unsplash.com/YrtFlrLo2DQ");  */
+  background: url('/pexels-kei-scampa-4610131.jpg') no-repeat top center /cover;
+  /* Kuvaaja Kei Scampa palvelusta Pexels */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
   background-color: rgb(42, 0, 70);
   padding-bottom: 0.5rem;
   min-height: 880px;

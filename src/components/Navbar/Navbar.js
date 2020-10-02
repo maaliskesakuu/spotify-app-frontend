@@ -28,16 +28,18 @@ const NavBar = () => {
       variant="dark"
       expand="md"
       style={{
-        backgroundColor: "#0c0028",
-        paddingLeft: "0.6rem",
+        // backgroundColor: "#0c0028",
+        backgroundColor: "#000",
+        paddingLeft: "1rem",
         marginRight: "0",
-        paddingRight: "0.6rem",
+        paddingRight: "1rem",
+        
       }}
     >
       <LinkContainer to="/#">
         <Navbar.Brand>
           <img
-            src="/harmony.png"
+            src="/harmonySmall.png"
             alt="app's logo"
             style={{ width: "9vw", cursor: "pointer", padding: "0" }}
           ></img>
@@ -45,7 +47,7 @@ const NavBar = () => {
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-        <Nav style={{ cursor: "pointer" }}>
+        <Nav style={{ cursor: "pointer", padding: "1.5rem 0" }}>
           <LinkContainer to="/">
             <NavItem className="mr-3 mb-1 mr-5">
               <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
