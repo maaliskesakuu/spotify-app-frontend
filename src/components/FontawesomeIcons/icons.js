@@ -15,4 +15,4 @@ import {
   faList
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHome, faHistory, faPlusCircle, faPlayCircle, faMusic, faSearch, faMousePointer, faPlus, faMinus, faCaretDown, faBan, faList);
+library.add(faHome, faHistory, faPlusCircle, faPlayCircle, faMusic, faSearch, faMousePointer, faPlus, faMinus, faCaretDown, faBan, faList, faVolumeUp, faVolumeMute);
