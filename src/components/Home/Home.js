@@ -8,9 +8,13 @@ import {
   Container,
   OverlayTrigger,
   Tooltip,
+  Button
 } from "react-bootstrap";
 
 import * as constants from "../../constants/constants";
+
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Home extends Component {
   constructor() {
@@ -19,6 +23,7 @@ class Home extends Component {
       token: null,
       musicHistory: [],
       audio: new Audio(""),
+      muted: false,
     };
 
     this.playMusic = this.playMusic.bind(this);
@@ -67,6 +72,9 @@ class Home extends Component {
 
   //play music on hover
   playMusic(preview) {
+    if(this.state.muted){
+      return;
+    }
     this.setState({ audio: new Audio(preview) }, async () => {
       try {
         await this.state.audio.play();
@@ -80,6 +88,10 @@ class Home extends Component {
     this.setState({ audio: new Audio("") });
   }
 
+  mute(){
+    this.setState({ muted: !this.state.muted })
+  }
+
   render() {
     return (
       <div>
@@ -89,6 +101,7 @@ class Home extends Component {
         >
           Recently played
         </h2>
+        <Button id="mute_button" onClick={this.mute.bind(this)}><FontAwesomeIcon icon={this.state.muted ? "volume-mute" : "volume-up"}></FontAwesomeIcon></Button>
         <Container className="mb-5">
           <CardDeck className="box py-3">
             {this.state.musicHistory.map((music, index) => {
