@@ -40,7 +40,7 @@ const NavBar = () => {
           <img
             src="/harmonySmall.png"
             alt="app's logo"
-            style={{ width: "9vw", cursor: "pointer", padding: "0" }}
+            style={{ width: "11vw", cursor: "pointer", padding: "0" }}
           ></img>
         </Navbar.Brand>
       </LinkContainer>
