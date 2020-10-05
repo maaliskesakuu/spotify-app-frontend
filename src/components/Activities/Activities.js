@@ -342,7 +342,7 @@ class Activities extends Component {
             ""
           )}
         </Container>
-        <Button onClick={this.mute.bind(this)}>Mute <FontAwesomeIcon icon={this.state.muted ? "volume-mute" : "volume-up"}></FontAwesomeIcon></Button>
+        <Button id="mute_button" onClick={this.mute.bind(this)}><FontAwesomeIcon icon={this.state.muted ? "volume-mute" : "volume-up"}></FontAwesomeIcon></Button>
         {this.state.selectedCategory !== "" ? (
           <SearchResults
             searchResults={this.state.searchResults}

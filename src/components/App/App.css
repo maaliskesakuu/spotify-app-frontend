@@ -88,10 +88,24 @@ h1 {
   min-height: 880px;
 }
 
+#mute_button {
+  padding: 1rem;
+  color: rgb(42, 0, 70);
+  background-color: white;
+  border: none;
+  font-size: large;
+  z-index: 100;
+}
+
 /* Media queries */
 @media (min-width: 300px) {
   #container {
     max-width: 90%;
+  }
+  #mute_button {
+    position: sticky;
+    top: 2%;
+    left: 2%;
   }
 }
 
@@ -100,12 +114,22 @@ h1 {
   #container {
     max-width: 48%;
   }
+  #mute_button {
+    position: sticky;
+    top: 2%;
+    left: 2%;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   #container {
     max-width: 60%;
+  }
+  #mute_button {
+    position: sticky;
+    top: 2%;
+    left: 3%;
   }
 }
 
@@ -114,6 +138,11 @@ h1 {
   #container {
     max-width: 65%;
   }
+  #mute_button {
+    position: fixed;
+    top: 25%;
+    left: 2%;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -121,6 +150,11 @@ h1 {
   #container {
     margin-bottom: 12rem;
     max-width: 55%;
+  }
+  #mute_button {
+    position: fixed;
+    top: 25%;
+    left: 2%;
   }
 
   .loggedInBackground {
