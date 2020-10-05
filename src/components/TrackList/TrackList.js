@@ -10,12 +10,12 @@ class TrackList extends Component {
     audio: new Audio(""),
   };
 
-  addTrack(event) {
-    this.props.onAdd(this.props.track);
+  addTrack(track) {
+    this.props.onAdd(track);
   }
 
-  removeTrack(event) {
-    this.props.onRemove(this.props.track);
+  removeTrack(track) {
+    this.props.onRemove(track);
   }
 
   renderTooltip(props) {
@@ -38,11 +38,11 @@ class TrackList extends Component {
     this.setState({ audio: new Audio("") });
   }
 
-  renderAction() {
+  renderAction(track) {
     if (this.props.isRemoval) {
       return (
         <Button
-          onClick={this.removeTrack.bind(this)}
+          onClick={() => this.removeTrack(track)}
           style={{
             position: "absolute",
             right: "10px",
@@ -58,7 +58,7 @@ class TrackList extends Component {
 
     return (
       <Button
-        onClick={this.addTrack.bind(this)}
+        onClick={() => this.addTrack(track)}
         style={{
           position: "absolute",
           right: "10px",
@@ -105,7 +105,7 @@ class TrackList extends Component {
                   <Card.Text>
                     {track.name} | {track.artist}
                   </Card.Text>
-                  {this.renderAction()}
+                  {this.renderAction(track)}
                 </Card.Body>
               </Card>
             </Col>
