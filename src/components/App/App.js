@@ -11,12 +11,8 @@ import "../FontawesomeIcons/icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: null,
-    };
-  }
+
+  state = { token: null };
 
   componentDidMount() {
     // Set token

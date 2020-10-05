@@ -40,29 +40,13 @@ const activities = [
 ];
 
 class Activities extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activities: activities,
-      selectedCategory: "",
-      searchResults: [],
-      playlistName: "New Playlist",
-      playlistTracks: [],
-    };
-
-    this.activityButtonClicked = this.activityButtonClicked.bind(this);
-    this.getMusic = this.getMusic.bind(this);
-
-    //to add and remove tracks from the playlist
-    this.addTrack = this.addTrack.bind(this);
-    this.removeTrack = this.removeTrack.bind(this);
-    this.updatePlaylistName = this.updatePlaylistName.bind(this);
-    this.removeTrackSearch = this.removeTrackSearch.bind(this);
-    this.doThese = this.doThese.bind(this);
-    this.savePlaylistAdd = this.savePlaylistAdd.bind(this);
-    // searchbar's search
-    this.search = this.search.bind(this);
-  }
+  state = {
+    activities: activities,
+    selectedCategory: "",
+    searchResults: [],
+    playlistName: "New Playlist",
+    playlistTracks: [],
+  };
 
   // search with a term given by the user
   search(term) {
@@ -162,7 +146,7 @@ class Activities extends Component {
               try {
                 if (!jsonResponse.items) {
                   return [];
-                }                  
+                }
                 return jsonResponse.items.map(item => ({
                   id: item.track.id,
                   name: item.track.name,
@@ -176,9 +160,29 @@ class Activities extends Component {
               }
             })
             .then(searchResults => {
-              this.setState({
-                searchResults: this.state.searchResults.concat(searchResults),
-              });
+
+              for (let searchResult of searchResults) {
+                let tracks = this.state.playlistTracks;
+                let results = this.state.searchResults;
+
+                try {
+                  if (tracks.find(track => track.id === searchResult.id)) {
+                    return;
+                  }
+
+                  if (results.find(result => result.id === searchResult.id)) {
+                    return;
+                  }
+
+                  this.setState({
+                    searchResults: this.state.searchResults.concat(
+                      searchResult
+                    ),
+                  });
+                } catch (err) {
+                  console.log(err);
+                }
+              }
             })
             .catch(error => {
               console.log(error);
@@ -202,27 +206,26 @@ class Activities extends Component {
     if (tracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
     }
-    tracks.push(track);
-    this.setState({ playlistTracks: tracks });
+    this.setState({ playlistTracks: tracks.concat(track) });
   }
 
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
-    let trackSearch = this.state.searchResults;
+    let searchResultsTracks = this.state.searchResults;
     tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
-    trackSearch.unshift(track);
+    this.setState({ searchResults: searchResultsTracks.concat(track) });
     this.setState({ playlistTracks: tracks });
   }
 
-  removeTrackSearch(track) {
+  removeTrackFromSearchResults(track) {
     let tracks = this.state.searchResults;
     tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
     this.setState({ searchResults: tracks });
   }
 
-  doThese(track) {
+  addAndRemoveTrack(track) {
     this.addTrack(track);
-    this.removeTrackSearch(track);
+    this.removeTrackFromSearchResults(track);
   }
 
   updatePlaylistName(name) {
@@ -288,6 +291,9 @@ class Activities extends Component {
                 console.log(error);
               });
           });
+      })
+      .catch(error => {
+        console.log(error);
       });
   }
 
@@ -303,7 +309,7 @@ class Activities extends Component {
             border: "none",
             fontSize: "large",
           }}
-          onClick={this.activityButtonClicked}
+          onClick={this.activityButtonClicked.bind(this)}
           value={activity.category_id}
         >
           {activity.activity}
@@ -329,7 +335,7 @@ class Activities extends Component {
             <Row style={{ justifyContent: "center" }}>{activityList}</Row>
           </Container>
           {this.state.selectedCategory === "somethingelse" ? (
-            <SearchBar onSearch={this.search}></SearchBar>
+            <SearchBar onSearch={this.search.bind(this)}></SearchBar>
           ) : (
             ""
           )}
@@ -337,7 +343,7 @@ class Activities extends Component {
         {this.state.selectedCategory !== "" ? (
           <SearchResults
             searchResults={this.state.searchResults}
-            onAdd={this.doThese}
+            onAdd={this.addAndRemoveTrack.bind(this)}
           />
         ) : (
           ""
@@ -345,9 +351,9 @@ class Activities extends Component {
         {this.state.selectedCategory !== "" ? (
           <PlaylistAdd
             playlistTracks={this.state.playlistTracks}
-            onNameChange={this.updatePlaylistName}
-            onRemove={this.removeTrack}
-            onSave={this.savePlaylistAdd}
+            onNameChange={this.updatePlaylistName.bind(this)}
+            onRemove={this.removeTrack.bind(this)}
+            onSave={this.savePlaylistAdd.bind(this)}
             title={this.state.playlistName}
           ></PlaylistAdd>
         ) : (

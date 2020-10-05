@@ -18,4 +18,6 @@ export const scopes = [
   "user-read-recently-played",
   "playlist-modify-public",
   "playlist-modify-private",
+  "playlist-read-private", //playlists
+  "playlist-read-collaborative" //playlists
 ];

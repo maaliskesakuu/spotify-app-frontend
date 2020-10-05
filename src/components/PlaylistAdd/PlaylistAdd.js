@@ -5,11 +5,6 @@ import TrackList from "../TrackList/TrackList";
 import { Button, CardDeck, Container } from "react-bootstrap";
 
 class PlaylistAdd extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleNameChange = this.handleNameChange.bind(this);
-  }
 
   handleNameChange(event) {
     this.props.onNameChange(event.target.value);
@@ -20,7 +15,7 @@ class PlaylistAdd extends Component {
       <Container className="Playlist mb-5">
         <Container className="mb-3 mx-0 px-0">
           <input
-            onChange={this.handleNameChange} 
+            onChange={this.handleNameChange.bind(this)} 
             value={this.props.title}
           ></input>
           <CardDeck>

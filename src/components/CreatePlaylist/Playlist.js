@@ -26,19 +26,13 @@ import {
 } from "react-share";
 
 class Playlist extends Component {
-  constructor() {
-    super();
-    this.state = {
-      playlistName: "New Playlist",
-      playlistDescription: "",
-      playlistId: "",
-      value: "",
-    };
 
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.savePlaylist = this.savePlaylist.bind(this);
-  }
+  state = {
+    playlistName: "New Playlist",
+    playlistDescription: "",
+    playlistId: "",
+    value: "",
+  };
 
   // to handle the title and description of a new playlist
   handleNameChange(event) {
@@ -139,7 +133,7 @@ class Playlist extends Component {
                     size="lg"
                     type="text"
                     name="title"
-                    onChange={this.handleNameChange}
+                    onChange={this.handleNameChange.bind(this)}
                     value={this.state.playlistName}
                   />
                 </Form.Group>
@@ -152,13 +146,13 @@ class Playlist extends Component {
                     name="description"
                     placeholder="Enter a description"
                     value={this.state.playlistDescription}
-                    onChange={this.handleDescriptionChange}
+                    onChange={this.handleDescriptionChange.bind(this)}
                   ></Form.Control>
                 </Form.Group>
                 <Button
                   size="lg"
                   className="mb-3"
-                  onClick={this.savePlaylist}
+                  onClick={this.savePlaylist.bind(this)}
                   style={{
                     border: "none",
                     backgroundColor: "rgb(126, 2, 214)",

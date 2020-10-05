@@ -6,21 +6,11 @@ import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Track extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      audio: new Audio(""),
-      isPlaying: true,
-    };
 
-    this.addTrack = this.addTrack.bind(this);
-    this.removeTrack = this.removeTrack.bind(this);
-    this.playMusic = this.playMusic.bind(this);
-    this.pauseMusic = this.pauseMusic.bind(this);
-    this.renderTooltip = this.renderTooltip.bind(this);
-    // this.playMusicOnTouch = this.playMusicOnTouch.bind(this);
-    // this.pauseMusicOnTouch = this.pauseMusicOnTouch.bind(this);
-  }
+  state = {
+    audio: new Audio(""),
+    isPlaying: true,
+  };
 
   addTrack(event) {
     this.props.onAdd(this.props.track);
@@ -71,7 +61,7 @@ class Track extends Component {
     if (this.props.isRemoval) {
       return (
         <Button
-          onClick={this.removeTrack}
+          onClick={this.removeTrack.bind(this)}
           style={{
             position: "absolute",
             right: "10px",
@@ -87,7 +77,7 @@ class Track extends Component {
 
     return (
       <Button
-        onClick={this.addTrack}
+        onClick={this.addTrack.bind(this)}
         style={{
           position: "absolute",
           right: "10px",
@@ -108,15 +98,15 @@ class Track extends Component {
           {/* Cards */}
           {/* Conditional tooltips */}
           {!this.props.track.preview ? (
-            <OverlayTrigger placement="bottom" overlay={this.renderTooltip}>
+            <OverlayTrigger placement="bottom" overlay={this.renderTooltip.bind(this)}>
               <Card.Img variant="top" src={this.props.track.img} />
             </OverlayTrigger>
           ) : (
             <Card.Img
               variant="top"
               src={this.props.track.img}
-              onMouseOver={this.playMusic}
-              onMouseOut={this.pauseMusic}
+              onMouseOver={this.playMusic.bind(this)}
+              onMouseOut={this.pauseMusic.bind(this)}
               // onTouchStart={this.playMusicOnTouch}
               // onTouchEnd={this.pauseMusicOnTouch}
             />
