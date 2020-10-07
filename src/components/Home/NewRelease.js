@@ -68,12 +68,12 @@ class NewRelease extends Component {
 		return <Tooltip {...props}>Release date {this.getText()}</Tooltip>;
 	}
 
-	handleOptionChange = changeEvent => {
+	handleRadioButtonChange = changeEvent => {
 		this.setState({ selectedOption: changeEvent.target.value });
 	};
 
-	handleFormSubmit = formSubmitEvent => {
-		formSubmitEvent.preventDefault();
+	handleRadioButtonFormSubmit = event => {
+		event.preventDefault();
 
 		// get the new releases in the selected country
 		let token = hash.access_token;
@@ -112,10 +112,10 @@ class NewRelease extends Component {
 					</h2>
 					<p className="text-light">
 						You can choose the country whose new releases you'll
-						see.
+						see. After you have chosen the country, press the submit button.
 					</p>
 
-					<Form onSubmit={this.handleFormSubmit}>
+					<Form onSubmit={this.handleRadioButtonFormSubmit}>
 						<div className="text-light">
 							<Form.Check
 								inline
@@ -124,7 +124,7 @@ class NewRelease extends Component {
 								label="US"
 								value="US"
 								checked={this.state.selectedOption === "US"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -134,7 +134,7 @@ class NewRelease extends Component {
 								label="FI"
 								value="FI"
 								checked={this.state.selectedOption === "FI"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -144,7 +144,7 @@ class NewRelease extends Component {
 								label="SE"
 								value="SE"
 								checked={this.state.selectedOption === "SE"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -154,7 +154,7 @@ class NewRelease extends Component {
 								label="GB"
 								value="GB"
 								checked={this.state.selectedOption === "GB"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -164,7 +164,7 @@ class NewRelease extends Component {
 								label="DE"
 								value="DE"
 								checked={this.state.selectedOption === "DE"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -174,7 +174,7 @@ class NewRelease extends Component {
 								label="RU"
 								value="RU"
 								checked={this.state.selectedOption === "RU"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -184,7 +184,7 @@ class NewRelease extends Component {
 								label="JP"
 								value="JP"
 								checked={this.state.selectedOption === "JP"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -194,7 +194,7 @@ class NewRelease extends Component {
 								label="BR"
 								value="BR"
 								checked={this.state.selectedOption === "BR"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -204,7 +204,7 @@ class NewRelease extends Component {
 								label="ZA"
 								value="ZA"
 								checked={this.state.selectedOption === "ZA"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<Form.Check
@@ -214,12 +214,13 @@ class NewRelease extends Component {
 								label="EG"
 								value="EG"
 								checked={this.state.selectedOption === "EG"}
-								onChange={this.handleOptionChange}
+								onChange={this.handleRadioButtonChange}
 							/>
 
 							<div className="form-group">
 								<Button
 									className="btn btn-primary mt-2 bg-white"
+									size="lg"
 									type="submit"
 									style={{
 										color: "rgb(42, 0, 70)",
