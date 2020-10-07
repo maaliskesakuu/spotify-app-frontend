@@ -101,6 +101,7 @@ class Activities extends Component {
       })
       .then(searchResults => {
         this.setState({ searchResults: searchResults });
+        document.getElementById("searchBarInput").value = '';
       })
       .catch(error => {
         console.log(error);

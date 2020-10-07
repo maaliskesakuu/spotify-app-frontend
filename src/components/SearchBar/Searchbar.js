@@ -33,6 +33,7 @@ class SearchBar extends Component {
     return (
       <div className="SearchBar">
         <input
+          id="searchBarInput"
           placeholder="Enter a keyword"
           onChange={this.handleTermChange}
           onKeyUp={this.handleEnter}
