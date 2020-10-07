@@ -15,7 +15,7 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  background-image: linear-gradient(
+/*   background-image: linear-gradient(
     to bottom,
     rgb(95, 193, 243, 0.7),
     rgb(241, 173, 46, 0.2),
@@ -23,7 +23,7 @@
     rgb(95, 193, 243, 0.3),
     rgba(124, 63, 168, 0.4),
     rgba(124, 63, 168, 0.9)
-  );
+  ); */
   height: 100%;
 }
 
