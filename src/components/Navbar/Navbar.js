@@ -71,9 +71,9 @@ const NavBar = () => {
 							as={NavLink}
 							style={{
 								color: "white",
-								paddingTop: "0",
-								paddingRight: "50px",
+								padding: "0 50px 0 0"
 							}}
+							className="my-1"
 						>
 							My Account
 						</Dropdown.Toggle>
