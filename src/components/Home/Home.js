@@ -13,6 +13,9 @@ import {
 
 import * as constants from "../../constants/constants";
 
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 class Home extends Component { 
   
   state = {
