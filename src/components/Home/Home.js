@@ -89,8 +89,8 @@ class Home extends Component {
     return (
       <div>
         <h2
-          className="my-5 text_light"
-          style={{ color: "white", textAlign: "center" }}
+          className="my-5 text_light text-light "
+          style={{ textAlign: "center" }}
         >
           Recently played
         </h2>
