@@ -1,4 +1,4 @@
-html {
+html, main {
   height: 100%;
 }
 
@@ -85,10 +85,6 @@ h1 {
 
 .loggedInBackground {
   background: url("https://source.unsplash.com/YrtFlrLo2DQ") no-repeat center left /cover; 
-  /* background: url('/pexels-kei-scampa-4610131.jpg') no-repeat top center /cover; */
-  /* Kuvaaja Kei Scampa palvelusta Pexels */
-  /* background-size: cover;
-  background-repeat: no-repeat; */
   background-color: rgb(42, 0, 70);
   padding-bottom: 0.5rem;
   min-height: 880px;

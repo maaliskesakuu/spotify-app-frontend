@@ -7,10 +7,11 @@ Nav a, Nav a:hover {
   color: white;
 }
 
-.mr-5:hover {
+.mr-3:hover {
   color: rgb(227, 126, 4);
   filter: brightness(1.2);
 }
+
 .item_box {
   background-color: rgba(255, 255, 255, 0.4);
   width: 8rem;
@@ -25,3 +26,18 @@ Nav a, Nav a:hover {
 .out:hover {
   text-decoration: none;
 }
+
+@media (max-width: 767px) {
+  #logo {
+    width: 30vw;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 767px) {
+  #logo {
+    width: 15vw;
+    cursor: pointer;
+  }
+}
+
