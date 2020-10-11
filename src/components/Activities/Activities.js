@@ -85,6 +85,7 @@ class Activities extends Component {
 			})
 			.then(searchResults => {
 				this.setState({ searchResults: searchResults });
+				document.getElementById("searchBarInput").value = '';
 			})
 			.catch(error => {
 				console.log(error);
@@ -96,7 +97,7 @@ class Activities extends Component {
 
 		if (this.state.selectedCategory === "somethingelse") {
 			return;
-		}
+		  }
 
 		fetch(
 			constants.API +
@@ -319,79 +320,70 @@ class Activities extends Component {
 
 	render() {
 		const activityList = this.state.activities.map(activity => {
-			return (
-				<Button
-					key={activity.category_id}
-					className="activity_button"
-					style={{
-						padding: "1rem",
-						backgroundColor: "rgb(42, 0, 70)",
-						border: "none",
-						fontSize: "large",
-					}}
-					onClick={this.activityButtonClicked.bind(this)}
-					value={activity.category_id}
-				>
-					{activity.activity}
-				</Button>
-			);
+		  return (
+			<Button
+			  key={activity.category_id}
+			  className="activity_button"
+			  style={{
+				padding: "1rem",
+				backgroundColor: "rgb(42, 0, 70)",
+				border: "none",
+				fontSize: "large",
+			  }}
+			  onClick={this.activityButtonClicked}
+			  value={activity.category_id}
+			>
+			  {activity.activity}
+			</Button>
+		  );
 		});
 
-		return (
-			<>
-				<h2
-					style={{ color: "white", textAlign: "center" }}
-					className="my-5 text_light"
-				>
-					What are you in the mood for?
-				</h2>
-				<Container
-					style={{
-						backgroundColor: "rgba(253, 254, 255, 0.8)",
-					}}
-					className="my-5"
-				>
-					<Container className="mt-5">
-						<Row style={{ justifyContent: "center" }}>
-							{activityList}
-						</Row>
-					</Container>
-					{this.state.selectedCategory === "somethingelse" ? (
-						<SearchBar
-							onSearch={this.search.bind(this)}
-						></SearchBar>
-					) : (
-						""
-					)}
-				</Container>
-				<Button onClick={this.mute.bind(this)}>
-					Mute{" "}
-					<FontAwesomeIcon
-						icon={this.state.muted ? "volume-mute" : "volume-up"}
-					></FontAwesomeIcon>
-				</Button>
-				{this.state.selectedCategory !== "" ? (
-					<SearchResults
-						searchResults={this.state.searchResults}
-						onAdd={this.addAndRemoveTrack.bind(this)}
-						muted={this.state.muted}
-					/>
-				) : (
-					""
-				)}
-				{this.state.selectedCategory !== "" ? (
-					<PlaylistAdd
-						playlistTracks={this.state.playlistTracks}
-						onNameChange={this.updatePlaylistName.bind(this)}
-						onRemove={this.removeTrack.bind(this)}
-						onSave={this.savePlaylistAdd.bind(this)}
-						title={this.state.playlistName}
-					></PlaylistAdd>
-				) : (
-					""
-				)}
-			</>
-		);
-	}
+    return (
+      <>
+        <h2
+          style={{ color: "white", textAlign: "center" }}
+          className="my-5 text_light"
+        >
+          What are you in the mood for?
+        </h2>
+        <Container
+          style={{
+            backgroundColor: "rgba(253, 254, 255, 0.8)",
+          }}
+          className="my-5"
+        >
+          <Container className="mt-5">
+            <Row style={{ justifyContent: "center" }}>{activityList}</Row>
+          </Container>
+          {this.state.selectedCategory === "somethingelse" ? (
+            <SearchBar onSearch={this.search}></SearchBar>
+          ) : (
+            ""
+          )}
+        </Container>
+        <Button id="mute_button" onClick={this.mute.bind(this)}><FontAwesomeIcon icon={this.state.muted ? "volume-mute" : "volume-up"}></FontAwesomeIcon></Button>
+        {this.state.selectedCategory !== "" ? (
+          <SearchResults
+            searchResults={this.state.searchResults}
+            onAdd={this.doThese}
+            muted={this.state.muted}
+          />
+        ) : (
+          ""
+        )}
+        {this.state.selectedCategory !== "" ? (
+          <PlaylistAdd
+            playlistTracks={this.state.playlistTracks}
+            onNameChange={this.updatePlaylistName}
+            onRemove={this.removeTrack}
+            onSave={this.savePlaylistAdd}
+            title={this.state.playlistName}
+          ></PlaylistAdd>
+        ) : (
+          ""
+        )}
+      </>
+    );
+  }
 }
 export default Activities;
