@@ -12,8 +12,7 @@ const NavBar = () => {
       variant="dark"
       expand="md"
       style={{
-        // backgroundColor: "#0c0028",
-        backgroundColor: "#000",
+        backgroundColor: "#0c0028",
         paddingLeft: "1rem",
         marginRight: "0",
         paddingRight: "1rem",

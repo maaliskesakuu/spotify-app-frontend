@@ -330,7 +330,7 @@ class Activities extends Component {
 				border: "none",
 				fontSize: "large",
 			  }}
-			  onClick={this.activityButtonClicked}
+			  onClick={this.activityButtonClicked.bind(this)}
 			  value={activity.category_id}
 			>
 			  {activity.activity}
@@ -356,7 +356,7 @@ class Activities extends Component {
             <Row style={{ justifyContent: "center" }}>{activityList}</Row>
           </Container>
           {this.state.selectedCategory === "somethingelse" ? (
-            <SearchBar onSearch={this.search}></SearchBar>
+            <SearchBar onSearch={this.search.bind(this)}></SearchBar>
           ) : (
             ""
           )}
@@ -365,7 +365,7 @@ class Activities extends Component {
         {this.state.selectedCategory !== "" ? (
           <SearchResults
             searchResults={this.state.searchResults}
-            onAdd={this.doThese}
+            onAdd={this.addAndRemoveTrack.bind(this)}
             muted={this.state.muted}
           />
         ) : (
@@ -374,9 +374,9 @@ class Activities extends Component {
         {this.state.selectedCategory !== "" ? (
           <PlaylistAdd
             playlistTracks={this.state.playlistTracks}
-            onNameChange={this.updatePlaylistName}
-            onRemove={this.removeTrack}
-            onSave={this.savePlaylistAdd}
+            onNameChange={this.updatePlaylistName.bind(this)}
+            onRemove={this.removeTrack.bind(this)}
+            onSave={this.savePlaylistAdd.bind(this)}
             title={this.state.playlistName}
           ></PlaylistAdd>
         ) : (
