@@ -4,7 +4,7 @@ import hash from "../../hash";
 import "./App.css";
 import Routers from "../../Routers";
 import Footer from "../Footer/Footer";
-import Video from "../Video/snow.mp4";
+import Video from "../Video/sky.mp4"; //video from https://www.pexels.com/video/video-of-beautiful-sky-855780/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../FontawesomeIcons/icons";
 

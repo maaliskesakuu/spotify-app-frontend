@@ -1,105 +1,85 @@
-import React, { useState } from "react";
+import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Navbar.css";
 import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Nav, NavItem, Navbar, NavDropdown } from "react-bootstrap";
-
-const NavItems = props => {
-	const [open, setOpen] = useState(false);
-
-	return (
-		<li className="nav-item mr-3 my-1">
-			{/* eslint-disable-next-line */}
-			<a id="icon-button" onClick={() => setOpen(!open)}>
-				<p style={{ marginBottom: 0 }}>
-					My Account <FontAwesomeIcon icon="caret-down" />
-				</p>
-			</a>
-			{open && props.children}
-		</li>
-	);
-};
+import { Nav, NavItem, Navbar, Dropdown, NavLink } from "react-bootstrap";
 
 const NavBar = () => {
-	return (
-		<Navbar
-			variant="dark"
-			expand="lg"
-			style={{
-				backgroundColor: "#0c0028",
-			}}
-		>
-			<LinkContainer to="/#">
-				<Navbar.Brand>
-					<img
-						id="logo"
-						src="/harmonySmall.png"
-						alt="app's logo"
-					></img>
-				</Navbar.Brand>
-			</LinkContainer>
-			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<Navbar.Collapse
-				id="basic-navbar-nav"
-				className="justify-content-end"
-			>
-				<Nav
-					style={{
-						cursor: "pointer",
-						padding: "1.5rem 0",
-						fontWeight: "bolder",
-					}}
-				>
-					<LinkContainer to="/">
-						<NavItem className="mr-3 my-1">
-							<FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
-						</NavItem>
-					</LinkContainer>
-					<LinkContainer to="/playlist">
-						<NavItem className="mr-3 my-1">
-							<FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon>{" "}
-							Create Playlist
-						</NavItem>
-					</LinkContainer>
-					<LinkContainer to="/playlists">
-						<NavItem className="mr-3 my-1">
-							<FontAwesomeIcon icon="list"></FontAwesomeIcon>{" "}
-							Playlists
-						</NavItem>
-					</LinkContainer>
-					<LinkContainer to="/featured">
-						<NavItem className="mr-3 my-1">
-							<FontAwesomeIcon icon="music"></FontAwesomeIcon> New
-							and Recent
-						</NavItem>
-					</LinkContainer>
-					<LinkContainer to="/history">
-						<NavItem className="mr-3 my-1">
-							<FontAwesomeIcon icon="history"></FontAwesomeIcon>{" "}
-							History Playlist
-						</NavItem>
-					</LinkContainer>
-					<NavItems>
-						<div className="item_box">
-							<LinkContainer to="/user">
-								<NavItem className="mr-3 my-1">Profile</NavItem>
-							</LinkContainer>
-							<NavDropdown.Divider />
-							<a
-								href="//accounts.spotify.com/"
-								rel="noopener noreferrer"
-								className="mr-3 out"
-							>
-								Log out
-							</a>
-						</div>
-					</NavItems>
-				</Nav>
-			</Navbar.Collapse>
-		</Navbar>
-	);
+  return (
+    <Navbar
+      variant="dark"
+      expand="lg"
+      style={{
+        backgroundColor: "#0c0028",
+      }}
+    >
+      <LinkContainer to="/#">
+        <Navbar.Brand>
+          <img id="logo" src="/harmonySmall.png" alt="app's logo"></img>
+        </Navbar.Brand>
+      </LinkContainer>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+        <Nav
+          style={{
+            cursor: "pointer",
+            padding: "1.5rem 0",
+            fontWeight: "bolder",
+          }}
+        >
+          <LinkContainer to="/">
+            <NavItem className="mr-3 my-1">
+              <FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/playlist">
+            <NavItem className="mr-3 my-1">
+              <FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon> Create
+              Playlist
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/playlists">
+            <NavItem className="mr-3 my-1">
+              <FontAwesomeIcon icon="list"></FontAwesomeIcon> Playlists
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/featured">
+            <NavItem className="mr-3 my-1">
+              <FontAwesomeIcon icon="music"></FontAwesomeIcon> New and Recent
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/history">
+            <NavItem className="mr-3 my-1">
+              <FontAwesomeIcon icon="history"></FontAwesomeIcon> History
+              Playlist
+            </NavItem>
+          </LinkContainer>
+          <Dropdown as={NavItem}>
+            <Dropdown.Toggle
+              as={NavLink}
+              style={{
+                color: "white",
+                paddingTop: "0",
+                paddingRight: "50px",
+              }}
+            >
+              My Account
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <LinkContainer to="/user">
+                <Dropdown.Item> Profile</Dropdown.Item>
+              </LinkContainer>
+              <Dropdown.Item href="//accounts.spotify.com/">
+                Log Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
 };
 
 export default NavBar;

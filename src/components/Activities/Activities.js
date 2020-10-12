@@ -11,6 +11,9 @@ import hash from "../../hash";
 
 import * as constants from "../../constants/constants";
 
+import "../FontawesomeIcons/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const activities = [
   {
     id: 1,
@@ -46,6 +49,7 @@ class Activities extends Component {
     searchResults: [],
     playlistName: "New Playlist",
     playlistTracks: [],
+    muted: false,
   };
 
   // search with a term given by the user
@@ -81,6 +85,7 @@ class Activities extends Component {
       })
       .then(searchResults => {
         this.setState({ searchResults: searchResults });
+        document.getElementById("searchBarInput").value = '';
       })
       .catch(error => {
         console.log(error);
@@ -297,6 +302,10 @@ class Activities extends Component {
       });
   }
 
+  mute(){
+    this.setState({ muted: !this.state.muted })
+  }
+
   render() {
     const activityList = this.state.activities.map(activity => {
       return (
@@ -340,10 +349,12 @@ class Activities extends Component {
             ""
           )}
         </Container>
+        <Button id="mute_button" onClick={this.mute.bind(this)}><FontAwesomeIcon icon={this.state.muted ? "volume-mute" : "volume-up"}></FontAwesomeIcon></Button>
         {this.state.selectedCategory !== "" ? (
           <SearchResults
             searchResults={this.state.searchResults}
             onAdd={this.addAndRemoveTrack.bind(this)}
+            muted={this.state.muted}
           />
         ) : (
           ""
