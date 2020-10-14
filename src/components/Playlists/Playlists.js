@@ -113,8 +113,8 @@ class Home extends Component {
 									>
 										<Card.Body
 											style={{
-												height: "35rem",
-												padding: "10px",
+												height: "32rem",
+												padding: "0",
 												overflow: "scroll",
 											}}
 										>
@@ -124,6 +124,7 @@ class Home extends Component {
 													src={playlist.images[0].url}
 													style={{
 														marginBottom: "0.5rem",
+														borderRadius: "calc(.25rem - 1px)"
 													}}
 												></Card.Img>
 											) : (
@@ -133,21 +134,53 @@ class Home extends Component {
 													//Kuvaaja Vova Krasilnikov palvelusta Pexels
 													style={{
 														marginBottom: "0.5rem",
+														borderRadius: "calc(.25rem - 1px)"
 													}}
 												></Card.Img>
 											)}
-											<div>
+											<div
+												style={{
+													padding: "10px",
+												}}
+											>
 												<strong>Name: </strong>
-												{playlist.name} {<hr />}{" "}
+												{playlist.name}{" "}
+												{
+													<hr
+														style={{
+															margin: "0.5rem 0",
+														}}
+													/>
+												}{" "}
 												<strong>Description: </strong>
-												{playlist.description} {<hr />}{" "}
+												{playlist.description}{" "}
+												{
+													<hr
+														style={{
+															margin: "0.5rem 0",
+														}}
+													/>
+												}{" "}
 												<strong>Owner: </strong>
 												{
 													playlist.owner.display_name
 												}{" "}
-												{<hr />}
+												{
+													<hr
+														style={{
+															margin: "0.5rem 0",
+														}}
+													/>
+												}
 												<strong>Tracks: </strong>
-												{playlist.tracks.total} {<hr />}
+												{playlist.tracks.total}{" "}
+												{
+													<hr
+														style={{
+															margin: "0.5rem 0",
+														}}
+													/>
+												}
 												<strong>Playlist: </strong>
 												<a
 													href={
