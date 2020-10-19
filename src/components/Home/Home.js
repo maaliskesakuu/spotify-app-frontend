@@ -16,13 +16,14 @@ import * as constants from "../../constants/constants";
 import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class Home extends Component {
-    state = {
-      token: null,
-      musicHistory: [],
-      audio: new Audio(""),
-      muted: false,
-    };
+class Home extends Component { 
+  
+  state = {
+    token: null,
+    musicHistory: [],
+    audio: new Audio(""),
+    muted: false,
+  };
 
   componentDidMount() {
     let _token = hash.access_token;

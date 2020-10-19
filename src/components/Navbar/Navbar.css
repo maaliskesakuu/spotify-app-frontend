@@ -1,43 +1,22 @@
 .mr-3 {
-  color: white;
-  font-size: 1rem;
+	color: white;
+	font-size: 1rem;
 }
-
-/* Nav a,
-Nav a:hover {
-  color: white;
-} */
 
 .mr-3:hover {
-  color: rgb(227, 126, 4);
-  filter: brightness(1.2);
+	color: rgb(227, 126, 4);
+	filter: brightness(1.2);
 }
-/*  .item_box {
-  background-color: rgba(255, 255, 255, 0.4);
-  width: 8rem;
-  border-radius: 2px;
-  position: absolute;
-  overflow: hidden;
-  padding: 0.5rem;
-  top: 6rem;
-  right: 1rem;
-}  */
-
-.out:hover {
-  text-decoration: none;
-}
-
 @media (max-width: 767px) {
-  #logo {
-    width: 30vw;
-    cursor: pointer;
-  }
+	#logo {
+		width: 30vw;
+		cursor: pointer;
+	}
 }
 
 @media (min-width: 767px) {
-  #logo {
-    width: 15vw;
-    cursor: pointer;
-  }
+	#logo {
+		width: 14vw;
+		cursor: pointer;
+	}
 }
-
