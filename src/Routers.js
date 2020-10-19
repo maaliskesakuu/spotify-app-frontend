@@ -5,6 +5,7 @@ import NewRelease from "./components/Home/NewRelease";
 import NavBar from "./components/Navbar/Navbar";
 import Activities from "./components/Activities/Activities";
 import Playlist from "./components/CreatePlaylist/Playlist";
+import Playlists from "./components/Playlists/Playlists";
 import User from "./components/User/User";
 
 const Routers = () => {
@@ -16,6 +17,7 @@ const Routers = () => {
         <Route path="/history" component={History}></Route>
         <Route path="/featured" component={NewRelease}></Route>
         <Route path="/playlist" component={Playlist}></Route>
+        <Route path="/playlists" component={Playlists}></Route>
         <Route path="/user" component={User}></Route>
       </Switch>
     </Router>

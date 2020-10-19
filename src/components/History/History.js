@@ -7,6 +7,8 @@ import "../FontawesomeIcons/icons";
 
 import * as constants from "../../constants/constants";
 
+import { Table } from "react-bootstrap";
+
 class History extends Component {
 
   state = {
@@ -88,7 +90,6 @@ class History extends Component {
         </td>
         <td style={{ padding: "0.75rem 0.3rem" }}>
           <img
-            className="size"
             src={item.track.album.images[2].url}
             alt="album cover"
           ></img>
@@ -109,41 +110,42 @@ class History extends Component {
       </tr>
     );
 
-    //clear music history
-    const clearHistoryHandler = () => {
-      this.setState({ musicHistory: [] });
-    };
+    // //clear music history
+    // const clearHistoryHandler = () => {
+    //   this.setState({ musicHistory: [] });
+    // };
 
     const RecentlyPlayed = () => (
       <div className="recently-played">
-        <button
+        {/* <button
           className="text-secondary"
           onClick={clearHistoryHandler}
           style={{ border: "none" }}
         >
           Clear History
-        </button>
-        <table className="table">
+        </button> */}
+        {/* <table className="table"> */}
+        <Table responsive striped hover>
           <thead>
             <tr>
               <th style={{ padding: "0.75rem 0.3rem 0.75rem 0.6rem" }}>#</th>
               <th style={{ padding: "0.75rem 0.3rem" }}>Cover</th>
-              <th style={{ padding: "0.75rem 0.3rem" }}>Track title</th>
+              <th style={{ padding: "0.75rem 0.3rem" }}>Track</th>
               <th style={{ padding: "0.75rem 0.3rem" }}>Artist</th>
               <th style={{ padding: "0.75rem 0.3rem" }}>Time</th>
             </tr>
           </thead>
           <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>
-        </table>
+          </Table>
+        {/* </table> */}
       </div>
     );
 
     return (
       <div
-        style={{ paddingRight: "0", paddingLeft: "0" }}
-        className="mb-5 container"
+        className="mb-5 container px-0"
       >
-        <h2 className="my-5 head text_light"> Listening History</h2>
+        <h2 className="my-5 head text-light">Listening History</h2>
         <div className="box py-5">
           <div className="mx-sm-5">
             {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
