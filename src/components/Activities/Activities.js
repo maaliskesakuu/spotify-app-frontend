@@ -378,6 +378,7 @@ class Activities extends Component {
             onRemove={this.removeTrack.bind(this)}
             onSave={this.savePlaylistAdd.bind(this)}
             title={this.state.playlistName}
+            muted={this.state.muted}
           ></PlaylistAdd>
         ) : (
           ""
