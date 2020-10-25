@@ -9,8 +9,6 @@ export const clientId = env.SPOTIFY_CLIENT_ID;
 // the address to which the Spotify Accounts service redirects
 export const redirectUri = "https://harmony-fbddf.web.app/";
 
-// export const redirectUri = "http://localhost:3000/";
-
 // user must authorize access to the data defined in the scopes
 export const scopes = [
   "user-read-private",

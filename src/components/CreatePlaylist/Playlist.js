@@ -124,8 +124,8 @@ class Playlist extends Component {
 						</p>
 					</Row>
 				</Container>
-				<Container className="my-5 mb-3 mt-5 box py-5 px-0">
-					<Container className="px-0">
+				<Container className="my-5 mb-3 mt-5 box py-5" style={{ paddingRight: 0, paddingLeft: 0}}>
+					<Container style={{ paddingRight: 0, paddingLeft: 0}}>
 						<Col md={{ span: 8, offset: 2 }} className="popup">
 							<Form className="mx-sm-0 mx-lg-5 my-5 px-lg-5">
 								<Form.Group className="mt-3">
