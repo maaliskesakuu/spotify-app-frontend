@@ -344,7 +344,7 @@ class Activities extends Component {
           style={{ color: "white", textAlign: "center" }}
           className="my-5 text_light"
         >
-          What are you in the mood for?
+          What Are You in the Mood for?
         </h2>
         <Container
           style={{

@@ -74,7 +74,7 @@ const NavBar = () => {
 								padding: "0 50px 0 0"
 							}}
 							className="my-1"
-						>
+						><FontAwesomeIcon icon="user"></FontAwesomeIcon>{" "}
 							My Account
 						</Dropdown.Toggle>
 						<Dropdown.Menu>

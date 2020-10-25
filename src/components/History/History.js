@@ -110,22 +110,9 @@ class History extends Component {
       </tr>
     );
 
-    // //clear music history
-    // const clearHistoryHandler = () => {
-    //   this.setState({ musicHistory: [] });
-    // };
-
     const RecentlyPlayed = () => (
       <div className="recently-played">
-        {/* <button
-          className="text-secondary"
-          onClick={clearHistoryHandler}
-          style={{ border: "none" }}
-        >
-          Clear History
-        </button> */}
-        {/* <table className="table"> */}
-        <Table responsive striped hover>
+        <Table responsive striped hover style={{marginBottom: "0px"}}>
           <thead>
             <tr>
               <th style={{ padding: "0.75rem 0.3rem 0.75rem 0.6rem" }}>#</th>
@@ -137,7 +124,6 @@ class History extends Component {
           </thead>
           <tbody>{musicHistory.map((e, index) => TableItem(e, index))}</tbody>
           </Table>
-        {/* </table> */}
       </div>
     );
 
@@ -145,7 +131,7 @@ class History extends Component {
       <div
         className="mb-5 container px-0"
       >
-        <h2 className="my-5 head text-light">Listening History</h2>
+        <h2 className="my-5 head text-light text_light">My Listening History</h2>
         <div className="box py-5">
           <div className="mx-sm-5">
             {musicHistory.length !== 0 ? <RecentlyPlayed /> : null}
