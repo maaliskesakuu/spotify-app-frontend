@@ -23,6 +23,7 @@ class PlaylistAdd extends Component {
               tracks={this.props.playlistTracks}
               isRemoval={true}
               onRemove={this.props.onRemove}
+              muted={this.props.muted}
             />
           </CardDeck>
           <Button
