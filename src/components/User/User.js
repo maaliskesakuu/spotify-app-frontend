@@ -61,10 +61,9 @@ class User extends Component {
   render() {
     return (
       <div
-        style={{ paddingRight: "0", paddingLeft: "0" }}
-        className="mb-5 container"
+        className="mb-5 px-0 container"
       >
-        <h2 className="my-5 head text-light">{this.state.displayName}'s profile</h2>
+        <h2 className="my-5 head text-light text_light">{this.state.displayName}'s Profile</h2>
         <div className="box">
           <Col
             md={{ span: 8, offset: 2 }}

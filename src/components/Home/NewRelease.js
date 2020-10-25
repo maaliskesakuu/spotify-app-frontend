@@ -108,13 +108,8 @@ class NewRelease extends Component {
 						className="my-5 text_light text-light"
 						style={{ textAlign: "center" }}
 					>
-						New releases
+						New Releases
 					</h2>
-					<p className="text-light">
-						You can choose the country whose new releases you'll
-						see. After you have chosen the country, press the submit button.
-					</p>
-
 					<Form onSubmit={this.handleRadioButtonFormSubmit}>
 						<div className="text-light">
 							<Form.Check
@@ -227,7 +222,7 @@ class NewRelease extends Component {
 										border: "none",
 									}}
 								>
-									Submit
+									Change the country
 								</Button>
 							</div>
 						</div>
@@ -245,7 +240,6 @@ class NewRelease extends Component {
 										}}
 										key={index}
 										onMouseOver={() => {
-											// this.setText(songs.release_date);
 											this.setText(
 												songs.release_date +
 													" | " +

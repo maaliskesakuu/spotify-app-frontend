@@ -92,7 +92,7 @@ class Home extends Component {
           className="my-5 text_light text-light "
           style={{ textAlign: "center" }}
         >
-          Recently played
+          My Recently Played
         </h2>
         <Button id="mute_button" onClick={this.mute.bind(this)}><FontAwesomeIcon icon={this.state.muted ? "volume-mute" : "volume-up"}></FontAwesomeIcon></Button>
         <Container className="mb-5">
@@ -123,10 +123,6 @@ class Home extends Component {
                           this.playMusic(music.track.preview_url)
                         }
                         onMouseOut={this.pauseMusic.bind(this)}
-                        // onTouchStart={() =>
-                        //   this.playMusic(music.track.preview_url)
-                        // }
-                        // onTouchEnd={this.pauseMusic}
                       />
                     )}
                     <Card.Body
