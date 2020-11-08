@@ -14,6 +14,7 @@ import * as constants from "../../constants/constants";
 import "../FontawesomeIcons/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+//Activities that user can select from. Activity buttons are created from these activities.
 const activities = [
 	{
 		id: 1,
@@ -92,6 +93,7 @@ class Activities extends Component {
 			});
 	}
 
+	//Making API call with selected activity/category when activity button is clicked
 	getMusic() {
 		let token = hash.access_token;
 
@@ -128,6 +130,8 @@ class Activities extends Component {
 
 				return playlistArray;
 			})
+			//Making API call with playlist id, limitnumber (how many tracks to get from each playlist, which is now 4)
+			//and offset number (random offset number is created to get different results each time)
 			.then(playlistArray => {
 				for (let i = 0; i < playlistArray.length; i++) {
 					let limitNumber = 4;
@@ -314,6 +318,7 @@ class Activities extends Component {
 			});
 	}
 
+	//Mute or unmute when button is clicked
 	mute() {
 		this.setState({ muted: !this.state.muted });
 	}
@@ -365,6 +370,7 @@ class Activities extends Component {
 						""
 					)}
 				</Container>
+				{/* Mute button */}
 				<Button id="mute_button" onClick={this.mute.bind(this)}>
 					<FontAwesomeIcon
 						icon={this.state.muted ? "volume-mute" : "volume-up"}
