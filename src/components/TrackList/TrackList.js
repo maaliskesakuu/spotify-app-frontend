@@ -21,7 +21,7 @@ class TrackList extends Component {
 	renderTooltip(props) {
 		return <Tooltip {...props}>Sorry, no preview</Tooltip>;
 	}
-
+	//Plays audio if not muted. Gets preview url from track as parameter and sets that to audio.
 	playMusic(preview) {
 		if (this.props.muted) {
 			return;
@@ -32,7 +32,7 @@ class TrackList extends Component {
 			} catch {}
 		});
 	}
-
+	//Pauses audio and sets audio empty. 
 	pauseMusic() {
 		this.state.audio.pause();
 		this.setState({ audio: new Audio("") });
@@ -75,6 +75,7 @@ class TrackList extends Component {
 	render() {
 		return (
 			<>
+			{/* Search results shown in cards */}
 				{this.props.tracks.map(track => {
 					return (
 						<Col md={3} key={track.id}>
@@ -84,7 +85,7 @@ class TrackList extends Component {
 									boxShadow: "0 0 10px #333",
 								}}
 							>
-								{/* Conditional tooltips */}
+								{/* Conditional tooltip. Tooltip is shown if track has no preview */}
 								{!track.preview ? (
 									<OverlayTrigger
 										placement="bottom"
