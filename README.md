@@ -1,27 +1,27 @@
 # Harmony
-![harmony music image](https://github.com/maaliskesakuu/spotify-app-frontend/blob/master/Screenshot%202020-06-17%20at%200.15.26.png)
+![Harmony music image](./public/Harmony-Spotify-App-image.png?raw=true)
 
 
+This is a school project that was bootstrapped with [Create React App]
 
-This is a schoool project that  was bootstrapped with [Create React App]
-
-This application uses Spotify Web API to discover users most listened tracks and artists from Spotify. User can listen to previews of different music based on a particular category or what mood they are in, user can also create playlist from their favorite tracks and artists to Spotify app.
+This application uses Spotify Web API to discover user's most listened tracks and artists from Spotify. User can listen to previews of different music based on a particular category or what mood they are in, user can also create playlists from their favorite tracks and artists to Spotify app.
 
 Try it out [Harmony Demo](https://harmony-fbddf.web.app/)
 
 ## Spotify
-Application uses followig parts of Spotify Web API
+Application uses following parts of Spotify Web API
 
 * Authorization
-* Get users Tracks based on category 
+* Get user's Tracks based on category 
 * Get Top Tracks for Artist
 * Get Recently played/History tracks for user
 * Creating playlist
 * Adding tracks to playlist
+* Get a list of user's playlists
 * User profile information
 
-### How to use spotify API
-Go to [spotify Dashboard](https://developer.spotify.com/dashboard/), log in and create a new App.
+### How to Use Spotify API
+Go to [Spotify Dashboard](https://developer.spotify.com/dashboard/), log in and create a new App.
 
 Add localhost:3000/ as Redirect URI in your Spotify App Settings.
 
@@ -31,16 +31,13 @@ Add localhost:3000/ as Redirect URI in your Spotify App Settings.
 * Authenticate a user and get authorization to access user data
 * Retrieve the data from a Web API endpoint
 
-## Borrowed ideas/Credits
-* From React Spotify Player by[Joe Karlsson](https://github.com/JoeKarlsson/react-spotify-player)
+## Borrowed Ideas/Credits
+* From React Spotify Player by [Joe Karlsson](https://github.com/JoeKarlsson/react-spotify-player)
 * Musicophile by [Simplilearn](https://www.simplilearn.com/react-tutorial-article)
 * Replayify App by [Pasi Lampinen](https://github.com/palampinen/replayify)
 * Pusher article by [Ayooluwa Isaiah](https://pusher.com/tutorials/spotify-history-react-node#set-up-the-server)
 
-## Techlogies Used
-* Bootstrap
+## Technologies Used
+* React Bootstrap
 * Favicon
-* Fontawsome
-
-## Photo Credits
-* Background image photo by [Marcela skoski](https://unsplash.com/@marcelalaskoski) on [Unsplash](https://unsplash.com/)
+* Fontawesome

@@ -9,6 +9,7 @@ import { Nav, NavItem, Navbar, Dropdown, NavLink } from "react-bootstrap";
 const NavBar = () => {
 	return (
 		<Navbar
+			collapseOnSelect
 			variant="dark"
 			expand="lg"
 			style={{
@@ -24,9 +25,9 @@ const NavBar = () => {
 					></img>
 				</Navbar.Brand>
 			</LinkContainer>
-			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 			<Navbar.Collapse
-				id="basic-navbar-nav"
+				id="responsive-navbar-nav"
 				className="justify-content-end"
 			>
 				<Nav
@@ -37,45 +38,45 @@ const NavBar = () => {
 					}}
 				>
 					<LinkContainer to="/">
-						<NavItem className="mr-3 my-1">
+						<Nav.Link className="mr-3 my-1 text-light">
 							<FontAwesomeIcon icon="home"></FontAwesomeIcon> Home
-						</NavItem>
+						</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to="/playlist">
-						<NavItem className="mr-3 my-1">
+						<Nav.Link className="mr-3 my-1 text-light">
 							<FontAwesomeIcon icon="plus-circle"></FontAwesomeIcon>{" "}
 							Create Playlist
-						</NavItem>
+						</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to="/playlists">
-						<NavItem className="mr-3 my-1">
+						<Nav.Link className="mr-3 my-1 text-light">
 							<FontAwesomeIcon icon="list"></FontAwesomeIcon>{" "}
 							Playlists
-						</NavItem>
+						</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to="/featured">
-						<NavItem className="mr-3 my-1">
+						<Nav.Link className="mr-3 my-1 text-light">
 							<FontAwesomeIcon icon="music"></FontAwesomeIcon> New
 							and Recent
-						</NavItem>
+						</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to="/history">
-						<NavItem className="mr-3 my-1">
+						<Nav.Link className="mr-3 my-1 text-light">
 							<FontAwesomeIcon icon="history"></FontAwesomeIcon>{" "}
 							History Playlist
-						</NavItem>
+						</Nav.Link>
 					</LinkContainer>
 
 					<Dropdown as={NavItem}>
 						<Dropdown.Toggle
 							as={NavLink}
 							style={{
-								color: "white",
-								padding: "0 50px 0 0"
+								paddingRight: "50px",
 							}}
-							className="my-1"
-						><FontAwesomeIcon icon="user"></FontAwesomeIcon>{" "}
-							My Account
+							className="my-1 text-light"
+						>
+							<FontAwesomeIcon icon="user"></FontAwesomeIcon> My
+							Account
 						</Dropdown.Toggle>
 						<Dropdown.Menu>
 							<LinkContainer to="/user">
