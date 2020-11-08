@@ -73,7 +73,6 @@ class App extends Component {
 
 								{/* this is the call to the Spotify Account Service */}
 								<a
-									className="login"
 									href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
 										"%20"
 									)}&response_type=token&show_dialog=true`}

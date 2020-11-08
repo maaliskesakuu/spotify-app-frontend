@@ -35,7 +35,7 @@ class SearchBar extends Component {
 						backgroundColor: "rgb(126, 2, 214)",
 						border: "none",
 					}}
-					className="mb-4"
+					className="mb-3"
 					onClick={this.search.bind(this)}
 				>
 					Search
