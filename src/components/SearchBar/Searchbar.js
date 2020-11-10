@@ -13,7 +13,7 @@ class SearchBar extends Component {
 	search() {
 		this.props.onSearch(this.state.term);
 	}
-
+	// to do the search with clicking enter button
 	handleEnter(event) {
 		if (event.keyCode === 13) {
 			this.search();
@@ -35,7 +35,7 @@ class SearchBar extends Component {
 						backgroundColor: "rgb(126, 2, 214)",
 						border: "none",
 					}}
-					className="mb-4"
+					className="mb-3"
 					onClick={this.search.bind(this)}
 				>
 					Search

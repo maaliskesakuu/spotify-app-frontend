@@ -67,7 +67,7 @@ class NewRelease extends Component {
 	renderTooltip(props) {
 		return <Tooltip {...props}>Release date {this.getText()}</Tooltip>;
 	}
-
+	// to handle radio buttons
 	handleRadioButtonChange = changeEvent => {
 		this.setState({ selectedOption: changeEvent.target.value });
 	};

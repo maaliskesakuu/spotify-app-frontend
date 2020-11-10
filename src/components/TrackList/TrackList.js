@@ -37,7 +37,7 @@ class TrackList extends Component {
 		this.state.audio.pause();
 		this.setState({ audio: new Audio("") });
 	}
-
+    // to deal with the minus or plus button as to whether a track is going to be removed or added
 	renderAction(track) {
 		if (this.props.isRemoval) {
 			return (

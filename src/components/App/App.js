@@ -29,6 +29,7 @@ class App extends Component {
 		return (
 			<>
 				<main>
+					{/* If there no token and the background is the welcome page*/}
 					{!this.state.token && (
 						<div className="background">
 							<div id="container">
@@ -72,7 +73,6 @@ class App extends Component {
 
 								{/* this is the call to the Spotify Account Service */}
 								<a
-									className="login"
 									href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
 										"%20"
 									)}&response_type=token&show_dialog=true`}
@@ -94,7 +94,7 @@ class App extends Component {
 							</div>
 						</div>
 					)}
-
+					{/* If there a token and the background is the app's home page*/}
 					{this.state.token && (
 						<div className="loggedInBackground">
 							<Routers />

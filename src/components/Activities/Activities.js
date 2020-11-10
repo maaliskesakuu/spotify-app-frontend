@@ -92,7 +92,7 @@ class Activities extends Component {
 				console.log(error);
 			});
 	}
- 
+
 	//Making API call with selected activity/category when activity button is clicked
 	getMusic() {
 		let token = hash.access_token;
@@ -130,7 +130,7 @@ class Activities extends Component {
 
 				return playlistArray;
 			})
-			//Making API call with playlist id, limitnumber (how many tracks to get from each playlist, which is now 4) 
+			//Making API call with playlist id, limitnumber (how many tracks to get from each playlist, which is now 4)
 			//and offset number (random offset number is created to get different results each time)
 			.then(playlistArray => {
 				for (let i = 0; i < playlistArray.length; i++) {
@@ -172,7 +172,7 @@ class Activities extends Component {
 							for (let searchResult of searchResults) {
 								let tracks = this.state.playlistTracks;
 								let results = this.state.searchResults;
-
+								// to make sure that a track is only once in results
 								try {
 									if (
 										tracks.find(
@@ -218,7 +218,7 @@ class Activities extends Component {
 			this.getMusic();
 		});
 	}
-
+    // to add a track to the playlist if it isn't there already
 	addTrack(track) {
 		let tracks = this.state.playlistTracks;
 		if (tracks.find(savedTrack => savedTrack.id === track.id)) {
@@ -226,7 +226,7 @@ class Activities extends Component {
 		}
 		this.setState({ playlistTracks: tracks.concat(track) });
 	}
-
+	// to remove a track from the playlist and add it back to search results
 	removeTrack(track) {
 		let tracks = this.state.playlistTracks;
 		let searchResultsTracks = this.state.searchResults;
@@ -234,13 +234,13 @@ class Activities extends Component {
 		this.setState({ searchResults: searchResultsTracks.concat(track) });
 		this.setState({ playlistTracks: tracks });
 	}
-
+	// to remove a track from search results
 	removeTrackFromSearchResults(track) {
 		let tracks = this.state.searchResults;
 		tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
 		this.setState({ searchResults: tracks });
 	}
-
+	// to initiate the adding of a track to the playlist and the removal of it from search results
 	addAndRemoveTrack(track) {
 		this.addTrack(track);
 		this.removeTrackFromSearchResults(track);
@@ -252,7 +252,7 @@ class Activities extends Component {
 
 	savePlaylistAdd(name) {
 		const trackUris = this.state.playlistTracks.map(track => track.uri);
-
+		// If there is no name to the playlist nor any tracks, return
 		if (!name || !trackUris.length) {
 			return;
 		}
@@ -261,7 +261,7 @@ class Activities extends Component {
 		const headers = { Authorization: `Bearer ${accessToken}` };
 		let userId;
 		let playlist = this.state.playlistName;
-
+		// fetch the userId
 		fetch(constants.API + "me", { headers: headers })
 			.then(response => response.json())
 			.then(jsonResponse => {
@@ -281,8 +281,8 @@ class Activities extends Component {
 				})
 					.then(response => response.json())
 					.then(jsonResponse => {
-						const playlistId = jsonResponse.id;
-
+						const playlistId = jsonResponse.id; //get the playlist's id 
+						//post the tracks
 						fetch(
 							constants.API +
 								`users/${userId}/playlists/${playlistId}/tracks`,
